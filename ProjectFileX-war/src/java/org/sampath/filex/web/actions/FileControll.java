@@ -57,7 +57,7 @@ public class FileControll extends HttpServlet {
                 return;
          }
          else if (request.getParameter("viewwall") != null) {
-            response.sendRedirect("org.sampath.filex.web.jsps/Wall.jsp");
+            response.sendRedirect("filexweb/Wall.jsp");
          
          }
         
@@ -109,7 +109,7 @@ public class FileControll extends HttpServlet {
                 System.out.println("File uploaded and saved into database");
             }
             
-            response.sendRedirect("org.sampath.filex.web.jsps/uploadFile.jsp");
+            response.sendRedirect("filexweb/uploadFile.jsp");
             
         }
         else 

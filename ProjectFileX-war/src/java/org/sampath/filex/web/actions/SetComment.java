@@ -67,7 +67,7 @@ public class SetComment extends HttpServlet {
             System.out.println("Something went wrong in Connection "+ex);
         }
         
-        response.sendRedirect("org.sampath.filex.web.jsps/SubWall.jsp");
+        response.sendRedirect("filexweb/SubWall.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

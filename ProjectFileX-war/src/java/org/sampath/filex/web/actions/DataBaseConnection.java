@@ -63,20 +63,20 @@ public class DataBaseConnection extends HttpServlet {
                 {
                     
                     if(rs.getString("ba").equals("y"))
-                        response.sendRedirect("org.sampath.filex.web.jsps/uploadFile.jsp");
+                        response.sendRedirect("filexweb/uploadFile.jsp");
                     else if(rs.getString("pm").equals("y"))
-                        response.sendRedirect("org.sampath.filex.web.jsps/MSDLogin.jsp");
+                        response.sendRedirect("filexweb/MSDLogin.jsp");
                     else if(rs.getString("extsh").equals("y"))
-                        response.sendRedirect("org.sampath.filex.web.jsps/Login.jsp");
+                        response.sendRedirect("filexweb/Login.jsp");
                     else
-                        response.sendRedirect("org.sampath.filex.web.jsps/Login.jsp");    
+                        response.sendRedirect("filexweb/Login.jsp");    
                 }
                 else
-                    response.sendRedirect("org.sampath.filex.web.jsps/Login.jsp");
+                    response.sendRedirect("filexweb/Login.jsp");
             }
             else{
             System.out.println("There is no such a EmployeeID");
-            response.sendRedirect("org.sampath.filex.web.jsps/Login.jsp");
+            response.sendRedirect("filexweb/Login.jsp");
             }
             
         } catch (SQLException ex) {

@@ -101,7 +101,7 @@ public class GetComment extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
             
-            //response.sendRedirect("org.sampath.filex.web.jsps/Comment.jsp");
+            //response.sendRedirect("filexweb/Comment.jsp");
             
         } catch (SQLException ex) {
             Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ex);
