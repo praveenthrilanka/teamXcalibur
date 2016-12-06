@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ProjectFileX-ejb">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ProjectFileX-ejb/dist/ProjectFileX-ejb.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
