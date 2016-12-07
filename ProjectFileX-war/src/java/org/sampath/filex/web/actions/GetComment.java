@@ -40,16 +40,10 @@ public class GetComment extends HttpServlet {
         PrintWriter out = response.getWriter();
         FileControll fc=new FileControll();
         
+        Connection con=DatabaseConnection.createConnection();
+        
         try {
-            Class.forName("oracle.jdbc.OracleDriver");
-            System.out.println("Driver Found");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Driver not Found"+ex);
-        }
-        try {
-            Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","hr","hr");
-            System.out.println("Connection Established");
+          
             PreparedStatement ps=con.prepareStatement("select * from employee e,comments c where e.EMPID=c.EMPID and c.SRSNO='"+fc.srsid+"' order by comno desc");
             ResultSet rs=ps.executeQuery();
             
@@ -104,7 +98,7 @@ public class GetComment extends HttpServlet {
             //response.sendRedirect("filexweb/Comment.jsp");
             
         } catch (SQLException ex) {
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Something went wrong in Connection "+ex);
         }
         

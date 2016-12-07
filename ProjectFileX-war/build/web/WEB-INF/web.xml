@@ -4,8 +4,8 @@
         <welcome-file>Login</welcome-file>
     </welcome-file-list>
     <servlet>
-        <servlet-name>DataBaseConnection</servlet-name>
-        <servlet-class>org.sampath.filex.web.actions.DataBaseConnection</servlet-class>
+        <servlet-name>SignIn</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.SignIn</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FileControll</servlet-name>
@@ -35,9 +35,13 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.Login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Constants</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.Constants</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>DataBaseConnection</servlet-name>
-        <url-pattern>/DataBaseConnection</url-pattern>
+        <servlet-name>SignIn</servlet-name>
+        <url-pattern>/SignIn</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FileControll</servlet-name>
@@ -66,6 +70,10 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Constants</servlet-name>
+        <url-pattern>/Constants</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

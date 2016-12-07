@@ -40,7 +40,7 @@ public class ProjectControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         Date dte=new Date();
-        DataBaseConnection dbc=new DataBaseConnection();
+        SignIn dbc=new SignIn();
         
         String pno=request.getParameter("pno");
         String pname=request.getParameter("pname");
@@ -50,7 +50,7 @@ public class ProjectControl extends HttpServlet {
             Class.forName("oracle.jdbc.OracleDriver");
             System.out.println("Driver Found");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Driver not Found"+ex);
         }
         try {
@@ -63,7 +63,7 @@ public class ProjectControl extends HttpServlet {
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Something went wrong in Connection "+ex);
         }
           

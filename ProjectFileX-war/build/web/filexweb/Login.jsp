@@ -43,7 +43,7 @@
     <body background="SampathBack.jpg">
         <div style="text-align:center;  margin: auto;width: 40%;border: 2px solid orange;position: absolute;top: 25%; left: 30%;  padding: 10px">
             <h2>Login</h2>
-            <form name="login" action="../DataBaseConnection" method="post" onsubmit="return validateForm();">
+            <form name="login" action="../SignIn" method="post" onsubmit="return validateForm();">
               <div class="form-group">
                 <label>Employee ID:</label>
                 <input type="text" name="un" class="form-control" placeholder="Enter ID">

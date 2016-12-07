@@ -41,14 +41,14 @@ public class SetComment extends HttpServlet {
         PrintWriter out = response.getWriter();
         String comment=request.getParameter("commentstr");
         Date date = new Date();
-        DataBaseConnection dbc=new DataBaseConnection();
+        SignIn dbc=new SignIn();
         FileControll fc=new FileControll();
         
         try {
             Class.forName("oracle.jdbc.OracleDriver");
             System.out.println("Driver Found");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Driver not Found"+ex);
         }
         try {
@@ -63,7 +63,7 @@ public class SetComment extends HttpServlet {
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Something went wrong in Connection "+ex);
         }
         

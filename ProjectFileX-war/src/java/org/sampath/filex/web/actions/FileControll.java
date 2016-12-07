@@ -61,18 +61,10 @@ public class FileControll extends HttpServlet {
          
          }
         
-        try {
-            Class.forName("oracle.jdbc.OracleDriver");
-            System.out.println("Driver Found");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Driver not Found"+ex);
-        }
-        try {
-            Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","hr","hr");
-            System.out.println("Connection Established");
-            
-            
+         Connection con=DatabaseConnection.createConnection();
+        
+         try {
+
         InputStream inputStream = null; // input stream of the upload file
          
         // obtains the upload file part in this multipart request
@@ -117,7 +109,7 @@ public class FileControll extends HttpServlet {
         
             
         } catch (SQLException ex) {
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Something went wrong in Connection "+ex);
         }
     }

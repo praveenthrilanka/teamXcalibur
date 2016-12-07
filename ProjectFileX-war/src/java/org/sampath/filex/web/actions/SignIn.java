@@ -16,11 +16,13 @@ import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.sampath.filex.web.actions.DatabaseConnection;
+
 /**
  *
  * @author Ashantha
  */
-public class DataBaseConnection extends HttpServlet {
+public class SignIn extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,22 +39,16 @@ public class DataBaseConnection extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        
         
         empid=request.getParameter("un");
         
-        try {
-            Class.forName("oracle.jdbc.OracleDriver");
-            System.out.println("Driver Found");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Driver not Found"+ex);
-        }
-        try {
-            Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","hr","hr");
-            System.out.println("Connection Established");
+       
+            Connection con=DatabaseConnection.createConnection();
             String un=request.getParameter("un");
             String pw=request.getParameter("pw");
+
+        try {            
             PreparedStatement ps=con.prepareStatement("select * from employee where empid='"+un+"'");
             ResultSet rs=ps.executeQuery();
             
@@ -69,18 +65,18 @@ public class DataBaseConnection extends HttpServlet {
                     else if(rs.getString("extsh").equals("y"))
                         response.sendRedirect("filexweb/Login.jsp");
                     else
-                        response.sendRedirect("filexweb/Login.jsp");    
+                        response.sendRedirect("filexweb/message.jsp?message=Invalid user name or password!");    
                 }
                 else
-                    response.sendRedirect("filexweb/Login.jsp");
+                    response.sendRedirect("filexweb/message.jsp?message=Invalid user name or password!");
             }
             else{
             System.out.println("There is no such a EmployeeID");
-            response.sendRedirect("filexweb/Login.jsp");
+            response.sendRedirect("filexweb/message.jsp?message=Invalid user name or password!");
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Something went wrong in Connection "+ex);
         }
             

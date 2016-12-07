@@ -56,18 +56,10 @@ public class GetFile extends HttpServlet {
         
         System.out.println(srsno+"/"+pno);
         
+        Connection con=DatabaseConnection.createConnection();
+        
         try {
-            Class.forName("oracle.jdbc.OracleDriver");
-            System.out.println("Driver Found");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Driver not Found "+ex);
-        }
-        try {
-            Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","hr","hr");
-            System.out.println("Connection Established");
-            
-            
+   
         //InputStream inputStream = null; // input stream of the upload file
         ResultSet rset=null;
         ServletOutputStream os = response.getOutputStream();
@@ -95,7 +87,7 @@ public class GetFile extends HttpServlet {
         
             
         } catch (SQLException ex) {
-            Logger.getLogger(DataBaseConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Something went wrong in Connection "+ex);
         }
     }

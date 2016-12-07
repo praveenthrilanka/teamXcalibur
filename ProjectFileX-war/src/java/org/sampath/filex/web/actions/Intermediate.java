@@ -40,7 +40,7 @@ public class Intermediate extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         System.out.println("This is intermediate");
-        response.sendRedirect("org.sampath.filex.web.jsps/Comment.jsp");
+        response.sendRedirect("filexweb/Comment.jsp");
         
     
     }
