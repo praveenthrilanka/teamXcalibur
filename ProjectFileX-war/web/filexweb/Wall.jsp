@@ -14,13 +14,11 @@
         
         
     </head>
-    
+                       
+
         <frameset cols="40%,*">
             <frame name='fra1' src='SubWall.jsp'>
-            <frame name='fra2' src='ViewSRS.jsp'>
-        
-                <body>
-                </body>
+            <frame name='fra2' src='ViewSRS.jsp'>y  
         </frameset>
-    
+   
 </html>

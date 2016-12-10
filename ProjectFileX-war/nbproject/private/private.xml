@@ -5,27 +5,29 @@
         <group>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SetComment.java</file>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/filexweb/MSDLogin.jsp</file>
-            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/filexweb/uploadFile.jsp</file>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/src/java/org/sampath/filex/web/actions/GetComment.java</file>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/filexweb/Wall.jsp</file>
-            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/WEB-INF/weblogic.xml</file>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/filexweb/Comment.jsp</file>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Intermediate.java</file>
-            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/src/conf/MANIFEST.MF</file>
-            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/filexweb/SubWall.jsp</file>
+            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Comment.java</file>
+            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/src/java/org/sampath/filex/web/actions/DatabaseConnection.java</file>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Login.java</file>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/src/java/org/sampath/filex/web/actions/ProjectControl.java</file>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/src/java/org/sampath/filex/web/actions/GetFile.java</file>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/filexweb/MSDViewPM.jsp</file>
-            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/filexweb/ViewSRS.jsp</file>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/index.jsp</file>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/filexweb/Login.jsp</file>
-            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/src/java/org/sampath/filex/web/actions/DataBaseConnection.java</file>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/filexweb/message.jsp</file>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/src/java/org/sampath/filex/web/actions/FileControll.java</file>
-            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/filexweb/ManagerSDLogin.jsp</file>
             <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Constants.java</file>
+            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/filexweb/uploadFile.jsp</file>
+            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/WEB-INF/weblogic.xml</file>
+            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SignIn.java</file>
+            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/src/conf/MANIFEST.MF</file>
+            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/filexweb/SubWall.jsp</file>
+            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/filexweb/ViewSRS.jsp</file>
+            <file>file:/C:/Users/Ashantha/Documents/NetBeansProjects/teamXcalibur/filex/ProjectFileX/ProjectFileX-war/web/filexweb/ManagerSDLogin.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -42,11 +43,6 @@ public class GetComment extends HttpServlet {
         
         Connection con=DatabaseConnection.createConnection();
         
-        try {
-          
-            PreparedStatement ps=con.prepareStatement("select * from employee e,comments c where e.EMPID=c.EMPID and c.SRSNO='"+fc.srsid+"' order by comno desc");
-            ResultSet rs=ps.executeQuery();
-            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<link rel=\"stylesheet\" href=\"css/ManualCSS.css\">");
@@ -65,20 +61,22 @@ public class GetComment extends HttpServlet {
             out.println("</div>");
             out.println("<br/><br/><br/>");
             out.println("<div style =\"margin: auto;width: 90%;position:absolute; border:1px solid lightgray;top: 18%; left: 3%;  padding: 5px\">");
-            while(rs.next()){
+            ArrayList<Comment> comments=Comment.getComment();
+            for(int x=0;x<comments.size();x++){
             //String date = rs.getString("date");
             //System.out.println(date);  
-            
+            Comment c;
+            c=comments.get(x);
             out.println("<table height=\"5%\">");
             out.println("<tr>");
             out.println("<td rowspan=\"3\"><img class=\"image-responsive\" src=\"user2.jpeg\" alt=\"User\" width=\"50\" height=\"50\"></td>");
-            out.println("<td>"+rs.getString("empname")+"</td>");        
+            out.println("<td>"+c.getEmployeename()+"</td>");        
             out.println("</tr>");
             out.println("<tr>");
-            out.println("<td>"+rs.getString("createddatentime")+"</td>");            
+            out.println("<td>"+c.getCreateddatentime()+"</td>");            
             out.println("</tr>");
             out.println("<tr>");
-            out.println("<td>"+rs.getString("description")+"</td>");            
+            out.println("<td>"+c.getDescription()+"</td>");            
             out.println("</tr>");
             out.println("</table>");
             out.println("<hr width=\"95%\">");
@@ -96,11 +94,7 @@ public class GetComment extends HttpServlet {
             out.println("</html>");
             
             //response.sendRedirect("filexweb/Comment.jsp");
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection "+ex);
-        }
+
         
         
         
