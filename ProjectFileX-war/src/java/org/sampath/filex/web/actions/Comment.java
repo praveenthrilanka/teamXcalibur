@@ -74,6 +74,7 @@ public class Comment {
     public static ArrayList<Comment> getComment(){
         ArrayList<Comment> projectcomment=new ArrayList<Comment>();
         FileControll fc=new FileControll();
+        System.out.println("THIS IS FC.SRSID"+fc.srsid);
         Connection con=DatabaseConnection.createConnection();
         try {
             System.out.println("Execution strt");

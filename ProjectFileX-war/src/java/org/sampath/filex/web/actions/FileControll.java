@@ -58,7 +58,7 @@ public class FileControll extends HttpServlet {
          }
          else if (request.getParameter("viewwall") != null) {
             response.sendRedirect("filexweb/Wall.jsp");
-         
+            return;
          }
         
          Connection con=DatabaseConnection.createConnection();
