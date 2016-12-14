@@ -20,7 +20,7 @@
         <script src="js/bootstrap.min.js"></script>
         <title>Sub Wall</title>
     </head>
-    <body style="background-image: url(Filex.jpg); background-repeat: no-repeat; background-size: 20% auto;">>
+    <body style="background-image: url(Filex.jpg); background-repeat: no-repeat; background-size: 20% auto;">
        <br/><br/><br/>
        <div style ="margin: auto;width: 95%; left: 1%;  padding: 1px">
        <a  href="Comment.jsp" class="btn btn-info" role="button">Comment</a>
@@ -47,6 +47,9 @@
        </tr>
        <tr>
        <td><%out.print(c.getDescription());%></td>            
+       </tr>
+       <tr>
+           <td><a href="CommentEdit.jsp?description=<%out.print(c.getDescription());%>&commentid=<%out.print(c.getCommentno());%>">Edit</a></td>
        </tr>
        </table>
        <hr width="95%">

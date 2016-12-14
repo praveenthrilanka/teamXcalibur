@@ -39,6 +39,10 @@
         <servlet-name>Constants</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.Constants</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditComment</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.EditComment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignIn</servlet-name>
         <url-pattern>/SignIn</url-pattern>
@@ -74,6 +78,10 @@
     <servlet-mapping>
         <servlet-name>Constants</servlet-name>
         <url-pattern>/Constants</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditComment</servlet-name>
+        <url-pattern>/EditComment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
