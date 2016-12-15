@@ -19,13 +19,19 @@
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <title>Sub Wall</title>
+        
+        <script type="text/javascript">
+            document.getElementById('link').click();
+        </script>
+      
     </head>
     <body style="background-image: url(Filex.jpg); background-repeat: no-repeat; background-size: 20% auto;">
-       <br/><br/><br/>
+        <a style="float:right;" title="Home" id="link" target="_parent" href="uploadFile.jsp"><img src="logos/home.png" height="40" width="40"></a>
+        <br/><br/><br/>
        <div style ="margin: auto;width: 95%; left: 1%;  padding: 1px">
-       <a  href="Comment.jsp" class="btn btn-info" role="button">Comment</a>
+       <a  href="Comment.jsp" title="Add Comment" role="button"><img src="logos/addcomment.png" height="40" width="40"></a>
        </div>
-       <br/><br/><br/>
+       <br/><br/><br/> 
        <div style ="margin: auto;width: 90%;position:absolute; border:1px solid lightgray;top: 18%; left: 3%;  padding: 5px">
        
        <%
@@ -39,7 +45,7 @@
        
        <table height="5%">
        <tr>
-       <td rowspan="3"><img class="image-responsive" src="user2.jpeg" alt="User" width="50" height="50"></td>
+       <td rowspan="3"><img class="img-circle" src="logos/user.png" alt="User" width="60" height="60"></td>
        <td> <% out.print(c.getEmployeename());%></td>        
        </tr>
        <tr>
@@ -49,9 +55,11 @@
        <td><%out.print(c.getDescription());%></td>            
        </tr>
        <tr>
-           <td><a href="CommentEdit.jsp?description=<%out.print(c.getDescription());%>&commentid=<%out.print(c.getCommentno());%>">Edit</a></td>
+           <td></td>
        </tr>
        </table>
+       <a style="float:right;" href="CommentEdit.jsp?description=<%out.print(c.getDescription());%>&commentid=<%out.print(c.getCommentno());%>" title="Delete Comment"><img src="logos/deletecomment.png" height="30" width="30"></a>
+       <a style="float:right;" href="CommentEdit.jsp?description=<%out.print(c.getDescription());%>&commentid=<%out.print(c.getCommentno());%>" title="Edit Comment"><img src="logos/editcomment.png" height="30" width="30"></a>
        <hr width="95%">
        <% }%>
        
