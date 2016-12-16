@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/ManualCSS.css">
         <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <title>Sub Wall</title>
         
         <script type="text/javascript">
@@ -58,13 +58,39 @@
            <td></td>
        </tr>
        </table>
-       <a style="float:right;" href="CommentEdit.jsp?description=<%out.print(c.getDescription());%>&commentid=<%out.print(c.getCommentno());%>" title="Delete Comment"><img src="logos/deletecomment.png" height="30" width="30"></a>
-       <a style="float:right;" href="CommentEdit.jsp?description=<%out.print(c.getDescription());%>&commentid=<%out.print(c.getCommentno());%>" title="Edit Comment"><img src="logos/editcomment.png" height="30" width="30"></a>
+       <a style="float:right;" href="#" data-toggle="modal" data-target="#myModal" title="Delete Comment"><img src="logos/deletecomment.png" height="30" width="30"></a>
+       <a style="float:right;" href="CommentEdit.jsp?description=<%out.print(c.getDescription());%>&commentid=<%out.print(c.getCommentno());%>&editcomment=edit" title="Edit Comment"><img src="logos/editcomment.png" height="30" width="30"></a>
        <hr width="95%">
+       
+       
+       
+       
+    <div class="container">
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Are you sure?</h4>
+            </div>
+            <div class="modal-body">
+              <p>Once the comment is deleted, you will not be able to recover it.</p>
+            </div>
+            <div class="modal-footer">
+              <a  href="../EditComment?description=<%out.print(c.getDescription());%>&commentid=<%out.print(c.getCommentno());%>&editcomment=delete" class="btn btn-default">Delete</a>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
        <% }%>
-       
        </div>
-       
        
     </body>
 </html>

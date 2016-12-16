@@ -37,8 +37,23 @@ public class EditComment extends HttpServlet {
         Connection con=DatabaseConnection.createConnection();
         String commentid = request.getParameter("commentid");
         String comment = request.getParameter("commentstr");
-        System.out.println(commentid+"\n"+comment);
+        String status = request.getParameter("editcomment");
+        System.out.println( commentid+"///"+comment+"//"+status);
         
+        if(status.equals("delete"))
+        {
+        try{
+        PreparedStatement ps=con.prepareStatement("delete from comments where comno='"+commentid+"'");
+        ResultSet rs=ps.executeQuery();
+        
+        }
+        catch(Exception e){
+            System.out.println("Exception in SQL Query "+e);
+        }
+        }
+        
+        else if(status.equals("edit"))
+        {
         try{
         PreparedStatement ps=con.prepareStatement("update comments set description='"+comment+"' where comno='"+commentid+"'");
         ResultSet rs=ps.executeQuery();
@@ -47,7 +62,7 @@ public class EditComment extends HttpServlet {
         catch(Exception e){
             System.out.println("Exception in SQL Query "+e);
         }
-        
+        }
         response.sendRedirect("filexweb/SubWall.jsp");
         
     }
