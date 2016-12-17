@@ -15,6 +15,7 @@ import java.sql.*;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpSession;
 
 import org.sampath.filex.web.actions.DatabaseConnection;
 
@@ -34,19 +35,17 @@ public class SignIn extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     
-    static String empid;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        
-        empid=request.getParameter("un");
-        
-       
+
             Connection con=DatabaseConnection.createConnection();
             String un=request.getParameter("un");
             String pw=request.getParameter("pw");
+            
+            HttpSession session=request.getSession();
+            session.setAttribute("eid", un);
 
         try {            
             PreparedStatement ps=con.prepareStatement("select * from employee where empid='"+un+"'");

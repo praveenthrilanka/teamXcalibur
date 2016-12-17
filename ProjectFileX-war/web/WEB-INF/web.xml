@@ -20,10 +20,6 @@
         <servlet-class>org.sampath.filex.web.actions.SetComment</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>GetComment</servlet-name>
-        <servlet-class>org.sampath.filex.web.actions.GetComment</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Intermediate</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.Intermediate</servlet-class>
     </servlet>
@@ -58,10 +54,6 @@
     <servlet-mapping>
         <servlet-name>SetComment</servlet-name>
         <url-pattern>/SetComment</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GetComment</servlet-name>
-        <url-pattern>/GetComment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Intermediate</servlet-name>

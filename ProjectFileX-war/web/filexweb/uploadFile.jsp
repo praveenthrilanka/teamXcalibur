@@ -41,7 +41,13 @@
             } 
   	</script>
 
-        
+        <%
+        session=request.getSession(false);
+        if(session.getAttribute("eid")==null){
+            response.sendRedirect("Login.jsp");
+        }        
+        %>
+      
     </head>
 
     <body background="SampathBack.jpg">

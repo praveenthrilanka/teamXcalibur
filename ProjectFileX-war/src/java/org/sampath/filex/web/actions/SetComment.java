@@ -19,6 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -41,22 +42,14 @@ public class SetComment extends HttpServlet {
         PrintWriter out = response.getWriter();
         String comment=request.getParameter("commentstr");
         Date date = new Date();
-        SignIn dbc=new SignIn();
+        HttpSession session=request.getSession();
         FileControll fc=new FileControll();
         
+
         try {
-            Class.forName("oracle.jdbc.OracleDriver");
-            System.out.println("Driver Found");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Driver not Found"+ex);
-        }
-        try {
-            Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","hr","hr");
-            System.out.println("Connection Established");
-            System.out.println("Might");
+            Connection con=DatabaseConnection.createConnection();
             String datentime=date.toString();
-            PreparedStatement ps=con.prepareStatement("insert into comments values(emp_sequence.nextval,'"+comment+"','"+datentime+"','"+dbc.empid+"','"+fc.srsid+"','')");
+            PreparedStatement ps=con.prepareStatement("insert into comments values(emp_sequence.nextval,'"+comment+"','"+datentime+"','"+session.getAttribute("eid")+"','"+fc.srsid+"','')");
             ResultSet rs=ps.executeQuery();
              
             System.out.println("Insert Done");

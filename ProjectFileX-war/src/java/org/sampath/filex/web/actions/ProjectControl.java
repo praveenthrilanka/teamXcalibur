@@ -19,6 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -40,7 +41,7 @@ public class ProjectControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         Date dte=new Date();
-        SignIn dbc=new SignIn();
+        HttpSession session=request.getSession();
         
         String pno=request.getParameter("pno");
         String pname=request.getParameter("pname");
@@ -57,7 +58,7 @@ public class ProjectControl extends HttpServlet {
             Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","hr","hr");
             System.out.println("Connection Established");
             
-            PreparedStatement ps=con.prepareStatement("insert into Project values('"+pno+"','"+pname+"','"+dte.toString()+"','it001','it005','"+dbc.empid+"')");
+            PreparedStatement ps=con.prepareStatement("insert into Project values('"+pno+"','"+pname+"','"+dte.toString()+"','it001','it005','"+session.getAttribute("eid")+"')");
             ResultSet rs=ps.executeQuery();
             
             
