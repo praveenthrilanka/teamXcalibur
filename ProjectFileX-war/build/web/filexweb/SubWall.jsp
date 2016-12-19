@@ -58,8 +58,12 @@
            <td></td>
        </tr>
        </table>
+       <%
+       if(session.getAttribute("eid").equals(c.getEmployeeid())){
+       %>
        <a style="float:right;" href="#" data-toggle="modal" data-target="#myModal" title="Delete Comment"><img src="logos/deletecomment.png" height="30" width="30"></a>
        <a style="float:right;" href="CommentEdit.jsp?description=<%out.print(c.getDescription());%>&commentid=<%out.print(c.getCommentno());%>&editcomment=edit" title="Edit Comment"><img src="logos/editcomment.png" height="30" width="30"></a>
+       <% } %>
        <hr width="95%">
        
        
