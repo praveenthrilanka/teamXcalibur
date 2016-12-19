@@ -21,6 +21,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
@@ -50,6 +51,9 @@ public class FileControll extends HttpServlet {
             srsid=request.getParameter("srsid");
             Date dte=new Date();
             pno=request.getParameter("pno");
+            
+            HttpSession session=request.getSession();
+            session.setAttribute("pid", pno);
             
          if (request.getParameter("getsrs") != null) {
               new GetFile().processRequest(request, response);

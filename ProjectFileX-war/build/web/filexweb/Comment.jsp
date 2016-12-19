@@ -4,6 +4,8 @@
     Author     : Ashantha
 --%>
 
+<%@page import="org.sampath.filex.web.actions.Project"%>
+<%@page import="org.sampath.filex.web.actions.Employee"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,6 +30,13 @@
                 text-align: left;
             }
         </style>
+        
+        <%
+            session=request.getSession(false);
+            
+            Employee e=Employee.getEmployee((String)session.getAttribute("eid"));
+            Project p=Project.getProject((String)session.getAttribute("pid"));
+        %>
     
     </head>
      <body>
@@ -38,14 +47,14 @@
                         <td rowspan="2"><img src="user2.jpeg" alt="User"></td>
                         <td>Employe Name:</td>
                         
-                        <td>*******************</td>
+                        <td><% out.print(e.getEmployeename()); %></td>
                     </tr>
                     
                    <tr>
                         
                         <td>Project Name:</td>
                         
-                        <td>*******************</td>
+                        <td><% out.print(p.getProjectname()); %></td>
                    </tr>
                    <tr>
                         <td colspan="3"><textarea name="commentstr" cols="60" rows="4" placeholder="Enter your comment here..!"></textarea></td>
