@@ -14,10 +14,10 @@
         <title>JSP Page</title>
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/ManualCSS.css">
+        <link rel="shortcut icon" href="logos/fav-icon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="css/bootstrap.css">
         <script src="js/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         <title>Sub Wall</title>
         
         <script type="text/javascript">
@@ -38,9 +38,11 @@
        System.out.println("Output test");
        ArrayList<Comment> comments=Comment.getComment();
        System.out.println("Output test2");
+       int y=0;
        for(int x=0;x<comments.size();x++){
        Comment c;
-       c=comments.get(x);    
+       c=comments.get(x); 
+       
        %>
        
        <table height="5%">
@@ -60,18 +62,14 @@
        </table>
        <%
        if(session.getAttribute("eid").equals(c.getEmployeeid())){
+           y++;
        %>
-       <a style="float:right;" href="#" data-toggle="modal" data-target="#myModal" title="Delete Comment"><img src="logos/deletecomment.png" height="30" width="30"></a>
+       <a style="float:right;" href="#" data-toggle="modal" data-target="#myModal<%out.print(y);%>" title="Delete Comment"><img src="logos/deletecomment.png" height="30" width="30"></a>
        <a style="float:right;" href="CommentEdit.jsp?description=<%out.print(c.getDescription());%>&commentid=<%out.print(c.getCommentno());%>&editcomment=edit" title="Edit Comment"><img src="logos/editcomment.png" height="30" width="30"></a>
-       <% } %>
-       <hr width="95%">
        
-       
-       
-       
-    <div class="container">
+       <div class="container">
       <!-- Modal -->
-      <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal fade" id="myModal<%out.print(y);%>" role="dialog">
         <div class="modal-dialog">
 
           <!-- Modal content-->
@@ -92,7 +90,11 @@
         </div>
       </div>
 
-    </div>
+        </div>
+       
+       <% } %>
+       <hr width="95%">
+    
        <% }%>
        </div>
        

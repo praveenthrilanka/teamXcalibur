@@ -9,26 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/ManualCSS.css">
+        <link rel="shortcut icon" href="logos/fav-icon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="css/bootstrap.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <title>JSP Page</title>
-    
-        <style>
-            body {
-            background-image: url("Filex.jpg");
-            background-repeat: no-repeat;
-            background-size: 30% auto;
-            }
-            
-            th, td {
-                padding: 10px;
-                text-align: left;
-            }
-        </style>
-    
+        <title>Comment-Edit</title>
+   
     </head>
      <body>
         <div style ="margin: auto;width: 95%;border: 2px solid orange;position: absolute;top: 30%; left: 2%;  padding: 10px">

@@ -9,8 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/ManualCSS.css">
+        <link rel="shortcut icon" href="logos/fav-icon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="css/bootstrap.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <title>JSP Page</title>
@@ -24,20 +24,7 @@
         %>
     
     </head>
-    
-    <style>
-            body {
-            background-image: url("SampathBack.jpg");
-            background-repeat: no-repeat;
-            background-size: 100% auto;
-            }
-            
-            th, td {
-                padding: 10px;
-                text-align: left;
-            }
-    </style>
-    
+        
     <body>
        <div style ="margin: auto;width: 14%;border: 2px solid orange;position: absolute;top: 45%; left: 45%;  padding: 10px">
          <form action="../GetFile" method="post">

@@ -9,18 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/ManualCSS.css">
+        <link rel="shortcut icon" href="logos/fav-icon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="css/bootstrap.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <title>JSP Page</title>
-        <style>
-            body {
-            background-image: url("SampathBack.jpg");
-            background-repeat: no-repeat;
-            background-size: 100% auto;
-            }
-        </style>
+        <title>MSDLogin</title>
         
     </head>
     <body background="SampathBack.jpg">

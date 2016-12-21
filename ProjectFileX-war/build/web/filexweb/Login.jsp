@@ -1,28 +1,15 @@
-<%-- 
-    Document   : Login
-    Created on : Oct 8, 2016, 9:08:51 PM
-    Author     : Ashantha
---%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/ManualCSS.css">
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <title>JSP Page</title>
-        <style>
-            body {
-            background-image: url("SampathBack.jpg");
-            background-repeat: no-repeat;
-            background-size: 100% auto;
-            }
-        </style>
-        
-        <script> 
+<head>
+<title>FileX - Login</title>
+<link rel="shortcut icon" href="logos/fav-icon.ico" type="image/x-icon"/>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+<script src="js/jquery.min.js"></script>
+<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+
+<script> 
             function validateForm() 
             { if(document.login.un.value==="") 
             { 
@@ -37,27 +24,66 @@
             return false;
             } 
             } 
-  	</script>
-        
-    </head>
-    <body background="SampathBack.jpg">
-        <div style="text-align:center;  margin: auto;width: 40%;border: 2px solid orange;position: absolute;top: 25%; left: 30%;  padding: 10px">
-            <h2>Login</h2>
-            <form name="login" action="../SignIn" method="post" onsubmit="return validateForm();">
-              <div class="form-group">
-                <label>Employee ID:</label>
-                <input type="text" name="un" class="form-control" placeholder="Enter ID">
-              </div>
-              <div class="form-group">
-                <label for="pwd">Password:</label>
-                <input type="password" name="pw" class="form-control" placeholder="Enter password">
-              </div>
-              <div class="checkbox">
-                <label><input type="checkbox"> Remember me</label>
-              </div>
-              <button type="submit" class="btn btn-default">Sign In</button>
-            </form>
-        </div>
+</script>
 
-    </body>
+</head>
+<body>
+	<div class="main">
+		<div class="login-form">
+			<div class="sap_tabs w3ls-tabs">
+				<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+					<ul class="resp-tabs-list">
+						<li class=""><img class="logo" src="images/logo.png"/></li> 
+					</ul>	
+					
+					<div class="resp-tabs-container">
+						<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+							<div class="login-agileits-top"> 
+								<form name="login" action="../SignIn" method="post" onsubmit="return validateForm();">
+									<p>User Name </p>
+									<input type="text" name="un" required=""/>
+									<p>Password</p>
+									<input type="password" name="pw" required=""/>	 
+									<input type="checkbox" id="brand" value="">
+									<label for="brand"><span></span> Remember me ?</label> 
+									<input type="submit" value="LOGIN">
+								</form>  
+							</div>
+							
+						</div> 
+						<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+							
+						</div>
+					</div>							
+				</div>	 
+			</div> 
+
+			 <script> 
+	            function validateForm() 
+	            { if(document.login.UserName.value==="") 
+	            { 
+	            alert("User Name should not be blank..!"); 
+	            return false;
+	            } 
+	            if(document.login.Password.value==="") 
+	            { 
+	            alert("Password should not be blank..!"); 
+	            return false;
+	            } 
+	            } 
+  			</script>
+  
+			<script type="text/javascript">
+				$(document).ready(function () {
+					$('#horizontalTab').easyResponsiveTabs({
+						type: 'default',        
+						width: 'auto',
+						fit: true  
+					});
+				});
+			</script>
+		
+		</div>	
+	</div>	
+</body>
 </html>
