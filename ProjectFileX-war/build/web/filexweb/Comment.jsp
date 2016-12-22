@@ -43,7 +43,7 @@
                         <td><% out.print(p.getProjectname()); %></td>
                    </tr>
                    <tr>
-                        <td colspan="3"><textarea name="commentstr" cols="60" rows="4" placeholder="Enter your comment here..!"></textarea></td>
+                        <td colspan="3"><textarea name="commentstr" cols="50" rows="4" placeholder="Enter your comment here..!"></textarea></td>
                         
                    </tr>
                    <tr>

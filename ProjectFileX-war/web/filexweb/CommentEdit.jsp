@@ -39,7 +39,7 @@
                             String description = request.getParameter("description");
                             String status=request.getParameter("editcomment");
                         %>
-                        <td colspan="3"><textarea name="commentstr" cols="60" rows="4" placeholder="Enter your comment here..!"><% out.print(description);%></textarea></td>
+                        <td colspan="3"><textarea name="commentstr" cols="50" rows="4" placeholder="Enter your comment here..!"><% out.print(description);%></textarea></td>
                    <input type="hidden" name="commentid" value="<%out.print(commentid);%>">
                    <input type="hidden" name="editcomment" value="<%out.print(status);%>">
                    </tr>

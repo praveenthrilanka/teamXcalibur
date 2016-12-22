@@ -22,13 +22,33 @@ public class Employee {
     private String employeeid;
     private String employeename;
     private String departmentid;
+    private String picurl;
+    private String position;
     
-    public Employee(String employeeid, String employeename, String departmentid) {
+    public Employee(String employeeid, String employeename, String departmentid,String picurl,String position) {
         this.employeeid = employeeid;
         this.employeename = employeename;
         this.departmentid = departmentid;
+        this.picurl=picurl;
+        this.position=position;
     }    
    
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+    
+    public String getPicurl() {
+        return picurl;
+    }
+
+    public void setPicurl(String picurl) {
+        this.picurl = picurl;
+    }
+    
     public String getEmployeeid() {
         return employeeid;
     }
@@ -79,10 +99,20 @@ public class Employee {
     }
     
     public static Employee getEmployeeFromRS(ResultSet rs) throws SQLException {
-         return new Employee(
+            String position;
+            if(rs.getString("BA").equalsIgnoreCase("y"))
+                position="Business Analyist";
+            else if(rs.getString("PM").equalsIgnoreCase("y"))
+                position="PM/MSD";
+            else
+                position="Stakeholder";
+        
+            return new Employee(
                  rs.getString("EMPID"),
                  rs.getString("EMPNAME"),
-                 rs.getString("DEPID"));
+                 rs.getString("DEPID"),
+                 rs.getString("PICURL"),
+                 position);
         
      }
     

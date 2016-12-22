@@ -25,14 +25,14 @@
         </script>
       
     </head>
-    <body style="background-image: url(Filex.jpg); background-repeat: no-repeat; background-size: 20% auto;">
+    <body>
         <a style="float:right;" title="Home" id="link" target="_parent" href="uploadFile.jsp"><img src="logos/home.png" height="40" width="40"></a>
-        <br/><br/><br/>
+        
        <div style ="margin: auto;width: 95%; left: 1%;  padding: 1px">
        <a  href="Comment.jsp" title="Add Comment" role="button"><img src="logos/addcomment.png" height="40" width="40"></a>
        </div>
-       <br/><br/><br/> 
-       <div style ="margin: auto;width: 90%;position:absolute; border:1px solid lightgray;top: 18%; left: 3%;  padding: 5px">
+        
+       <div style ="margin: auto;width: 90%;position:absolute; border:1px solid lightgray;top: 12%; left: 5%;  padding: 8px">
        
        <%
        System.out.println("Output test");
