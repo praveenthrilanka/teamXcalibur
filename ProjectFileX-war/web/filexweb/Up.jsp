@@ -44,7 +44,7 @@
                 <div class="header-left">
                     <!--logo -->
                     <div class="logo">
-                        <img id="logo" src="images/fileXlogo.png" alt="Logo" width="100"/> 
+                        <img id="logo" src="images/fileXlogo.png" alt="Logo" width="80"/> 
                     </div>
                     <!--//logo-->
                     <div class="user-right">

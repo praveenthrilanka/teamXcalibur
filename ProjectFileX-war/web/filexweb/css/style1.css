@@ -220,8 +220,8 @@ ul.dropdown-menu li {
 
 .user-name{
      float:left;
-     margin-top:7px;
-     margin-left:11px;
+     margin-top:3px;
+     margin-left:0px;
      height:35px;
 }
 
@@ -306,11 +306,11 @@ i.fa.fa-bell{
     border-right: 1px dotted#fff;
     text-align: center;
     float: left;
-    margin-left:20px;
-    margin-top:13px;
+    margin-left:10px;
+    margin-top:2px;
 }
 .logo a{
-    padding: 1.2em 2.03em;
+    padding: 1.2em 1.03em;
     display: block;
     text-decoration: none;
 }
@@ -493,7 +493,7 @@ ul.dropdown-menu {
 }
 .profile_details_drop a.dropdown-toggle {
     display: block;
-    padding: 0.8em 2em 0 0;
+    padding: 0.2em 1em 0 0;
 }
 .profile_img div.prfil-imge{
 	float:left;
@@ -607,7 +607,7 @@ ul.nofitications-dropdown {
 }
 li.dropdown.head-dpdn {
     display: inline-block;
-    padding: 1.7em 0;
+    padding: 0.7em 0;
     float: right;
 }
 .profile_medile span.badge {
@@ -1901,7 +1901,7 @@ ul.float-right,ul.dropdown-menu.dropdown-menu-right {
 }
 .mail-toolbar.clearfix {
     border-bottom: 1px solid #f0f0f0;
-    padding: 2em 0;
+    padding: 1em 0;
 }
 .icon-state-warning {
     color: #F39927;
@@ -2087,8 +2087,8 @@ code {
 }
 /**login**/
 .login-form,.sign-form {
-   margin: 3em auto 0;
-    width: 40%;
+   margin: 0em auto 0;
+    width: 30%;
 	background:#fff;
 }
 .login-form input[type="text"],.login-form input[type="password"] {
@@ -2527,12 +2527,12 @@ canvas#bar {
     font-size: 0.9em;
 }
 .login-form, .sign-form {
-    width: 58%;
+    width: 40%;
 }
 }
 @media (max-width: 1024px){
 .login-form, .sign-form {
-    width: 62%;
+    width: 40%;
 }
 .four a {
     width: 16%;
@@ -2692,7 +2692,7 @@ i.span,i.span1,i.span2,i.span3{
 	margin:1em 0;
 }
 .login-form, .sign-form {
-    width: 65%;
+    width: 40%;
 }
 .hightchat-grid {
     width: 100%;
@@ -2779,7 +2779,7 @@ i.span,i.span1,i.span2,i.span3{
     top: 80px;
 }
 .login-form, .sign-form {
-    width: 95%;
+    width: 80%;
 }
 .login-form form {
     padding: 0.8em 0.8em 3em;
@@ -2873,7 +2873,7 @@ i.span,i.span1,i.span2,i.span3{
     margin-top: 4em;
 }
 .login-form form {
-    padding: 0.8em 0.8em 1em;
+    padding: 0.2em 0.2em 0.5em;
 }
 .hight-chat {
     margin-top: 4em;
@@ -2882,7 +2882,7 @@ i.span,i.span1,i.span2,i.span3{
     margin-top: 4em;
 }
 .login-form, .sign-form {
-    margin: 5em auto 0;
+    margin: 0.5 auto 0;
 }
 .map-grid {
      margin-top: 4em;
@@ -2984,7 +2984,7 @@ canvas#environmentMap {
     margin-top: 8em;
 }
 .login-form, .sign-form {
-    margin: 9em auto 0;
+    margin: 0.5em auto 0;
 }
 .four img {
     width: 70%;
@@ -3008,7 +3008,7 @@ canvas#environmentMap {
     width: 100%;
 }
 .logo a {
-    padding: 1.2em 4.03em;
+    padding: 1.2em 2.03em;
 }
 .search-box {
     float: left;
@@ -3113,7 +3113,7 @@ canvas#clear-day {
     margin-top: 8em;
 }
 #page-wrapper {
-    padding: 7em 0em 2.5em;
+    padding: 0em 0em 2.5em;
 }
 .widgets-section h2, .button h2, h2.hdg,.icon-section h2, .inbox-section h2, .gallery-section h2, .grid-section h2, .hight-chat h2, .map-grid h2, .blank-page h2, .form-section h2, .validation-section h2 {
     font-size: 1.35em;
@@ -3159,7 +3159,7 @@ i.nav_icon {
     font-size: .75em;
 }
 .login-form, .sign-form {
-    margin: 9em auto 0;
+    margin: 0.5em auto 0;
     width: 100%;
 }
 .check-left {
@@ -3179,7 +3179,7 @@ li.dropdown.head-dpdn a.dropdown-toggle {
 }
 @media (max-width: 320px){
 .logo a {
-    padding: 1.2em 2.03em;
+    padding: 1.2em 1.03em;
 }
 .search-box {
     margin: 1.2em 0em 0 1em;
@@ -3349,7 +3349,7 @@ margin-top:0.5em;
     padding: 0;
 }
 .login-form, .sign-form {
-    margin: 7em auto 0;
+    margin: 0.5em auto 0;
 }
 .hight-chat {
     margin-top: 6em;
