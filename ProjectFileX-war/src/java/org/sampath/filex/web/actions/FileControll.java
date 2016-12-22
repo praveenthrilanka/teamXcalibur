@@ -87,7 +87,7 @@ public class FileControll extends HttpServlet {
             PreparedStatement statement = con.prepareStatement("INSERT INTO srs(docno, createddatentime,pdffile,approveddatentime,pno,pmid,status) values (?,?,?,?,?,?,?)");
             statement.setString(1,srsid);
             System.out.println("set1 done");
-            statement.setString(2,dte.toString());
+            statement.setString(2,DateString.getDate(dte.toString()));
             
             
             if (inputStream != null) {

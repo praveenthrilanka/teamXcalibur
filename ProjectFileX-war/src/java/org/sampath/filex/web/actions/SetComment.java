@@ -48,7 +48,7 @@ public class SetComment extends HttpServlet {
 
         try {
             Connection con=DatabaseConnection.createConnection();
-            String datentime=date.toString();
+            String datentime=DateString.getDate(date.toString());
             PreparedStatement ps=con.prepareStatement("insert into comments values(emp_sequence.nextval,'"+comment+"','"+datentime+"','"+session.getAttribute("eid")+"','"+fc.srsid+"','')");
             ResultSet rs=ps.executeQuery();
              
