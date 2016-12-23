@@ -43,6 +43,7 @@ public final class SubWall_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+<<<<<<< Updated upstream
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -75,6 +76,34 @@ public final class SubWall_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("       <br/><br/><br/> \n");
       out.write("       <div style =\"margin: auto;width: 90%;position:absolute; border:1px solid lightgray;top: 18%; left: 3%;  padding: 5px\">\n");
       out.write("       \n");
+=======
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html>\r\n");
+      out.write("<html>\r\n");
+      out.write("    <head>\r\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <title>JSP Page</title>\r\n");
+      out.write("        \r\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"css/bootstrap.min.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"css/ManualCSS.css\">\r\n");
+      out.write("        <script src=\"js/jquery.min.js\"></script>\r\n");
+      out.write("        <script src=\"js/bootstrap.min.js\"></script>\r\n");
+      out.write("        <title>Sub Wall</title>\r\n");
+      out.write("    </head>\r\n");
+      out.write("    <body style=\"background-image: url(Filex.jpg); background-repeat: no-repeat; background-size: 20% auto;\">\r\n");
+      out.write("       <br/><br/><br/>\r\n");
+      out.write("       <div style =\"margin: auto;width: 95%; left: 1%;  padding: 1px\">\r\n");
+      out.write("       <a  href=\"Comment.jsp\" class=\"btn btn-info\" role=\"button\">Comment</a>\r\n");
+      out.write("       </div>\r\n");
+      out.write("       <br/><br/><br/>\r\n");
+      out.write("       <div style =\"margin: auto;width: 90%;position:absolute; border:1px solid lightgray;top: 18%; left: 3%;  padding: 5px\">\r\n");
+      out.write("       \r\n");
+>>>>>>> Stashed changes
       out.write("       ");
 
        System.out.println("Output test");
@@ -84,6 +113,7 @@ public final class SubWall_jsp extends org.apache.jasper.runtime.HttpJspBase
        Comment c;
        c=comments.get(x);    
        
+<<<<<<< Updated upstream
       out.write("\n");
       out.write("       \n");
       out.write("       <table height=\"5%\">\n");
@@ -161,6 +191,45 @@ out.print(c.getCommentno());
       out.write("       \n");
       out.write("    </body>\n");
       out.write("</html>\n");
+=======
+      out.write("\r\n");
+      out.write("       \r\n");
+      out.write("       <table height=\"5%\">\r\n");
+      out.write("       <tr>\r\n");
+      out.write("       <td rowspan=\"3\"><img class=\"image-responsive\" src=\"user2.jpeg\" alt=\"User\" width=\"50\" height=\"50\"></td>\r\n");
+      out.write("       <td> ");
+ out.print(c.getEmployeename());
+      out.write("</td>        \r\n");
+      out.write("       </tr>\r\n");
+      out.write("       <tr>\r\n");
+      out.write("       <td>");
+out.print(c.getCreateddatentime());
+      out.write("</td>            \r\n");
+      out.write("       </tr>\r\n");
+      out.write("       <tr>\r\n");
+      out.write("       <td>");
+out.print(c.getDescription());
+      out.write("</td>            \r\n");
+      out.write("       </tr>\r\n");
+      out.write("       <tr>\r\n");
+      out.write("           <td><a href=\"CommentEdit.jsp?description=");
+out.print(c.getDescription());
+      out.write("&commentid=");
+out.print(c.getCommentno());
+      out.write("\">Edit</a></td>\r\n");
+      out.write("       </tr>\r\n");
+      out.write("       </table>\r\n");
+      out.write("       <hr width=\"95%\">\r\n");
+      out.write("       ");
+ }
+      out.write("\r\n");
+      out.write("       \r\n");
+      out.write("       </div>\r\n");
+      out.write("       \r\n");
+      out.write("       \r\n");
+      out.write("    </body>\r\n");
+      out.write("</html>\r\n");
+>>>>>>> Stashed changes
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

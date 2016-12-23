@@ -41,6 +41,7 @@ public final class Wall_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+<<<<<<< Updated upstream
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -61,6 +62,28 @@ public final class Wall_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </frameset>\n");
       out.write("   \n");
       out.write("</html>\n");
+=======
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html>\r\n");
+      out.write("<html>\r\n");
+      out.write("    <head>\r\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <title>JSP Page</title>\r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("    </head>\r\n");
+      out.write("                       \r\n");
+      out.write("\r\n");
+      out.write("        <frameset cols=\"40%,*\">\r\n");
+      out.write("            <frame name='fra1' src='SubWall.jsp'>\r\n");
+      out.write("            <frame name='fra2' src='ViewSRS.jsp'>y  \r\n");
+      out.write("        </frameset>\r\n");
+      out.write("   \r\n");
+      out.write("</html>\r\n");
+>>>>>>> Stashed changes
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
