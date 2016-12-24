@@ -30,7 +30,7 @@
           <form name="commentform" method="post" action="../SetComment">
             <table>
                     <tr>
-                        <td rowspan="2"><img src="user2.jpeg" alt="User"></td>
+                        <td rowspan="2"><img class="img-circle" src="../GetIconByID?id=<%out.print(e.getEmployeeid());%>" alt="User" width="60" height="60"></td>
                         <td>Employe Name:</td>
                         
                         <td><% out.print(e.getEmployeename()); %></td>
@@ -43,7 +43,7 @@
                         <td><% out.print(p.getProjectname()); %></td>
                    </tr>
                    <tr>
-                        <td colspan="3"><textarea name="commentstr" cols="50" rows="4" placeholder="Enter your comment here..!"></textarea></td>
+                        <td colspan="3"><textarea name="commentstr" cols="45" rows="4" placeholder="Enter your comment here..!"></textarea></td>
                         
                    </tr>
                    <tr>

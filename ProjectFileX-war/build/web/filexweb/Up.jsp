@@ -1,23 +1,48 @@
+
+
 <%@page import="org.sampath.filex.web.actions.Employee"%>
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html class=" ">
     <head>
-        <title>Home</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- 
+         * @Package: Ultra Admin - Responsive Theme
+         * @Subpackage: Bootstrap
+         * @Version: 2.0
+         * This file is part of Ultra Admin Theme.
+        -->
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <meta charset="utf-8" />
+        <title>Ultra Admin : Rickshaw Charts</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
 
-        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon" />    <!-- Favicon -->
+        <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-57-precomposed.png">	<!-- For iPhone -->
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-touch-icon-114-precomposed.png">    <!-- For iPhone 4 Retina display -->
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch-icon-72-precomposed.png">    <!-- For iPad -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/apple-touch-icon-144-precomposed.png">    <!-- For iPad Retina display -->
 
-        <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-        <link href="css/style1.css" rel='stylesheet' type='text/css' />
-        <link rel="icon" href="favicon.ico" type="image/x-icon" >
-        <link href="css/font-awesome.css" rel="stylesheet"> 
 
-        <script src="js/jquery-1.11.1.min.js"></script>
-        <script src="js/modernizr.custom.js"></script>
 
-        <script src="js/metisMenu.min.js"></script>
-        <script src="js/custom.js"></script>
-        <link href="css/custom.css" rel="stylesheet">
+
+        <!-- CORE CSS FRAMEWORK - START -->
+        <link href="plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
+        <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="plugins/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+        <link href="fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+        <link href="css/animate.min.css" rel="stylesheet" type="text/css"/>
+        <link href="plugins/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" type="text/css"/>
+        <!-- CORE CSS FRAMEWORK - END -->
+
+        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START --> 
+        <link href="plugins/jquery-ui/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" media="screen"/><link href="assets/plugins/rickshaw-chart/css/graph.css" rel="stylesheet" type="text/css" media="screen"/><link href="assets/plugins/rickshaw-chart/css/detail.css" rel="stylesheet" type="text/css" media="screen"/><link href="assets/plugins/rickshaw-chart/css/legend.css" rel="stylesheet" type="text/css" media="screen"/><link href="assets/plugins/rickshaw-chart/css/extensions.css" rel="stylesheet" type="text/css" media="screen"/><link href="assets/plugins/rickshaw-chart/css/rickshaw.min.css" rel="stylesheet" type="text/css" media="screen"/><link href="assets/plugins/rickshaw-chart/css/lines.css" rel="stylesheet" type="text/css" media="screen"/>        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END --> 
+
+
+        <!-- CORE CSS TEMPLATE - START -->
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
+        <!-- CORE CSS TEMPLATE - END -->
 
         <%
             session = request.getSession(false);
@@ -29,141 +54,334 @@
 
 
         %>
+        
+    </head>
+    <!-- END HEAD -->
 
-    </head> 
-    <body class="cbp-spmenu-push">
-        <div class="main-content">
+    <!-- BEGIN BODY -->
+    <body class=" "><!-- START TOPBAR -->
+        <div class='page-topbar '>
+            <div class='logo-area'>
 
-            <!-- header-starts -->
-            <div class="sticky-header header-section ">
-                <div class="header-left">
-                    <!--logo -->
-                    <div class="logo">
-                        <img id="logo" src="images/fileXlogo.png" alt="Logo" width="80"/> 
-                    </div>
-                    <!--//logo-->
-                    <div class="user-right">
+            </div>
+            <div class='quick-area'>
+                <div class='pull-left'>
+                    <ul class="info-menu left-links list-inline list-unstyled">
+                        <li class="sidebar-toggle-wrap">
+                            <a href="#" data-toggle="sidebar" class="sidebar_toggle">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </li>
+                        <li class="message-toggle-wrapper">
+                            <a href="#" data-toggle="dropdown" class="toggle">
+                                <i class="fa fa-envelope"></i>
+                                <span class="badge badge-primary">7</span>
+                            </a>
+                            <ul class="dropdown-menu messages animated fadeIn">
 
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
+                                <li class="list">
 
-                <div class="header-right">
+                                    <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
+                                        <li class="unread status-available">
+                                            <a href="javascript:;">
+                                                <div class="user-img">
+                                                    <img src="data/profile/avatar-1.png" alt="user-image" class="img-circle img-inline">
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong>Clarine Vassar</strong>
+                                                        <span class="time small">- 15 mins ago</span>
+                                                        <span class="profile-status available pull-right"></span>
+                                                    </span>
+                                                    <span class="desc small">
+                                                        Sometimes it takes a lifetime to win a battle.
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class=" status-away">
+                                            <a href="javascript:;">
+                                                <div class="user-img">
+                                                    <img src="data/profile/avatar-2.png" alt="user-image" class="img-circle img-inline">
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong>Brooks Latshaw</strong>
+                                                        <span class="time small">- 45 mins ago</span>
+                                                        <span class="profile-status away pull-right"></span>
+                                                    </span>
+                                                    <span class="desc small">
+                                                        Sometimes it takes a lifetime to win a battle.
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class=" status-busy">
+                                            <a href="javascript:;">
+                                                <div class="user-img">
+                                                    <img src="data/profile/avatar-3.png" alt="user-image" class="img-circle img-inline">
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong>Clementina Brodeur</strong>
+                                                        <span class="time small">- 1 hour ago</span>
+                                                        <span class="profile-status busy pull-right"></span>
+                                                    </span>
+                                                    <span class="desc small">
+                                                        Sometimes it takes a lifetime to win a battle.
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class=" status-offline">
+                                            <a href="javascript:;">
+                                                <div class="user-img">
+                                                    <img src="data/profile/avatar-4.png" alt="user-image" class="img-circle img-inline">
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong>Carri Busey</strong>
+                                                        <span class="time small">- 5 hours ago</span>
+                                                        <span class="profile-status offline pull-right"></span>
+                                                    </span>
+                                                    <span class="desc small">
+                                                        Sometimes it takes a lifetime to win a battle.
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class=" status-offline">
+                                            <a href="javascript:;">
+                                                <div class="user-img">
+                                                    <img src="data/profile/avatar-5.png" alt="user-image" class="img-circle img-inline">
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong>Melissa Dock</strong>
+                                                        <span class="time small">- Yesterday</span>
+                                                        <span class="profile-status offline pull-right"></span>
+                                                    </span>
+                                                    <span class="desc small">
+                                                        Sometimes it takes a lifetime to win a battle.
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class=" status-available">
+                                            <a href="javascript:;">
+                                                <div class="user-img">
+                                                    <img src="data/profile/avatar-1.png" alt="user-image" class="img-circle img-inline">
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong>Verdell Rea</strong>
+                                                        <span class="time small">- 14th Mar</span>
+                                                        <span class="profile-status available pull-right"></span>
+                                                    </span>
+                                                    <span class="desc small">
+                                                        Sometimes it takes a lifetime to win a battle.
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class=" status-busy">
+                                            <a href="javascript:;">
+                                                <div class="user-img">
+                                                    <img src="data/profile/avatar-2.png" alt="user-image" class="img-circle img-inline">
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong>Linette Lheureux</strong>
+                                                        <span class="time small">- 16th Mar</span>
+                                                        <span class="profile-status busy pull-right"></span>
+                                                    </span>
+                                                    <span class="desc small">
+                                                        Sometimes it takes a lifetime to win a battle.
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class=" status-away">
+                                            <a href="javascript:;">
+                                                <div class="user-img">
+                                                    <img src="data/profile/avatar-3.png" alt="user-image" class="img-circle img-inline">
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong>Araceli Boatright</strong>
+                                                        <span class="time small">- 16th Mar</span>
+                                                        <span class="profile-status away pull-right"></span>
+                                                    </span>
+                                                    <span class="desc small">
+                                                        Sometimes it takes a lifetime to win a battle.
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
 
+                                    </ul>
 
-                    <div class="profile_medile"><!--notifications of menu start -->
-
-                        <div ><!--notifications of menu start -->
-
-                            <div class="profile_details">	
-
-                                <ul>
-                                    <li class="dropdown profile_details_drop">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            <div class="profile_img">	
-
-                                                <div class="prfil-imge"><div class="user-name"><p style="color:#FFA500; font-weight: bold;"><% out.print(e.getEmployeename()); %></p><span><% out.print(e.getPosition()); %></span></div><img width="50" height="50" style="border-radius: 50%;" src="../GetIconByID?id=<% out.print(e.getEmployeeid()); %>">		       
-                                                </div> 
-
-                                                <div class="clearfix"></div>
-
-
-                                            </div>	
-                                        </a>
-                                        <ul class="dropdown-menu drp-mnu">
-                                            <li> <a href="EditProfile.jsp"><i class="fa fa-cog"></i> Settings</a> </li> 
-                                            <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
-                                            <li> <a href="../SignOut"><i class="fa fa-sign-out"></i> Logout</a> </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="nofitications-dropdown">
-                        <li class="dropdown head-dpdn">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="images/msg.png" width="30px"><span class="badge">3</span></a>
-                            <ul class="dropdown-menu anti-dropdown-menu">
-                                <li>
-                                    <div class="notification_header">
-                                        <h3>You have 3 new messages</h3>
-                                    </div>
                                 </li>
-                                <li><a href="#">
-                                        <div class="user_img"><img src="images/1.png" alt=""></div>
-                                        <div class="notification_desc">
-                                            <p>Erandi Atapattu </p>
-                                            <p><span>1 hour ago</span></p>
-                                        </div>
-                                        <div class="clearfix"></div>	
-                                    </a></li>
-                                <li class="odd"><a href="#">
-                                        <div class="user_img"><img src="images/2.png" alt=""></div>
-                                        <div class="notification_desc">
-                                            <p>Reshani Mihirika </p>
-                                            <p><span>1 hour ago</span></p>
-                                        </div>
-                                        <div class="clearfix"></div>	
-                                    </a></li>
-                                <li><a href="#">
-                                        <div class="user_img"><img src="images/3.png" alt=""></div>
-                                        <div class="notification_desc">
-                                            <p>Nishani Abeysinghe </p>
-                                            <p><span>1 hour ago</span></p>
-                                        </div>
-                                        <div class="clearfix"></div>	
-                                    </a></li>
-                                <li>
-                                    <div class="notification_bottom">
-                                        <a href="#">See all messages</a>
-                                    </div> 
+
+                                <li class="external">
+                                    <a href="javascript:;">
+                                        <span>Read All Messages</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="notify-toggle-wrapper">
+                            <a href="#" data-toggle="dropdown" class="toggle">
+                                <i class="fa fa-bell"></i>
+                                <span class="badge badge-orange">3</span>
+                            </a>
+                            <ul class="dropdown-menu notifications animated fadeIn">
+                                <li class="total">
+                                    <span class="small">
+                                        You have <strong>3</strong> new notifications.
+                                        <a href="javascript:;" class="pull-right">Mark all as Read</a>
+                                    </span>
+                                </li>
+                                <li class="list">
+
+                                    <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
+                                        <li class="unread available"> <!-- available: success, warning, info, error -->
+                                            <a href="javascript:;">
+                                                <div class="notice-icon">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong>Server needs to reboot</strong>
+                                                        <span class="time small">15 mins ago</span>
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="unread away"> <!-- available: success, warning, info, error -->
+                                            <a href="javascript:;">
+                                                <div class="notice-icon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong>45 new messages</strong>
+                                                        <span class="time small">45 mins ago</span>
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class=" busy"> <!-- available: success, warning, info, error -->
+                                            <a href="javascript:;">
+                                                <div class="notice-icon">
+                                                    <i class="fa fa-times"></i>
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong>Server IP Blocked</strong>
+                                                        <span class="time small">1 hour ago</span>
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class=" offline"> <!-- available: success, warning, info, error -->
+                                            <a href="javascript:;">
+                                                <div class="notice-icon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong>10 Orders Shipped</strong>
+                                                        <span class="time small">5 hours ago</span>
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class=" offline"> <!-- available: success, warning, info, error -->
+                                            <a href="javascript:;">
+                                                <div class="notice-icon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong>New Comment on blog</strong>
+                                                        <span class="time small">Yesterday</span>
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class=" available"> <!-- available: success, warning, info, error -->
+                                            <a href="javascript:;">
+                                                <div class="notice-icon">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong>Great Speed Notify</strong>
+                                                        <span class="time small">14th Mar</span>
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class=" busy"> <!-- available: success, warning, info, error -->
+                                            <a href="javascript:;">
+                                                <div class="notice-icon">
+                                                    <i class="fa fa-times"></i>
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong>Team Meeting at 6PM</strong>
+                                                        <span class="time small">16th Mar</span>
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+
+                                </li>
+
+                                <li class="external">
+                                    <a href="javascript:;">
+                                        <span>Read All Notifications</span>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="dropdown head-dpdn">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><img src="images/bell.png" width="30px"><span class="badge blue">3</span></a>
-                            <ul class="dropdown-menu anti-dropdown-menu">
+                    </ul>
+                </div>		
+                <div class='pull-right'>
+                    <ul class="info-menu right-links list-inline list-unstyled">
+                        <li class="profile">
+                            <a href="#" data-toggle="dropdown" class="toggle">
+                                <img src="../GetIconByID?id=<% out.print(e.getEmployeeid()); %>" alt="user-image" class="img-circle img-inline">
+                                <span><% out.print(e.getEmployeename()); %> <i class="fa fa-angle-down"></i></span>
+                            </a>
+                            <ul class="dropdown-menu profile animated fadeIn">
                                 <li>
-                                    <div class="notification_header">
-                                        <h3>You have 3 new notification</h3>
-                                    </div>
+                                    <a href="EditProfile.jsp">
+                                        <i class="fa fa-wrench"></i>
+                                        Settings
+                                    </a>
                                 </li>
-                                <li><a href="#">
-                                        <div class="user_img"><img src="images/2.png" alt=""></div>
-                                        <div class="notification_desc">
-                                            <p>Erandi Atapattu </p>
-                                            <p><span>1 hour ago</span></p>
-                                        </div>
-                                        <div class="clearfix"></div>	
-                                    </a></li>
-                                <li class="odd"><a href="#">
-                                        <div class="user_img"><img src="images/1.png" alt=""></div>
-                                        <div class="notification_desc">
-                                            <p>Reshani Mihirika </p>
-                                            <p><span>1 hour ago</span></p>
-                                        </div>
-                                        <div class="clearfix"></div>	
-                                    </a></li>
-                                <li><a href="#">
-                                        <div class="user_img"><img src="images/3.png" alt=""></div>
-                                        <div class="notification_desc">
-                                            <p>Nishani Abeysinghe </p>
-                                            <p><span>1 hour ago</span></p>
-                                        </div>
-                                        <div class="clearfix"></div>	
-                                    </a></li>
-                                <li>
-                                    <div class="notification_bottom">
-                                        <a href="#">See all notifications</a>
-                                    </div> 
+
+                                <li class="last">
+                                    <a href="../SignOut">
+                                        <i class="fa fa-lock"></i>
+                                        Logout
+                                    </a>
                                 </li>
                             </ul>
-                        </li>	
-                    </ul>
-                </div>
+                        </li>
 
-
-                <div class="clearfix"> </div>	
+                    </ul>			
+                </div>		
             </div>
-            <!-- //header-ends -->
 
+        </div>
+        <!-- END TOPBAR -->
+		
+		
+        <!-- START CONTAINER -->
+        <div class="page-container row-fluid">
