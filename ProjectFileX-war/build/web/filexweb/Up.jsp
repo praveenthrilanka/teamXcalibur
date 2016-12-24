@@ -62,7 +62,7 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                             <div class="profile_img">	
 
-                                                <div class="prfil-imge"><div class="user-name"><p style="color:#FFA500; font-weight: bold;"><% out.print(e.getEmployeename()); %></p><span><% out.print(e.getPosition()); %></span></div><img width="50" height="50" style="border-radius: 50%;" src="../GetIcon">		       
+                                                <div class="prfil-imge"><div class="user-name"><p style="color:#FFA500; font-weight: bold;"><% out.print(e.getEmployeename()); %></p><span><% out.print(e.getPosition()); %></span></div><img width="50" height="50" style="border-radius: 50%;" src="../GetIconByID?id=<% out.print(e.getEmployeeid()); %>">		       
                                                 </div> 
 
                                                 <div class="clearfix"></div>
@@ -73,7 +73,7 @@
                                         <ul class="dropdown-menu drp-mnu">
                                             <li> <a href="EditProfile.jsp"><i class="fa fa-cog"></i> Settings</a> </li> 
                                             <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
-                                            <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                            <li> <a href="../SignOut"><i class="fa fa-sign-out"></i> Logout</a> </li>
                                         </ul>
                                     </li>
                                 </ul>
