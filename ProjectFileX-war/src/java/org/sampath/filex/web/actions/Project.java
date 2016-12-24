@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpSession;
 
 
 public class Project {
@@ -76,14 +77,14 @@ public class Project {
         this.msdid = msdid;
     }
     
-    public static ArrayList<Project> getProject(){
+    public static ArrayList<Project> getProjectByEid(String eid){
         ArrayList<Project> project=new ArrayList<Project>();
 //        FileControll fc=new FileControll();
-//        System.out.println("THIS IS FC.SRSID"+fc.srsid);
-        Connection con=DatabaseConnection.createConnection();
+        System.out.println(eid);
+        Connection con=DatabaseConnection.createConnection();        
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from project");
+            PreparedStatement ps=con.prepareStatement("select * from employee e,project p where e.EMPID=p.PMID and p.PMID='"+eid+"'");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             Project p;
