@@ -39,6 +39,18 @@
         <servlet-name>EditComment</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.EditComment</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SetIcon</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.SetIcon</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetIcon</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.GetIcon</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetIconByID</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.GetIconByID</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignIn</servlet-name>
         <url-pattern>/SignIn</url-pattern>
@@ -74,6 +86,18 @@
     <servlet-mapping>
         <servlet-name>EditComment</servlet-name>
         <url-pattern>/EditComment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SetIcon</servlet-name>
+        <url-pattern>/SetIcon</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetIcon</servlet-name>
+        <url-pattern>/GetIcon</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetIconByID</servlet-name>
+        <url-pattern>/GetIconByID</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

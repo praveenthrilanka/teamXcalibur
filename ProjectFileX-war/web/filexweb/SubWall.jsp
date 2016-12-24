@@ -47,7 +47,7 @@
        
        <table height="5%">
        <tr>
-       <td rowspan="3"><img class="img-circle" src="logos/user.png" alt="User" width="60" height="60"></td>
+           <td rowspan="3"><img class="img-circle" src="../GetIconByID?id=<%out.print(c.getEmployeeid());%>" alt="User" width="60" height="60"></td>
        <td> <% out.print(c.getEmployeename());%></td>        
        </tr>
        <tr>

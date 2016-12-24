@@ -5,6 +5,7 @@
  */
 package org.sampath.filex.web.actions;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,16 +23,25 @@ public class Employee {
     private String employeeid;
     private String employeename;
     private String departmentid;
-    private String picurl;
+    private Blob photo;
     private String position;
     
-    public Employee(String employeeid, String employeename, String departmentid,String picurl,String position) {
+    
+    public Employee(String employeeid, String employeename, String departmentid,Blob photo,String position) {
         this.employeeid = employeeid;
         this.employeename = employeename;
         this.departmentid = departmentid;
-        this.picurl=picurl;
+        this.photo=photo;
         this.position=position;
-    }    
+    }
+
+        public Blob getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Blob photo) {
+        this.photo = photo;
+    }
    
     public String getPosition() {
         return position;
@@ -39,14 +49,6 @@ public class Employee {
 
     public void setPosition(String position) {
         this.position = position;
-    }
-    
-    public String getPicurl() {
-        return picurl;
-    }
-
-    public void setPicurl(String picurl) {
-        this.picurl = picurl;
     }
     
     public String getEmployeeid() {
@@ -111,7 +113,7 @@ public class Employee {
                  rs.getString("EMPID"),
                  rs.getString("EMPNAME"),
                  rs.getString("DEPID"),
-                 rs.getString("PICURL"),
+                 rs.getBlob("PHOTO"),
                  position);
         
      }
@@ -136,6 +138,10 @@ public class Employee {
         }
         return employee;
   
+    }
+    
+    public static void showBlob(){
+        
     }
     
 }

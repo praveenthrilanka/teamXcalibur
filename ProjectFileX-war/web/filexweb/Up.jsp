@@ -22,15 +22,10 @@
         <%
             session = request.getSession(false);
 
+            if(session.getAttribute("eid")==null)
+            response.sendRedirect("Login.jsp");
+            
             Employee e = Employee.getEmployee((String) session.getAttribute("eid"));
-            String url;
-
-            if(e.getPicurl()==null){
-                url = "images/user/user.png";
-            }
-            else{
-                url = e.getPicurl();
-            }
 
 
         %>
@@ -67,7 +62,7 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                             <div class="profile_img">	
 
-                                                <div class="prfil-imge"><div class="user-name"><p style="color:#FFA500; font-weight: bold;"><% out.print(e.getEmployeename()); %></p><span><% out.print(e.getPosition()); %></span></div><img width="50" height="50" style="border-radius: 50%;" src="<% out.print(url); %>" alt="">		       
+                                                <div class="prfil-imge"><div class="user-name"><p style="color:#FFA500; font-weight: bold;"><% out.print(e.getEmployeename()); %></p><span><% out.print(e.getPosition()); %></span></div><img width="50" height="50" style="border-radius: 50%;" src="../GetIcon">		       
                                                 </div> 
 
                                                 <div class="clearfix"></div>
@@ -76,7 +71,7 @@
                                             </div>	
                                         </a>
                                         <ul class="dropdown-menu drp-mnu">
-                                            <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
+                                            <li> <a href="EditProfile.jsp"><i class="fa fa-cog"></i> Settings</a> </li> 
                                             <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
                                             <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
                                         </ul>
