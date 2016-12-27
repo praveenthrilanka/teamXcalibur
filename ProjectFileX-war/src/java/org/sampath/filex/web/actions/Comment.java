@@ -71,14 +71,14 @@ public class Comment {
     
     }
 
-    public static ArrayList<Comment> getComment(){
+    public static ArrayList<Comment> getComment(String srsid){
         ArrayList<Comment> projectcomment=new ArrayList<Comment>();
-        FileControll fc=new FileControll();
-        System.out.println("THIS IS FC.SRSID"+fc.srsid);
+
+        System.out.println("THIS IS FC.SRSID"+srsid);
         Connection con=DatabaseConnection.createConnection();
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from employee e,comments c where e.EMPID=c.EMPID and c.SRSNO='"+fc.srsid+"' order by comno desc");
+            PreparedStatement ps=con.prepareStatement("select * from employee e,comments c where e.EMPID=c.EMPID and c.SRSNO='"+srsid+"' order by comno desc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             Comment cm;

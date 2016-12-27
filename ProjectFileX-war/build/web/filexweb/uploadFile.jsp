@@ -62,6 +62,7 @@
                         <td><input type = "file" name="filex" ></td>
                    </tr>
                    <tr>
+                            <input type="hidden" value="" name="redirect">
                         <td><input type = "submit" name= "submit" value = "Upload File" ></td>
                         <td><input type="submit" name="getsrs" value="View SRS" /><td>
                    </tr>

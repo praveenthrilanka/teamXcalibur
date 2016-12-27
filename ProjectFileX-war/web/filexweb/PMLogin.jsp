@@ -3,6 +3,7 @@
     Created on : Dec 15, 2016, 2:40:56 PM
     Author     : Erandi
 --%>
+<%@page import="org.sampath.filex.web.actions.DateString"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.sampath.filex.web.actions.Project"%>
 
@@ -38,7 +39,7 @@
         
        
     </head>
-    <body background="SampathBack.jpg">
+    <body>
        
          <div style="text-align:center;  margin: auto;width: 50%; position: absolute;top: 10%; left: 20%;  padding: 10px">
               <h2>Currently Assigned Projects</h2> 
@@ -70,8 +71,8 @@
       
        <tr>
        <td> <% out.print(pr.getProjectno()); %></td>        
-       <td><a href="Wall.jsp"><% out.print(pr.getProjectname()); %></a></td>            
-       <td><% out.print(pr.getDatentime()); %></td>            
+       <td><a href="../FileControll?redirect=wall&pno=<% out.print(pr.getProjectno()); %>&srsid=<% out.print(pr.getSrsid()); %>"><% out.print(pr.getProjectname()); %></a></td>            
+       <td><% out.print(DateString.getDate(pr.getDatentime())); %></td>            
        <td><% out.print(pr.getBaid()); %></td>            
        <td><% out.print(pr.getPmid()); %></td>            
        <td><% out.print(pr.getMsdid()); %></td> 

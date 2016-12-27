@@ -41,21 +41,30 @@ public class FileControll extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    static String srsid;
-    static String pno;
+
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             response.setContentType("text/html;charset=UTF-8");
             //PrintWriter out = response.getWriter();
-            srsid=request.getParameter("srsid");
             Date dte=new Date();
-            pno=request.getParameter("pno");
+            
+            String srsid=request.getParameter("srsid");            
+            String pno=request.getParameter("pno");
+            String redirect=request.getParameter("redirect");
+            
+            
             
             HttpSession session=request.getSession();
-            session.setAttribute("pid", pno);
+            session.setAttribute("pno", pno);
+            session.setAttribute("srsid",srsid);
             
-         if (request.getParameter("getsrs") != null) {
+         if (redirect.equals("wall")) {
+                response.sendRedirect("filexweb/Wall.jsp");
+                return;
+         }
+            
+         else if (request.getParameter("getsrs") != null) {
               new GetFile().processRequest(request, response);
                 //response.sendRedirect("GetFile");
                 return;

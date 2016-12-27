@@ -14,8 +14,8 @@
         <title>JSP Page</title>
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="shortcut icon" href="logos/fav-icon.ico" type="image/x-icon"/>
-        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/ManualCSS.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <title>Sub Wall</title>
@@ -35,8 +35,15 @@
        <div style ="margin: auto;width: 90%;position:absolute; border:1px solid lightgray;top: 12%; left: 5%;  padding: 8px">
        
        <%
+                 
+       
+       if(session.getAttribute("srsid")==null){
+       response.sendRedirect("message.jsp?message=Sorry, Selected project's comments are not available.");
+       }        
+       String srsid=(String)session.getAttribute("srsid");       
+           
        System.out.println("Output test");
-       ArrayList<Comment> comments=Comment.getComment();
+       ArrayList<Comment> comments=Comment.getComment(srsid);
        System.out.println("Output test2");
        int y=0;
        for(int x=0;x<comments.size();x++){

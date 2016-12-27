@@ -1,38 +1,5 @@
 <%@ include file="Up.jsp" %>
 
-<!-- SIDEBAR - START -->
-            <div class="page-sidebar ">
-
-
-                <!-- MAIN MENU - START -->
-                <div class="page-sidebar-wrapper" id="main-menu-wrapper"> 
-
-                    <!-- USER INFO - START -->
-                    <div class="profile-info row">
-
-                        <div class="profile-image col-md-4 col-sm-4 col-xs-4">
-                            <a href="ui-profile.html">
-                                <img src="../GetIconByID?id=<% out.print(e.getEmployeeid()); %>" class="img-responsive img-circle">
-                            </a>
-                        </div>
-
-                        <div class="profile-details col-md-8 col-sm-8 col-xs-8">
-
-                            <h3>
-                                <a href="ui-profile.html"><%out.print(e.getEmployeename());%></a>
-
-                                <!-- Available statuses: online, idle, busy, away and offline -->
-                                <span class="profile-status online"></span>
-                            </h3>
-
-                            <p class="profile-title"><%out.print(e.getPosition());%></p>
-
-                        </div>
-
-                    </div>
-                    <!-- USER INFO - END -->
-
-
 
                     <ul class='wraplist'>	
 
@@ -329,6 +296,16 @@
 
             </div>
             <!--  SIDEBAR - END -->
+            
+            <%
+            
+            if(session.getAttribute("pno")==null){
+                //response.sendRedirect("message.jsp?message=Sorry, Selected project is not available.");
+            }        
+            
+            %>
+            
+            
             <!-- START CONTENT -->
             <section id="main-content" class=" ">
                 <section class="wrapper" style='margin-top:35px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
@@ -339,7 +316,7 @@
                             <br/><br/>
                              <div class="row">
                                  <div class="col-lg-7" >
-                                   <iframe name='fra2' src='../GetFile' width="610" height="550"></iframe>
+                                     <iframe name='fra2' src='../GetFile' width="610" height="550" ></iframe>
                                   
                               </div>
                               <div class="col-lg-5" >
@@ -351,7 +328,7 @@
 	</div>
 
 
-
+                    
 
                 </section>
             </section>

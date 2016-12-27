@@ -19,14 +19,25 @@ public class Project {
     private String baid;
     private String pmid;
     private String msdid;
-    
-    public Project(String projectno, String projectname, String datentime, String baid, String pmid, String msdid) {
+    private String srsid;
+
+      
+    public Project(String projectno, String projectname, String datentime, String baid, String pmid, String msdid,String srsid) {
         this.projectno = projectno;
         this.projectname = projectname;
         this.datentime = datentime;
         this.baid = baid;
         this.pmid = pmid;
         this.msdid = msdid;
+        this.srsid=srsid;
+    }
+    
+     public String getSrsid() {
+        return srsid;
+    }
+
+    public void setSrsid(String srsnid) {
+        this.srsid = srsid;
     }
 
     public String getProjectno() {
@@ -84,7 +95,7 @@ public class Project {
         Connection con=DatabaseConnection.createConnection();        
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from employee e,project p where e.EMPID=p.PMID and p.PMID='"+eid+"'");
+            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO and p.PMID='"+eid+"'");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             Project p;
@@ -108,7 +119,8 @@ public class Project {
                  rs.getString("CREATEDDATENTIME"),
                  rs.getString("BAID"),
                  rs.getString("PMID"),
-                 rs.getString("MSDID"));
+                 rs.getString("MSDID"),
+                 rs.getString("DOCNO"));
         
      }
     
@@ -117,7 +129,7 @@ public class Project {
         Connection con=DatabaseConnection.createConnection();
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from project where pno='"+pid+"'");
+            PreparedStatement ps=con.prepareStatement("select * from project p,srs s where p.pno=s.pno and p.pno='"+pid+"'");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             

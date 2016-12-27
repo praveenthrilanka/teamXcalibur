@@ -42,14 +42,15 @@ public class SetComment extends HttpServlet {
         PrintWriter out = response.getWriter();
         String comment=request.getParameter("commentstr");
         Date date = new Date();
-        HttpSession session=request.getSession();
-        FileControll fc=new FileControll();
+        HttpSession session=request.getSession(false);
+        String srsid=(String)session.getAttribute("srsid");
+        
         
 
         try {
             Connection con=DatabaseConnection.createConnection();
             String datentime=DateString.getDate(date.toString());
-            PreparedStatement ps=con.prepareStatement("insert into comments values(emp_sequence.nextval,'"+comment+"','"+datentime+"','"+session.getAttribute("eid")+"','"+fc.srsid+"','')");
+            PreparedStatement ps=con.prepareStatement("insert into comments values(emp_sequence.nextval,'"+comment+"','"+datentime+"','"+session.getAttribute("eid")+"','"+srsid+"','')");
             ResultSet rs=ps.executeQuery();
              
             System.out.println("Insert Done");

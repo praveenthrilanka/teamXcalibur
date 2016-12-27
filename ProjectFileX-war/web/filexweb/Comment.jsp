@@ -19,9 +19,11 @@
         
         <%
             session=request.getSession(false);
-            
+            System.out.println(session.getAttribute("eid")+"***"+session.getAttribute("pno"));
             Employee e=Employee.getEmployee((String)session.getAttribute("eid"));
-            Project p=Project.getProject((String)session.getAttribute("pid"));
+            System.out.println("Employee done");
+            Project p=Project.getProject((String)session.getAttribute("pno"));
+            System.out.println("Project done");
         %>
     
     </head>

@@ -24,8 +24,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-import static org.sampath.filex.web.actions.FileControll.srsid;
 
 /**
  *
@@ -49,12 +49,14 @@ public class GetFile extends HttpServlet {
         //PrintWriter out = response.getWriter();
         response.setHeader("Content-disposition","inline; filename=SRSTest.pdf" );
         
-        FileControll fc=new FileControll();
+//        String srsid=request.getParameter("srsid");
+//        String pno=request.getParameter("pno");
+
+        HttpSession session=request.getSession();
+        String pno=(String)session.getAttribute("pno");
+        String srsid=(String)session.getAttribute("srsid");
         
-        String srsno=request.getParameter("srsid");
-        String pno=request.getParameter("pno");
-        
-        System.out.println(srsno+"/"+pno);
+        System.out.println(srsid+"/"+pno);
         
         Connection con=DatabaseConnection.createConnection();
         
@@ -64,7 +66,7 @@ public class GetFile extends HttpServlet {
         ResultSet rset=null;
         ServletOutputStream os = response.getOutputStream();
         System.out.println("SOS done");
-        PreparedStatement pstmt = con.prepareStatement("Select pdffile from srs where docno='"+fc.srsid+"' and pno='"+fc.pno+"'");
+        PreparedStatement pstmt = con.prepareStatement("Select pdffile from srs where docno='"+srsid+"' and pno='"+pno+"'");
         //pstmt.setString(1, bookId.trim());
         rset = pstmt.executeQuery();
         System.out.println("Query execution done");

@@ -21,7 +21,7 @@
             session=request.getSession(false);
             
             Employee e=Employee.getEmployee((String)session.getAttribute("eid"));
-            Project p=Project.getProject((String)session.getAttribute("pid"));
+            Project p=Project.getProject((String)session.getAttribute("pno"));
         %>
         
     </head>
