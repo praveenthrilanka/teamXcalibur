@@ -60,7 +60,7 @@ public class SignIn extends HttpServlet {
                     if(rs.getString("ba").equals("y"))
                         response.sendRedirect("filexweb/BA_Projects.jsp");
                     else if(rs.getString("pm").equals("y"))
-                        response.sendRedirect("filexweb/PM_Projects.jsp");
+                        response.sendRedirect("filexweb/MSDnPM.jsp");
                     else if(rs.getString("extsh").equals("y"))
                         response.sendRedirect("filexweb/Login.jsp");
                     else

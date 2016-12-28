@@ -14,7 +14,8 @@
        
             ArrayList<Project> project=Project.getProjectByPMid((String)session.getAttribute("eid"));
 
-                
+            System.out.println("PM_Projects testing***"+project.size());    
+            
             String arr1[]={"bs-calltoaction bs-calltoaction-warning","bs-calltoaction bs-calltoaction-primary","bs-calltoaction bs-calltoaction-info","bs-calltoaction bs-calltoaction-success"};
             String arr2[]={"btn btn-lg btn-block btn-warning","btn btn-lg btn-block btn-primary","btn btn-lg btn-block btn-info","btn btn-lg btn-block btn-success"};
             %>

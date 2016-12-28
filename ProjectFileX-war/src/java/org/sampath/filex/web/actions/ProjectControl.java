@@ -43,25 +43,21 @@ public class ProjectControl extends HttpServlet {
         Date dte=new Date();
         HttpSession session=request.getSession();
         
-        String pno=request.getParameter("pno");
+        String pno=request.getParameter("pid");
         String pname=request.getParameter("pname");
-        
-        
+        String pm=request.getParameter("pm");
+        String ba=request.getParameter("ba");
+        String msd=(String)session.getAttribute("eid");
+       
         try {
-            Class.forName("oracle.jdbc.OracleDriver");
-            System.out.println("Driver Found");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Driver not Found"+ex);
-        }
-        try {
-            Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","hr","hr");
+            Connection con=DatabaseConnection.createConnection();
             System.out.println("Connection Established");
             
-            PreparedStatement ps=con.prepareStatement("insert into Project values('"+pno+"','"+pname+"','"+dte.toString()+"','it001','it005','"+session.getAttribute("eid")+"')");
+            PreparedStatement ps=con.prepareStatement("insert into Project values('"+pno+"','"+pname+"','"+dte.toString()+"','"+ba+"','"+pm+"','"+msd+"')");
             ResultSet rs=ps.executeQuery();
             
             
+            con.close();
             
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,7 +66,7 @@ public class ProjectControl extends HttpServlet {
           
            
                     
-            response.sendRedirect("filexweb/MSDLogin.jsp");
+            response.sendRedirect("filexweb/message.jsp?message=Project created successfully.!");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,32 +1,45 @@
-<%-- 
-    Document   : MSDnPM
-    Created on : Dec 20, 2016, 8:51:12 PM
-    Author     : Ashantha
---%>
+<%@page import="org.sampath.filex.web.actions.Project"%>
+<%@ include file="Up.jsp" %>
+<%@ include file="MSD_SideBar.jsp" %>
+           
+<!-- START CONTENT -->
+            
+            <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
+            <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="shortcut icon" href="logos/fav-icon.ico" type="image/x-icon"/>
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+            <section id="main-content" class=" ">
+                <section class="wrapper" style='margin-top:15%; margin-left: 1%; display:inline-block;width:100%;padding:25px 0 0 15px;'>
+                   
+                        <div class="row">
+                        <div class="col-lg-12">
+                        <div class="col-lg-2 col-md-2 col-xs-2"></div>
+                        <div class="col-lg-3 col-md-3 col-xs-3 thumb">
+                        <a class="thumbnail" href="MSD_Dashboard.jsp">
+                            <img class="img-responsive" src="images/msd.jpg" alt="Switch as Manager SD">
+                        </a>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-xs-2"></div>
+                        <div class="col-lg-3 col-md-3 col-xs-3 thumb">
+                        <a class="thumbnail" href="PM_Projects.jsp">
+                            <img class="img-responsive" src="images/pm.jpg" alt="Switch as Project Manager">
+                        </a>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-xs-2"></div>
+                        
+                        <div class="row">
+                        <div class="col-lg-12">
+                        <div class="col-lg-2 col-md-2 col-xs-2"></div>
+                        <div class="col-lg-3 col-md-3 col-xs-3 thumb"><center><label>Manager SD</label></center></div>
+                        <div class="col-lg-2 col-md-2 col-xs-2"></div>
+                        <div class="col-lg-3 col-md-3 col-xs-3 thumb"><center><label>Project Manager</label></center></div>
+                        <div class="col-lg-2 col-md-2 col-xs-2"></div>
+                        </div>
+                        </div>
+                    
+                </section>
+            </section>
+            <!-- END CONTENT -->
+            
+            
 
-        <title>FileX</title>
-    </head>
-    <body>
-        <div class="container">
-  <br/><br/><br/>
-  <div class="row">
-    <div class="col-sm-6" align="center">
-      <img src="logos/MSD.png" >
-    </div>
-    <div class="col-sm-6" align="center">
-      <img src="logos/PM.png" >
-    </div>
-  </div>
-</div>
-    </body>
-</html>
+<%@ include file="Down.jsp" %>

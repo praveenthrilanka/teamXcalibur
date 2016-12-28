@@ -1,20 +1,33 @@
-<%-- 
-    Document   : message
-    Created on : Dec 6, 2016, 8:01:13 PM
-    Author     : Ashantha
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>fileX</title>
-    </head>
-    <body>
+<%@page import="java.util.ArrayList"%>
+<%@ include file="Up.jsp" %>
+<%@ include file="MSD_Sidebar.jsp" %>
+                    
         <% 
         String message = request.getParameter("message");
-        out.print("<h3 align=\"center\">"+message+"</h3>");
+        
         %>
-    </body>
-</html>
+            <!-- START CONTENT -->
+            <section id="main-content" class=" ">
+                <section class="wrapper" style='margin-top:70px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
+			                   
+                    <div class="row">
+                        <div class="col-lg-12">        
+                            
+                            <div class="col-sm-1 col-md-1"></div>
+                            <div class="col-sm-10 col-md-10">
+                                <div class="alert alert-success"> <!--info/warning/danger-->                                
+
+                                   <span class="glyphicon glyphicon-ok"></span><font size="5"><strong> Successfully Updated</strong></font>
+                                    <hr class="message-inner-separator">
+                                    
+                                    <font size="3"><p><strong><% out.print(message); %></strong></p></font>
+                                </div>
+                            </div>
+                            <div class="col-sm-1 col-md-1"></div>
+
+                        </div>
+                    </div>    
+                    
+                </section></section>>
+
+<%@ include file="Down.jsp" %>
