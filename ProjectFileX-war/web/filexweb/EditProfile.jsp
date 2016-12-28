@@ -1,5 +1,5 @@
 <%@ include file="Up.jsp" %>
-<%@ include file="BA_Sidebar.jsp" %>
+<%@ include file="Clear_Sidebar.jsp" %>
                     
             <!-- START CONTENT -->
             <section id="main-content" class=" ">

@@ -85,7 +85,7 @@ public class SetIcon extends HttpServlet {
                 System.out.println("File uploaded and saved into database");
             }
             
-            response.sendRedirect("filexweb/Wall.jsp");
+            response.sendRedirect("filexweb/message.jsp?message=Profile pictutre successfully updated.!");
             
         }
         else 

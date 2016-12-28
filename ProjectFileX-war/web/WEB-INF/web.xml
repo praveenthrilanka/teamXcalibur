@@ -63,6 +63,10 @@
         <servlet-name>SetUser</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.SetUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UploadAgreement</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.UploadAgreement</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignIn</servlet-name>
         <url-pattern>/SignIn</url-pattern>
@@ -122,6 +126,10 @@
     <servlet-mapping>
         <servlet-name>SetUser</servlet-name>
         <url-pattern>/SetUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadAgreement</servlet-name>
+        <url-pattern>/UploadAgreement</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

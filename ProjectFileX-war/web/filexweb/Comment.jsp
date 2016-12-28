@@ -40,9 +40,10 @@
                     
                    <tr>
                         
-                        <td>Project Name:</td>
+                        <td><span style="color: #9d9d9d;">Project Name:</span></td>
                         
-                        <td><% out.print(p.getProjectname()); %></td>
+                        <td><span style="color: #9d9d9d;"><% out.print(p.getProjectname()); %></span></td>
+                        <br/>
                    </tr>
                    <tr>
                         <td colspan="3"><textarea name="commentstr" cols="45" rows="4" placeholder="Enter your comment here..!"></textarea></td>

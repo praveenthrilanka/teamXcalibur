@@ -1,6 +1,5 @@
-<%@page import="java.util.ArrayList"%>
 <%@ include file="Up.jsp" %>
-<%@ include file="MSD_Sidebar.jsp" %>
+<%@ include file="Clear_Sidebar.jsp" %>
                     
         <% 
         String message = request.getParameter("message");
