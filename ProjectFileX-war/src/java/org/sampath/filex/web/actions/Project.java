@@ -88,14 +88,14 @@ public class Project {
         this.msdid = msdid;
     }
     
-    public static ArrayList<Project> getProjectByEid(String eid){
+    public static ArrayList<Project> getProjectByPMid(String pmid){
         ArrayList<Project> project=new ArrayList<Project>();
 //        FileControll fc=new FileControll();
-        System.out.println(eid);
+        System.out.println(pmid);
         Connection con=DatabaseConnection.createConnection();        
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO and p.PMID='"+eid+"'");
+            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO and p.PMID='"+pmid+"'");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             Project p;
@@ -111,6 +111,31 @@ public class Project {
         }
         return project;
     }
+    
+    public static ArrayList<Project> getProjectByBAid(String baid){
+        ArrayList<Project> project=new ArrayList<Project>();
+//        FileControll fc=new FileControll();
+        System.out.println(baid);
+        Connection con=DatabaseConnection.createConnection();        
+        try {
+            System.out.println("Execution strt");
+            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO and p.BAID='"+baid+"'");
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done");
+            Project p;
+            
+            while(rs.next()){
+                p= getProjectFromRS(rs);
+                project.add(p);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+        return project;
+    }
+    
     
     public static Project getProjectFromRS(ResultSet rs) throws SQLException {
          return new Project(

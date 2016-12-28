@@ -59,7 +59,7 @@
     <!-- END HEAD -->
 
     <!-- BEGIN BODY -->
-    <body class=" "><!-- START TOPBAR -->
+    <body class=" " style="background-color: #f1f2f7;"><!-- START TOPBAR -->
         <div class='page-topbar '>
             <div class='logo-area'>
 

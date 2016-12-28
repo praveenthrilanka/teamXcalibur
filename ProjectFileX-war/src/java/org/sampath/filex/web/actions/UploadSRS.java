@@ -9,9 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
@@ -28,9 +26,8 @@ import javax.servlet.http.Part;
  *
  * @author Ashantha
  */
-
 @MultipartConfig(maxFileSize = 16177215)
-public class FileControll extends HttpServlet {
+public class UploadSRS extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,37 +38,66 @@ public class FileControll extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            response.setContentType("text/html;charset=UTF-8");
-            //PrintWriter out = response.getWriter();
-            Date dte=new Date();
-            
-            String srsid=request.getParameter("srsid");            
-            String pno=request.getParameter("pno");
-            String redirect=request.getParameter("redirect");
-
-            HttpSession session=request.getSession();
-            session.setAttribute("pno", pno);
-            session.setAttribute("srsid",srsid);
-            
-         if (redirect.equals("wall")) {
-                response.sendRedirect("filexweb/Wall.jsp");
-                return;
-         }
-            
-         else if (request.getParameter("getsrs") != null) {
-              new GetFile().processRequest(request, response);
-                //response.sendRedirect("GetFile");
-                return;
-         }
-         else if (request.getParameter("viewwall") != null) {
-            response.sendRedirect("filexweb/Wall.jsp");
-            return;
-         }
         
+        HttpSession session=request.getSession(false);
+        
+        Date dte=new Date();
+        String srsid=request.getParameter("srsid");  
+        String pno=(String)session.getAttribute("pno");
+        
+        Connection con=DatabaseConnection.createConnection();
+        
+         try {
+
+        InputStream inputStream = null; // input stream of the upload file
+         
+        // obtains the upload file part in this multipart request
+        Part filePart = request.getPart("srs");
+        if (filePart != null) {
+            // prints out some information for debugging
+            System.out.println(filePart.getName());
+            System.out.println(filePart.getSize());
+            System.out.println(filePart.getContentType());
+             
+            // obtains input stream of the upload file
+            inputStream = filePart.getInputStream();
+            System.out.println("File found,");
+            
+
+            PreparedStatement statement = con.prepareStatement("INSERT INTO srs(docno, createddatentime,pdffile,approveddatentime,pno,pmid,status) values (?,?,?,?,?,?,?)");
+            statement.setString(1,srsid);
+            System.out.println("set1 done");
+            statement.setString(2,DateString.getDate(dte.toString()));
+            
+            
+            if (inputStream != null) {
+                // fetches input stream of the upload file for the blob column
+                statement.setBinaryStream(3,inputStream,inputStream.available());
+                System.out.println("Input Stream Done");
+            }
+            statement.setString(4,"");
+            statement.setString(5,pno);
+            statement.setString(6,"");
+            statement.setString(7,"");
+ 
+            int row = statement.executeUpdate();
+            if (row > 0) {
+                System.out.println("File uploaded and saved into database");
+            }
+            con.close();
+            response.sendRedirect("filexweb/BA_Dashboard.jsp");
+            
+        }
+        else 
+            System.out.println("No file found");
+        
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
          
     }
 

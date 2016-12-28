@@ -26,13 +26,13 @@
       
     </head>
     <body>
-        <a style="float:right;" title="Home" id="link" target="_parent" href="uploadFile.jsp"><img src="logos/home.png" height="40" width="40"></a>
+        <!--<a style="float:right;" title="Home" id="link" target="_parent" href="uploadFile.jsp"><img src="logos/home.png" height="40" width="40"></a>-->
         
        <div style ="margin: auto;width: 95%; left: 1%;  padding: 1px">
-       <a  href="Comment.jsp" title="Add Comment" role="button"><img src="logos/addcomment.png" height="40" width="40"></a>
+       <a style="padding:10px" href="Comment.jsp" title="Add Comment" role="button"><img src="logos/addcomment.png" height="40" width="40"></a>
        </div>
         
-       <div style ="margin: auto;width: 90%;position:absolute; border:1px solid lightgray;top: 12%; left: 5%;  padding: 8px">
+       <div style ="margin: auto;width: 90%;position:absolute; border:1px solid lightgray;top: 8%; left: 5%;  padding: 8px">
        
        <%
                  
@@ -55,13 +55,13 @@
        <table height="5%">
        <tr>
            <td rowspan="3"><img class="img-circle" src="../GetIconByID?id=<%out.print(c.getEmployeeid());%>" alt="User" width="60" height="60"></td>
-       <td> <% out.print(c.getEmployeename());%></td>        
+       <td><span style="font-weight: bold; padding: 8px"> <% out.print(c.getEmployeename());%></span></td>        
        </tr>
        <tr>
-       <td><%out.print(c.getCreateddatentime());%></td>            
+       <td><span style="color: #9d9d9d; padding : 8px;"><%out.print(c.getCreateddatentime());%></span></td>            
        </tr>
        <tr>
-       <td><%out.print(c.getDescription());%></td>            
+       <td><div style="color: #777777; padding-left : 8px; padding-top: 4px;"><%out.print(c.getDescription());%></div></td>            
        </tr>
        <tr>
            <td></td>
