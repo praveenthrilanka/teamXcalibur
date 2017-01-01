@@ -2,25 +2,9 @@
 
                 <ul class='wraplist'>	
                         
-                    <%
-                    String pno=(String)session.getAttribute("pno");
-                    if(pno!=null){
-                    Project p=Project.getProject(pno);
-                    session.setAttribute("srsid", p.getSrsid() );
-                    
-                    %>  
-                    
-                        <li class="open"> <a> <i class="fa fa-folder-open"></i> <span class="title"><% out.print(p.getProjectname()); %></span></a>
-                            <ul class="sub-menu">
-                                <li > <a> <span class="title">SRS ID : <% out.print(p.getSrsid()); %></span> </a> </li>
-                            </ul>
-                    <%
-                    }
-                    %>
-                            
-                            <br/><br/>
+
                         <li class=""> 
-                            <a href="MSDnPM.jsp">
+                            <a href="BA_Projects.jsp">
                                 <i class="fa fa-dashboard"></i>
                                 <span class="title">Home</span>
                             </a>

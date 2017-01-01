@@ -22,7 +22,7 @@
                         <li class=""> 
                             <a href="MSDnPM.jsp">
                                 <i class="fa fa-dashboard"></i>
-                                <span class="title">Dashboard</span>
+                                <span class="title">Home</span>
                             </a>
                         </li>
                         <li class=""> 

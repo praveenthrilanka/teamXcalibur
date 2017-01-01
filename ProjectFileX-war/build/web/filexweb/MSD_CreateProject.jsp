@@ -24,9 +24,10 @@
                                   for(int x=0;x<emp.size();x++){
                                   em=emp.get(x);
                                   if(em.getPosition().equals("PM/MSD")){
+                                  if(!em.getEmployeeid().equals((String)session.getAttribute("eid"))){
                                   %>
                                   <option value="<% out.print(em.getEmployeeid()); %>"><% out.print(em.getEmployeename()); %></option>
-                                  <%
+                                  <%  }
                                     }
                                   }
                                   %>

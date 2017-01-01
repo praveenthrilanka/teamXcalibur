@@ -6,7 +6,7 @@
                         <li class=""> 
                             <a href="<% out.print(session.getAttribute("home")); %>">
                                 <i class="fa fa-dashboard"></i>
-                                <span class="title">Dashboard</span>
+                                <span class="title">Home</span>
                             </a>
                         </li>
                         

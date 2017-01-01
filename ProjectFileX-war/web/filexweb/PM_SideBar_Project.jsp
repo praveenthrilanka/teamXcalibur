@@ -29,7 +29,7 @@
                             
                             <br/><br/>
                         <li class=""> 
-                            <a href="BA_Projects.jsp">
+                            <a href="PM_Projects.jsp">
                                 <i class="fa fa-dashboard"></i>
                                 <span class="title">Home</span>
                             </a>

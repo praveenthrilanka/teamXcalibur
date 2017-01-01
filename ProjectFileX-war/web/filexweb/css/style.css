@@ -418,7 +418,7 @@ a:hover, a:focus {
 }
 .page-topbar .logo-area {
     width: 300px;
-    background-color: #9972b5;
+    background-color: #d1d1e0;
     display: block;
     min-height: 60px;
     float: left;
@@ -4766,10 +4766,10 @@ code {
 /*collapsed menu and chat open states*/
 
 .page-topbar.sidebar_shift .logo-area {
-    background-color: #1fb5ac;
+    background-color: #d1d1e0;
 }
 .page-topbar.chat_shift .logo-area {
-    background-color: #1fb5ac;
+    background-color: #d1d1e0;
 }
 .chatapi-windows.hideit {
     bottom: -300px;
@@ -6666,16 +6666,16 @@ border-left: 3px solid transparent;
 ----------------------------------------------------------*/
 
 .page-topbar .logo-area {
-    background-image: url('../images/old.png');
+    background-image: url('../images/filex.png');
     background-repeat: no-repeat;
 }
 .page-topbar.sidebar_shift .logo-area {
-    background-image: url('../images/sampath.png');
+    background-image: url('../images/sampathlogo.png');
     background-repeat: no-repeat;
     background-position: right top;
 }
 .page-topbar.chat_shift .logo-area {
-    background-image: url('../images/sampath.png');
+    background-image: url('../images/sampathlogo.png');
     background-repeat: no-repeat;
     background-position: right top;
 }

@@ -32,12 +32,14 @@ public class SetUser extends HttpServlet {
             throws ServletException, IOException {
 
         String pno=request.getParameter("pno");
+        String direct=request.getParameter("direct");
         
         HttpSession session=request.getSession();
         session.setAttribute("pno", pno);
-        
+        if(direct.equals("ba"))
         response.sendRedirect("filexweb/BA_Dashboard.jsp");
-        
+        else if(direct.equals("pm"))
+        response.sendRedirect("filexweb/PM_Dashboard.jsp");
         
     }
 

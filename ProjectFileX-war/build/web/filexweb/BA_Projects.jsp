@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="col-md-3 cta-button">
-                            <a href="../SetUser?pno=<% out.print(pr.getProjectno()); %>" class="<% out.print(arr2[c]); %>">View Project</a>
+                            <a href="../SetUser?pno=<% out.print(pr.getProjectno()); %>&direct=ba" class="<% out.print(arr2[c]); %>">View Project</a>
                         </div>
                      </div>
                 </div>

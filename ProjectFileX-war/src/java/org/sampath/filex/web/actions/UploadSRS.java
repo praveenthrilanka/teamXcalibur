@@ -87,7 +87,7 @@ public class UploadSRS extends HttpServlet {
                 System.out.println("File uploaded and saved into database");
             }
             con.close();
-            response.sendRedirect("filexweb/BA_Dashboard.jsp");
+            response.sendRedirect("filexweb/message.jsp?message=SRS uploaded successfully..!");
             
         }
         else 
