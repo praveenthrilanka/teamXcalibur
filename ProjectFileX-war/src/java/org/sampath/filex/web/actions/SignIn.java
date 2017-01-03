@@ -66,7 +66,7 @@ public class SignIn extends HttpServlet {
                         session.setAttribute("home", "MSDnPM.jsp");
                     }
                     else if(rs.getString("extsh").equals("y")){
-                        response.sendRedirect("filexweb/Login.jsp");
+                        response.sendRedirect("filexweb/ExStkLogin.jsp");
                         session.setAttribute("home", "MSDnPM.jsp");
                     }
                     else

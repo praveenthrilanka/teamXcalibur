@@ -95,9 +95,10 @@ public class Project {
         Connection con=DatabaseConnection.createConnection();        
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.PMID='"+pmid+"'");
+            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO and p.PMID='"+pmid+"'");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
+            System.out.println(pmid);
             Project p;
             
             while(rs.next()){
@@ -112,6 +113,32 @@ public class Project {
         return project;
     }
     
+    public static ArrayList<Project> getProjectByStkid(String stkid){
+        ArrayList<Project> project=new ArrayList<Project>();
+//        FileControll fc=new FileControll();
+        System.out.println(stkid);
+        Connection con=DatabaseConnection.createConnection();        
+        try {
+            System.out.println("Execution strt");
+            PreparedStatement ps=con.prepareStatement("select * from addedto a,project p,employee e,srs s where s.PNO=p.PNO and p.PNO=a.PNO and a.STKID=e.EMPID and a.STKID='"+stkid+"'");
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done");
+            System.out.println(stkid);
+            Project p;
+            
+            while(rs.next()){
+                p= getProjectFromRS(rs);
+                project.add(p);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+        return project;
+    }
+    
+    
     public static ArrayList<Project> getProjectByBAid(String baid){
         ArrayList<Project> project=new ArrayList<Project>();
 //        FileControll fc=new FileControll();
@@ -119,7 +146,7 @@ public class Project {
         Connection con=DatabaseConnection.createConnection();        
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.BAID='"+baid+"'");
+            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO and p.BAID='"+baid+"'");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             Project p;
@@ -154,7 +181,7 @@ public class Project {
         Connection con=DatabaseConnection.createConnection();
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from project p,srs s where p.pno=s.pno(+) and p.pno='"+pid+"'");
+            PreparedStatement ps=con.prepareStatement("select * from project p,srs s where p.pno=s.pno and p.pno='"+pid+"'");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             
