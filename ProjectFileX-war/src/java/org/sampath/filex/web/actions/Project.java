@@ -146,7 +146,7 @@ public class Project {
         Connection con=DatabaseConnection.createConnection();        
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO and p.BAID='"+baid+"'");
+            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.BAID='"+baid+"'");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             Project p;

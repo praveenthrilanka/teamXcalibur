@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <welcome-file-list>
+        <welcome-file>Login</welcome-file>
+    </welcome-file-list>
     <servlet>
-        <servlet-name>DataBaseConnection</servlet-name>
-        <servlet-class>org.sampath.filex.web.actions.DataBaseConnection</servlet-class>
+        <servlet-name>SignIn</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.SignIn</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FileControll</servlet-name>
@@ -17,10 +20,6 @@
         <servlet-class>org.sampath.filex.web.actions.SetComment</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>GetComment</servlet-name>
-        <servlet-class>org.sampath.filex.web.actions.GetComment</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Intermediate</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.Intermediate</servlet-class>
     </servlet>
@@ -28,9 +27,49 @@
         <servlet-name>ProjectControl</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.ProjectControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Constants</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.Constants</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditComment</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.EditComment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SetIcon</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.SetIcon</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetIcon</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.GetIcon</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetIconByID</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.GetIconByID</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SignOut</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.SignOut</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UploadSRS</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.UploadSRS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SetUser</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.SetUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UploadAgreement</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.UploadAgreement</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>DataBaseConnection</servlet-name>
-        <url-pattern>/DataBaseConnection</url-pattern>
+        <servlet-name>SignIn</servlet-name>
+        <url-pattern>/SignIn</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FileControll</servlet-name>
@@ -45,16 +84,52 @@
         <url-pattern>/SetComment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>GetComment</servlet-name>
-        <url-pattern>/GetComment</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>Intermediate</servlet-name>
         <url-pattern>/Intermediate</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProjectControl</servlet-name>
         <url-pattern>/ProjectControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Constants</servlet-name>
+        <url-pattern>/Constants</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditComment</servlet-name>
+        <url-pattern>/EditComment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SetIcon</servlet-name>
+        <url-pattern>/SetIcon</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetIcon</servlet-name>
+        <url-pattern>/GetIcon</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetIconByID</servlet-name>
+        <url-pattern>/GetIconByID</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignOut</servlet-name>
+        <url-pattern>/SignOut</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadSRS</servlet-name>
+        <url-pattern>/UploadSRS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SetUser</servlet-name>
+        <url-pattern>/SetUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadAgreement</servlet-name>
+        <url-pattern>/UploadAgreement</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
