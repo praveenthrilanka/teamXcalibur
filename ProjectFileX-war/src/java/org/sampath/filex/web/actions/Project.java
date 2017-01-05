@@ -181,7 +181,7 @@ public class Project {
         Connection con=DatabaseConnection.createConnection();
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from project p,srs s where p.pno=s.pno and p.pno='"+pid+"'");
+            PreparedStatement ps=con.prepareStatement("select * from project p,srs s where p.pno=s.pno(+) and p.pno='"+pid+"'");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             
