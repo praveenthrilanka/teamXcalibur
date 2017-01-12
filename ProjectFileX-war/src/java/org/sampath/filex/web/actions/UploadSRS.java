@@ -47,9 +47,10 @@ public class UploadSRS extends HttpServlet {
   
         String pno=(String)session.getAttribute("pno");
         String srsversion=request.getParameter("srsversion");
+        String changes=request.getParameter("changes");
         int row;
         Connection con=DatabaseConnection.createConnection();
-        
+        System.out.println("PROJECT"+srsversion);
         try {
 
         InputStream inputStream = null; // input stream of the upload file
@@ -68,9 +69,10 @@ public class UploadSRS extends HttpServlet {
             
             PreparedStatement statement;
             
-            if(srsversion==null)
+            if(srsversion==null || srsversion.equals(""))
             {
             srsversion="1";
+            changes="Initial SRS";
             statement = con.prepareStatement("INSERT INTO srs(createddatentime,approveddatentime,pno,pmid,status) values (?,?,?,?,?)");
 
             System.out.println("set1 done");
@@ -99,7 +101,7 @@ public class UploadSRS extends HttpServlet {
                 statement.setBinaryStream(1,inputStream,inputStream.available());
                 System.out.println("Input Stream Done");
             }
-            statement.setString(2,"Initial SRS");
+            statement.setString(2,changes);
             statement.setString(3,"");
             
             row = statement.executeUpdate();

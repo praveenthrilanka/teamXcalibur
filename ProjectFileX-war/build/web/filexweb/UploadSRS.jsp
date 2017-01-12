@@ -43,8 +43,10 @@
 
                         <!--<label>SRS ID:</label><input type="text" name="srsid" placeholder="Enter SRS ID" required> <br/><br/>-->
                         <label>SRS Version : <% out.print(Integer.parseInt(srsversion)+1); %></label>              
-                                <br/><br/><br/>
-                                    <div style="display:block; margin:auto; width:30%;">
+                                <br/>
+                                <label>Changes Made:</label>
+                                <input type="text" name="changes" placeholder="Enter Changes" required> <br/><br/>
+                                                <div style="display:block; margin:auto; width:30%;">
 							<img src="images/upload.png" id="output" width="130" height="130"/>
 						</div>
 						<br/>
@@ -53,7 +55,7 @@
 							
 						</div>
 						
-					    <br/><br/><br/>
+                                                <br/><br/><br/>
 
 						<div class="clearfix"></div>
                                                 <input type="hidden" name="srsversion" value="<% out.print(Integer.parseInt(srsversion)+1); %>"/>
