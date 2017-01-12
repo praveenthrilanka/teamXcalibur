@@ -198,6 +198,30 @@ public class Project {
   
     }
     
+    public static String getSRSVersion(String pid){
+            
+            
+        Connection con=DatabaseConnection.createConnection();
+        String srsversion=null;
+        try {
+            System.out.println("Execution strt");
+            PreparedStatement ps=con.prepareStatement("select max(v.srsversion) as maxversion from versionhistory v,srs s where s.docno=v.docno and s.pno='"+pid+"'");
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done");
+            
+            
+            if(rs.next()){
+                srsversion= rs.getString("maxversion");
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+            return srsversion;
+  
+    }
+    
     
     
 }

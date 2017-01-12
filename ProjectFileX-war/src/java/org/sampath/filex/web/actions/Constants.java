@@ -17,4 +17,9 @@ public class Constants {
     public static final String DB_USERNAME = "hr";
     public static final String DB_PASSWORD = "hr";
     
+    public static final String MAILSERVER = "smtp.gmail.com";
+    public static final String MAILPORT = "465";
+    public static final String EMAIL_USERNAME = "sampath.filex@gmail.com";
+    public static final String EMAIL_PASSWORD = "xcalibur";
+    
 }

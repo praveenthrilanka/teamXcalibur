@@ -44,12 +44,13 @@ public class UploadSRS extends HttpServlet {
         HttpSession session=request.getSession(false);
         
         Date dte=new Date();
-        String srsid=request.getParameter("srsid");  
+  
         String pno=(String)session.getAttribute("pno");
-        
+        String srsversion=request.getParameter("srsversion");
+        int row;
         Connection con=DatabaseConnection.createConnection();
         
-         try {
+        try {
 
         InputStream inputStream = null; // input stream of the upload file
          
@@ -65,27 +66,48 @@ public class UploadSRS extends HttpServlet {
             inputStream = filePart.getInputStream();
             System.out.println("File found,");
             
+            PreparedStatement statement;
+            
+            if(srsversion==null)
+            {
+            srsversion="1";
+            statement = con.prepareStatement("INSERT INTO srs(createddatentime,approveddatentime,pno,pmid,status) values (?,?,?,?,?)");
 
-            PreparedStatement statement = con.prepareStatement("INSERT INTO srs(docno, createddatentime,pdffile,approveddatentime,pno,pmid,status) values (?,?,?,?,?,?,?)");
-            statement.setString(1,srsid);
             System.out.println("set1 done");
-            statement.setString(2,DateString.getDate(dte.toString()));
+            statement.setString(1,DateString.getDate(dte.toString()));
             
-            
+            /*
             if (inputStream != null) {
                 // fetches input stream of the upload file for the blob column
-                statement.setBinaryStream(3,inputStream,inputStream.available());
+                statement.setBinaryStream(2,inputStream,inputStream.available());
+                System.out.println("Input Stream Done");
+            }*/
+            statement.setString(2,"");
+            statement.setString(3,pno);
+            statement.setString(4,"");
+            statement.setString(5,"");
+ 
+            row = statement.executeUpdate();
+            if (row > 0) {
+                System.out.println("SRS table entry is inserted");
+            }
+            }
+
+            statement=con.prepareStatement("INSERT INTO versionhistory(docno,srsversion,pdffile,changes,modifieddate) values ( (SELECT docno FROM srs WHERE pno = '"+pno+"'),'"+srsversion+"',?,?,?)");
+            if (inputStream != null) {
+                // fetches input stream of the upload file for the blob column
+                statement.setBinaryStream(1,inputStream,inputStream.available());
                 System.out.println("Input Stream Done");
             }
-            statement.setString(4,"");
-            statement.setString(5,pno);
-            statement.setString(6,"");
-            statement.setString(7,"");
- 
-            int row = statement.executeUpdate();
+            statement.setString(2,"Initial SRS");
+            statement.setString(3,"");
+            
+            row = statement.executeUpdate();
             if (row > 0) {
-                System.out.println("File uploaded and saved into database");
+                System.out.println("VERSIONHISTORY table entry is inserted");
             }
+            
+            
             con.close();
             response.sendRedirect("filexweb/message.jsp?message=SRS uploaded successfully..!");
             

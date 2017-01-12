@@ -39,7 +39,7 @@ public class SignIn extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+       
             Connection con=DatabaseConnection.createConnection();
             String un=request.getParameter("un");
             String pw=request.getParameter("pw");

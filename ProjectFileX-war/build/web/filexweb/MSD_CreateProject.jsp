@@ -15,7 +15,7 @@
 
                         <form name="CreateProject" method="get" action="../ProjectControl" enctype="multipart/form-data">
                             <br/>
-                            <label>Project ID :</label><input type="text" name="pid" placeholder="Enter Project ID" required> <br/><br/>
+                            <!--<label>Project ID :</label><input type="text" name="pid" placeholder="Enter Project ID" required> <br/><br/>-->
 						      <label>Project Name :</label><input type="text" name="pname" placeholder="Enter Project Name" required> <br/><br/><br/>
                               <label>Project Manager :</label>
                               <select name="pm" width="200" height="80">
