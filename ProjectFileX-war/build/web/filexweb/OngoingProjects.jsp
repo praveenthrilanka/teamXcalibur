@@ -21,53 +21,7 @@
 
 
         <div class="col-sm-10">
-            <div class="market-updates">
-                <a href="OngoingProjects.jsp">
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-1">
-                            <div class="col-md-8 market-update-left">
-                                <h3>6</h3>
-                                <h4>Ongoing Projects</h4>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-file-text-o"> </i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="ApprovedProjects.jsp">
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-2">
-                            <div class="col-md-8 market-update-left">
-                                <h3>14</h3>
-                                <h4>Approved Projects</h4>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-eye"> </i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="HoldProjects.jsp">
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-3">
-                            <div class="col-md-8 market-update-left">
-                                <h3>4</h3>
-                                <h4>Hold Projects</h4>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i style="color:darkblue;" class="fa fa-file-text-o"> </i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                </a>   
-                <div class="clearfix"> </div>
-                <br/>
-            </div>
-
+            <b><h2>Ongoing Projects</h2></b><br/>
             <%
                 Project pr;
                 int c = 0;
