@@ -67,6 +67,14 @@
         <servlet-name>UploadAgreement</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.UploadAgreement</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddStakeholders</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.AddStakeholders</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SRSApproval</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.SRSApproval</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignIn</servlet-name>
         <url-pattern>/SignIn</url-pattern>
@@ -130,6 +138,14 @@
     <servlet-mapping>
         <servlet-name>UploadAgreement</servlet-name>
         <url-pattern>/UploadAgreement</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddStakeholders</servlet-name>
+        <url-pattern>/AddStakeholders</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SRSApproval</servlet-name>
+        <url-pattern>/SRSApproval</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

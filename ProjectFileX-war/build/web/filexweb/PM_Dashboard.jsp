@@ -41,7 +41,7 @@
 											<div class="caption-text">
 												<h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">Add Stakeholders</h3>
                                                 <br/><br/>
-												<button type="button" class="btn btn-warning" style="margin-top:3; width:140;" onclick="window.location.href='UploadSRS.jsp'"><b>Add</b></button>	
+												<button type="button" class="btn btn-warning" style="margin-top:3; width:140;" onclick="window.location.href='AddStakeHolders.jsp'"><b>Add</b></button>	
 											</div>
 										</div>
 									</div>

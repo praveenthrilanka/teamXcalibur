@@ -127,8 +127,26 @@ public class Project {
             Project p;
             
             while(rs.next()){
-                p= getProjectFromRS(rs);
-                project.add(p);
+                if(rs.getString("PRIORITYNO").equals("1")){
+                    p= getProjectFromRS(rs);
+                    project.add(p);}
+                else{
+                    int prio=Integer.parseInt(rs.getString("PRIORITYNO"));
+                    String docno=rs.getString("DOCNO");
+                    ps=con.prepareStatement("select status from SRSApprovedBy where docno='"+docno+"' and priorityno='"+(prio-1)+"'");
+                    ResultSet temprs=ps.executeQuery();
+                        if(temprs.next())
+                        {   try{
+                            if(temprs.getString("status").toLowerCase().equals("approved")){
+                                p= getProjectFromRS(rs);
+                                project.add(p);
+                            }
+                            }
+                            catch(Exception r){
+                            
+                            }
+                        }
+                }
             }
             con.close();
         } catch (SQLException ex) {

@@ -7,6 +7,12 @@ package org.sampath.filex.web.actions;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Ashantha
  */
-public class SetUser extends HttpServlet {
+public class SRSApproval extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,20 +36,26 @@ public class SetUser extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String pno=request.getParameter("pno");
-        String direct=request.getParameter("direct");
+       HttpSession session=request.getSession();
+       String pno=(String)session.getAttribute("pno");
+       String eshid=(String)session.getAttribute("eid");
+       
+        try {
+            Connection con=DatabaseConnection.createConnection();
+            System.out.println("Connection Established");
+            
+            PreparedStatement ps=con.prepareStatement("update srsapprovedby set status='approved' where stkid='"+eshid+"' and docno in (select docno from project where pno='"+pno+"')");
+            ResultSet rs=ps.executeQuery();
+            
+            
+            con.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
         
-        HttpSession session=request.getSession();
-        session.setAttribute("pno", pno);
-        if(direct.equals("ba"))
-        response.sendRedirect("filexweb/BA_Dashboard.jsp");
-        else if(direct.equals("pm"))
-        response.sendRedirect("filexweb/PM_Dashboard.jsp");
-        else if(direct.equals("esh"))
-        response.sendRedirect("filexweb/ESH_Dashboard.jsp");
-        
-        
+        response.sendRedirect("filexweb/SubWall.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

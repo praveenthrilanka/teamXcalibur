@@ -29,7 +29,8 @@
         <!--<a style="float:right;" title="Home" id="link" target="_parent" href="uploadFile.jsp"><img src="logos/home.png" height="40" width="40"></a>-->
         
        <div style ="margin: auto;width: 95%; left: 1%;  padding: 1px">
-       <a style="padding:10px" href="Comment.jsp" title="Add Comment" role="button"><img src="logos/addcomment.png" height="40" width="40"></a>
+           <a style="padding:10px" href="../SRSApproval" title="Approve" role="button"><img src="logos/approve.png" height="40" width="40"></a>
+           <a style="padding:10px" href="Comment.jsp" title="Add Comment" role="button"><img src="logos/addcomment.png" height="40" width="40"></a>
        </div>
         
        <div style ="margin: auto;width: 90%;position:absolute; border:1px solid lightgray;top: 8%; left: 5%;  padding: 8px">

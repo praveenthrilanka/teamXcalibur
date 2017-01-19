@@ -7,17 +7,22 @@ package org.sampath.filex.web.actions;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Ashantha
  */
-public class SetUser extends HttpServlet {
+public class AddStakeholders extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,19 +35,33 @@ public class SetUser extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String selection;
+        String priority;
+        String docno=request.getParameter("docno");
+        
+        try {
+            Connection con=DatabaseConnection.createConnection();
+            System.out.println("Connection Established");
 
-        String pno=request.getParameter("pno");
-        String direct=request.getParameter("direct");
+            for(int x=0;x<2;x++)
+            {
+            selection=request.getParameter("selection"+x);
+            priority=request.getParameter("prio"+x);
+            System.out.println(docno+"   |  "+selection+"   |  "+priority);
+            
+            PreparedStatement ps=con.prepareStatement("insert into srsapprovedby values ('"+docno+"','"+selection+"','"+priority+"','')");
+            ResultSet rs=ps.executeQuery();
+            }
+            
+            con.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
         
-        HttpSession session=request.getSession();
-        session.setAttribute("pno", pno);
-        if(direct.equals("ba"))
-        response.sendRedirect("filexweb/BA_Dashboard.jsp");
-        else if(direct.equals("pm"))
-        response.sendRedirect("filexweb/PM_Dashboard.jsp");
-        else if(direct.equals("esh"))
-        response.sendRedirect("filexweb/ESH_Dashboard.jsp");
-        
+            response.sendRedirect("filexweb/message.jsp?message=Stakeholders added successfully..!");
         
     }
 

@@ -140,4 +140,27 @@ public class Employee {
   
     }
     
+        public static ArrayList<Employee> getStakeHolders(){
+        ArrayList<Employee> employee=new ArrayList<Employee>();
+        Connection con=DatabaseConnection.createConnection();
+        try {
+            System.out.println("Execution strt");
+            PreparedStatement ps=con.prepareStatement("select * from employee where extsh='y'");
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done");
+            Employee e;
+            
+            while(rs.next()){
+                e= getEmployeeFromRS(rs);
+                employee.add(e);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+        return employee;
+    }
+    
+    
 }
