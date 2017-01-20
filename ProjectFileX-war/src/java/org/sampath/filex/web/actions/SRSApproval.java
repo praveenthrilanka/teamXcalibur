@@ -55,7 +55,7 @@ public class SRSApproval extends HttpServlet {
             System.out.println("Something went wrong in Connection "+ex);
         }
         
-        response.sendRedirect("filexweb/SubWall.jsp");
+        response.sendRedirect("filexweb/message.jsp?message=SRS approved successfully..!");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
