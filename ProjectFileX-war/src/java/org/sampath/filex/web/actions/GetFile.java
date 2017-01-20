@@ -66,7 +66,7 @@ public class GetFile extends HttpServlet {
         ResultSet rset=null;
         ServletOutputStream os = response.getOutputStream();
         System.out.println("SOS done");
-        PreparedStatement pstmt = con.prepareStatement("Select pdffile from versionhistory where srsversion in (select max(v.srsversion) from versionhistory v,srs s where s.docno=v.docno and s.pno='"+pno+"')");
+        PreparedStatement pstmt = con.prepareStatement("Select pdffile from versionhistory v,srs s where s.docno=v.docno and s.pno='"+pno+"' and v.srsversion in (select max(v.srsversion) from versionhistory v,srs s where s.docno=v.docno and s.pno='"+pno+"')");
         //pstmt.setString(1, bookId.trim());
         rset = pstmt.executeQuery();
         System.out.println("Query execution done");

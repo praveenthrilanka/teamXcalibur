@@ -39,19 +39,24 @@ public class AddStakeholders extends HttpServlet {
         String selection;
         String priority;
         String docno=request.getParameter("docno");
+        int count=Integer.parseInt(request.getParameter("count"));
         
         try {
             Connection con=DatabaseConnection.createConnection();
             System.out.println("Connection Established");
 
-            for(int x=0;x<2;x++)
+            for(int x=0;x<count;x++)
             {
             selection=request.getParameter("selection"+x);
             priority=request.getParameter("prio"+x);
-            System.out.println(docno+"   |  "+selection+"   |  "+priority);
-            
-            PreparedStatement ps=con.prepareStatement("insert into srsapprovedby values ('"+docno+"','"+selection+"','"+priority+"','')");
-            ResultSet rs=ps.executeQuery();
+                if(selection.equals("0"))
+                    continue;
+                else{
+                System.out.println(docno+"   |  "+selection+"   |  "+priority);
+
+                PreparedStatement ps=con.prepareStatement("insert into srsapprovedby values ('"+docno+"','"+selection+"','"+priority+"','')");
+                ResultSet rs=ps.executeQuery();
+                }
             }
             
             con.close();

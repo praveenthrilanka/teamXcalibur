@@ -1,12 +1,16 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
-<%@ include file="BA_SideBar.jsp" %>
+<%@ include file="BA_SideBar_Project.jsp" %>
 
 
 <!-- START CONTENT -->
 <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+
+                    <%
+                        String srsid=(String)session.getAttribute("srsid");
+                    %>
 
 <script type="text/javascript">
 
@@ -103,10 +107,11 @@
                                                }
                                             %>
 
-                                            <input type="hidden" id="docno" name="docno" value="24" />
-
+                                            <input type="hidden" id="count" name="count" value="<% out.print(num); %>" />
+                                            <input type="hidden" id="docno" name="docno" value="<% out.print(srsid); %>" />
                                             <input type="submit" value="Save my selection" class="button"/>
-                                        </form>
+                                        
+                                    </form>
 				</div>
                 </section></section>
 
