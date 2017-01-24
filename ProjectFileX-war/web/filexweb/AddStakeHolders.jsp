@@ -64,9 +64,9 @@
 
 <section id="main-content" class=" ">
                 <section class="wrapper" style='margin-top:50px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
-				<div class="login-form" style ="">
+				<div class="login-forms" style ="">
                                         <h4>Add Stakeholders</h4>
-					<h5><strong></strong></h5>
+					<h5><strong>Define SRS flow</strong></h5>
 
                                     
                                     <form name="addstk" action="../AddStakeholders" method="post" id="ContactForm">
@@ -112,6 +112,7 @@
                                             <input type="submit" value="Save my selection" class="button"/>
                                         
                                     </form>
+                                            <h5><strong></strong></h5>
 				</div>
                 </section></section>
 

@@ -127,13 +127,14 @@ public class Project {
             Project p;
             
             while(rs.next()){
-                if(rs.getString("PRIORITYNO").equals("1")){
+                String docno=rs.getString("DOCNO");
+                String srsversion=Project.getSRSVersionByDOCID(docno);
+                if(rs.getString("PRIORITYNO").equals("1") && rs.getString("SRSVERSION").equals(srsversion)){
                     p= getProjectFromRS(rs);
                     project.add(p);}
                 else{
                     int prio=Integer.parseInt(rs.getString("PRIORITYNO"));
-                    String docno=rs.getString("DOCNO");
-                    ps=con.prepareStatement("select status from SRSApprovedBy where docno='"+docno+"' and priorityno='"+(prio-1)+"'");
+                    ps=con.prepareStatement("select status from SRSApprovedBy where docno='"+docno+"' and priorityno='"+(prio-1)+"' and srsversion='"+srsversion+"'");
                     ResultSet temprs=ps.executeQuery();
                         if(temprs.next())
                         {   try{
@@ -240,6 +241,28 @@ public class Project {
   
     }
     
-    
+    public static String getSRSVersionByDOCID(String docid){
+            
+            
+        Connection con=DatabaseConnection.createConnection();
+        String srsversion=null;
+        try {
+            System.out.println("Execution strt");
+            PreparedStatement ps=con.prepareStatement("select max(v.srsversion) as maxversion from versionhistory v,srs s where s.docno=v.docno and s.docno='"+docid+"'");
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done");
+            
+            
+            if(rs.next()){
+                srsversion= rs.getString("maxversion");
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+            return srsversion;
+  
+    }
     
 }

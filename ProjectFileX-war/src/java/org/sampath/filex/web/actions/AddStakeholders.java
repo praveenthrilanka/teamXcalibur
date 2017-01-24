@@ -39,6 +39,7 @@ public class AddStakeholders extends HttpServlet {
         String selection;
         String priority;
         String docno=request.getParameter("docno");
+        String srsversion=Project.getSRSVersionByDOCID(docno);
         int count=Integer.parseInt(request.getParameter("count"));
         
         try {
@@ -54,7 +55,7 @@ public class AddStakeholders extends HttpServlet {
                 else{
                 System.out.println(docno+"   |  "+selection+"   |  "+priority);
 
-                PreparedStatement ps=con.prepareStatement("insert into srsapprovedby values ('"+docno+"','"+selection+"','"+priority+"','')");
+                PreparedStatement ps=con.prepareStatement("insert into srsapprovedby values ('"+docno+"','"+srsversion+"','"+selection+"','"+priority+"','')");
                 ResultSet rs=ps.executeQuery();
                 }
             }
