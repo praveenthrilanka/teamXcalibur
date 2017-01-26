@@ -1,5 +1,7 @@
 
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="org.sampath.filex.web.actions.Notification"%>
 <%@page import="org.sampath.filex.web.actions.Employee"%>
 <!DOCTYPE html>
 <html class=" ">
@@ -231,10 +233,15 @@
                             </ul>
 
                         </li>
+                        
+                        <%
+                            ArrayList<Notification> notifications =Notification.getNotificationByEMPID(e.getEmployeeid());
+                            int count= Notification.notificationInfo(e.getEmployeeid());
+                        %>
                         <li class="notify-toggle-wrapper">
                             <a href="#" data-toggle="dropdown" class="toggle">
                                 <i class="fa fa-bell"></i>
-                                <span class="badge badge-orange">3</span>
+                                <span class="badge badge-orange"><% out.print(count); %></span>
                             </a>
                             <ul class="dropdown-menu notifications animated fadeIn">
                                 <li class="total">
@@ -246,20 +253,32 @@
                                 <li class="list">
 
                                     <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
-                                        <li class="unread available"> <!-- available: success, warning, info, error -->
-                                            <a href="javascript:;">
+                                        <%
+                                            
+                                            Notification n;
+                                            for(int x=0;x<notifications.size();x++){
+                                            n=notifications.get(x);
+                                            
+                                        %>
+                                        <li class="unread available"> 
+                                            <a href="../SetUser?pno=<% out.print(n.getPno()); %>&direct=ba">
                                                 <div class="notice-icon">
                                                     <i class="fa fa-check"></i>
                                                 </div>
                                                 <div>
                                                     <span class="name">
-                                                        <strong>Server needs to reboot</strong>
-                                                        <span class="time small">15 mins ago</span>
+                                                        <strong><% out.print(n.getEmpname()); %> commented on project - <% out.print(n.getPname()); %> </strong>
+                                                        <span class="time small"><% out.print(n.getDatentime()); %></span>
                                                     </span>
                                                 </div>
                                             </a>
                                         </li>
-                                        <li class="unread away"> <!-- available: success, warning, info, error -->
+                                        <%
+                                        }
+                                        %>
+                                        
+                                        
+                                        <!--<li class="unread away">
                                             <a href="javascript:;">
                                                 <div class="notice-icon">
                                                     <i class="fa fa-envelope"></i>
@@ -272,7 +291,7 @@
                                                 </div>
                                             </a>
                                         </li>
-                                        <li class=" busy"> <!-- available: success, warning, info, error -->
+                                        <li class=" busy"> 
                                             <a href="javascript:;">
                                                 <div class="notice-icon">
                                                     <i class="fa fa-times"></i>
@@ -285,7 +304,7 @@
                                                 </div>
                                             </a>
                                         </li>
-                                        <li class=" offline"> <!-- available: success, warning, info, error -->
+                                        <li class=" offline">
                                             <a href="javascript:;">
                                                 <div class="notice-icon">
                                                     <i class="fa fa-user"></i>
@@ -298,7 +317,7 @@
                                                 </div>
                                             </a>
                                         </li>
-                                        <li class=" offline"> <!-- available: success, warning, info, error -->
+                                        <li class=" offline"> 
                                             <a href="javascript:;">
                                                 <div class="notice-icon">
                                                     <i class="fa fa-user"></i>
@@ -311,7 +330,7 @@
                                                 </div>
                                             </a>
                                         </li>
-                                        <li class=" available"> <!-- available: success, warning, info, error -->
+                                        <li class=" available"> 
                                             <a href="javascript:;">
                                                 <div class="notice-icon">
                                                     <i class="fa fa-check"></i>
@@ -324,7 +343,7 @@
                                                 </div>
                                             </a>
                                         </li>
-                                        <li class=" busy"> <!-- available: success, warning, info, error -->
+                                        <li class=" busy"> 
                                             <a href="javascript:;">
                                                 <div class="notice-icon">
                                                     <i class="fa fa-times"></i>
@@ -336,7 +355,7 @@
                                                     </span>
                                                 </div>
                                             </a>
-                                        </li>
+                                        </li>-->
 
                                     </ul>
 

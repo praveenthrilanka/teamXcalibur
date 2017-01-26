@@ -68,8 +68,14 @@
                                         <h4>Add Stakeholders</h4>
 					<h5><strong>Define SRS flow</strong></h5>
 
-                                    
+                                        <table align="center" width="80%" style="border-collapse: separate;border-spacing: 0 1.5em;">
                                     <form name="addstk" action="../AddStakeholders" method="post" id="ContactForm">
+                                            
+                                            <tr>
+                                                    <td><strong>Employee</strong></td>
+                                                    <td><strong>Priority No.</strong></td>
+                                            </tr> 
+                                            
                                             <%
                                                 ArrayList<Employee> sh=Employee.getStakeHolders();
                                                 //String prefList = s.getCompanies();
@@ -83,8 +89,9 @@
                                                         //prefList=prefList.replace(list.get(i).getShortName(),""+(i+1));
 
                                             %>
-
-                                           
+                                                  
+                                                <tr>
+                                                    <td>
                                                 <select name="<%="selection"+i %>" id="<%=i %>" onChange="update(<%=num %>);">
                                                     <option value="0">Select</option>
 
@@ -98,21 +105,27 @@
                                                         }
                                                     %>
                                                 </select>
+                                                    </td>
+                                                    <td>
                                                 <input type="text" name="prio<%=i %>" size="2"/>
-                                                <br/>
+                                                
                                             
-                                            <br/>
+                                            
                                             <%
                                                    }
                                                }
                                             %>
-
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <br/><br/>
                                             <input type="hidden" id="count" name="count" value="<% out.print(num); %>" />
                                             <input type="hidden" id="docno" name="docno" value="<% out.print(srsid); %>" />
-                                            <input type="submit" value="Save my selection" class="button"/>
+                                            <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Add">
+                                            <br/>
                                         
                                     </form>
-                                            <h5><strong></strong></h5>
+                                            
 				</div>
                 </section></section>
 

@@ -44,16 +44,26 @@ public class SetComment extends HttpServlet {
         Date date = new Date();
         HttpSession session=request.getSession(false);
         String srsid=(String)session.getAttribute("srsid");
-        
+        String notifino=null;
         
 
         try {
             Connection con=DatabaseConnection.createConnection();
             String datentime=DateString.getDate(date.toString());
             PreparedStatement ps=con.prepareStatement("insert into comments values(emp_sequence.nextval,'"+comment+"','"+datentime+"','"+session.getAttribute("eid")+"','"+srsid+"','')");
+            ps.executeQuery();
+            System.out.println("Insert first Done ");
+            ps=con.prepareStatement("insert into notification(comno) values (EMP_SEQUENCE.currval)");
+            ps.executeQuery();
+            System.out.println("Insert second Done ");
+            ps=con.prepareStatement("SELECT notification_seq.currval as NOTIFINO FROM DUAL");
             ResultSet rs=ps.executeQuery();
-             
-            System.out.println("Insert Done");
+            if(rs.next())
+                notifino=rs.getString("NOTIFINO");
+            
+            System.out.println("Insert Done "+notifino);
+            
+            Comment.setNotification(notifino, srsid);
             
             
         } catch (SQLException ex) {
