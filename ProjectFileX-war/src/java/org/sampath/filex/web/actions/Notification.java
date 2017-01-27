@@ -23,14 +23,23 @@ public class Notification {
     private String pname;
     private String datentime;
     private String pno;
+    private String empid;
     
-    public Notification(String empname, String pname, String datentime,String pno) {
+    public Notification(String empname, String pname, String datentime,String pno,String empid) {
         this.empname = empname;
         this.pname = pname;
         this.datentime = datentime;
         this.pno=pno;
+        this.empid=empid;
     }
     
+    public String getEmpid() {
+        return empid;
+    }
+
+    public void setEmpid(String empid) {
+        this.empid = empid;
+    }
     
     public String getPno() {
         return pno;
@@ -119,7 +128,144 @@ public class Notification {
                  rs.getString("EMPNAME"),
                  rs.getString("PNAME"),
                  rs.getString("CREATEDDATENTIME"),
-                 rs.getString("PNO"));
+                 rs.getString("PNO"),
+                 rs.getString("EMPID"));
      }
     
+    public static void setNotification(String notifino,String docid){
+     
+         Connection con=DatabaseConnection.createConnection();
+        try {
+            PreparedStatement ps=con.prepareStatement("select unique baid,pmid,msdid from comments c,srs s,project p where c.srsno=s.docno and s.pno=p.pno and s.docno='"+docid+"'");
+            ResultSet rs=ps.executeQuery();
+            if(rs.next())
+            {
+                ps=con.prepareStatement("insert into notifiedlist values ('"+notifino+"','"+rs.getString("BAID")+"','')");
+                ps.executeQuery();
+                ps=con.prepareStatement("insert into notifiedlist values ('"+notifino+"','"+rs.getString("PMID")+"','')");
+                ps.executeQuery();
+                ps=con.prepareStatement("insert into notifiedlist values ('"+notifino+"','"+rs.getString("MSDID")+"','')");
+                ps.executeQuery();
+            }
+            
+            ps=con.prepareStatement("select stkid from SRSApprovedBy where docno='"+docid+"' and srsversion='"+Project.getSRSVersionByDOCID(docid)+"'");
+            rs=ps.executeQuery();
+            while(rs.next())
+            {
+                ps=con.prepareStatement("insert into notifiedlist values ('"+notifino+"','"+rs.getString("stkid")+"','')");
+                ps.executeQuery();
+            }
+            
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+     
+     }
+    
+     public static void setNotificationByProject(String notifino,String pno){
+     
+            Connection con=DatabaseConnection.createConnection();
+            try {
+            PreparedStatement ps=con.prepareStatement("select baid,pmid from project where pno='"+pno+"'");
+            ResultSet rs=ps.executeQuery();
+            if(rs.next())
+            {
+                ps=con.prepareStatement("insert into notifiedlist values ('"+notifino+"','"+rs.getString("BAID")+"','')");
+                ps.executeQuery();
+                ps=con.prepareStatement("insert into notifiedlist values ('"+notifino+"','"+rs.getString("PMID")+"','')");
+                ps.executeQuery();
+                
+            }
+            
+            
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+     
+     }
+     
+     public static ArrayList<Notification> getProjectNotificationByEMPID(String empid)
+    {
+        ArrayList<Notification> notification=new ArrayList<Notification>();
+        Connection con=DatabaseConnection.createConnection();
+        try {
+            PreparedStatement ps=con.prepareStatement("select e.empname,p.pname,p.createddatentime,p.pno,e.empid\n" +
+                                                      "from notifiedlist l, notification n, employee e, project p \n" +
+                                                      "where l.notifino=n.notifino and n.prono=p.pno and p.msdid=e.empid and l.empid='"+empid+"' and l.status is null order by p.pno desc");
+            
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done");
+            Notification n;
+            
+            while(rs.next()){
+                if(rs.getString("EMPID").equals(empid))
+                    continue;
+                n= getNotificationFromRS(rs);
+                notification.add(n);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+        return notification;
+    }
+     
+     public static void setNotificationBySRS(String notifino,String pno){
+            Connection con=DatabaseConnection.createConnection();
+            try {
+            PreparedStatement ps=con.prepareStatement("select msdid,pmid from project where pno='"+pno+"'");
+            ResultSet rs=ps.executeQuery();
+            if(rs.next())
+            {   
+                System.out.println("Sub query start");
+                ps=con.prepareStatement("insert into notifiedlist values ('"+notifino+"','"+rs.getString("PMID")+"','')");
+                ps.executeQuery();
+                System.out.println("Sub query 1 done");
+                ps=con.prepareStatement("insert into notifiedlist values ('"+notifino+"','"+rs.getString("MSDID")+"','')");
+                ps.executeQuery();
+                System.out.println("Sub query 2 done");
+            }
+            
+            
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+     
+     }
+     
+     public static ArrayList<Notification> getSRSNotificationByEMPID(String empid)
+    {
+        ArrayList<Notification> notification=new ArrayList<Notification>();
+        Connection con=DatabaseConnection.createConnection();
+        try {
+            PreparedStatement ps=con.prepareStatement("select e.empname,p.pname,p.createddatentime,p.pno,e.empid\n" +
+"  from notifiedlist l, notification n, employee e, project p,srs s\n" +
+"  where l.notifino=n.notifino and n.srsno=s.docno and s.pno=p.pno and p.baid=e.empid and l.empid='it010' and l.status is null order by s.docno desc");
+            
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done");
+            Notification n;
+            
+            while(rs.next()){
+                if(rs.getString("EMPID").equals(empid))
+                    continue;
+                n= getNotificationFromRS(rs);
+                notification.add(n);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+        return notification;
+    }
+     
+     
 }

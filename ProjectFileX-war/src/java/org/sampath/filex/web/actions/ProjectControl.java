@@ -43,19 +43,36 @@ public class ProjectControl extends HttpServlet {
         Date dte=new Date();
         HttpSession session=request.getSession();
         
-        String pno=request.getParameter("pid");
         String pname=request.getParameter("pname");
         String pm=request.getParameter("pm");
         String ba=request.getParameter("ba");
         String msd=(String)session.getAttribute("eid");
-       
+        String notifino=null;
+        String pno=null;
+        
         try {
             Connection con=DatabaseConnection.createConnection();
             System.out.println("Connection Established");
             
-            PreparedStatement ps=con.prepareStatement("insert into Project(PNAME,CREATEDDATENTIME,BAID,PMID,MSDID) values('"+pname+"','"+dte.toString()+"','"+ba+"','"+pm+"','"+msd+"')");
-            ResultSet rs=ps.executeQuery();
+            PreparedStatement ps=con.prepareStatement("insert into Project(PNAME,CREATEDDATENTIME,BAID,PMID,MSDID) values('"+pname+"','"+DateString.getDate(dte.toString())+"','"+ba+"','"+pm+"','"+msd+"')");
+            ps.executeQuery();
             
+            ps=con.prepareStatement("insert into notification(prono) values (PRO_SEQ.currval)");
+            ps.executeQuery();
+            System.out.println("Insert second Done ");
+            ps=con.prepareStatement("SELECT notification_seq.currval as NOTIFINO FROM DUAL");
+            ResultSet rs=ps.executeQuery();
+            if(rs.next())
+                notifino=rs.getString("NOTIFINO");
+            
+            ps=con.prepareStatement("SELECT PRO_SEQ.currval as PRONO FROM DUAL");
+            rs=ps.executeQuery();
+            if(rs.next())
+                pno=rs.getString("PRONO");
+            
+            System.out.println(pno+"Insert Done "+notifino);
+            
+            Notification.setNotificationByProject(notifino,pno);
             
             con.close();
             

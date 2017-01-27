@@ -108,35 +108,4 @@ public class Comment {
      } 
  
      
-     public static void setNotification(String notifino,String docid){
-     
-         Connection con=DatabaseConnection.createConnection();
-        try {
-            PreparedStatement ps=con.prepareStatement("select unique baid,pmid,msdid from comments c,srs s,project p where c.srsno=s.docno and s.pno=p.pno and s.docno='"+docid+"'");
-            ResultSet rs=ps.executeQuery();
-            if(rs.next())
-            {
-                ps=con.prepareStatement("insert into notifiedlist values ('"+notifino+"','"+rs.getString("BAID")+"','')");
-                ps.executeQuery();
-                ps=con.prepareStatement("insert into notifiedlist values ('"+notifino+"','"+rs.getString("PMID")+"','')");
-                ps.executeQuery();
-                ps=con.prepareStatement("insert into notifiedlist values ('"+notifino+"','"+rs.getString("MSDID")+"','')");
-                ps.executeQuery();
-            }
-            
-            ps=con.prepareStatement("select stkid from SRSApprovedBy where docno='"+docid+"' and srsversion='"+Project.getSRSVersionByDOCID(docid)+"'");
-            rs=ps.executeQuery();
-            while(rs.next())
-            {
-                ps=con.prepareStatement("insert into notifiedlist values ('"+notifino+"','"+rs.getString("stkid")+"','')");
-                ps.executeQuery();
-            }
-            
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection "+ex);
-        }
-     
-     }
 }

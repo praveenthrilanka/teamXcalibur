@@ -263,7 +263,7 @@
                                         <li class="unread available"> 
                                             <a href="../SetUser?pno=<% out.print(n.getPno()); %>&direct=ba">
                                                 <div class="notice-icon">
-                                                    <i class="fa fa-check"></i>
+                                                    <img class="notification-icon" src="../GetIconByID?id=<%out.print(n.getEmpid());%>">
                                                 </div>
                                                 <div>
                                                     <span class="name">
@@ -277,6 +277,54 @@
                                         }
                                         %>
                                         
+                                        <%  
+                                            notifications =Notification.getProjectNotificationByEMPID(e.getEmployeeid());
+                                            for(int x=0;x<notifications.size();x++){
+                                            n=notifications.get(x);
+                                        %>
+                                        
+                                        <li class="unread away">
+                                            <a href="javascript:;">
+                                                <div class="notice-icon">
+                                                    
+                                                </div>
+                                                <div>
+                                                    <img class="notification-icon" src="../GetIconByID?id=<%out.print(n.getEmpid());%>">
+                                                    <span class="name">
+                                                        <strong><% out.print(n.getEmpname()); %> assigned you as the <% out.print(e.getPosition()); %> of the Project - <% out.print(n.getPname()); %></strong>
+                                                        <span class="time small"><% out.print(n.getDatentime()); %></span>
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        
+                                        <%
+                                        }
+                                        %>
+                                        
+                                        <%  
+                                            notifications =Notification.getSRSNotificationByEMPID(e.getEmployeeid());
+                                            for(int x=0;x<notifications.size();x++){
+                                            n=notifications.get(x);
+                                        %>
+                                        
+                                        <li class="unread away">
+                                            <a href="javascript:;">
+                                                <div class="notice-icon">
+                                                    <img class="notification-icon" src="../GetIconByID?id=<%out.print(n.getEmpid());%>">
+                                                </div>
+                                                <div>
+                                                    <span class="name">
+                                                        <strong><% out.print(n.getEmpname()); %> uploaded the SRS of the Project - <% out.print(n.getPname()); %></strong>
+                                                        <span class="time small"><% out.print(n.getDatentime()); %></span>
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        
+                                        <%
+                                        }
+                                        %>
                                         
                                         <!--<li class="unread away">
                                             <a href="javascript:;">

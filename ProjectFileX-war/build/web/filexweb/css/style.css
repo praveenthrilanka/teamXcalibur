@@ -7568,7 +7568,22 @@ border-left: 3px solid transparent;
 
 
 
-
+.notification-icon{
+	border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    line-height: 30px;
+    float: left;
+    display: inline-block;
+    text-align: center;
+    margin-right: 15px;
+    color: #ffffff;
+    margin-top: 5px;
+}
 
 /*
 .bg-muted{ background: #eaeaea; padding: 3px 8px;}

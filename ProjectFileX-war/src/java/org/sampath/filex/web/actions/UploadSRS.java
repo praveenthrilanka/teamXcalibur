@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
@@ -49,6 +50,9 @@ public class UploadSRS extends HttpServlet {
         String srsversion=request.getParameter("srsversion");
         String changes=request.getParameter("changes");
         int row;
+        String notifino=null;
+        String srsno=null;
+        
         Connection con=DatabaseConnection.createConnection();
         System.out.println("PROJECT"+srsversion);
         try {
@@ -73,7 +77,7 @@ public class UploadSRS extends HttpServlet {
             {
             srsversion="1";
             changes="Initial SRS";
-            statement = con.prepareStatement("INSERT INTO srs(createddatentime,approveddatentime,pno,pmid,status) values (?,?,?,?,?)");
+            statement = con.prepareStatement("INSERT INTO srs(createddatentime,approveddatentime,pno,status) values (?,?,?,?)");
 
             System.out.println("set1 done");
             statement.setString(1,DateString.getDate(dte.toString()));
@@ -87,12 +91,24 @@ public class UploadSRS extends HttpServlet {
             statement.setString(2,"");
             statement.setString(3,pno);
             statement.setString(4,"");
-            statement.setString(5,"");
  
             row = statement.executeUpdate();
             if (row > 0) {
                 System.out.println("SRS table entry is inserted");
             }
+            
+            statement=con.prepareStatement("insert into notification(srsno) values (SRS_SEQ.currval)");
+            statement.executeQuery();
+            System.out.println("Insert second Done ");
+            statement=con.prepareStatement("SELECT notification_seq.currval as NOTIFINO FROM DUAL");
+            ResultSet rs=statement.executeQuery();
+            if(rs.next())
+                notifino=rs.getString("NOTIFINO");
+            
+           
+            System.out.println("Insert Done "+notifino +" ProjectNO"+pno);
+            
+            Notification.setNotificationBySRS(notifino,pno);
             }
 
             statement=con.prepareStatement("INSERT INTO versionhistory(docno,srsversion,pdffile,changes,modifieddate) values ( (SELECT docno FROM srs WHERE pno = '"+pno+"'),'"+srsversion+"',?,?,?)");
@@ -104,10 +120,9 @@ public class UploadSRS extends HttpServlet {
             statement.setString(2,changes);
             statement.setString(3,"");
             
-            row = statement.executeUpdate();
-            if (row > 0) {
+            statement.executeUpdate();
                 System.out.println("VERSIONHISTORY table entry is inserted");
-            }
+
             
             
             con.close();

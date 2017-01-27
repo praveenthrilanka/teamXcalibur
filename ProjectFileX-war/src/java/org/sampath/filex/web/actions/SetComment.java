@@ -63,7 +63,7 @@ public class SetComment extends HttpServlet {
             
             System.out.println("Insert Done "+notifino);
             
-            Comment.setNotification(notifino, srsid);
+            Notification.setNotification(notifino, srsid);
             
             
         } catch (SQLException ex) {
