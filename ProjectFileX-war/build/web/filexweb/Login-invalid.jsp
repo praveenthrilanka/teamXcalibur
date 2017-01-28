@@ -15,7 +15,7 @@
             </div>
             <div class="content">
                 <img src="images/warning.gif" alt="" title="" width="100px">
-                <br><br><font color="red" size="5pt">Invalid username or password</font>
+                <br><br><font color="red" size="4pt">Invalid username or password</font>
                 <br><br><button type="button" class="btn btn-warning" onclick="window.location.href = 'Login.jsp'">Try Again</button>
             </div>
             <div class="clear"> </div>

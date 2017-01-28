@@ -49,6 +49,7 @@ public class SignIn extends HttpServlet {
 
         try {            
             PreparedStatement ps=con.prepareStatement("select * from employee where empid='"+un+"'");
+            
             ResultSet rs=ps.executeQuery();
             
             if(rs.next()){
@@ -57,27 +58,39 @@ public class SignIn extends HttpServlet {
                 if(rs.getString("empid").trim().equals(un.trim()) && rs.getString("password").trim().equals(pw.trim()))
                 {
                     
-                    if(rs.getString("ba").equals("y")){
+                    if(rs.getString("ba").equals("y") && rs.getString("pm").equals("n") && rs.getString("msd").equals("n") && rs.getString("extsh").equals("n")){
                         response.sendRedirect("filexweb/BA_Projects.jsp");
                         session.setAttribute("home", "BA_Projects.jsp");
                     }
-                    else if(rs.getString("pm").equals("y")){
+                    else if(rs.getString("ba").equals("n") && rs.getString("pm").equals("y") && rs.getString("msd").equals("n") && rs.getString("extsh").equals("n")){
+                        response.sendRedirect("filexweb/PM_Projects.jsp");
+                        session.setAttribute("home", "PM_Projects.jsp");
+                    }
+                    else if(rs.getString("ba").equals("n") && rs.getString("pm").equals("y") && rs.getString("msd").equals("y") && rs.getString("extsh").equals("n")){
                         response.sendRedirect("filexweb/MSDnPM.jsp");
                         session.setAttribute("home", "MSDnPM.jsp");
                     }
-                    else if(rs.getString("extsh").equals("y")){
+                    else if(rs.getString("ba").equals("n") && rs.getString("pm").equals("n") && rs.getString("msd").equals("y") && rs.getString("extsh").equals("n")){
+                        response.sendRedirect("filexweb/MSD_Dashboard.jsp");
+                        session.setAttribute("home", "MSD_Dashboard.jsp");
+                    }
+                    else if(rs.getString("ba").equals("n") && rs.getString("pm").equals("n") && rs.getString("msd").equals("n") && rs.getString("extsh").equals("y")){
                         response.sendRedirect("filexweb/ExStkLogin.jsp");
-                        session.setAttribute("home", "MSDnPM.jsp");
+                        session.setAttribute("home", "ExStkLogin.jsp");
+                    }
+                    else if(rs.getString("ba").equals("x") && rs.getString("pm").equals("x") && rs.getString("msd").equals("x") && rs.getString("extsh").equals("x")){
+                        response.sendRedirect("filexweb/Admin_Dashboard.jsp");
+                        session.setAttribute("home", "Admin_Dashboard.jsp");
                     }
                     else
-                        response.sendRedirect("filexweb/message.jsp?message=Invalid user name or password!");    
+                        response.sendRedirect("filexweb/Login-invalid.jsp");    
                 }
                 else
-                    response.sendRedirect("filexweb/message.jsp?message=Invalid user name or password!");
+                    response.sendRedirect("filexweb/Login-invalid.jsp");
             }
             else{
             System.out.println("There is no such a EmployeeID");
-            response.sendRedirect("filexweb/message.jsp?message=Invalid user name or password!");
+            response.sendRedirect("filexweb/Login-invalid.jsp");
             }
             
         } catch (SQLException ex) {

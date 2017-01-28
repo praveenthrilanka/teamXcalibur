@@ -102,13 +102,22 @@ public class Employee {
     
     public static Employee getEmployeeFromRS(ResultSet rs) throws SQLException {
             String position;
-            if(rs.getString("BA").equalsIgnoreCase("y"))
+                 
+            if(rs.getString("ba").equals("y") && rs.getString("pm").equals("n") && rs.getString("msd").equals("n") && rs.getString("extsh").equals("n"))
                 position="Business Analyist";
-            else if(rs.getString("PM").equalsIgnoreCase("y"))
+            else if(rs.getString("ba").equals("n") && rs.getString("pm").equals("y") && rs.getString("msd").equals("n") && rs.getString("extsh").equals("n"))
+                position="Project Manager";
+            else if(rs.getString("ba").equals("n") && rs.getString("pm").equals("y") && rs.getString("msd").equals("y") && rs.getString("extsh").equals("n"))
                 position="PM/MSD";
-            else
+            else if(rs.getString("ba").equals("n") && rs.getString("pm").equals("n") && rs.getString("msd").equals("y") && rs.getString("extsh").equals("n"))
+                position="ManagerSD";
+            else if(rs.getString("ba").equals("n") && rs.getString("pm").equals("n") && rs.getString("msd").equals("n") && rs.getString("extsh").equals("y"))
                 position="Stakeholder";
-        
+            else if(rs.getString("ba").equals("x") && rs.getString("pm").equals("x") && rs.getString("msd").equals("x") && rs.getString("extsh").equals("x"))
+                position="Administrator";
+            else
+                position="FleX User";
+            
             return new Employee(
                  rs.getString("EMPID"),
                  rs.getString("EMPNAME"),
