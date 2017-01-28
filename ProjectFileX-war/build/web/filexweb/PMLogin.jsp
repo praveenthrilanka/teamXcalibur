@@ -72,7 +72,7 @@
        <tr>
        <td> <% out.print(pr.getProjectno()); %></td>        
        <td><a href="../FileControll?redirect=wall&pno=<% out.print(pr.getProjectno()); %>&srsid=<% out.print(pr.getSrsid()); %>"><% out.print(pr.getProjectname()); %></a></td>            
-       <td><% out.print(DateString.getDate(pr.getDatentime())); %></td>            
+       <td><% out.print(pr.getDatentime()); %></td>            
        <td><% out.print(pr.getBaid()); %></td>            
        <td><% out.print(pr.getPmid()); %></td>            
        <td><% out.print(pr.getMsdid()); %></td> 

@@ -25,14 +25,23 @@ public class Employee {
     private String departmentid;
     private Blob photo;
     private String position;
+    private String departement;
     
+    public String getDepartement() {
+        return departement;
+    }
+
+    public void setDepartement(String departement) {
+        this.departement = departement;
+    }
     
-    public Employee(String employeeid, String employeename, String departmentid,Blob photo,String position) {
+    public Employee(String employeeid, String employeename, String departmentid,Blob photo,String department,String position) {
         this.employeeid = employeeid;
         this.employeename = employeename;
         this.departmentid = departmentid;
         this.photo=photo;
         this.position=position;
+        this.departement=department;
     }
 
         public Blob getPhoto() {
@@ -83,7 +92,7 @@ public class Employee {
         Connection con=DatabaseConnection.createConnection();
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from employee");
+            PreparedStatement ps=con.prepareStatement("select * from employee e,department d where e.depid=d.depid ");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             Employee e;
@@ -123,6 +132,7 @@ public class Employee {
                  rs.getString("EMPNAME"),
                  rs.getString("DEPID"),
                  rs.getBlob("PHOTO"),
+                 rs.getString("DEPNME"),
                  position);
         
      }
@@ -132,7 +142,7 @@ public class Employee {
         Connection con=DatabaseConnection.createConnection();
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from employee where empid='"+eid+"'");
+            PreparedStatement ps=con.prepareStatement("select * from employee e,department d where e.depid=d.depid and e.empid='"+eid+"'");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             
@@ -154,7 +164,7 @@ public class Employee {
         Connection con=DatabaseConnection.createConnection();
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from employee where extsh='y'");
+            PreparedStatement ps=con.prepareStatement("select * from employee e,department d where e.depid=d.depid and e.extsh='y'");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             Employee e;

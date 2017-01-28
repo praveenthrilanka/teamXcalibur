@@ -33,7 +33,7 @@
                                   %>
                                   
                              </select>
-                            <div style="padding:0.8em 7em;"><button type="button" class="btn btn-info btn-block" style="font-size:12pt;" onclick="window.location.href='#'" alt="View currently assigned projects">Assigned projects</button></div>  
+                            <div style="padding:0.8em 7em;"><button class="btn btn-info btn-block" style="font-size:12pt;" formaction="PMLogin.jsp" alt="View currently assigned projects">Assigned projects</button></div>  
                              <br/>
                             <label>Business Analyist :</label>
                               <select name="ba" width="200" height="80">

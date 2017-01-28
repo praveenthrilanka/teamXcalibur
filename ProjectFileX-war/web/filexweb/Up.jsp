@@ -479,6 +479,7 @@
                             </h3>
 
                             <p class="profile-title"><%out.print(e.getPosition());%></p>
+                            <p class="profile-title"><%out.print(e.getDepartement());%></p>
 
                         </div>
 

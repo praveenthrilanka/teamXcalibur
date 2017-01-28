@@ -100,7 +100,7 @@
 
                                                     %>
 
-                                                    <option value =<%=sh.get(j).getEmployeeid() %> ><%=sh.get(j).getEmployeename() %> </option>
+                                                    <option value =<%=sh.get(j).getEmployeeid() %> ><%=sh.get(j).getEmployeename() %> (<%=sh.get(j).getDepartement() %>) </option>
                                                     <%
                                                         }
                                                     %>
