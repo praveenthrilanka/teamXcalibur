@@ -17,11 +17,23 @@
                 </div>
             </div>
         </div>
+        <%
+            session=request.getSession();
+            String pno=(String)session.getAttribute("pno");
+            Project p=Project.getProject(pno);
+            
+            Employee ba=Employee.getEmployee(p.getBaid());
+            Employee msd=Employee.getEmployee(p.getMsdid());
+            Employee pm=Employee.getEmployee(p.getPmid());
+        
+        %>
+        
+        
         <div class="clearfix"></div>
         <div class="col-lg-12">
             <section class="box ">
                 <header class="panel_header">
-                    <h2 class="title pull-left">Sampath Bank - Vishwa Project </h2>
+                    <h2 class="title pull-left"><% out.print(p.getProjectname()); %></h2>
                 </header>
                 <div class="content-body">    
                     <div class="row">
@@ -34,15 +46,15 @@
                                 </div>
                                 <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">					
                                     <div class="username">
-                                        <span>Manager SD </span><span class="bold">S B Diasanayaka</span> Created the Project <span class="bold">Sampath Bank - Vishwa Project</span>	
+                                        <span>Manager SD </span><span class="bold"><% out.print(msd.getEmployeename()); %></span> Created the Project <span class="bold"><% out.print(p.getProjectname()); %></span>	
                                     </div>
                                     <div class="info text-muted">
-                                        <span>Assigned Project Manager : </span><span class="bold">Shanudrie Priyasad</span><br/>
-                                        <span>Assigned Business Analyst : </span><span class="bold">Malsha Kumarathunga</span>
+                                        <span>Assigned Project Manager : </span><span class="bold"><% out.print(pm.getEmployeename()); %></span><br/>
+                                        <span>Assigned Business Analyst : </span><span class="bold"><% out.print(ba.getEmployeename()); %></span>
                                     </div>	
                                     <div class="info-details">
                                         <ul class="list-unstyled list-inline">
-                                            <li><a href="#" class="text-muted">15 Minutes ago</a></li>
+                                            <li><a href="#" class="text-muted"><% out.print(p.getDatentime()); %></a></li>
                                             <li><a href="#" class="text-muted"><i class="fa fa-comment"></i> 584</a></li>
                                             <li><a href="#" class="text-orange"><i class="fa fa-heart"></i> 12k</a></li>
                                             <li><a href="#" class="text-info"><i class="fa fa-reply"></i> Reply</a></li>
@@ -52,30 +64,7 @@
 
                                     </div>
                                     <div class="clearfix"></div>
-                                    <div class="comment">
-                                        <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">
-                                            <img data-src-retina="images/person-4.jpg" data-src="images/person-4.jpg" src="images/person-4.jpg" alt="">
-                                        </div>
-                                        <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">					
-                                            <div class="username">
-                                                <span>Business Analyst </span><span class="bold">Shanudrie Priyasad</span> <span>Uploaded the</span> <span class="bold">SRS</span>
-                                            </div>
-                                            <div class="info text-muted">
-                                                <span class="bold">SRS ID : </span><span>001</span><br/>
-                                                <span class="bold">SRS Version : </span><span class="bold">1</span>
-                                            </div>	
-                                            <div class="info-details">
-                                                <ul class="list-unstyled list-inline">
-                                                    <li><a href="#" class="text-muted">10 Minutes ago</a></li>
-                                                    <li><a href="#" class="text-orange"><i class="fa fa-heart-o"></i> Like</a></li>
-                                                    <li><a href="#" class="text-muted">More</a></li>
-                                                </ul>
-                                            </div>
-
-                                        </div>	
-                                        <div class="clearfix"></div>						
-                                    </div>
-
+                                    
                                     <div class="clearfix"></div>
                                     <div class="comment">
                                         <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">
@@ -104,6 +93,31 @@
                                         </div>	
                                         <div class="clearfix"></div>						
                                     </div>
+                                    
+                                    <div class="comment">
+                                        <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">
+                                            <img data-src-retina="images/person-4.jpg" data-src="images/person-4.jpg" src="images/person-4.jpg" alt="">
+                                        </div>
+                                        <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">					
+                                            <div class="username">
+                                                <span>Business Analyst </span><span class="bold">Shanudrie Priyasad</span> <span>Uploaded the</span> <span class="bold">SRS</span>
+                                            </div>
+                                            <div class="info text-muted">
+                                                <span class="bold">SRS ID : </span><span>001</span><br/>
+                                                <span class="bold">SRS Version : </span><span class="bold">1</span>
+                                            </div>	
+                                            <div class="info-details">
+                                                <ul class="list-unstyled list-inline">
+                                                    <li><a href="#" class="text-muted">10 Minutes ago</a></li>
+                                                    <li><a href="#" class="text-orange"><i class="fa fa-heart-o"></i> Like</a></li>
+                                                    <li><a href="#" class="text-muted">More</a></li>
+                                                </ul>
+                                            </div>
+
+                                        </div>	
+                                        <div class="clearfix"></div>						
+                                    </div>
+                                    
                                     <div class="clearfix"></div>
                                     <div class="comment">
                                         <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">

@@ -32,8 +32,10 @@
         
         <%
             session=request.getSession(false);
-       
-        ArrayList<Project> project=Project.getProjectByPMid((String)session.getAttribute("eid"));
+        ArrayList<Project> project=null;
+            
+            project=Project.getProjectByBAid(request.getParameter("eid"));
+            
         System.out.println("Output test2");
         %>
         

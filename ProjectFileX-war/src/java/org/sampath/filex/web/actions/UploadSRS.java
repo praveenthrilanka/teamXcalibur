@@ -118,7 +118,7 @@ public class UploadSRS extends HttpServlet {
                 System.out.println("Input Stream Done");
             }
             statement.setString(2,changes);
-            statement.setString(3,"");
+            statement.setString(3,DateString.getDate(dte.toString()));
             
             statement.executeUpdate();
                 System.out.println("VERSIONHISTORY table entry is inserted");

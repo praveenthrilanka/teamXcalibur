@@ -479,7 +479,7 @@
                             </h3>
 
                             <p class="profile-title"><%out.print(e.getPosition());%></p>
-                            <p class="profile-title" style="color: #9191916; "><%out.print(e.getDepartement());%></p>
+                            <p class="profile-title" style="color: #919191 6; "><%out.print(e.getDepartement());%></p>
 
                         </div>
 

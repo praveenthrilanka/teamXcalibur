@@ -50,40 +50,47 @@ public class ProjectControl extends HttpServlet {
         String notifino=null;
         String pno=null;
         
-        try {
-            Connection con=DatabaseConnection.createConnection();
-            System.out.println("Connection Established");
-            
-            PreparedStatement ps=con.prepareStatement("insert into Project(PNAME,CREATEDDATENTIME,BAID,PMID,MSDID) values('"+pname+"','"+DateString.getDate(dte.toString())+"','"+ba+"','"+pm+"','"+msd+"')");
-            ps.executeQuery();
-            
-            ps=con.prepareStatement("insert into notification(prono) values (PRO_SEQ.currval)");
-            ps.executeQuery();
-            System.out.println("Insert second Done ");
-            ps=con.prepareStatement("SELECT notification_seq.currval as NOTIFINO FROM DUAL");
-            ResultSet rs=ps.executeQuery();
-            if(rs.next())
-                notifino=rs.getString("NOTIFINO");
-            
-            ps=con.prepareStatement("SELECT PRO_SEQ.currval as PRONO FROM DUAL");
-            rs=ps.executeQuery();
-            if(rs.next())
-                pno=rs.getString("PRONO");
-            
-            System.out.println(pno+"Insert Done "+notifino);
-            
-            Notification.setNotificationByProject(notifino,pno);
-            
-            con.close();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection "+ex);
+        if(request.getParameter("baassigned")!=null)
+            response.sendRedirect("filexweb/PMLogin.jsp?eid="+ba);
+        else if(request.getParameter("pmassigned")!=null)
+            response.sendRedirect("filexweb/PMLogin2.jsp?eid="+pm);
+        else
+        {
+            try {
+                Connection con=DatabaseConnection.createConnection();
+                System.out.println("Connection Established");
+
+                PreparedStatement ps=con.prepareStatement("insert into Project(PNAME,CREATEDDATENTIME,BAID,PMID,MSDID) values('"+pname+"','"+DateString.getDate(dte.toString())+"','"+ba+"','"+pm+"','"+msd+"')");
+                ps.executeQuery();
+
+                ps=con.prepareStatement("insert into notification(prono) values (PRO_SEQ.currval)");
+                ps.executeQuery();
+                System.out.println("Insert second Done ");
+                ps=con.prepareStatement("SELECT notification_seq.currval as NOTIFINO FROM DUAL");
+                ResultSet rs=ps.executeQuery();
+                if(rs.next())
+                    notifino=rs.getString("NOTIFINO");
+
+                ps=con.prepareStatement("SELECT PRO_SEQ.currval as PRONO FROM DUAL");
+                rs=ps.executeQuery();
+                if(rs.next())
+                    pno=rs.getString("PRONO");
+
+                System.out.println(pno+"Insert Done "+notifino);
+
+                Notification.setNotificationByProject(notifino,pno);
+
+                con.close();
+
+            } catch (SQLException ex) {
+                Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Something went wrong in Connection "+ex);
+            }
+
+
+
+                response.sendRedirect("filexweb/message.jsp?message=Project created successfully.!");
         }
-          
-           
-                    
-            response.sendRedirect("filexweb/message.jsp?message=Project created successfully.!");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
