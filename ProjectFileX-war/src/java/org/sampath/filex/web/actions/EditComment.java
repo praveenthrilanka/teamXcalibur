@@ -43,9 +43,17 @@ public class EditComment extends HttpServlet {
         if(status.equals("delete"))
         {
         try{
-        PreparedStatement ps=con.prepareStatement("delete from comments where comno='"+commentid+"'");
+        PreparedStatement ps=con.prepareStatement("select notifino from notification where comno='"+commentid+"'");
         ResultSet rs=ps.executeQuery();
-        
+        if(rs.next())
+        {
+            ps=con.prepareStatement("delete from notifiedlist where notifino='"+rs.getString("notifino")+"'");
+            ps.executeQuery();
+            ps=con.prepareStatement("delete from notification where comno='"+commentid+"'");
+            ps.executeQuery();
+            ps=con.prepareStatement("delete from comments where comno='"+commentid+"'");
+            ps.executeQuery();
+        }
         }
         catch(Exception e){
             System.out.println("Exception in SQL Query "+e);
