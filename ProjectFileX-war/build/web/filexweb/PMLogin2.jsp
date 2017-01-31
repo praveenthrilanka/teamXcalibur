@@ -6,30 +6,14 @@
 <%@page import="org.sampath.filex.web.actions.DateString"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.sampath.filex.web.actions.Project"%>
+<%@ include file="Up.jsp" %>
+<%@ include file="MSD_SideBar.jsp" %>
 
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/ManualCSS.css">
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <title>JSP Page</title>
-        <style>
-            body {
-            background-image: url("SampathBack.jpg");
-            background-repeat: no-repeat;
-            background-size: 100% auto;
-            }
-            
-            td{
-                padding:15px;
-            }
-        </style>
-        
+<link href="css/stylesba.css" rel='stylesheet' type='text/css' />
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
+
+      
         <%
             session=request.getSession(false);
         ArrayList<Project> project=null;
@@ -40,28 +24,44 @@
         %>
         
        
-    </head>
-    <body>
-       
-         <div style="text-align:center;  margin: auto;width: 50%; position: absolute;top: 10%; left: 20%;  padding: 10px">
-              <h2>Currently Assigned Projects</h2> 
+    <section id="main-content" class=" ">
+        <section class="wrapper" style="margin-top:60px;display:inline-block;width:100%;padding:15px 0 0 15px;">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="page-title">
+
+                <div class="pull-left">
+                    <h1 class="title">View Assigned Projects</h1>                           
+                </div>
+
+            </div>
         </div>
-       
-        <div style="text-align: left; margin:auto; position:absolute; left:20%; padding:10%">
+        <div class="clearfix"></div>
+        
+        <section class="box ">
+                            
+            <div class="content-body">    
+                <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+
+
+
                    
-        <table class="table table-hover inverse" border="0px" >
-           
-           <thead class="thead-inverse">
-           <tr>
-           <th>Project No</th>
-           <th>Project Name</th>
-           <th>Date Created</th>
-           <th>BA ID</th>
-           <th>PM ID</th>
-           <th>MSD ID</th>
-           </tr>
-           </thead>
-     
+        <table id="example-1" class="table table-striped dt-responsive display dataTable dtr-inline" cellspacing="0" width="100%" role="grid" aria-describedby="example-1_info" style="width: 100%;">
+
+            <thead>
+
+                <tr role="row">
+
+                    <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1"  style="width: 80px;" aria-sort="ascending">Project No</th>
+
+                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 291px;">Project Name</th>
+
+                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 160px;">Date Created</th>
+
+                </tr>
+            </thead>
+
            
         
         <%
@@ -73,17 +73,24 @@
       
        <tr>
        <td> <% out.print(pr.getProjectno()); %></td>        
-       <td><a href="../FileControll?redirect=wall&pno=<% out.print(pr.getProjectno()); %>&srsid=<% out.print(pr.getSrsid()); %>"><% out.print(pr.getProjectname()); %></a></td>            
+       <td><% out.print(pr.getProjectname()); %></td>            
        <td><% out.print(pr.getDatentime()); %></td>            
-       <td><% out.print(pr.getBaid()); %></td>            
-       <td><% out.print(pr.getPmid()); %></td>            
-       <td><% out.print(pr.getMsdid()); %></td> 
+ 
        </tr>
        <% }%>
        </table>
        </div>
-        
-    </body>
-</html>
+                    </div>
+                </div>
+        </div>
+    </section></div>
+
+</section>
+</section>
+
+
+
+
+<%@ include file="Down.jsp" %>
 
 

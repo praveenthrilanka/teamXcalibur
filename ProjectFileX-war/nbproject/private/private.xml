@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Project.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/PM_Projects.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SetIcon.java</file>
@@ -59,6 +60,12 @@
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Stakeholder.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/PM_Dashboard.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/DatabaseConnection.java</file>
+=======
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/web/filexweb/PMLogin.jsp</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/ProjectControl.java</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/web/filexweb/MSD_CreateProject.jsp</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/web/filexweb/PMLogin2.jsp</file>
+>>>>>>> cca267dda46f7c3b36638a7b119b22393b8f0a38
         </group>
     </open-files>
 </project-private>
