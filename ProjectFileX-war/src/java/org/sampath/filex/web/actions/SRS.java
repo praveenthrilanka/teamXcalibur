@@ -19,7 +19,6 @@ import java.util.logging.Logger;
  */
 public class SRS {
 
-    
     private String projectname;
     private String msdname;
     private String pmname;
@@ -95,13 +94,14 @@ public class SRS {
     }
     
       
-    public static ArrayList<SRS> getSRSDetails(String srsid){
+    public static ArrayList<SRS> getSRSDetails(String pno){
         ArrayList<SRS> srsdetails=new ArrayList<SRS>();
 
         Connection con=DatabaseConnection.createConnection();
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from employee e,comments c where e.EMPID=c.EMPID and c.SRSNO='"+srsid+"' order by comno desc");
+            PreparedStatement ps=con.prepareStatement("select e.empname,d.depnme,p.pname,l.status from employee e, project p,srs s, srsapprovedby l,department d\n" +
+                                                      "where s.pno=p.pno and s.docno=l.docno and l.stkid=e.empid and e.depid=d.depid and p.pno="+pno+" order by l.priorityno asc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             SRS s;

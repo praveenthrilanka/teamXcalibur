@@ -47,8 +47,11 @@ public class SetIcon extends HttpServlet {
             HttpSession session=request.getSession(false);
             String eid=(String) session.getAttribute("eid");
 
-            String editedname=request.getParameter("name");
-        
+            String editedpw=request.getParameter("pw");
+            
+            editedpw=EncryptPassword.cryptWithMD5(editedpw);
+            System.out.println(editedpw);
+            
          Connection con=DatabaseConnection.createConnection();
         
          try {
@@ -58,7 +61,7 @@ public class SetIcon extends HttpServlet {
         // obtains the upload file part in this multipart request
         
         Part filePart = request.getPart("logo");
-        System.out.println(editedname);
+        System.out.println(editedpw);
         if (filePart != null) {
             // prints out some information for debugging
             System.out.println(filePart.getName());
@@ -70,14 +73,14 @@ public class SetIcon extends HttpServlet {
             System.out.println("File found,");
             
 
-            PreparedStatement statement = con.prepareStatement("update employee set photo=?,empname=?  where empid=?");
+            PreparedStatement statement = con.prepareStatement("update employee set photo=?,password=?  where empid=?");
 
             if (inputStream != null) {
                 // fetches input stream of the upload file for the blob column
                 statement.setBinaryStream(1,inputStream,inputStream.available());
                 System.out.println("Input Stream Done");
             }
-            statement.setString(2,editedname);
+            statement.setString(2,editedpw);
             statement.setString(3,eid);
 
             int row = statement.executeUpdate();

@@ -35,14 +35,17 @@ public class SignIn extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     
-    
+     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+            response.setContentType("text/html;charset=UTF-8");
        
             Connection con=DatabaseConnection.createConnection();
             String un=request.getParameter("un");
             String pw=request.getParameter("pw");
+            
+            pw=EncryptPassword.cryptWithMD5(pw);
+            System.out.println(pw);
             
             HttpSession session=request.getSession();
             session.setAttribute("eid", un);

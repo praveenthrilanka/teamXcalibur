@@ -20,8 +20,8 @@
 						</div>
 						
 					    <br/><br/>
-                                            <label>User Name :</label>
-                                            <input type="text" id="newname" name="name" value="<% out.print(e.getEmployeename()); %>" placeholder="Enter your name here" required>				<br/><br/><br/>
+                                            <label>Password :</label>
+                                            <input type="text" id="newname" name="pw" placeholder="Enter new password" required>				<br/><br/><br/>
 
 						<div class="clearfix"></div>
 						<input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Set">
