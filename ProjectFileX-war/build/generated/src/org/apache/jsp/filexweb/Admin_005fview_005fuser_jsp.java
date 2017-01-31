@@ -19,7 +19,7 @@ public final class Admin_005fview_005fuser_jsp extends org.apache.jasper.runtime
   static {
     _jspx_dependants = new java.util.ArrayList<String>(3);
     _jspx_dependants.add("/filexweb/Up.jsp");
-    _jspx_dependants.add("/filexweb/Admin_SideBar.jsp");
+    _jspx_dependants.add("/filexweb/Admin_Sidebar.jsp");
     _jspx_dependants.add("/filexweb/Down.jsp");
   }
 
@@ -592,6 +592,9 @@ out.print(e.getEmployeename());
       out.write("                            <p class=\"profile-title\">");
 out.print(e.getPosition());
       out.write("</p>\r\n");
+      out.write("                            <p class=\"profile-title\" style=\"color: #919191 6; \">");
+out.print(e.getDepartement());
+      out.write("</p>\r\n");
       out.write("\r\n");
       out.write("                        </div>\r\n");
       out.write("\r\n");
@@ -606,7 +609,7 @@ out.print(e.getPosition());
       out.write("                        \r\n");
       out.write("\r\n");
       out.write("                        <li class=\"\"> \r\n");
-      out.write("                            <a href=\"BA_Projects.jsp\">\r\n");
+      out.write("                            <a href=\"Admin_Dashboard.jsp\">\r\n");
       out.write("                                <i class=\"fa fa-dashboard\"></i>\r\n");
       out.write("                                <span class=\"title\">Home</span>\r\n");
       out.write("                            </a>\r\n");
