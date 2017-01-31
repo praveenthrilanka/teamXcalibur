@@ -75,6 +75,10 @@
         <servlet-name>SRSApproval</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.SRSApproval</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetSRSByVersion</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.GetSRSByVersion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignIn</servlet-name>
         <url-pattern>/SignIn</url-pattern>
@@ -146,6 +150,10 @@
     <servlet-mapping>
         <servlet-name>SRSApproval</servlet-name>
         <url-pattern>/SRSApproval</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetSRSByVersion</servlet-name>
+        <url-pattern>/GetSRSByVersion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

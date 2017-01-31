@@ -6,7 +6,9 @@
 package org.sampath.filex.web.actions;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +16,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +26,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Ashantha
  */
-public class SRSApproval extends HttpServlet {
+public class GetSRSByVersion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,32 +39,49 @@ public class SRSApproval extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       HttpSession session=request.getSession();
-       String pno=(String)session.getAttribute("pno");
-       String eshid=(String)session.getAttribute("eid");
-       
+        response.setContentType("application/pdf");
+        response.setHeader("Content-disposition","inline; filename=SRS.pdf" );
+
+        HttpSession session=request.getSession();
+        String pno=(String)session.getAttribute("pno");
+        String version=request.getParameter("version");
+        
+        System.out.println(version+"/"+pno);
+        
+        Connection con=DatabaseConnection.createConnection();
+        
         try {
-            Connection con=DatabaseConnection.createConnection();
-            System.out.println("Connection Established");
-            
-            PreparedStatement ps=con.prepareStatement("select docno from srs where pno='"+pno+"'");
-            ResultSet rs=ps.executeQuery();
-            String docno=null;
-            if(rs.next())
-                docno=rs.getString("DOCNO");
-            
-            ps=con.prepareStatement("update srsapprovedby set status='approved' where stkid='"+eshid+"' and srsversion='"+Project.getSRSVersionByDOCID(docno)+"' and docno='"+docno+"'");
-            rs=ps.executeQuery();
-            
-            
-            con.close();
+   
+        //InputStream inputStream = null; // input stream of the upload file
+        ResultSet rset=null;
+        ServletOutputStream os = response.getOutputStream();
+        System.out.println("SOS done");
+        PreparedStatement pstmt = con.prepareStatement("Select pdffile from versionhistory v,srs s where s.docno=v.docno and s.pno='"+pno+"' and v.srsversion='"+version+"'");
+        //pstmt.setString(1, bookId.trim());
+        rset = pstmt.executeQuery();
+        System.out.println("Query execution done");
+        if (rset.next()){
+                Blob blob = rset.getBlob("pdffile");
+                InputStream inputStream = blob.getBinaryStream();
+                //OutputStream outputStream = new FileOutputStream(filePath);
+ 
+                int bytesRead = -1;
+                byte[] buffer = new byte[4096];
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    os.write(buffer, 0, bytesRead);
+                }
+
+            System.out.println("File Output is done");
+            //System.out.println(rset.getBytes("srs"));
+        }
+        else
+            System.out.println("File read faild");
+        
             
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Something went wrong in Connection "+ex);
         }
-        
-        response.sendRedirect("filexweb/SubWall.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

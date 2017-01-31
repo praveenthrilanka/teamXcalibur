@@ -106,6 +106,31 @@ public class Stakeholder {
                  rs.getString("STATUS"));
         
      }
+    
+      public static void setStakeholders(String pno,String version){
+
+        ArrayList<Stakeholder> stakeholder=Stakeholder.getStakeholders(pno,String.valueOf(Integer.parseInt(version)-1));
+        System.out.print("Added"+version+"Size"+stakeholder.size());
+        
+        Connection con=DatabaseConnection.createConnection();
+        try {
+            Stakeholder s=null;
+            for(int x=0;x<stakeholder.size();x++)
+            {
+                s=stakeholder.get(x);
+                System.out.println(s.getName()+"Added"+version);
+                PreparedStatement ps=con.prepareStatement("insert into srsapprovedby values((SELECT docno FROM srs WHERE pno = '"+pno+"'),'"+version+"','"+s.getEmpid()+"','"+s.getPriorityno()+"','')");
+                ps.executeQuery();
+            }
+            
+           
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+       
+    }
   
     
 }

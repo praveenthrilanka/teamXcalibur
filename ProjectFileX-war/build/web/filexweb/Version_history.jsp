@@ -1,3 +1,4 @@
+<%@page import="org.sampath.filex.web.actions.SRS"%>
 <%@page import="org.sampath.filex.web.actions.Stakeholder"%>
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
@@ -26,7 +27,7 @@
             Employee ba=Employee.getEmployee(p.getBaid());
             Employee msd=Employee.getEmployee(p.getMsdid());
             Employee pm=Employee.getEmployee(p.getPmid());
-           
+            
         
         %>
         
@@ -44,7 +45,7 @@
 
                             <div class="uprofile_wall_posts col-md-12 col-sm-12 col-xs-12">
                                 <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">
-                                    <img src="images/person-4.jpg" class="" alt="">
+                                    <img src="../GetIconByID?id=<% out.print(pm.getEmployeeid()); %>" class="" alt="">
                                 </div>
                                 <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">					
                                     <div class="username">
@@ -70,7 +71,7 @@
                                     <div class="clearfix"></div>
                                     <div class="comment">
                                         <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">
-                                            <img data-src-retina="images/person-4.jpg" data-src="images/person-4.jpg" src="images/person-4.jpg" alt="">
+                                            <img src="../GetIconByID?id=<% out.print(pm.getEmployeeid()); %>" alt="">
                                         </div>
                                         <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">					
                                             <div class="username">
@@ -80,7 +81,7 @@
                                                 <span class="bold">Added Stakeholders</span><br/>
                                                 
                                                 <%
-                                                 ArrayList<Stakeholder> s=Stakeholder.getStakeholders(pno, "1");
+                                                ArrayList<Stakeholder> s=Stakeholder.getStakeholders(pno, "1");
                                                 Stakeholder sh;
                                                 for(int x=0;x<s.size();x++){
                                                     sh=s.get(x);
@@ -92,8 +93,7 @@
                                             <div class="info-details">
                                                 <ul class="list-unstyled list-inline">
                                                     <li><a href="#" class="text-muted">8 Minutes ago</a></li>
-                                                    <li><a href="#" class="text-orange"><i class="fa fa-heart"></i> Liked</a></li>
-                                                    <li><a href="#" class="text-muted">More</a></li>
+                                                    
                                                 </ul>
                                             </div>
 
@@ -101,53 +101,71 @@
                                         <div class="clearfix"></div>						
                                     </div>
                                     
+                                    <%
+                                        ArrayList<SRS> srs=SRS.getSRSDetails(pno);
+                                        SRS d;
+                                        for(int x=0;x<srs.size();x++)
+                                        {
+                                            d=srs.get(x);
+                                            s=Stakeholder.getStakeholders(pno, d.getSrsversion());
+                                        
+                                    %>        
+                                            
                                     <div class="comment">
                                         <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">
-                                            <img data-src-retina="images/person-4.jpg" data-src="images/person-4.jpg" src="images/person-4.jpg" alt="">
+                                            <img src="../GetIconByID?id=<% out.print(ba.getEmployeeid()); %>" alt="">
                                         </div>
                                         <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">					
                                             <div class="username">
                                                 <span>Business Analyst </span><span class="bold"><% out.print(ba.getEmployeename()); %></span> <span>Uploaded the</span> <span class="bold">SRS</span>
                                             </div>
                                             <div class="info text-muted">
-                                                <span class="bold">SRS Version : </span><span class="bold">1</span>
+                                                <span class="bold"></span><span class="bold"><a href="../GetSRSByVersion?version=<% out.print(d.getSrsversion()); %>">SRS Version <% out.print(d.getSrsversion()); %></a></span>
                                             </div>	
                                             <div class="info-details">
                                                 <ul class="list-unstyled list-inline">
-                                                    <li><a href="#" class="text-muted">10 Minutes ago</a></li>
-                                                    <li><a href="#" class="text-orange"><i class="fa fa-heart-o"></i> Like</a></li>
-                                                    <li><a href="#" class="text-muted">More</a></li>
+                                                    <li><a href="#" class="text-muted"><% out.print(d.getDate()); %></a></li>
                                                 </ul>
                                             </div>
 
                                         </div>	
                                         <div class="clearfix"></div>						
                                     </div>
-                                    
+                                    <%
+                                        for(int y=0;y<s.size();y++)
+                                        {
+                                            sh=s.get(y);
+                                            String status=sh.getStatus();
+                                            if(status==null)
+                                                status="No response";
+                                     %>
                                     <div class="clearfix"></div>
-                                    <div class="comment">
+                                    <div class="comment" style="padding-left: 2cm;">
                                         <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">
-                                            <img data-src-retina="images/person-4.jpg" data-src="images/person-4.jpg" src="images/person-4.jpg" alt="">
+                                            <img src="../GetIconByID?id=<% out.print(sh.getEmpid()); %>" alt="">
                                         </div>
-                                        <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">					
+                                        <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">
+                                            
                                             <div class="username">
-                                                <span>Ext. Stakeholder </span><span class="bold">Amarasiri Peris (IT Systems)</span> <span>Approved</span> <span>the Document</span>
+                                                <span>External Stakeholder </span><span class="bold"><% out.print(sh.getName()); %> (<% out.print(sh.getDepartment()); %>)</span> <span><% out.print(status); %></span>
                                             </div>
-                                            <div class="info text-muted">
-                                                <span class="bold">Comment : </span><span>Test comment</span>
-                                            </div>	
+                                            
+                                            	
                                             <div class="info-details">
                                                 <ul class="list-unstyled list-inline">
-                                                    <li><a href="#" class="text-muted">10 Minutes ago</a></li>
-                                                    <li><a href="#" class="text-orange"><i class="fa fa-heart-o"></i> Like</a></li>
-                                                    <li><a href="#" class="text-muted">More</a></li>
+                                                    <li><a href="#" class="text-muted"></a></li>
+                                                    
                                                 </ul>
                                             </div>
 
                                         </div>	
                                         <div class="clearfix"></div>						
                                     </div>
+                                            <%
+                                                }
+                                            %>
                                    
+                                    <% }%>
                                     <div class="clearfix"></div>	
 
                                 </div>
