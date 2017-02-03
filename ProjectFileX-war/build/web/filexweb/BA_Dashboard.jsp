@@ -59,7 +59,7 @@
 											<div class="blur"></div>
 											<div class="caption-text">
 												<h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">Other</h3>
-												<button type="button" class="btn btn-warning" style="margin-top:10; width:140;" onclick="window.location.href='#'">Notes</button><br/>
+												<button type="button" class="btn btn-warning" style="margin-top:10; width:140;" onclick="window.location.href='Version_history.jsp'">View History</button><br/>
 												<button type="button" class="btn btn-warning" style="margin-top:15; width:140;" onclick="window.location.href='#'">Reminders</button>
 											</div>
 										</div>

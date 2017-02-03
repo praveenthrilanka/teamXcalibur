@@ -20,54 +20,24 @@ import java.util.logging.Logger;
 public class SRS {
 
     
-    private String projectname;
-    private String msdname;
-    private String pmname;
-    private String baname;
+    private String pno;
     private String srsversion;
-    private String description;
-    private String datentime;
+    private String change;
+    private String date;
     
-    public SRS(String projectname, String msdname, String pmname, String baname, String srsversion, String description, String datentime) {
-        this.projectname = projectname;
-        this.msdname = msdname;
-        this.pmname = pmname;
-        this.baname = baname;
+    public SRS(String pno, String srsversion, String change, String date) {
+        this.pno = pno;
         this.srsversion = srsversion;
-        this.description = description;
-        this.datentime = datentime;
+        this.change = change;
+        this.date = date;
     }
     
-    public String getProjectname() {
-        return projectname;
+    public String getPno() {
+        return pno;
     }
 
-    public void setProjectname(String projectname) {
-        this.projectname = projectname;
-    }
-
-    public String getMsdname() {
-        return msdname;
-    }
-
-    public void setMsdname(String msdname) {
-        this.msdname = msdname;
-    }
-
-    public String getPmname() {
-        return pmname;
-    }
-
-    public void setPmname(String pmname) {
-        this.pmname = pmname;
-    }
-
-    public String getBaname() {
-        return baname;
-    }
-
-    public void setBaname(String baname) {
-        this.baname = baname;
+    public void setPno(String pno) {
+        this.pno = pno;
     }
 
     public String getSrsversion() {
@@ -78,30 +48,35 @@ public class SRS {
         this.srsversion = srsversion;
     }
 
-    public String getDescription() {
-        return description;
+    public String getChange() {
+        return change;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setChange(String change) {
+        this.change = change;
     }
 
-    public String getDatentime() {
-        return datentime;
+    public String getDate() {
+        return date;
     }
 
-    public void setDatentime(String datentime) {
-        this.datentime = datentime;
+    public void setDate(String date) {
+        this.date = date;
     }
+
+
+  
+    
     
       
-    public static ArrayList<SRS> getSRSDetails(String srsid){
+    public static ArrayList<SRS> getSRSDetails(String pno){
         ArrayList<SRS> srsdetails=new ArrayList<SRS>();
 
         Connection con=DatabaseConnection.createConnection();
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from employee e,comments c where e.EMPID=c.EMPID and c.SRSNO='"+srsid+"' order by comno desc");
+            PreparedStatement ps=con.prepareStatement("select v.docno,v.srsversion,v.changes,v.modifieddate from versionhistory v,srs s \n" +
+                                                      "where v.docno=s.docno and s.pno='"+pno+"' order by v.srsversion desc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             SRS s;
@@ -120,13 +95,10 @@ public class SRS {
  
     public static SRS getSRSDetailsFromRS(ResultSet rs) throws SQLException {
          return new SRS(
-                 rs.getString("COMNO"),
-                 rs.getString("DESCRIPTION"),
-                 rs.getString("CREATEDDATENTIME"),
-                 rs.getString("EMPID"),
-                 rs.getString("SRSNO"),
-                 rs.getString("AGRNO"),
-                 rs.getString("EMPNAME"));
+                 rs.getString("DOCNO"),
+                 rs.getString("SRSVERSION"),
+                 rs.getString("CHANGES"),
+                 rs.getString("MODIFIEDDATE"));
         
      } 
     

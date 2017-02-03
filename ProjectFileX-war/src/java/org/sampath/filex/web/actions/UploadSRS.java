@@ -123,7 +123,8 @@ public class UploadSRS extends HttpServlet {
             statement.executeUpdate();
                 System.out.println("VERSIONHISTORY table entry is inserted");
 
-            
+            if(!srsversion.equals("1"))
+                Stakeholder.setStakeholders(pno, srsversion);
             
             con.close();
             response.sendRedirect("filexweb/message.jsp?message=SRS uploaded successfully..!");
