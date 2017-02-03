@@ -7,6 +7,7 @@
 <!-- START CONTENT -->
 <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+        
 
                     <%
                         String srsid=(String)session.getAttribute("srsid");
@@ -66,6 +67,13 @@
                 <section class="wrapper" style='margin-top:50px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
 				<div class="login-forms" style ="">
                                         <h4>Add Stakeholders</h4>
+                                        <%   
+                                           boolean isStkNull= Project.getAddedStakeholders(pno);
+                                           
+                                           if(isStkNull==false)
+                                           {
+                                            
+                                        %>
 					<h5><strong>Define SRS flow</strong></h5>
 
                                         <table align="center" width="80%" style="border-collapse: separate;border-spacing: 0 1.5em;">
@@ -125,21 +133,84 @@
                                             <br/>
                                         
                                     </form>
+                                                                                 
+                                    <%
+                                    }
+                                    else
+                                    {        
+                                    %>
+                                    
+                                    
+                                    <script type="text/javascript">
+                                        window.alert("SRS path is already defined!")
+                                    </script>
+                                                    
+                                    
+                                    
+                                    <h5><strong>Update the SRS Flow</strong></h5>
+
+                                        <table align="center" width="80%" style="border-collapse: separate;border-spacing: 0 1.5em;">
+                                    <form name="addstk" action="../UpdateStakeholders" method="post" id="ContactForm">
                                             
+                                            <tr>
+                                                    <td><strong>Employee</strong></td>
+                                                    <td><strong>Priority No.</strong></td>
+                                            </tr> 
+                                            
+                                            <%
+                                                ArrayList<Employee> sh=Employee.getStakeHolders();
+                                                //String prefList = s.getCompanies();
+                                                //ArrayList<Company> list = CompanyDA.getCompany(s.getField()) ; 
+                                                int num = sh.size();
+                                                if(num==0){
+                                                    out.print("Sorry. No Stake Holders are available.!");
+                                                }
+                                                else{
+                                                    for(int i=0;i<num;i++){
+                                                        //prefList=prefList.replace(list.get(i).getShortName(),""+(i+1));
+
+                                            %>
+                                                  
+                                                <tr>
+                                                    <td>
+                                                <select name="<%="selection"+i %>" id="<%=i %>" onChange="update(<%=num %>);">
+                                                    <option value="0">Select</option>
+
+                                                    <%
+                                                        for(int j=0;j<num;j++){
+
+                                                    %>
+
+                                                    <option value =<%=sh.get(j).getEmployeeid() %> ><%=sh.get(j).getEmployeename() %> (<%=sh.get(j).getDepartement() %>) </option>
+                                                    <%
+                                                        }
+                                                    %>
+                                                </select>
+                                                    </td>
+                                                    <td>
+                                                <input type="text" name="prio<%=i %>" size="2"/>
+                                                
+                                            
+                                            
+                                            <%
+                                                   }
+                                               }
+                                            %>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <br/><br/>
+                                            <input type="hidden" id="count" name="count" value="<% out.print(num); %>" />
+                                            <input type="hidden" id="docno" name="docno" value="<% out.print(srsid); %>" />
+                                            <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Add">
+                                            <br/>
+                                        
+                                    </form>
+                                    
+                                    <%}%>        
 				</div>
                 </section></section>
 
-<section id="main-content" class=" ">
-    <section class="wrapper" style='margin-top:6%; margin-left: 5%; display:inline-block;width:100%;padding:25px 0 0 15px;'>
-
-         
-        <div class="col-sm-10">
-                
-    </div>
-
-
-    </section>
-</section>
 <!-- END CONTENT -->
 
 
