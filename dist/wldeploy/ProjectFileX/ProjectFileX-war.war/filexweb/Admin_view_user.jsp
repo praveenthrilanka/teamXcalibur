@@ -1,4 +1,5 @@
-<%@page import="org.sampath.filex.web.actions.Project"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="org.sampath.filex.web.actions.Employee"%>
 <%@ include file="Up.jsp" %>
 <%@ include file="Admin_Sidebar.jsp" %>
 
@@ -8,10 +9,7 @@
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 
 <%
-    ArrayList<Employee> employee = Employee.getProjectByPMid((String) session.getAttribute("eid"));
-
-    String arr1[] = {"bs-calltoaction bs-calltoaction-warning", "bs-calltoaction bs-calltoaction-primary", "bs-calltoaction bs-calltoaction-info", "bs-calltoaction bs-calltoaction-success"};
-    String arr2[] = {"btn btn-lg btn-block btn-warning", "btn btn-lg btn-block btn-primary", "btn btn-lg btn-block btn-info", "btn btn-lg btn-block btn-success"};
+    ArrayList<Employee> employee = Employee.getEmployee();
 %>
 
 <section id="main-content" class=" ">
@@ -48,137 +46,36 @@
                             </div>
                             <br/>
                             <div class="row">
+
+
+                                <%
+                                    Employee emp;
+                                    for (int x = 0; x < employee.size(); x++) {
+                                        emp = employee.get(x);
+                                %>
                                 <div class="col-sm-4 col-md-3">
                                     <div class="team-member ">
                                         <div class="team-img">
-                                            <img class="img-responsive" src="images/person-4.jpg" alt="">
+                                            <img class="img-responsive" width="200px" height="200px" src="../GetIconByID?id=<%out.print(emp.getEmployeeid());%>" alt="">
                                         </div>
                                         <div class="team-info">
-                                            <h3>Iraj Weerarathna</h3>
-                                            <span>Engineering</span>
+                                            <h4><% out.print(emp.getEmployeename()); %></h4>
+                                            <span><% out.print(emp.getPosition()); %></span>
                                         </div>
-                                        <p>Building amazing and powerful tools is our motto.</p>
+                                        <p><% out.print(emp.getDepartmentid()); %></p>
                                         <ul class="social-icons list-inline list-unstyled">
                                             <li><a href="Admin_edit_user.jsp"><i class="fa fa-gear icon-bordered icon-primary icon-xs"></i></a></li>
                                             <li><a href="#"><i class="fa fa-trash-o icon-bordered icon-primary icon-xs"></i></a></li>
                                         </ul>
-                                    </div>
+                                    </div>       
                                 </div>
-                                <div class="col-sm-4 col-md-3">
-                                    <div class="team-member ">
-                                        <div class="team-img">
-                                            <img class="img-responsive" src="images/person-4.jpg" alt="">
-                                        </div>
-                                        <div class="team-info">
-                                            <h3>Malith Perera</h3>
-                                            <span>Design Manager</span>
-                                        </div>
-                                        <p>Building amazing and powerful tools is our motto.</p>
-                                        <ul class="social-icons list-inline list-unstyled">
-                                            <li><a href="Admin_edit_user.jsp"><i class="fa fa-gear icon-bordered icon-primary icon-xs"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-trash-o icon-bordered icon-primary icon-xs"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-3">
-                                    <div class="team-member ">
-                                        <div class="team-img">
-                                            <img class="img-responsive" src="images/person-4.jpg" alt="">
-                                        </div>
-                                        <div class="team-info">
-                                            <h3>Dasun Viduranga</h3>
-                                            <span>Designer</span>
-                                        </div>
-                                        <p>Building amazing and powerful tools is our motto.</p>
-                                        <ul class="social-icons list-inline list-unstyled">
-                                            <li><a href="Admin_edit_user.jsp"><i class="fa fa-gear icon-bordered icon-primary icon-xs"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-trash-o icon-bordered icon-primary icon-xs"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-3">
-                                    <div class="team-member ">
-                                        <div class="team-img">
-                                            <img class="img-responsive" src="images/person-4.jpg" alt="">
-                                        </div>
-                                        <div class="team-info">
-                                            <h3>Saman Gamage</h3>
-                                            <span>UI/UX</span>
-                                        </div>
-                                        <p>Building amazing and powerful tools is our motto.</p>
-                                        <ul class="social-icons list-inline list-unstyled">
-                                            <li><a href="Admin_edit_user.jsp"><i class="fa fa-gear icon-bordered icon-primary icon-xs"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-trash-o icon-bordered icon-primary icon-xs"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <%
+                                    }
+                                %>
+
+
                             </div>
-                            <div class="row">
-                                <div class="col-sm-4 col-md-3">
-                                    <div class="team-member ">
-                                        <div class="team-img">
-                                            <img class="img-responsive" src="images/person-4.jpg" alt="">
-                                        </div>
-                                        <div class="team-info">
-                                            <h3>Bathiya Jayakodi</h3>
-                                            <span>Engineering</span>
-                                        </div>
-                                        <p>Building amazing and powerful tools is our motto.</p>
-                                        <ul class="social-icons list-inline list-unstyled">
-                                            <li><a href="Admin_edit_user.jsp"><i class="fa fa-gear icon-bordered icon-primary icon-xs"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-trash-o icon-bordered icon-primary icon-xs"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-3">
-                                    <div class="team-member ">
-                                        <div class="team-img">
-                                            <img class="img-responsive" src="images/person-4.jpg" alt="">
-                                        </div>
-                                        <div class="team-info">
-                                            <h3>Sadun Perera</h3>
-                                            <span>Design Manager</span>
-                                        </div>
-                                        <p>Building amazing and powerful tools is our motto.</p>
-                                        <ul class="social-icons list-inline list-unstyled">
-                                            <li><a href="Admin_edit_user.jsp"><i class="fa fa-gear icon-bordered icon-primary icon-xs"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-trash-o icon-bordered icon-primary icon-xs"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-3">
-                                    <div class="team-member ">
-                                        <div class="team-img">
-                                            <img class="img-responsive" src="images/person-4.jpg" alt="">
-                                        </div>
-                                        <div class="team-info">
-                                            <h3>Lahiru Perera</h3>
-                                            <span>Designer</span>
-                                        </div>
-                                        <p>Building amazing and powerful tools is our motto.</p>
-                                        <ul class="social-icons list-inline list-unstyled">
-                                            <li><a href="Admin_edit_user.jsp"><i class="fa fa-gear icon-bordered icon-primary icon-xs"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-trash-o icon-bordered icon-primary icon-xs"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-md-3">
-                                    <div class="team-member ">
-                                        <div class="team-img">
-                                            <img class="img-responsive" src="images/person-4.jpg" alt="">
-                                        </div>
-                                        <div class="team-info">
-                                            <h3>Chilli Thilanka</h3>
-                                            <span>UI/UX</span>
-                                        </div>
-                                        <p>Building amazing and powerful tools is our motto.</p>
-                                        <ul class="social-icons list-inline list-unstyled">
-                                            <li><a href="Admin_edit_user.jsp"><i class="fa fa-gear icon-bordered icon-primary icon-xs"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-trash-o icon-bordered icon-primary icon-xs"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+
 
                         </div>
                     </div>
