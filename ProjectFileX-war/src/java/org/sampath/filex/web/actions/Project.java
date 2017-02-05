@@ -265,4 +265,32 @@ public class Project {
   
     }
     
+    public static Boolean getAddedStakeholders(String pno){
+            
+            
+        Connection con=DatabaseConnection.createConnection();
+        boolean added=false;
+        try {
+            System.out.println("Execution strt");
+            PreparedStatement ps=con.prepareStatement("select * from srsapprovedby a, srs s where s.docno=a.docno and s.pno='"+pno+"'");
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done");
+                        
+                System.out.println(rs.next());
+                 added=rs.next();
+                System.out.println("completed");
+                
+            
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+            return added ;
+  
+    }
+    
+    
+    
+    
 }
