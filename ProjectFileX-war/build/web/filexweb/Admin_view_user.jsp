@@ -7,6 +7,13 @@
 <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 
+<%
+    ArrayList<Employee> employee = Employee.getProjectByPMid((String) session.getAttribute("eid"));
+
+    String arr1[] = {"bs-calltoaction bs-calltoaction-warning", "bs-calltoaction bs-calltoaction-primary", "bs-calltoaction bs-calltoaction-info", "bs-calltoaction bs-calltoaction-success"};
+    String arr2[] = {"btn btn-lg btn-block btn-warning", "btn btn-lg btn-block btn-primary", "btn btn-lg btn-block btn-info", "btn btn-lg btn-block btn-success"};
+%>
+
 <section id="main-content" class=" ">
     <section class="wrapper" style='margin-top:50px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

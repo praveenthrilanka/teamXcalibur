@@ -13,7 +13,7 @@
             <h4>Edit User</h4>
             <h5><strong></strong></h5>
 
-            <form name="adduser" method="post" action="../SetIcon" enctype="multipart/form-data">
+            <form name="adduser" method="get" action="../EditUser" enctype="multipart/form-data">
 
                 <center><img src="images/user_edit.png" id="output" width="130" height="130"></center>
                 <label>User Id :</label>
@@ -22,16 +22,16 @@
                 <label>User Name :</label>
                 <input type="text" id="name" name="name" value="" placeholder="Enter user name here" required=""><br>
                 <br><div>
-                <table align="center" width="70%">
-                <tbody><tr>
-                <td><label><input type="checkbox" value="">Manager SD</label></td>
-                <td><label><input type="checkbox" value="">Project Manager</label><br></td>
-                </tr>
-                <tr>
-                <td><label><input type="checkbox" value="">Business Analyst</label></td>
-                <td><label><input type="checkbox" value="">Stakeholder</label></td>
-                </tr>
-                </tbody></table>
+                    <table align="center" width="70%">
+                        <tbody><tr>
+                                <td><label><input type="checkbox" value="y" name="msd">Manager SD</label></td>
+                                <td><label><input type="checkbox" value="y" name="pm">Project Manager</label><br></td>
+                            </tr>
+                            <tr>
+                                <td><label><input type="checkbox" value="y" name="ba">Business Analyst</label></td>
+                                <td><label><input type="checkbox" value="y" name="stk">Stakeholder</label></td>
+                            </tr>
+                        </tbody></table>
                 </div>
                 <label>Email :</label>
                 <input type="text" id="email" name="email" value="" placeholder="Enter email here"><br>

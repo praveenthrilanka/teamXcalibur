@@ -79,6 +79,10 @@
         <servlet-name>GetSRSByVersion</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.GetSRSByVersion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditUser</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.EditUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignIn</servlet-name>
         <url-pattern>/SignIn</url-pattern>
@@ -154,6 +158,10 @@
     <servlet-mapping>
         <servlet-name>GetSRSByVersion</servlet-name>
         <url-pattern>/GetSRSByVersion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditUser</servlet-name>
+        <url-pattern>/EditUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
