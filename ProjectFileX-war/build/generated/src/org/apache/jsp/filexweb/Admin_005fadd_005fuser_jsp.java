@@ -637,7 +637,7 @@ out.print(e.getDepartement());
       out.write("            <h4>Add User</h4>\r\n");
       out.write("            <h5><strong></strong></h5>\r\n");
       out.write("\r\n");
-      out.write("            <form name=\"adduser\" method=\"get\" action=\"../SetUser\" enctype=\"multipart/form-data\">\r\n");
+      out.write("            <form name=\"adduser\" method=\"get\" action=\"../AddEmp\" enctype=\"multipart/form-data\">\r\n");
       out.write("\r\n");
       out.write("                <center><img src=\"images/user_add.png\" name=\"icon\" id=\"output\" width=\"130\" height=\"130\"></center>\r\n");
       out.write("                <label>User Id :</label>\r\n");

@@ -7,12 +7,6 @@ package org.sampath.filex.web.actions;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,50 +31,19 @@ public class SetUser extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String id = request.getParameter("id");
-        String name = request.getParameter("name");
-        String msd = request.getParameter("msd");
-        String pm = request.getParameter("pm");
-        String ba = request.getParameter("ba");
-        String stk = request.getParameter("stk");
-        String email = request.getParameter("email");
+        String pno=request.getParameter("pno");
+        String direct=request.getParameter("direct");
         
-        String pw = EncryptPassword.cryptWithMD5(id);
-        System.out.println(pw);
-        try {
-            Connection con = DatabaseConnection.createConnection();
-            System.out.println("Connection Established");
-
-            if ("y".equals(msd) && "y".equals(ba) || "y".equals(msd) && "y".equals(stk) || "y".equals(pm) && "y".equals(ba) || "y".equals(pm) && "y".equals(stk) || "y".equals(ba) && "y".equals(stk) || "y".equals(msd) && "y".equals(pm) && "y".equals(ba) || "y".equals(msd) && "y".equals(pm) && "y".equals(stk) || "y".equals(pm) && "y".equals(ba) && "y".equals(stk) || "y".equals(msd) && "y".equals(ba) && "y".equals(stk) || "y".equals(msd) && "y".equals(pm) && "y".equals(ba) && "y".equals(stk)) {
-                con.close();
-                response.sendRedirect("filexweb/message.jsp?message=Invalid Entry. Please try again!");
-            }
-
-            if ("y".equals(msd) && "y".equals(pm)) {
-                PreparedStatement ps = con.prepareStatement("insert into employee(EMPID,EMPNAME,PASSWORD,BA,PM,MSD,EXTSH,EMAIL) values('" + id + "','" + name + "','" + pw + "','n','y','y','n','" + email + "')");
-                ps.executeQuery();
-            } else if ("y".equals(msd)) {
-                PreparedStatement ps = con.prepareStatement("insert into employee(EMPID,EMPNAME,PASSWORD,BA,PM,MSD,EXTSH,EMAIL) values('" + id + "','" + name + "','" + pw + "','n','n','y','n','" + email + "')");
-                ps.executeQuery();
-            } else if ("y".equals(pm)) {
-                PreparedStatement ps = con.prepareStatement("insert into employee(EMPID,EMPNAME,PASSWORD,BA,PM,MSD,EXTSH,EMAIL) values('" + id + "','" + name + "','" + pw + "','n','y','n','n','" + email + "')");
-                ps.executeQuery();
-            } else if ("y".equals(ba)) {
-                PreparedStatement ps = con.prepareStatement("insert into employee(EMPID,EMPNAME,PASSWORD,BA,PM,MSD,EXTSH,EMAIL) values('" + id + "','" + name + "','" + pw + "','y','n','n','n','" + email + "')");
-                ps.executeQuery();
-            } else if ("y".equals(stk)) {
-                PreparedStatement ps = con.prepareStatement("insert into employee(EMPID,EMPNAME,PASSWORD,BA,PM,MSD,EXTSH,EMAIL) values('" + id + "','" + name + "','" + pw + "','n','n','n','y','" + email + "')");
-                ps.executeQuery();
-            }
-
-            System.out.println("Insert Employee");
-            con.close();
-            response.sendRedirect("filexweb/message.jsp?message=User added successfully.!");
-        } catch (SQLException ex) {
-            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection " + ex);
-        }
-
+        HttpSession session=request.getSession();
+        session.setAttribute("pno", pno);
+        if(direct.equals("ba"))
+        response.sendRedirect("filexweb/BA_Dashboard.jsp");
+        else if(direct.equals("pm"))
+        response.sendRedirect("filexweb/PM_Dashboard.jsp");
+        else if(direct.equals("esh"))
+        response.sendRedirect("filexweb/ESH_Dashboard.jsp");
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -13,7 +13,7 @@
             <h4>Add User</h4>
             <h5><strong></strong></h5>
 
-            <form name="adduser" method="post" action="../SetUser" enctype="multipart/form-data">
+            <form name="adduser" method="get" action="../AddEmp" enctype="multipart/form-data">
 
                 <center><img src="images/user_add.png" name="icon" id="output" width="130" height="130"></center>
                 <label>User Id :</label>
