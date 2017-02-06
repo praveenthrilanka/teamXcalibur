@@ -60,11 +60,14 @@
                                         </div>
                                         <div class="team-info">
                                             <h4><% out.print(emp.getEmployeename()); %></h4>
-                                            <span><% out.print(emp.getPosition()); %></span>
+                                            <span style="color:black">User ID : </span><span><%out.print(emp.getEmployeeid());%></span><br/>
+                                            <span><% out.print(emp.getPosition()); %></span><br/>
+                                            <span><% out.print(emp.getEmail()); %></span><br/>    
+
                                         </div>
                                         <p><% out.print(emp.getDepartmentid()); %></p>
                                         <ul class="social-icons list-inline list-unstyled">
-                                            <li><a href="Admin_edit_user.jsp"><i class="fa fa-gear icon-bordered icon-primary icon-xs"></i></a></li>
+                                            <li><a href="Admin_edit_user.jsp?id=<%out.print(emp.getEmployeeid());%>&email=<%out.print(emp.getEmail());%>"><i class="fa fa-gear icon-bordered icon-primary icon-xs"></i></a></li>
                                             <li><a href="#"><i class="fa fa-trash-o icon-bordered icon-primary icon-xs"></i></a></li>
                                         </ul>
                                     </div>       

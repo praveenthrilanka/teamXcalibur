@@ -36,6 +36,7 @@ public class EditUser extends HttpServlet {
 
         String id = request.getParameter("id");
         String name = request.getParameter("name");
+        String dept = request.getParameter("dept");
         String msd = request.getParameter("msd");
         String pm = request.getParameter("pm");
         String ba = request.getParameter("ba");
@@ -55,19 +56,19 @@ public class EditUser extends HttpServlet {
             }
 
             if ("y".equals(msd) && "y".equals(pm)) {
-                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='"+name+"',PASSWORD='"+pw+"',BA='n',PM='y',MSD='y',EXTSH='n',EMAIL='"+email+"' where EMPID='"+id+"'");
+                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='"+name+"',PASSWORD='"+pw+"',DEPID='"+dept+"',BA='n',PM='y',MSD='y',EXTSH='n',EMAIL='"+email+"' where EMPID='"+id+"'");
                 ps.executeQuery();
             } else if ("y".equals(msd)) {
-                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='"+name+"',PASSWORD='"+pw+"',BA='n',PM='n',MSD='y',EXTSH='n',EMAIL='"+email+"' where EMPID='"+id+"'");
+                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='"+name+"',PASSWORD='"+pw+"',DEPID='"+dept+"',BA='n',PM='n',MSD='y',EXTSH='n',EMAIL='"+email+"' where EMPID='"+id+"'");
                 ps.executeQuery();
             } else if ("y".equals(pm)) {
-                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='"+name+"',PASSWORD='"+pw+"',BA='n',PM='y',MSD='n',EXTSH='n',EMAIL='"+email+"' where EMPID='"+id+"'");
+                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='"+name+"',PASSWORD='"+pw+"',DEPID='"+dept+"',BA='n',PM='y',MSD='n',EXTSH='n',EMAIL='"+email+"' where EMPID='"+id+"'");
                 ps.executeQuery();
             } else if ("y".equals(ba)) {
-                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='"+name+"',PASSWORD='"+pw+"',BA='y',PM='n',MSD='n',EXTSH='n',EMAIL='"+email+"' where EMPID='"+id+"'");
+                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='"+name+"',PASSWORD='"+pw+"',DEPID='"+dept+"',BA='y',PM='n',MSD='n',EXTSH='n',EMAIL='"+email+"' where EMPID='"+id+"'");
                 ps.executeQuery();
             } else if ("y".equals(stk)) {
-                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='"+name+"',PASSWORD='"+pw+"',BA='n',PM='n',MSD='n',EXTSH='y',EMAIL='"+email+"' where EMPID='"+id+"'");
+                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='"+name+"',PASSWORD='"+pw+"',DEPID='"+dept+"',BA='n',PM='n',MSD='n',EXTSH='y',EMAIL='"+email+"' where EMPID='"+id+"'");
                 ps.executeQuery();
             }
 

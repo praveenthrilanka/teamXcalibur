@@ -38,6 +38,7 @@ public class AddEmp extends HttpServlet {
 
         String id = request.getParameter("id");
         String name = request.getParameter("name");
+        String dept = request.getParameter("dept");
         String msd = request.getParameter("msd");
         String pm = request.getParameter("pm");
         String ba = request.getParameter("ba");
@@ -56,19 +57,19 @@ public class AddEmp extends HttpServlet {
             }
 
             if ("y".equals(msd) && "y".equals(pm)) {
-                PreparedStatement ps = con.prepareStatement("insert into employee(EMPID,EMPNAME,PASSWORD,BA,PM,MSD,EXTSH,EMAIL) values('" + id + "','" + name + "','" + pw + "','n','y','y','n','" + email + "')");
+                PreparedStatement ps = con.prepareStatement("insert into employee(EMPID,EMPNAME,PASSWORD,DEPID,BA,PM,MSD,EXTSH,EMAIL) values('" + id + "','" + name + "','" + pw + "','" + dept + "','n','y','y','n','" + email + "')");
                 ps.executeQuery();
             } else if ("y".equals(msd)) {
-                PreparedStatement ps = con.prepareStatement("insert into employee(EMPID,EMPNAME,PASSWORD,BA,PM,MSD,EXTSH,EMAIL) values('" + id + "','" + name + "','" + pw + "','n','n','y','n','" + email + "')");
+                PreparedStatement ps = con.prepareStatement("insert into employee(EMPID,EMPNAME,PASSWORD,DEPID,BA,PM,MSD,EXTSH,EMAIL) values('" + id + "','" + name + "','" + pw + "','" + dept + "','n','n','y','n','" + email + "')");
                 ps.executeQuery();
             } else if ("y".equals(pm)) {
-                PreparedStatement ps = con.prepareStatement("insert into employee(EMPID,EMPNAME,PASSWORD,BA,PM,MSD,EXTSH,EMAIL) values('" + id + "','" + name + "','" + pw + "','n','y','n','n','" + email + "')");
+                PreparedStatement ps = con.prepareStatement("insert into employee(EMPID,EMPNAME,PASSWORD,DEPID,BA,PM,MSD,EXTSH,EMAIL) values('" + id + "','" + name + "','" + pw + "','" + dept + "','n','y','n','n','" + email + "')");
                 ps.executeQuery();
             } else if ("y".equals(ba)) {
-                PreparedStatement ps = con.prepareStatement("insert into employee(EMPID,EMPNAME,PASSWORD,BA,PM,MSD,EXTSH,EMAIL) values('" + id + "','" + name + "','" + pw + "','y','n','n','n','" + email + "')");
+                PreparedStatement ps = con.prepareStatement("insert into employee(EMPID,EMPNAME,PASSWORD,DEPID,BA,PM,MSD,EXTSH,EMAIL) values('" + id + "','" + name + "','" + pw + "','" + dept + "','y','n','n','n','" + email + "')");
                 ps.executeQuery();
             } else if ("y".equals(stk)) {
-                PreparedStatement ps = con.prepareStatement("insert into employee(EMPID,EMPNAME,PASSWORD,BA,PM,MSD,EXTSH,EMAIL) values('" + id + "','" + name + "','" + pw + "','n','n','n','y','" + email + "')");
+                PreparedStatement ps = con.prepareStatement("insert into employee(EMPID,EMPNAME,PASSWORD,DEPID,BA,PM,MSD,EXTSH,EMAIL) values('" + id + "','" + name + "','" + pw + "','" + dept + "','n','n','n','y','" + email + "')");
                 ps.executeQuery();
             }
 

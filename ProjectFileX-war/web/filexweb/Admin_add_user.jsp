@@ -16,12 +16,20 @@
             <form name="adduser" method="get" action="../AddEmp" enctype="multipart/form-data">
 
                 <center><img src="images/user_add.png" name="icon" id="output" width="130" height="130"></center>
-                <label>User Id :</label>
-                <input type="text" id="id" name="id" value="" placeholder="Enter user id here" required=""><br>
+                <label>User ID :</label>
+                <input type="text" id="id" name="id" value="" placeholder="Enter user id here" required=""><br/>
                 <br/>
-                <label>User Name :</label>
-                <input type="text" id="name" name="name" value="" placeholder="Enter user name here" required=""><br>
-                <br><div>
+                <label>Name :</label>
+                <input type="text" id="name" name="name" value="" placeholder="Enter user name here" required="">
+                <br/><br/>
+                <label>Department ID :</label>
+                <select id="dept" name="dept" width="200" height="80">
+                    <option value="">Select Department</option>
+                    <option value="it">IT</option>
+                    <option value="mkt">Marketing</option>
+                    <option value="sa">System Audit</option>
+                </select>
+                <br/><br/><div>
                     <table align="center" width="70%">
                         <tbody><tr>
                                 <td><label><input type="checkbox" value="y" name="msd">Manager SD</label></td>
@@ -32,7 +40,7 @@
                                 <td><label><input type="checkbox" value="y" name="stk">Stakeholder</label></td>
                             </tr>
                         </tbody></table>
-                </div>
+                </div><br/>
                 <label>Email :</label>
                 <input type="text" id="email" name="email" value="" placeholder="Enter email here"><br>
                 <br>

@@ -35,14 +35,14 @@
                              </select>
                             <div style="padding:0.8em 7em;"><input type="submit" name="pmassigned" class="btn btn-info btn-block" style="font-size:12pt;" value="Assigned projects"  alt="View currently assigned projects"></div>  
                              <br/>
-                            <label>Business Analyist :</label>
+                            <label>Business Analyst :</label>
                               <select name="ba" width="200" height="80">
-                                  <option value="Select">Select Business Analyist</option>
+                                  <option value="Select">Select Business Analyst</option>
                                   
                                   <%
                                   for(int x=0;x<emp.size();x++){
                                   em=emp.get(x);
-                                  if(em.getPosition().equals("Business Analyist")){
+                                  if(em.getPosition().equals("Business Analyst")){
                                   %>
                                   <option value="<% out.print(em.getEmployeeid()); %>"><% out.print(em.getEmployeename()); %></option>
                                   <%
