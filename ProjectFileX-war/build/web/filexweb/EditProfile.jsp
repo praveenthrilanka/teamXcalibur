@@ -21,8 +21,12 @@
 						
 					    <br/><br/>
                                             <label>Password :</label>
-                                            <input type="text" id="newname" name="pw" placeholder="Enter new password" required>				<br/><br/><br/>
+                                            <input type="password" id="newname" name="pw" placeholder="Enter new password" required>				<br/><br/>
 
+                                            <label>Email :</label>
+                                            <input type="text" id="newname" name="email" placeholder="Enter email address" required>				<br/><br/><br/>
+
+                                            
 						<div class="clearfix"></div>
 						<input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Set">
 						<input style="background-color:FFC682; border:none;" class="btn btn-info btn-block" type="reset" id="reset">

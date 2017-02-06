@@ -65,18 +65,18 @@ public class Mail {
      * @param title message title
      * @param text message content
      */
-    public static void sendmail(String email, String title, String text) {
+    public static void sendmail(String emails, String title, String text) {
         Message message = setUp();
         try {
             message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(email));
+                    InternetAddress.parse(emails));
             
             message.setSubject(title);
             message.setText(text);
             
             Transport.send(message);
         } catch (MessagingException ex) {
-            System.out.println("Email sending failed to " + email);
+            System.out.println("Email sending failed to " + emails);
             System.out.println("Error " + ex.getLocalizedMessage());
         }
     }
