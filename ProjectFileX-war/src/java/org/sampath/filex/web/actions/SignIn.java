@@ -49,6 +49,8 @@ public class SignIn extends HttpServlet {
             
             HttpSession session=request.getSession();
             session.setAttribute("eid", un);
+            
+            //Mail.sendmail("ashantha.lahiru@gmail.com,erandiatapattu@gmail.com", "Test Title", "Test");
 
         try {            
             PreparedStatement ps=con.prepareStatement("select * from employee where empid='"+un+"'");

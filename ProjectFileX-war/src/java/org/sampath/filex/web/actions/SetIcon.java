@@ -45,39 +45,45 @@ public class SetIcon extends HttpServlet {
         HttpSession session = request.getSession(false);
         String eid = (String) session.getAttribute("eid");
 
-        String editedpw = request.getParameter("pw");
 
-        editedpw = EncryptPassword.cryptWithMD5(editedpw);
-        System.out.println(editedpw);
-
-        Connection con = DatabaseConnection.createConnection();
-
-        try {
-
-            InputStream inputStream = null; // input stream of the upload file
-
-            // obtains the upload file part in this multipart request
-            Part filePart = request.getPart("logo");
+            String editedpw=request.getParameter("pw");
+            String email=request.getParameter("email");
+            
+            editedpw=EncryptPassword.cryptWithMD5(editedpw);
             System.out.println(editedpw);
-            if (filePart != null) {
-                // prints out some information for debugging
-                System.out.println(filePart.getName());
-                System.out.println(filePart.getSize());
-                System.out.println(filePart.getContentType());
+            
+         Connection con=DatabaseConnection.createConnection();
+        
+         try {
 
-                // obtains input stream of the upload file
-                inputStream = filePart.getInputStream();
-                System.out.println("File found,");
+        InputStream inputStream = null; // input stream of the upload file
+         
+        // obtains the upload file part in this multipart request
+        
+        Part filePart = request.getPart("logo");
+        System.out.println(editedpw);
+        if (filePart != null) {
+            // prints out some information for debugging
+            System.out.println(filePart.getName());
+            System.out.println(filePart.getSize());
+            System.out.println(filePart.getContentType());
+             
+            // obtains input stream of the upload file
+            inputStream = filePart.getInputStream();
+            System.out.println("File found,");
+            
 
-                PreparedStatement statement = con.prepareStatement("update employee set photo=?,password=?  where empid=?");
+            PreparedStatement statement = con.prepareStatement("update employee set photo=?,password=?,email=?  where empid=?");
 
-                if (inputStream != null) {
-                    // fetches input stream of the upload file for the blob column
-                    statement.setBinaryStream(1, inputStream, inputStream.available());
-                    System.out.println("Input Stream Done");
-                }
-                statement.setString(2, editedpw);
-                statement.setString(3, eid);
+            if (inputStream != null) {
+                // fetches input stream of the upload file for the blob column
+                statement.setBinaryStream(1,inputStream,inputStream.available());
+                System.out.println("Input Stream Done");
+            }
+            statement.setString(2,editedpw);
+            statement.setString(3,email);
+            statement.setString(4,eid);
+
 
                 int row = statement.executeUpdate();
                 if (row > 0) {
