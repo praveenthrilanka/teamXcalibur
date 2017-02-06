@@ -50,8 +50,10 @@
 
                                 <%
                                     Employee emp;
+                                    int i=0;
                                     for (int x = 0; x < employee.size(); x++) {
                                         emp = employee.get(x);
+                                        i++;
                                 %>
                                 <div class="col-sm-4 col-md-3">
                                     <div class="team-member ">
@@ -68,8 +70,27 @@
                                         <p><% out.print(emp.getDepartmentid()); %></p>
                                         <ul class="social-icons list-inline list-unstyled">
                                             <li><a href="Admin_edit_user.jsp?id=<%out.print(emp.getEmployeeid());%>&email=<%out.print(emp.getEmail());%>"><i class="fa fa-gear icon-bordered icon-primary icon-xs"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-trash-o icon-bordered icon-primary icon-xs"></i></a></li>
+                                            <li><a data-toggle="modal" href="#" data-target="#ultraModal<%out.print(i);%>" title="Delete User"><i class="fa fa-trash-o icon-bordered icon-primary icon-xs"></i></a></li>
                                         </ul>
+                                        <!--Model starts-->
+                                        <div class="modal fade" id="ultraModal<%out.print(i);%>" tabindex="-1" role="dialog" aria-labelledby="ultraModal-Label" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog animated fadeInUp"><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title">Are you sure you want to delete?</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Once a user is deleted, you will not be able to recover it.
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                                                        <a  href="../DeleteEmp?id=<%out.print(emp.getEmployeeid());%>" class="btn btn-success">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--model End-->
                                     </div>       
                                 </div>
                                 <%

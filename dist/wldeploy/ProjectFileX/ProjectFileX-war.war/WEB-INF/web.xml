@@ -87,6 +87,10 @@
         <servlet-name>AddEmp</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.AddEmp</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteEmp</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.DeleteEmp</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignIn</servlet-name>
         <url-pattern>/SignIn</url-pattern>
@@ -170,6 +174,10 @@
     <servlet-mapping>
         <servlet-name>AddEmp</servlet-name>
         <url-pattern>/AddEmp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteEmp</servlet-name>
+        <url-pattern>/DeleteEmp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
