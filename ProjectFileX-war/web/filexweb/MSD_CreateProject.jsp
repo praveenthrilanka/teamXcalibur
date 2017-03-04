@@ -23,7 +23,7 @@
                                   <%
                                   for(int x=0;x<emp.size();x++){
                                   em=emp.get(x);
-                                  if(em.getPosition().equals("PM/MSD")){
+                                  if(em.getPosition().equals("PM/MSD") ||em.getPosition().equals("Project Manager") ){
                                   if(!em.getEmployeeid().equals((String)session.getAttribute("eid"))){
                                   %>
                                   <option value="<% out.print(em.getEmployeeid()); %>"><% out.print(em.getEmployeename()); %></option>
@@ -39,13 +39,14 @@
                               <select name="ba" width="200" height="80">
                                   <option value="Select">Select Business Analyst</option>
                                   
-                                  <%
+                                 <%
                                   for(int x=0;x<emp.size();x++){
                                   em=emp.get(x);
-                                  if(em.getPosition().equals("Business Analyst")){
+                                  if(em.getPosition().equals("Business Analyist")){
+                                  if(!em.getEmployeeid().equals((String)session.getAttribute("eid"))){
                                   %>
                                   <option value="<% out.print(em.getEmployeeid()); %>"><% out.print(em.getEmployeename()); %></option>
-                                  <%
+                                  <%  }
                                     }
                                   }
                                   %>
