@@ -152,6 +152,63 @@ UI Dropdowns
 }
 
 
+
+
+
+.login-forms h4,.sign-forms h4 {
+    background-color: #0E62C7;
+    border-color: #dde1e7;
+    font-size: 1.2em;
+    padding: 1em;
+    font-weight: 600;
+    color: #fff;
+
+}
+
+
+.login-forms label {
+    font-size: 0.9em;
+    vertical-align: super;
+}
+.login-forms  input[type="checkbox"] {
+    margin: 0px 6px 0 0;
+    vertical-align: middle;
+}
+
+.login-forms form {
+       padding: 0.8em 0.8em 1em;
+}
+
+
+.login-forms h5,.sign-forms h5{
+	  font-size: 0.9em;
+    padding: 1em;
+	
+}
+
+.login-forms,.sign-forms {
+   margin: 0em auto 0;
+    width: 30%;
+	background:#fff;
+}
+.login-forms input[type="text"],.login-form input[type="password"] {
+    border: 1px solid #e8ecf3;
+    border-radius: 1px;
+    box-shadow: none;
+    -webkit-transition: border .25s linear,color .25s linear,background-color .25s linear;
+    transition: border .25s linear,color .25s linear,background-color .25s linear;
+    -webkit-appearance: none;
+    font-weight: 400;
+    outline: none;
+	    padding: 0.0em;
+		font-size: 1.2em;
+}
+
+
+
+
+
+
 html {
     font-size: 100%;
     height: 100%;
@@ -7469,7 +7526,64 @@ border-left: 3px solid transparent;
 
 
 
+.login-forms, .sign-forms{
+    margin: 0.5em auto 0;
+}
 
+.login-forms h4, .sign-forms h4 {
+    font-size: 1em;
+}
+
+.login-forms, .sign-forms {
+    margin: 0.5em auto 0;
+    width: 100%;
+}
+
+.login-forms, .sign-forms {
+    margin: 0.5em auto 0;
+}
+
+.login-forms, .sign-forms{
+    margin: 0.5 auto 0;
+}
+
+.login-forms form {
+    padding: 0.2em 0.2em 0.5em;
+}
+
+.login-forms, .sign-forms {
+    width: 80%;
+}
+.login-forms form {
+    padding: 0.8em 6em 3em;
+}
+
+.login-forms, .sign-forms {
+    width: 50%;
+}
+
+.login-forms, .sign-forms {
+    width: 50%;
+}
+
+
+
+.notification-icon{
+	border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    line-height: 30px;
+    float: left;
+    display: inline-block;
+    text-align: center;
+    margin-right: 15px;
+    color: #ffffff;
+    margin-top: 5px;
+}
 
 /*
 .bg-muted{ background: #eaeaea; padding: 3px 8px;}

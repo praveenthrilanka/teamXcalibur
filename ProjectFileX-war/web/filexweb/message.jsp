@@ -2,8 +2,11 @@
 <%@ include file="Clear_Sidebar.jsp" %>
                     
         <% 
+            
         String message = request.getParameter("message");
-        
+       
+
+       
         %>
             <!-- START CONTENT -->
             <section id="main-content" class=" ">
@@ -16,10 +19,11 @@
                             <div class="col-sm-10 col-md-10">
                                 <div class="alert alert-success"> <!--info/warning/danger-->                                
 
-                                   <span class="glyphicon glyphicon-ok"></span><font size="5"><strong> Successfully Updated</strong></font>
+                                    <span class="glyphicon glyphicon-ok"></span><font size="5"><strong>Update Successfully..</strong></font>
                                     <hr class="message-inner-separator">
                                     
                                     <font size="3"><p><strong><% out.print(message); %></strong></p></font>
+                                   
                                 </div>
                             </div>
                             <div class="col-sm-1 col-md-1"></div>
@@ -28,5 +32,6 @@
                     </div>    
                     
                 </section></section>>
-
+                
+               
 <%@ include file="Down.jsp" %>
