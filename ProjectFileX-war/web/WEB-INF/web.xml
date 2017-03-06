@@ -79,6 +79,14 @@
         <servlet-name>GetSRSByVersion</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.GetSRSByVersion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UploadOtherDocument</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.UploadOtherDocument</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddNewDoc</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.AddNewDoc</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignIn</servlet-name>
         <url-pattern>/SignIn</url-pattern>
@@ -154,6 +162,14 @@
     <servlet-mapping>
         <servlet-name>GetSRSByVersion</servlet-name>
         <url-pattern>/GetSRSByVersion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadOtherDocument</servlet-name>
+        <url-pattern>/UploadOtherDocument</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNewDoc</servlet-name>
+        <url-pattern>/AddNewDoc</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
