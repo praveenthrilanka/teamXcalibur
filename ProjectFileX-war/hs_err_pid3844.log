@@ -1,0 +1,116 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 279696 bytes for Chunk::new
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:317), pid=3844, tid=4084
+#
+# JRE version: 6.0_41-b02
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (20.14-b01 mixed mode windows-amd64 compressed oops)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000006f22000):  JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=4084, stack(0x0000000007220000,0x0000000007320000)]
+
+Stack: [0x0000000007220000,0x0000000007320000]
+
+Current CompileTask:
+C2:    328  19  !   java.util.jar.Attributes.read(Ljava/util/jar/Manifest$FastInputStream;[B)V (410 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0000000006f27800 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=2836, stack(0x0000000007320000,0x0000000007720000)]
+=>0x0000000006f22000 JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=4084, stack(0x0000000007220000,0x0000000007320000)]
+  0x000000000050e800 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=3748, stack(0x0000000007120000,0x0000000007220000)]
+  0x000000000050d800 JavaThread "Attach Listener" daemon [_thread_blocked, id=2916, stack(0x0000000006b20000,0x0000000006f20000)]
+  0x000000000050a800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=1664, stack(0x0000000006720000,0x0000000006b20000)]
+  0x00000000004d8800 JavaThread "Finalizer" daemon [_thread_blocked, id=1684, stack(0x0000000006320000,0x0000000006720000)]
+  0x00000000004ce800 JavaThread "Reference Handler" daemon [_thread_blocked, id=3880, stack(0x0000000005f20000,0x0000000006320000)]
+  0x000000000055d800 JavaThread "main" [_thread_in_Java, id=3504, stack(0x0000000001c80000,0x0000000002080000)]
+
+Other Threads:
+  0x00000000004c8800 VMThread [stack: 0x0000000005e20000,0x0000000005f20000] [id=476]
+  0x0000000006f2f800 WatcherThread [stack: 0x0000000007720000,0x0000000007820000] [id=2504]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00000000004117d0] MethodData_lock - owner thread: 0x0000000000000000
+
+Heap
+ PSYoungGen      total 3584K, used 2533K [0x00000000eaab0000, 0x00000000eb1b0000, 0x0000000100000000)
+  eden space 3072K, 66% used [0x00000000eaab0000,0x00000000eacad6f8,0x00000000eadb0000)
+  from space 512K, 96% used [0x00000000eae30000,0x00000000eaeac040,0x00000000eaeb0000)
+  to   space 512K, 0% used [0x00000000eadb0000,0x00000000eadb0000,0x00000000eae30000)
+ PSOldGen        total 5504K, used 400K [0x00000000c0000000, 0x00000000c0560000, 0x00000000eaab0000)
+  object space 5504K, 7% used [0x00000000c0000000,0x00000000c0064010,0x00000000c0560000)
+ PSPermGen       total 21248K, used 6192K [0x00000000bae00000, 0x00000000bc2c0000, 0x00000000c0000000)
+  object space 21248K, 29% used [0x00000000bae00000,0x00000000bb40c200,0x00000000bc2c0000)
+
+Code Cache  [0x0000000002080000, 0x00000000022f0000, 0x0000000005080000)
+ total_blobs=221 nmethods=21 adapters=154 free_code_cache=49887680 largest_free_block=6656
+
+Dynamic libraries:
+0x0000000000400000 - 0x000000000040c000 	C:\Program Files\Java\jdk1.6.0_41\bin\javac.exe
+0x00007ffc6aee0000 - 0x00007ffc6b08d000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffc6ad60000 - 0x00007ffc6ae9a000 	C:\Windows\system32\KERNEL32.DLL
+0x00007ffc681f0000 - 0x00007ffc68305000 	C:\Windows\system32\KERNELBASE.dll
+0x000000006d000000 - 0x000000006d01a000 	C:\Program Files\Java\jdk1.6.0_41\bin\jli.dll
+0x00007ffc6a6d0000 - 0x00007ffc6a77a000 	C:\Windows\system32\ADVAPI32.dll
+0x00007ffc6a610000 - 0x00007ffc6a6b7000 	C:\Windows\system32\msvcrt.dll
+0x00007ffc6ac50000 - 0x00007ffc6aca7000 	C:\Windows\SYSTEM32\sechost.dll
+0x00007ffc6a110000 - 0x00007ffc6a246000 	C:\Windows\system32\RPCRT4.dll
+0x000000006d8c0000 - 0x000000006e07c000 	C:\Program Files\Java\jdk1.6.0_41\jre\bin\server\jvm.dll
+0x00007ffc6a270000 - 0x00007ffc6a3e1000 	C:\Windows\system32\USER32.dll
+0x00007ffc62140000 - 0x00007ffc6215f000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffc6ab00000 - 0x00007ffc6ac45000 	C:\Windows\system32\GDI32.dll
+0x00007ffc62100000 - 0x00007ffc6212a000 	C:\Windows\SYSTEM32\WINMMBASE.dll
+0x00007ffc681a0000 - 0x00007ffc681ea000 	C:\Windows\SYSTEM32\cfgmgr32.dll
+0x00007ffc66ef0000 - 0x00007ffc66f16000 	C:\Windows\SYSTEM32\DEVOBJ.dll
+0x00007ffc6aea0000 - 0x00007ffc6aed4000 	C:\Windows\system32\IMM32.DLL
+0x00007ffc69fd0000 - 0x00007ffc6a109000 	C:\Windows\system32\MSCTF.dll
+0x000000006d830000 - 0x000000006d83e000 	C:\Program Files\Java\jdk1.6.0_41\jre\bin\verify.dll
+0x000000006d450000 - 0x000000006d477000 	C:\Program Files\Java\jdk1.6.0_41\jre\bin\java.dll
+0x000000006d880000 - 0x000000006d892000 	C:\Program Files\Java\jdk1.6.0_41\jre\bin\zip.dll
+0x00007ffc6aae0000 - 0x00007ffc6aae7000 	C:\Windows\system32\PSAPI.DLL
+
+VM Arguments:
+jvm_args: -Dapplication.home=C:\Program Files\Java\jdk1.6.0_41 -Xms8m -Xss4m -ea:com.sun.tools... 
+java_command: com.sun.tools.javac.Main -d C:\project\teamXcalibur\ProjectFileX-war\build\web\WEB-INF\classes -classpath C:\project\teamXcalibur\ProjectFileX-war\build\web\WEB-INF\classes;C:\project\teamXcalibur\ProjectFileX-ejb\dist\ProjectFileX-ejb.jar;C:\Oracle\Middleware\wlserver_12.1\server\lib\weblogic.jar;C:\Oracle\Middleware\wlserver_12.1\server\lib\api.jar;C:\Oracle\Middleware\modules\glassfish.jstl_1.2.0.2.jar;C:\Oracle\Middleware\modules\javax.activation_2.0.0.0_1-1.jar;C:\Oracle\Middleware\modules\javax.annotation_1.0.0.0_1-1.jar;C:\Oracle\Middleware\modules\javax.ejb_3.1.0.jar;C:\Oracle\Middleware\modules\javax.enterprise.deploy_1.2.1.jar;C:\Oracle\Middleware\modules\javax.enterprise.inject_1.0.jar;C:\Oracle\Middleware\modules\javax.inject_1.0.jar;C:\Oracle\Middleware\modules\javax.interceptor_1.1.jar;C:\Oracle\Middleware\modules\javax.jdo_2.0.2.jar;C:\Oracle\Middleware\modules\javax.jms_1.1.2.jar;C:\Oracle\Middleware\modules\javax.jsf_1.0.0.0_2-1.jar;C:\Oracle\Middleware\modules\javax.jsp_2.0.0.0_2-2.jar;C:\Oracle\Middleware\modules\javax.jws_2.0.1.jar;C:\Oracle\Middleware\modules\javax.mail_1.1.0.0_1-4-2.jar;C:\Oracle\Middleware\modules\javax.management_1.2.2.jar;C:\Oracle\Middleware\modules\javax.management.j2ee_1.0.1.jar;C:\Oracle\Middleware\modules\javax.management.remote_1.0.1.4.jar;C:\Oracle\Middleware\modules\javax.persistence_2.0.0.0_2-0.jar;C:\Oracle\Middleware\modules\javax.resource_1.6.0.jar;C:\Oracle\Middleware\modules\javax.security.auth.message_2.0.jar;C:\Oracle\Middleware\modules\javax.security.jacc_1.0.0.0_1-2.jar;C:\Oracle\Middleware\modules\javax.servlet_2.0.0.0_3-0.jar;C:\Oracle\Middleware\modules\javax.transaction_2.0.0.0_1-1.jar;C:\Oracle\Middleware\modules\javax.validation_1.0.0.jar;C:\Oracle\Middleware\modules\javax.xml.bind_2.2.3.jar;C:\Oracle\Middleware\modules\javax.xml.registry_1.0.0.0_1-0-4.jar;C:\Oracle\Middleware\modules\javax.xml.rpc_1.2.2.jar;C:\Oracle\Middleware\modules\javax.xml.soap_1.3.2.0.jar;C:\Oracle\Middleware\m
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:\app\Nisha\product\11.2.0\dbhome_1\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.6.0_41\bin;C:\Program Files\Java\jre6\bin;C:\Program Files\Git\cmd;C:\Program Files\Java\jre6
+USERNAME=Nisha
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 61 Stepping 4, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 8 , 64 bit Build 9200 
+
+CPU:total 4 (4 cores per cpu, 1 threads per core) family 6 model 61 stepping 4, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt
+
+Memory: 4k page, physical 4193848k(1184096k free), swap 4532992k(5228k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (20.14-b01) for windows-amd64 JRE (1.6.0_41-b02), built on Feb  8 2013 01:00:58 by "java_re" with MS VC++ 8.0 (VS2005)
+
+time: Wed Feb 08 09:39:57 2017
+elapsed time: 0 seconds
+

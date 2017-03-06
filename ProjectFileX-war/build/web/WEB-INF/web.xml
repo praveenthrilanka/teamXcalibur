@@ -79,6 +79,27 @@
         <servlet-name>GetSRSByVersion</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.GetSRSByVersion</servlet-class>
     </servlet>
+    <servlet>
+<<<<<<< HEAD
+        <servlet-name>UploadOtherDocument</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.UploadOtherDocument</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddNewDoc</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.AddNewDoc</servlet-class>
+=======
+        <servlet-name>EditUser</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.EditUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddEmp</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.AddEmp</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteEmp</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.DeleteEmp</servlet-class>
+>>>>>>> fc7f18e8304b59662ff12754a656015c5876ec10
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignIn</servlet-name>
         <url-pattern>/SignIn</url-pattern>
@@ -154,6 +175,27 @@
     <servlet-mapping>
         <servlet-name>GetSRSByVersion</servlet-name>
         <url-pattern>/GetSRSByVersion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+<<<<<<< HEAD
+        <servlet-name>UploadOtherDocument</servlet-name>
+        <url-pattern>/UploadOtherDocument</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNewDoc</servlet-name>
+        <url-pattern>/AddNewDoc</url-pattern>
+=======
+        <servlet-name>EditUser</servlet-name>
+        <url-pattern>/EditUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddEmp</servlet-name>
+        <url-pattern>/AddEmp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteEmp</servlet-name>
+        <url-pattern>/DeleteEmp</url-pattern>
+>>>>>>> fc7f18e8304b59662ff12754a656015c5876ec10
     </servlet-mapping>
     <session-config>
         <session-timeout>

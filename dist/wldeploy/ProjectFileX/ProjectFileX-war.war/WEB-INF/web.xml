@@ -67,6 +67,30 @@
         <servlet-name>UploadAgreement</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.UploadAgreement</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddStakeholders</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.AddStakeholders</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SRSApproval</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.SRSApproval</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetSRSByVersion</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.GetSRSByVersion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditUser</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.EditUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddEmp</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.AddEmp</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteEmp</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.DeleteEmp</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignIn</servlet-name>
         <url-pattern>/SignIn</url-pattern>
@@ -130,6 +154,30 @@
     <servlet-mapping>
         <servlet-name>UploadAgreement</servlet-name>
         <url-pattern>/UploadAgreement</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddStakeholders</servlet-name>
+        <url-pattern>/AddStakeholders</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SRSApproval</servlet-name>
+        <url-pattern>/SRSApproval</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetSRSByVersion</servlet-name>
+        <url-pattern>/GetSRSByVersion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditUser</servlet-name>
+        <url-pattern>/EditUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddEmp</servlet-name>
+        <url-pattern>/AddEmp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteEmp</servlet-name>
+        <url-pattern>/DeleteEmp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

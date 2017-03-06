@@ -20,9 +20,13 @@
 						</div>
 						
 					    <br/><br/>
-                                            <label>User Name :</label>
-                                            <input type="text" id="newname" name="name" value="<% out.print(e.getEmployeename()); %>" placeholder="Enter your name here" required>				<br/><br/><br/>
+                                            <label>Password :</label>
+                                            <input type="password" id="newname" name="pw" placeholder="Enter new password" required>				<br/><br/>
 
+                                            <label>Email :</label>
+                                            <input type="text" id="newname" name="email" placeholder="Enter email address" required>				<br/><br/><br/>
+
+                                            
 						<div class="clearfix"></div>
 						<input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Set">
 						<input style="background-color:FFC682; border:none;" class="btn btn-info btn-block" type="reset" id="reset">
@@ -37,6 +41,6 @@
 						    output.src = URL.createObjectURL(event.target.files[0]);
 						  };
 			</script>
-                </section></section>>
+                </section></section>
 
 <%@ include file="Down.jsp" %>

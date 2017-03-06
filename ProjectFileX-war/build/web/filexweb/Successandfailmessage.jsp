@@ -1,5 +1,9 @@
 <%-- 
+<<<<<<< HEAD
     Document   : Successandfailmessage
+=======
+    Document   : failmessage
+>>>>>>> 79c856ac45603783c10a1110c03684a908c7e85f
     Created on : Feb 5, 2017, 7:10:40 AM
     Author     : Nisha
 --%>

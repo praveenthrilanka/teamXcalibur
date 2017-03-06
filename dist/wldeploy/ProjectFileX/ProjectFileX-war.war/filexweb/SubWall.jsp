@@ -29,7 +29,8 @@
         <!--<a style="float:right;" title="Home" id="link" target="_parent" href="uploadFile.jsp"><img src="logos/home.png" height="40" width="40"></a>-->
         
        <div style ="margin: auto;width: 95%; left: 1%;  padding: 1px">
-       <a style="padding:10px" href="Comment.jsp" title="Add Comment" role="button"><img src="logos/addcomment.png" height="40" width="40"></a>
+           <a style="padding:10px" href="#" title="Approve" data-toggle="modal" data-target="#myModalApproval" role="button"><img src="logos/approve.png" height="40" width="40"></a>
+           <a style="padding:10px" href="Comment.jsp" title="Add Comment" role="button"><img src="logos/addcomment.png" height="40" width="40"></a>
        </div>
         
        <div style ="margin: auto;width: 90%;position:absolute; border:1px solid lightgray;top: 8%; left: 5%;  padding: 8px">
@@ -104,6 +105,28 @@
     
        <% }%>
        </div>
+       
+       <!-- Modal for approval -->
+      <div class="modal fade" id="myModalApproval" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Are you sure?</h4>
+            </div>
+            <div class="modal-body">
+              <p>Once the SRS is approved, you will not be able to undo it.</p>
+            </div>
+            <div class="modal-footer">
+              <a  href="../SRSApproval" class="btn btn-default">Approve</a>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
        
     </body>
 </html>
