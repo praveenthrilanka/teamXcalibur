@@ -20,14 +20,43 @@
 						</div>
 						
 					    <br/><br/>
+                                            
+                                            <input type="checkbox" name="propicchk" value="Change the pic">Change the profile picture
+                                            <input type="checkbox" name="pwchk" value="Change the passsword">Change the password
+                                            <input type="checkbox" name="emailchk" value="Change the email">Change the email<br/><br/>
+                                            
                                             <label>Password :</label>
+<<<<<<< HEAD
+
+
+                                            <input type="password" id=oldpassword" name="pw" placeholder="Enter the old password" required="">				<br/><br/><br/>
+                                            <input type="password" id=newpassword" name="npw" placeholder="Enter the new password">				<br/><br/><br/>
+                                            <input type="password" id=cnewpassword" name="cnpw" placeholder="Confirm the new password">				<br/><br/><br/>
+
+                                            
+
+
+                                            <label>Email :</label>
+                                            <input type="text" id="newname" name="email" placeholder="Enter email address">				<br/><br/><br/>
+=======
+<<<<<<< Updated upstream
                                             <input type="password" id="newname" name="pw" placeholder="Enter new password" required>				<br/><br/>
+=======
+                                            <input type="password" id=oldpassword" name="pw" placeholder="Enter the old password" required="">				<br/><br/><br/>
+                                            <input type="password" id=newpassword" name="npw" placeholder="Enter the new password">				<br/><br/><br/>
+                                            <input type="password" id=cnewpassword" name="cnpw" placeholder="Confirm the new password">				<br/><br/><br/>
+
+                                             <label>Email :</label>
+                                             <input type="text" id="email" name="email" placeholder="Enter your email"><br/><br/>
+>>>>>>> Stashed changes
 
                                             <label>Email :</label>
                                             <input type="text" id="newname" name="email" placeholder="Enter email address" required>				<br/><br/><br/>
+>>>>>>> 79c856ac45603783c10a1110c03684a908c7e85f
 
                                             
 						<div class="clearfix"></div>
+                                                
 						<input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Set">
 						<input style="background-color:FFC682; border:none;" class="btn btn-info btn-block" type="reset" id="reset">
 						<br/>

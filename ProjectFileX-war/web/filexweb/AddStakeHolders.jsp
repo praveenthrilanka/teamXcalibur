@@ -7,7 +7,8 @@
 <!-- START CONTENT -->
 <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-        
+
+  <script src="http://code.jquery.com/jquery.js"></script>
 
                     <%
                         String srsid=(String)session.getAttribute("srsid");
@@ -137,13 +138,35 @@
                                     <%
                                     }
                                     else
-                                    {        
+                                    {     
+                                    
                                     %>
                                     
-                                    
-                                    <script type="text/javascript">
-                                        window.alert("SRS path is already defined!")
-                                    </script>
+                                   
+<script type="text/javascript">
+$(window).load(function () {
+$('#ultraModal-11').modal('show');
+});
+</script>                          
+                                    <!--Model starts-->
+<div class="modal fade" id="ultraModal-11" tabindex="-1" role="dialog" aria-labelledby="ultraModal-Label" aria-hidden="true" style="display: none;">
+<div class="modal-dialog animated fadeInUp"><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<h4 class="modal-title">Are you sure you want to Add Stakeholders?</h4>
+</div>
+<div class="modal-body">
+You have already define the path of SRS.
+</div>
+<div class="modal-footer">
+<button data-dismiss="modal" class="btn btn-default" type="button">Ok</button>
+</div>
+</div>
+</div>
+</div>
+<!--model End-->
+
                                                     
                                     
                                     

@@ -24,8 +24,8 @@
 											<div class="caption-text">
 												<h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">Upload Documents</h3>
 												<button type="button" class="btn btn-warning" style="margin-top:3; width:140;" onclick="window.location.href='UploadSRS.jsp'">SRS</button><br/>
-												<button type="button" class="btn btn-warning" style="margin-top:8; width:140;" onclick="window.location.href='UploadAgreement.jsp'">Agreement</button><br/>
-												<button type="button" class="btn btn-warning" style="margin-top:8; width:140;" onclick="window.location.href='#'">Meeting Minute</button>																								
+												<button type="button" class="btn btn-warning" style="margin-top:3; width:140;" onclick="window.location.href='UploadOtherDocument.jsp'">Other Documents</button><br/>
+																																				
 
 											</div>
 										</div>
@@ -43,8 +43,8 @@
 											<div class="caption-text">
 												<h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">View Documents</h3>
 												<button type="button" class="btn btn-warning" style="margin-top:3; width:140;" onclick="window.location.href='Wall.jsp'">SRS</button><br/>
-												<button type="button" class="btn btn-warning" style="margin-top:8; width:140;" onclick="window.location.href='#'">Agreement</button><br/>
-												<button type="button" class="btn btn-warning" style="margin-top:8; width:140;" onclick="window.location.href='#'">Meeting Minute</button>	
+												<button type="button" class="btn btn-warning" style="margin-top:8; width:140;" onclick="window.location.href='#'">Other Documents</button><br/>
+													
 											</div>
 										</div>
 									</div>

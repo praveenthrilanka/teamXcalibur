@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,39 +48,741 @@ public class SetIcon extends HttpServlet {
 
 
             String editedpw=request.getParameter("pw");
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
             String email=request.getParameter("email");
+=======
+>>>>>>> 79c856ac45603783c10a1110c03684a908c7e85f
+            String emailnew=request.getParameter("email");
+            
+            String newpass=request.getParameter("npw");
+            String cnewpass=request.getParameter("cnpw");
+            
+           String editedcnewpass=EncryptPassword.cryptWithMD5(cnewpass);
+
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> 79c856ac45603783c10a1110c03684a908c7e85f
             
             editedpw=EncryptPassword.cryptWithMD5(editedpw);
             System.out.println(editedpw);
             
          Connection con=DatabaseConnection.createConnection();
-        
-         try {
-
-        InputStream inputStream = null; // input stream of the upload file
          
-        // obtains the upload file part in this multipart request
+         
+try {
+          
+            
+            
+     PreparedStatement ps=con.prepareStatement("select * from employee where empid='"+eid+"'");
+     ResultSet rs=ps.executeQuery();
+         
+    if(rs.next()){
+         
+        if(rs.getString("empid").trim().equals(eid.trim()) && rs.getString("password").trim().equals(editedpw.trim())){     
+         boolean piccheck= request.getParameter("propicchk")!=null;
+         boolean pwcheck= request.getParameter("pwchk")!=null;
+         boolean emailcheck= request.getParameter("emailchk")!=null;
+<<<<<<< HEAD
+
+         
+         if((piccheck== true && emailcheck==false && pwcheck==false)){
+                    
+           InputStream inputStream = null; // input stream of the upload file
+         
+           // obtains the upload file part in this multipart request
         
-        Part filePart = request.getPart("logo");
-        System.out.println(editedpw);
-        if (filePart != null) {
-            // prints out some information for debugging
-            System.out.println(filePart.getName());
-            System.out.println(filePart.getSize());
-            System.out.println(filePart.getContentType());
+           Part filePart = request.getPart("logo");
+           //System.out.println(editedpw);
+           if (filePart != null){
+           // prints out some information for debugging
+           System.out.println(filePart.getName());
+           System.out.println(filePart.getSize());
+           System.out.println(filePart.getContentType());
              
-            // obtains input stream of the upload file
-            inputStream = filePart.getInputStream();
-            System.out.println("File found,");
+           // obtains input stream of the upload file
+           inputStream = filePart.getInputStream();
+           System.out.println("File found,");
             
 
-            PreparedStatement statement = con.prepareStatement("update employee set photo=?,password=?,email=?  where empid=?");
+           PreparedStatement statement = con.prepareStatement("update employee set photo=?  where empid=?");
 
-            if (inputStream != null) {
+           if (inputStream != null){
                 // fetches input stream of the upload file for the blob column
                 statement.setBinaryStream(1,inputStream,inputStream.available());
                 System.out.println("Input Stream Done");
+           }
+            
+           statement.setString(2,eid);
+
+           int row = statement.executeUpdate();
+              if (row > 0) {
+              System.out.println("File uploaded and saved into database");
+              }
+            
+           response.sendRedirect("filexweb/message.jsp?message=Your rofile pictutre updated successfully.!");
+         
+            
+           }
+            else 
+            System.out.println("No file found");
+                     
+
+        
+       
+         }  
+         
+         else if((piccheck==false && emailcheck==true && pwcheck==false)){
+             
+            PreparedStatement statement = con.prepareStatement("update employee set email=?  where empid=?");
+            statement.setString(1,emailnew);
+            statement.setString(2,eid);
+                         
+            int row = statement.executeUpdate();
+            if(row > 0){
+                System.out.println("File uploaded and saved into database");
             }
+      
+
+            response.sendRedirect("filexweb/message.jsp?message=Your email address updated successfully.!");
+
+                  
+        }
+        
+         
+         else if((piccheck==false && emailcheck==false && pwcheck==true)){
+             
+            if(newpass.equals(cnewpass) && !(newpass.equals("") && (cnewpass.equals("")))){
+   
+                PreparedStatement statement = con.prepareStatement("update employee set password=? where empid=?");
+    
+                statement.setString(1,editedcnewpass);
+                statement.setString(2,eid);
+
+
+                int row = statement.executeUpdate();
+                if (row>0) {
+                   System.out.println("File uploaded and saved into database");
+                }
+                response.sendRedirect("filexweb/message.jsp?message=Your password updated successfully.!");
+             
+
+
+            }
+            
+            else if(cnewpass.equals("") && (!newpass.equals(""))){
+            
+                response.sendRedirect("filexweb/failmessage.jsp?failmessage=Confirm your password!");
+            }
+            
+            else if(newpass.equals("") && (!cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/failmessage.jsp?failmessage=Enter your new password first!");
+            }
+            
+            else if(newpass.equals("") && (cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/failmessage.jsp?failmessage=Fill out the password fields!");
+            }
+            
+            
+            else{
+             
+                response.sendRedirect("filexweb/failmessage.jsp?failmessage=Passwords do not match!");
+
+            }
+          
+         
+        }
+         
+         else if((piccheck==true && emailcheck==true && pwcheck==false)){
+         
+                          
+           InputStream inputStream = null; // input stream of the upload file
+         
+           // obtains the upload file part in this multipart request
+        
+           Part filePart = request.getPart("logo");
+           //System.out.println(editedpw);
+           if (filePart != null){
+           // prints out some information for debugging
+           System.out.println(filePart.getName());
+           System.out.println(filePart.getSize());
+           System.out.println(filePart.getContentType());
+             
+=======
+
+         
+         if((piccheck== true && emailcheck==false && pwcheck==false)){
+                    
+           InputStream inputStream = null; // input stream of the upload file
+         
+           // obtains the upload file part in this multipart request
+        
+           Part filePart = request.getPart("logo");
+           //System.out.println(editedpw);
+           if (filePart != null){
+           // prints out some information for debugging
+           System.out.println(filePart.getName());
+           System.out.println(filePart.getSize());
+           System.out.println(filePart.getContentType());
+             
+>>>>>>> 79c856ac45603783c10a1110c03684a908c7e85f
+           // obtains input stream of the upload file
+           inputStream = filePart.getInputStream();
+           System.out.println("File found,");
+            
+
+           PreparedStatement statement = con.prepareStatement("update employee set photo=?  where empid=?");
+
+           if (inputStream != null){
+                // fetches input stream of the upload file for the blob column
+                statement.setBinaryStream(1,inputStream,inputStream.available());
+                System.out.println("Input Stream Done");
+           }
+            
+           statement.setString(2,eid);
+<<<<<<< HEAD
+
+           int row = statement.executeUpdate();
+              if (row > 0) {
+              System.out.println("File uploaded and saved into database");
+              }
+            
+         
+            
+           }
+            else 
+            System.out.println("No file found");
+                     
+           PreparedStatement statement1 = con.prepareStatement("update employee set email=?  where empid=?");
+            statement1.setString(1,emailnew);
+            statement1.setString(2,eid);
+                         
+            int row = statement1.executeUpdate();
+            if(row > 0){
+                System.out.println("File uploaded and saved into database");
+            }
+         
+
+            response.sendRedirect("filexweb/message.jsp?message=Your Profile Picture and E-mail Address updated successfully.!");
+
+        
+         
+         }
+         
+         
+         
+         
+         else if((piccheck== true && emailcheck==false && pwcheck==true)){
+                InputStream inputStream = null; // input stream of the upload file
+         
+           // obtains the upload file part in this multipart request
+        
+           Part filePart = request.getPart("logo");
+           //System.out.println(editedpw);
+           if (filePart != null){
+           // prints out some information for debugging
+           System.out.println(filePart.getName());
+           System.out.println(filePart.getSize());
+           System.out.println(filePart.getContentType());
+             
+           // obtains input stream of the upload file
+           inputStream = filePart.getInputStream();
+           System.out.println("File found,");
+            
+
+           PreparedStatement statement = con.prepareStatement("update employee set photo=?  where empid=?");
+
+           if (inputStream != null){
+                // fetches input stream of the upload file for the blob column
+                statement.setBinaryStream(1,inputStream,inputStream.available());
+                System.out.println("Input Stream Done");
+           }
+            
+           statement.setString(2,eid);
+
+           int row = statement.executeUpdate();
+              if (row > 0) {
+              System.out.println("File uploaded and saved into database");
+              }
+            
+            
+           }
+            else 
+            System.out.println("No file found");
+           
+           
+           
+              if(newpass.equals(cnewpass) && !(newpass.equals("") && (cnewpass.equals("")))){
+   
+                PreparedStatement statement = con.prepareStatement("update employee set password=? where empid=?");
+    
+                statement.setString(1,editedcnewpass);
+                statement.setString(2,eid);
+
+
+                int row = statement.executeUpdate();
+                if (row>0) {
+                   System.out.println("File uploaded and saved into database");
+                }
+                response.sendRedirect("filexweb/message.jsp?message=Your Password and Profile Picture updated successfully.!");
+               
+
+
+            }
+            
+            else if(cnewpass.equals("") && (!newpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Profile Picture updated successfully..Please confirm your password to change it!");
+            }
+            
+            else if(newpass.equals("") && (!cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Profile Picture updated successfully..First enter your new password  to change it!");
+            }
+            
+            else if(newpass.equals("") && (cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Profile Picture updated successfully..Please fill out the password fields to change your password!");
+            }
+            
+            
+            else{
+             
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Profile Picture updated successfully.Entered new passwords do not match!");
+
+            }
+             
+         
+         
+         }
+         
+         
+         else if((piccheck==false && emailcheck==true && pwcheck==true)){
+             
+             
+             if(newpass.equals(cnewpass) && !(newpass.equals("") && (cnewpass.equals("")))){
+   
+                PreparedStatement statement = con.prepareStatement("update employee set password=? where empid=?");
+    
+                statement.setString(1,editedcnewpass);
+                statement.setString(2,eid);
+
+
+                int row = statement.executeUpdate();
+                if (row>0) {
+                   System.out.println("File uploaded and saved into database");
+                }
+                response.sendRedirect("filexweb/message.jsp?message=Your Email and Password  updated successfully.!");
+            
+
+
+            }
+            
+            else if(cnewpass.equals("") && (!newpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-nail Address updated successfully..Please confirm your password to change it!");
+            }
+            
+            else if(newpass.equals("") && (!cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-mail Address updated successfully..First enter your new password  to change it!");
+            }
+            
+            else if(newpass.equals("") && (cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-mail Address updated successfully..Please fill out the password fields to change your password!");
+            }
+            
+            
+            else{
+             
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-mail Address  updated successfully.Entered new passwords do not match!");
+
+            }
+          
+              PreparedStatement statement = con.prepareStatement("update employee set email=?  where empid=?");
+=======
+
+           int row = statement.executeUpdate();
+              if (row > 0) {
+              System.out.println("File uploaded and saved into database");
+              }
+            
+           response.sendRedirect("filexweb/message.jsp?message=Your rofile pictutre updated successfully.!");
+         
+            
+           }
+            else 
+            System.out.println("No file found");
+                     
+
+        
+       
+         }  
+         
+         else if((piccheck==false && emailcheck==true && pwcheck==false)){
+             
+            PreparedStatement statement = con.prepareStatement("update employee set email=?  where empid=?");
+>>>>>>> 79c856ac45603783c10a1110c03684a908c7e85f
+            statement.setString(1,emailnew);
+            statement.setString(2,eid);
+                         
+            int row = statement.executeUpdate();
+            if(row > 0){
+                System.out.println("File uploaded and saved into database");
+            }
+      
+
+            response.sendRedirect("filexweb/message.jsp?message=Your email address updated successfully.!");
+
+                  
+        }
+        
+         
+         else if((piccheck==false && emailcheck==false && pwcheck==true)){
+             
+            if(newpass.equals(cnewpass) && !(newpass.equals("") && (cnewpass.equals("")))){
+   
+                PreparedStatement statement = con.prepareStatement("update employee set password=? where empid=?");
+    
+                statement.setString(1,editedcnewpass);
+                statement.setString(2,eid);
+
+
+                int row = statement.executeUpdate();
+                if (row>0) {
+                   System.out.println("File uploaded and saved into database");
+                }
+                response.sendRedirect("filexweb/message.jsp?message=Your password updated successfully.!");
+             
+
+
+            }
+            
+            else if(cnewpass.equals("") && (!newpass.equals(""))){
+            
+                response.sendRedirect("filexweb/failmessage.jsp?failmessage=Confirm your password!");
+            }
+            
+            else if(newpass.equals("") && (!cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/failmessage.jsp?failmessage=Enter your new password first!");
+            }
+            
+            else if(newpass.equals("") && (cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/failmessage.jsp?failmessage=Fill out the password fields!");
+            }
+            
+<<<<<<< HEAD
+             
+         }
+         
+         else if((pwcheck==true) && (piccheck==true) &&(emailcheck==true)){
+           
+
+               
+             if(newpass.equals(cnewpass) && !(newpass.equals("") && (cnewpass.equals("")))){
+   
+                PreparedStatement statement = con.prepareStatement("update employee set password=? where empid=?");
+    
+                statement.setString(1,editedcnewpass);
+                statement.setString(2,eid);
+
+
+                int row = statement.executeUpdate();
+                if (row>0) {
+                   System.out.println("File uploaded and saved into database");
+                }
+                response.sendRedirect("filexweb/message.jsp?message=Your E-mail Address, Profile Picture and the Password updated successfully.!");
+            
+
+
+            }
+            
+            else if(cnewpass.equals("") && (!newpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-nail Address and Profile Picture updated successfully..Please confirm your password to change it!");
+            }
+            
+            else if(newpass.equals("") && (!cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-mail Address and Profile Picture updated successfully..First enter your new password  to change it!");
+            }
+            
+            else if(newpass.equals("") && (cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-mail Address and Profile Picture updated successfully..Please fill out the password fields to change your password!");
+            }
+            
+            
+            else{
+             
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-mail Address and Profile Picture updated successfully.Entered new passwords do not match!");
+
+            }
+          
+              PreparedStatement statemente = con.prepareStatement("update employee set email=?  where empid=?");
+            statemente.setString(1,emailnew);
+            statemente.setString(2,eid);
+                         
+            int rowe = statemente.executeUpdate();
+            if(rowe > 0){
+                System.out.println("File uploaded and saved into database");
+            }
+             
+            
+                 InputStream inputStream = null; // input stream of the upload file
+=======
+            
+            else{
+             
+                response.sendRedirect("filexweb/failmessage.jsp?failmessage=Passwords do not match!");
+
+            }
+          
+         
+        }
+         
+         else if((piccheck==true && emailcheck==true && pwcheck==false)){
+         
+                          
+           InputStream inputStream = null; // input stream of the upload file
+>>>>>>> 79c856ac45603783c10a1110c03684a908c7e85f
+         
+           // obtains the upload file part in this multipart request
+        
+           Part filePart = request.getPart("logo");
+           //System.out.println(editedpw);
+           if (filePart != null){
+           // prints out some information for debugging
+           System.out.println(filePart.getName());
+           System.out.println(filePart.getSize());
+           System.out.println(filePart.getContentType());
+             
+           // obtains input stream of the upload file
+           inputStream = filePart.getInputStream();
+           System.out.println("File found,");
+            
+
+<<<<<<< HEAD
+           PreparedStatement statement1 = con.prepareStatement("update employee set photo=?  where empid=?");
+
+           if (inputStream != null){
+                // fetches input stream of the upload file for the blob column
+                statement1.setBinaryStream(1,inputStream,inputStream.available());
+                System.out.println("Input Stream Done");
+           }
+            
+           statement1.setString(2,eid);
+
+           int row1 = statement1.executeUpdate();
+              if (row1 > 0) {
+              System.out.println("File uploaded and saved into database");
+              }
+            
+       
+=======
+<<<<<<< Updated upstream
+            PreparedStatement statement = con.prepareStatement("update employee set photo=?,password=?,email=?  where empid=?");
+=======
+           PreparedStatement statement = con.prepareStatement("update employee set photo=?  where empid=?");
+>>>>>>> Stashed changes
+
+           if (inputStream != null){
+                // fetches input stream of the upload file for the blob column
+                statement.setBinaryStream(1,inputStream,inputStream.available());
+                System.out.println("Input Stream Done");
+           }
+            
+           statement.setString(2,eid);
+
+           int row = statement.executeUpdate();
+              if (row > 0) {
+              System.out.println("File uploaded and saved into database");
+              }
+            
+         
+>>>>>>> 79c856ac45603783c10a1110c03684a908c7e85f
+            
+           }
+            else 
+            System.out.println("No file found");
+<<<<<<< HEAD
+           
+             
+         }
+         
+         
+        
+        
+          if ((pwcheck==false) && (piccheck==false) &&(emailcheck==false)){
+         
+                   response.sendRedirect("filexweb/failmessage.jsp?failmessage=Please use the checkboxes to select the change you wish to make!");
+
+         
+        }
+           
+
+        
+        } else
+             response.sendRedirect("filexweb/failmessage.jsp?failmessage=failed to edit your profile.! Please enter the correct password");
+
+        
+   } 
+       
+         
+        
+} catch (SQLException ex) {
+            Logger.getLogger(SetIcon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+=======
+                     
+           PreparedStatement statement1 = con.prepareStatement("update employee set email=?  where empid=?");
+            statement1.setString(1,emailnew);
+            statement1.setString(2,eid);
+                         
+            int row = statement1.executeUpdate();
+            if(row > 0){
+                System.out.println("File uploaded and saved into database");
+            }
+         
+
+            response.sendRedirect("filexweb/message.jsp?message=Your Profile Picture and E-mail Address updated successfully.!");
+
+        
+         
+         }
+         
+         
+         
+         
+         else if((piccheck== true && emailcheck==false && pwcheck==true)){
+                InputStream inputStream = null; // input stream of the upload file
+         
+           // obtains the upload file part in this multipart request
+        
+           Part filePart = request.getPart("logo");
+           //System.out.println(editedpw);
+           if (filePart != null){
+           // prints out some information for debugging
+           System.out.println(filePart.getName());
+           System.out.println(filePart.getSize());
+           System.out.println(filePart.getContentType());
+             
+           // obtains input stream of the upload file
+           inputStream = filePart.getInputStream();
+           System.out.println("File found,");
+            
+
+           PreparedStatement statement = con.prepareStatement("update employee set photo=?  where empid=?");
+
+           if (inputStream != null){
+                // fetches input stream of the upload file for the blob column
+                statement.setBinaryStream(1,inputStream,inputStream.available());
+                System.out.println("Input Stream Done");
+           }
+            
+           statement.setString(2,eid);
+
+           int row = statement.executeUpdate();
+              if (row > 0) {
+              System.out.println("File uploaded and saved into database");
+              }
+            
+            
+           }
+            else 
+            System.out.println("No file found");
+           
+           
+           
+              if(newpass.equals(cnewpass) && !(newpass.equals("") && (cnewpass.equals("")))){
+   
+                PreparedStatement statement = con.prepareStatement("update employee set password=? where empid=?");
+    
+                statement.setString(1,editedcnewpass);
+                statement.setString(2,eid);
+
+
+                int row = statement.executeUpdate();
+                if (row>0) {
+                   System.out.println("File uploaded and saved into database");
+                }
+                response.sendRedirect("filexweb/message.jsp?message=Your Password and Profile Picture updated successfully.!");
+               
+
+
+            }
+            
+            else if(cnewpass.equals("") && (!newpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Profile Picture updated successfully..Please confirm your password to change it!");
+            }
+            
+            else if(newpass.equals("") && (!cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Profile Picture updated successfully..First enter your new password  to change it!");
+            }
+            
+            else if(newpass.equals("") && (cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Profile Picture updated successfully..Please fill out the password fields to change your password!");
+            }
+            
+            
+            else{
+             
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Profile Picture updated successfully.Entered new passwords do not match!");
+
+            }
+             
+         
+         
+         }
+         
+         
+         else if((piccheck==false && emailcheck==true && pwcheck==true)){
+             
+             
+             if(newpass.equals(cnewpass) && !(newpass.equals("") && (cnewpass.equals("")))){
+   
+                PreparedStatement statement = con.prepareStatement("update employee set password=? where empid=?");
+    
+                statement.setString(1,editedcnewpass);
+                statement.setString(2,eid);
+
+
+                int row = statement.executeUpdate();
+                if (row>0) {
+                   System.out.println("File uploaded and saved into database");
+                }
+                response.sendRedirect("filexweb/message.jsp?message=Your Email and Password  updated successfully.!");
+            
+
+
+            }
+            
+            else if(cnewpass.equals("") && (!newpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-nail Address updated successfully..Please confirm your password to change it!");
+            }
+            
+            else if(newpass.equals("") && (!cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-mail Address updated successfully..First enter your new password  to change it!");
+            }
+            
+            else if(newpass.equals("") && (cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-mail Address updated successfully..Please fill out the password fields to change your password!");
+            }
+<<<<<<< Updated upstream
             statement.setString(2,editedpw);
             statement.setString(3,email);
             statement.setString(4,eid);
@@ -100,6 +803,148 @@ public class SetIcon extends HttpServlet {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Something went wrong in Connection " + ex);
         }
+=======
+            
+            
+            else{
+             
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-mail Address  updated successfully.Entered new passwords do not match!");
+
+            }
+          
+              PreparedStatement statement = con.prepareStatement("update employee set email=?  where empid=?");
+            statement.setString(1,emailnew);
+            statement.setString(2,eid);
+                         
+            int row = statement.executeUpdate();
+            if(row > 0){
+                System.out.println("File uploaded and saved into database");
+            }
+            
+             
+         }
+         
+         else if((pwcheck==true) && (piccheck==true) &&(emailcheck==true)){
+           
+
+               
+             if(newpass.equals(cnewpass) && !(newpass.equals("") && (cnewpass.equals("")))){
+   
+                PreparedStatement statement = con.prepareStatement("update employee set password=? where empid=?");
+    
+                statement.setString(1,editedcnewpass);
+                statement.setString(2,eid);
+
+
+                int row = statement.executeUpdate();
+                if (row>0) {
+                   System.out.println("File uploaded and saved into database");
+                }
+                response.sendRedirect("filexweb/message.jsp?message=Your E-mail Address, Profile Picture and the Password updated successfully.!");
+            
+
+
+            }
+            
+            else if(cnewpass.equals("") && (!newpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-nail Address and Profile Picture updated successfully..Please confirm your password to change it!");
+            }
+            
+            else if(newpass.equals("") && (!cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-mail Address and Profile Picture updated successfully..First enter your new password  to change it!");
+            }
+            
+            else if(newpass.equals("") && (cnewpass.equals(""))){
+            
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-mail Address and Profile Picture updated successfully..Please fill out the password fields to change your password!");
+            }
+            
+            
+            else{
+             
+                response.sendRedirect("filexweb/Successandfailmessage.jsp?sfmessage=Your E-mail Address and Profile Picture updated successfully.Entered new passwords do not match!");
+
+            }
+          
+              PreparedStatement statemente = con.prepareStatement("update employee set email=?  where empid=?");
+            statemente.setString(1,emailnew);
+            statemente.setString(2,eid);
+                         
+            int rowe = statemente.executeUpdate();
+            if(rowe > 0){
+                System.out.println("File uploaded and saved into database");
+            }
+             
+            
+                 InputStream inputStream = null; // input stream of the upload file
+         
+           // obtains the upload file part in this multipart request
+        
+           Part filePart = request.getPart("logo");
+           //System.out.println(editedpw);
+           if (filePart != null){
+           // prints out some information for debugging
+           System.out.println(filePart.getName());
+           System.out.println(filePart.getSize());
+           System.out.println(filePart.getContentType());
+             
+           // obtains input stream of the upload file
+           inputStream = filePart.getInputStream();
+           System.out.println("File found,");
+            
+
+           PreparedStatement statement1 = con.prepareStatement("update employee set photo=?  where empid=?");
+
+           if (inputStream != null){
+                // fetches input stream of the upload file for the blob column
+                statement1.setBinaryStream(1,inputStream,inputStream.available());
+                System.out.println("Input Stream Done");
+           }
+            
+           statement1.setString(2,eid);
+
+           int row1 = statement1.executeUpdate();
+              if (row1 > 0) {
+              System.out.println("File uploaded and saved into database");
+              }
+            
+       
+            
+           }
+            else 
+            System.out.println("No file found");
+           
+             
+         }
+         
+         
+        
+        
+          if ((pwcheck==false) && (piccheck==false) &&(emailcheck==false)){
+         
+                   response.sendRedirect("filexweb/failmessage.jsp?failmessage=Please use the checkboxes to select the change you wish to make!");
+
+         
+        }
+           
+
+        
+        } else
+             response.sendRedirect("filexweb/failmessage.jsp?failmessage=failed to edit your profile.! Please enter the correct password");
+
+        
+   } 
+       
+         
+        
+} catch (SQLException ex) {
+            Logger.getLogger(SetIcon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+>>>>>>> Stashed changes
+>>>>>>> 79c856ac45603783c10a1110c03684a908c7e85f
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
