@@ -99,6 +99,7 @@ public class Project {
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             System.out.println(pmid);
+            
             Project p;
             
             while(rs.next()){
@@ -288,9 +289,6 @@ public class Project {
         }
             return added ;
   
-    }
-    
-    
-    
+    }    
     
 }

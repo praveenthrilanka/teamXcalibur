@@ -18,6 +18,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
+import org.sampath.filex.web.actions.Project;
+import org.sampath.filex.web.actions.Stakeholder;
 /**
  *
  * @author Ashantha
@@ -41,7 +45,16 @@ public class AddStakeholders extends HttpServlet {
         String docno=request.getParameter("docno");
         String srsversion=Project.getSRSVersionByDOCID(docno);
         int count=Integer.parseInt(request.getParameter("count"));
-        
+          
+//        HttpSession session=request.getSession();
+//        session=request.getSession(false);
+//        String pno=(String)session.getAttribute("pno"); 
+//        boolean isStkNull= Project.getAddedStakeholders(pno);
+//                                           
+//        if(isStkNull==false)
+//        {
+
+                
         try {
             Connection con=DatabaseConnection.createConnection();
             System.out.println("Connection Established");
@@ -55,7 +68,7 @@ public class AddStakeholders extends HttpServlet {
                 else{
                 System.out.println(docno+"   |  "+selection+"   |  "+priority);
 
-                PreparedStatement ps=con.prepareStatement("insert into srsapprovedby values ('"+docno+"','"+srsversion+"','"+selection+"','"+priority+"','')");
+                PreparedStatement ps=con.prepareStatement("insert/*+append*/ into srsapprovedby values ('"+docno+"','"+srsversion+"','"+selection+"','"+priority+"','noresponse')");
                 ResultSet rs=ps.executeQuery();
                 }
             }
@@ -66,8 +79,8 @@ public class AddStakeholders extends HttpServlet {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Something went wrong in Connection "+ex);
         }
-        
-            response.sendRedirect("filexweb/message.jsp?message=Stakeholders added successfully..!");
+   
+        response.sendRedirect("filexweb/message.jsp?message=Stakeholders added successfully..!");
         
     }
 
@@ -109,5 +122,8 @@ public class AddStakeholders extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+   
+    
+  
 
 }
