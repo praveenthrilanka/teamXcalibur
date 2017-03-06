@@ -55,7 +55,7 @@ public class AddStakeholders extends HttpServlet {
                 else{
                 System.out.println(docno+"   |  "+selection+"   |  "+priority);
 
-                PreparedStatement ps=con.prepareStatement("insert into srsapprovedby values ('"+docno+"','"+srsversion+"','"+selection+"','"+priority+"','')");
+                PreparedStatement ps=con.prepareStatement("insert into srsapprovedby values ('"+docno+"','"+srsversion+"','"+selection+"','"+priority+"','noresponse')");
                 ResultSet rs=ps.executeQuery();
                 }
             }

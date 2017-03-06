@@ -44,6 +44,8 @@ public class SignIn extends HttpServlet {
             String un=request.getParameter("un");
             String pw=request.getParameter("pw");
             
+            
+            
             pw=EncryptPassword.cryptWithMD5(pw);
             System.out.println(pw);
             
@@ -60,6 +62,8 @@ public class SignIn extends HttpServlet {
             if(rs.next()){
                 System.out.println("empid"+rs.getString("empid")+"//"+un);
                 System.out.println("pword"+rs.getString("password")+"//"+pw);
+                if(rs.getString("password") == null)
+                        response.sendRedirect("filexweb/Login-invalid.jsp");
                 if(rs.getString("empid").trim().equals(un.trim()) && rs.getString("password").trim().equals(pw.trim()))
                 {
                     

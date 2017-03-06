@@ -102,4 +102,28 @@ public class SRS {
         
      } 
     
+    public static String getSRSStatus(String pno,String eid){
+        
+        String status=null;
+        try {
+                Connection con=DatabaseConnection.createConnection();
+                System.out.println("Connection Established");
+
+                PreparedStatement ps=con.prepareStatement("select a.status from srs s,project p,srsapprovedby a where s.pno=p.pno and a.docno=s.docno and p.pno="+pno+" and a.stkid='"+eid+"'");
+                ResultSet rs=ps.executeQuery();
+                
+                if(rs.next())
+                    status=rs.getString("STATUS");
+
+                
+
+                con.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+        
+        return status;
+    }
 }

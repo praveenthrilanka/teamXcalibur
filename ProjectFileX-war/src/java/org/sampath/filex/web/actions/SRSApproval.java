@@ -39,6 +39,7 @@ public class SRSApproval extends HttpServlet {
        HttpSession session=request.getSession();
        String pno=(String)session.getAttribute("pno");
        String eshid=(String)session.getAttribute("eid");
+       String status=request.getParameter("status");
        
         try {
             Connection con=DatabaseConnection.createConnection();
@@ -50,9 +51,16 @@ public class SRSApproval extends HttpServlet {
             if(rs.next())
                 docno=rs.getString("DOCNO");
             
-            ps=con.prepareStatement("update srsapprovedby set status='approved' where stkid='"+eshid+"' and srsversion='"+Project.getSRSVersionByDOCID(docno)+"' and docno='"+docno+"'");
-            rs=ps.executeQuery();
-            
+            if(status.equals("approve"))
+            {
+                ps=con.prepareStatement("update srsapprovedby set status='approved' where stkid='"+eshid+"' and srsversion='"+Project.getSRSVersionByDOCID(docno)+"' and docno='"+docno+"'");
+                rs=ps.executeQuery();
+            }
+            else if(status.equals("reject"))
+            {
+                ps=con.prepareStatement("update srsapprovedby set status='rejected' where stkid='"+eshid+"' and srsversion='"+Project.getSRSVersionByDOCID(docno)+"' and docno='"+docno+"'");
+                rs=ps.executeQuery();
+            }
             
             con.close();
             
