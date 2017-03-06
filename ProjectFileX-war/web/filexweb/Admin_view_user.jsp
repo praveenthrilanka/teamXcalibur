@@ -58,7 +58,7 @@
                                 <div class="col-sm-4 col-md-3">
                                     <div class="team-member ">
                                         <div class="team-img">
-                                            <img class="img-responsive" width="200px" height="200px" src="../GetIconByID?id=<%out.print(emp.getEmployeeid());%>" alt="">
+                                            <img class="img-circle img-inline" width="200px" height="200px" src="../GetIconByID?id=<%out.print(emp.getEmployeeid());%>" alt="">
                                         </div>
                                         <div class="team-info">
                                             <h4><% out.print(emp.getEmployeename()); %></h4>

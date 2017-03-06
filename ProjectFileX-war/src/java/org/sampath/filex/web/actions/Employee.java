@@ -101,7 +101,7 @@ public class Employee {
         Connection con = DatabaseConnection.createConnection();
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps = con.prepareStatement("select * from employee e,department d where e.depid=d.depid ");
+            PreparedStatement ps = con.prepareStatement("select * from employee e,department d where e.depid=d.depid and password is not null");
             ResultSet rs = ps.executeQuery();
             System.out.println("Execution done");
             Employee e;

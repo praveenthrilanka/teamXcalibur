@@ -41,7 +41,7 @@ public class DeleteEmp extends HttpServlet {
             Connection con = DatabaseConnection.createConnection();
             System.out.println("Connection Established");
 
-                PreparedStatement ps = con.prepareStatement("delete from employee where empid='"+id+"'");
+                PreparedStatement ps = con.prepareStatement("update employee set password='' where empid='"+id+"'");
                 ps.executeQuery();   
 
             System.out.println("User Deleted");
