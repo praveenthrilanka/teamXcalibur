@@ -130,6 +130,8 @@ public class Project {
             while(rs.next()){
                 String docno=rs.getString("DOCNO");
                 String srsversion=Project.getSRSVersionByDOCID(docno);
+                if(rs.getString("PRIORITYNO")==null)
+                    continue;
                 if(rs.getString("PRIORITYNO").equals("1") && rs.getString("SRSVERSION").equals(srsversion)){
                     p= getProjectFromRS(rs);
                     project.add(p);}

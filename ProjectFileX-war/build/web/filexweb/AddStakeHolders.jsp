@@ -3,7 +3,7 @@
 <%@page import="org.sampath.filex.web.actions.Stakeholder"%>
 
 <%@ include file="Up.jsp" %>
-<%@ include file="BA_SideBar_Project.jsp" %>
+<%@ include file="SideBar_Project.jsp" %>
 
 <!-- START CONTENT -->
 <link href="css/stylesba.css" rel='stylesheet' type='text/css' />

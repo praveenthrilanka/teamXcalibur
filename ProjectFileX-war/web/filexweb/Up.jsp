@@ -1,17 +1,10 @@
-
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.sampath.filex.web.actions.Notification"%>
 <%@page import="org.sampath.filex.web.actions.Employee"%>
 <!DOCTYPE html>
 <html class=" ">
     <head>
-        <!-- 
-         * @Package: Ultra Admin - Responsive Theme
-         * @Subpackage: Bootstrap
-         * @Version: 2.0
-         * This file is part of Ultra Admin Theme.
-        -->
+
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
         <meta charset="utf-8" />
         <title>FileX : Sampath Bank</title>
@@ -53,8 +46,6 @@
             response.sendRedirect("Login.jsp");
             
             Employee e = Employee.getEmployee((String) session.getAttribute("eid"));
-
-
         %>
         
     </head>

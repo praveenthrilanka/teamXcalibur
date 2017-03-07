@@ -1,11 +1,5 @@
-<%-- 
-    Document   : failmessage
-    Created on : Feb 5, 2017, 7:10:40 AM
-    Author     : Nisha
---%>
-
 <%@ include file="Up.jsp" %>
-<%@ include file="Clear_Sidebar.jsp" %>
+<%@ include file="Sidebar.jsp" %>
                     
         <% 
         String failmessage = request.getParameter("failmessage");

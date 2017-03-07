@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Comment
-    Created on : Oct 18, 2016, 12:02:45 PM
-    Author     : Ashantha
---%>
-
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@page import="org.sampath.filex.web.actions.Employee"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

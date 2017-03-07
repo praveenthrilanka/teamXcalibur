@@ -1,6 +1,6 @@
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
-<%@ include file="PM_SideBar_Project.jsp" %>
+<%@ include file="SideBar_Project.jsp" %>
            
 <!-- START CONTENT -->
             

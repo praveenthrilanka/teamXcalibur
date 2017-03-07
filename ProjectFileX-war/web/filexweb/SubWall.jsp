@@ -1,9 +1,3 @@
-<%-- 
-    Document   : SubWall
-    Created on : Oct 19, 2016, 9:41:10 AM
-    Author     : Ashantha
---%>
-
 <%@page import="org.sampath.filex.web.actions.SRS"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.sampath.filex.web.actions.Comment"%>

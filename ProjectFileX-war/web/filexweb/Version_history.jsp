@@ -2,7 +2,7 @@
 <%@page import="org.sampath.filex.web.actions.Stakeholder"%>
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
-<%@ include file="Admin_Sidebar.jsp" %>
+<%@ include file="Sidebar.jsp" %>
 
 <!-- START CONTENT -->
 

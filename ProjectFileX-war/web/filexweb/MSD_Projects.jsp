@@ -1,7 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
-<%@ include file="MSD_SideBar.jsp" %>
+<%@ include file="SideBar.jsp" %>
 
 
 <!-- START CONTENT -->

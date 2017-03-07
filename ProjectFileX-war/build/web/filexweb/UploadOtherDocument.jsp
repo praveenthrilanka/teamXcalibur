@@ -1,18 +1,8 @@
-<%-- 
-    Document   : UploadOtherDocument
-    Created on : Feb 1, 2017, 10:49:00 PM
-    Author     : Reshani
---%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.sampath.filex.web.actions.Document"%>
 <%@ include file="Up.jsp" %>
-<%@ include file="BA_Sidebar_Project.jsp" %>
-
-
-
-
-           
+<%@ include file="Sidebar_Project.jsp" %>
+      
 <!-- START CONTENT -->
             <section id="main-content" class=" ">
                 <section class="wrapper" style='margin-top:50px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
@@ -62,9 +52,7 @@
                                  }
                              %>
                            
-                            <br />
-                            <br />
-                            <br />
+                            
                             
                                     
                                 <div style="display:block; margin:auto; width:30%;">
@@ -76,11 +64,11 @@
 							
 						</div>
 					
-                                                <br/><br/><br/>
+                                                <br/>
                                                 
                                                 
 				 <label><b>Narration :</b></label>
-                                <input type="text" name="narration" placeholder="Enter a name for the document " required> <br/><br/><br/>		
+                                <input type="text" name="narration" placeholder="Enter a name for the document " required> <br/>		
                                                 
                                 <div class="clearfix"></div>                                      
                                 <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Upload Document">
@@ -93,7 +81,7 @@
                                                 
                                                 <div class="clearfix"></div>
                                                 <button style="background-color:#02a7e7;  border:none;" class="btn btn-info btn-block " id="button1" type = "button" onclick="showDiv()">Add a New Document Type</button>
-                                                <br/> <br/>
+                                                
            
                                                 <!-- Display only if user wants to add a new document type -->
                                                
@@ -141,9 +129,7 @@
                                                         showDiv2();
                                                     }
                                                     
-                                                    }
-                                                    
-                                                        
+                                                    }   
                                                 
                                             </script>
                                             
