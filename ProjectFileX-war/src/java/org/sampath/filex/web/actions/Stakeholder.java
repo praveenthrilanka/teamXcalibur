@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static org.sampath.filex.web.actions.Project.getProjectFromRS;
 
 /**
  *
@@ -31,6 +32,11 @@ public class Stakeholder {
         this.department = department;
         this.priorityno = priorityno;
         this.status = status;
+    }
+    
+    public Stakeholder(String name,String priorityno) {
+        this.name = name;
+        this.priorityno = priorityno;
     }
     
     public String getEmpid() {
@@ -132,5 +138,35 @@ public class Stakeholder {
        
     }
   
+    public static ArrayList<Stakeholder> getAddedStake(String pno){
+        ArrayList<Stakeholder> addstk=new ArrayList<Stakeholder>();
+//        FileControll fc=new FileControll();
+        System.out.println();
+        Connection con=DatabaseConnection.createConnection();        
+        try {
+            System.out.println("Execution strt");
+            PreparedStatement ps=con.prepareStatement("select sa.priorityno,e.empname from srsapprovedby sa,project p,srs s,employee e where sa.DOCNO=s.DOCNO and s.PNO=p.PNO and e.empid=sa.STKID and p.PNO='"+pno+"' order by priorityno");
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done");
+            Stakeholder p;
+            
+            while(rs.next()){
+                p= getAddedStakeholdersFromRS(rs);
+                addstk.add(p);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+        return addstk;
+    }
     
+    
+    public static Stakeholder getAddedStakeholdersFromRS(ResultSet rs) throws SQLException {
+         return new Stakeholder(
+                 rs.getString("EMPNAME"),
+                 rs.getString("PRIORITYNO"));
+        
+     }
 }

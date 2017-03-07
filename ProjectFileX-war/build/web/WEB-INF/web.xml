@@ -99,6 +99,10 @@
         <servlet-name>AddNewDoc</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.AddNewDoc</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewOtherDocuments</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.ViewOtherDocuments</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignIn</servlet-name>
         <url-pattern>/SignIn</url-pattern>
@@ -182,7 +186,7 @@
     <servlet-mapping>
         <servlet-name>AddNewDoc</servlet-name>
         <url-pattern>/AddNewDoc</url-pattern>
-    </servlet-mapping>    
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EditUser</servlet-name>
         <url-pattern>/EditUser</url-pattern>
@@ -194,6 +198,10 @@
     <servlet-mapping>
         <servlet-name>DeleteEmp</servlet-name>
         <url-pattern>/DeleteEmp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewOtherDocuments</servlet-name>
+        <url-pattern>/ViewOtherDocuments</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -75,13 +75,16 @@
                                                 <input type="file" name="otherFile" accept=".pdf , .docx " onchange="loadFile(event)" required/>
 							
 						</div>
-						
+					
                                                 <br/><br/><br/>
                                                 
                                                 
-						
-                                                <div class="clearfix"></div>                                      
-                                        <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Upload Document">
+				 <label><b>Narration :</b></label>
+                                <input type="text" name="narration" placeholder="Enter a name for the document " required> <br/><br/><br/>		
+                                                
+                                <div class="clearfix"></div>                                      
+                                <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Upload Document">
+                                
                                 </form>
                              
                                 <!--To add a new document -->

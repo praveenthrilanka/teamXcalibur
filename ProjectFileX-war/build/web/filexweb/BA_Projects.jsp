@@ -83,7 +83,7 @@
                         <div class="cta-desc">
                             <label>Project ID</label><span style="padding:1em;">:</span><span style="padding:1.8em;"><% out.print(pr.getProjectno()); %></span>
                             <br/>
-                            <label>Status</label><span style="padding:2.7em;">:</span><span style="padding:0em;">Pending</span>
+                            <label>Status</label><span style="padding:2.7em;">:</span><span style="padding:0em;"><% out.print(Project.getStatusByProject(pr.getProjectno())); %></span>
                         </div>
                     </div>
                     <div class="col-md-3 cta-button">

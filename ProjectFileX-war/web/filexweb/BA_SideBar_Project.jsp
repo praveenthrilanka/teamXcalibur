@@ -1,4 +1,5 @@
-                <%@page import="org.sampath.filex.web.actions.Project"%>
+                <%@page import="org.sampath.filex.web.actions.Employee"%>
+<%@page import="org.sampath.filex.web.actions.Project"%>
 
                 <ul class='wraplist'>	
                         
@@ -10,7 +11,7 @@
                     try{
                     if(p.getSrsid()!=null){
                     session.setAttribute("srsid", p.getSrsid() );
-                    srsid=p.getSrsid();}
+                    srsid="Uploaded";}
                     else
                     srsid="Not Uploaded";
                     }
@@ -21,13 +22,16 @@
                     
                         <li class="open"> <a> <i class="fa fa-folder-open"></i> <span class="title"><% out.print(p.getProjectname()); %></span></a>
                             <ul class="sub-menu">
-                                <li > <a> <span class="title">SRS ID : <% out.print(srsid); %></span> </a> </li>
+                                <li > <a> <span class="title">Manager SD : <% out.print(Employee.getEmployee(p.getMsdid()).getEmployeename()); %></span></a> </li>
+                                <li > <a> <span class="title">Project Manager : <% out.print(Employee.getEmployee(p.getPmid()).getEmployeename()); %></span></a> </li> 
+                                <li > <a> <span class="title">Manager SD : <% out.print(Employee.getEmployee(p.getMsdid()).getEmployeename()); %></span></a> </li>
+                                <li > <a> <span class="title">SRS Status : <% out.print(srsid); %></span> </a> </li>
                             </ul>
                     <%
                     }
                     %>
                             
-                            <br/><br/>
+                            
                         <li class=""> 
                             <a href="BA_Projects.jsp">
                                 <i class="fa fa-dashboard"></i>

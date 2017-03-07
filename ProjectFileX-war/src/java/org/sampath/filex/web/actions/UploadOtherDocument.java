@@ -45,7 +45,7 @@ public class UploadOtherDocument extends HttpServlet {
        
       //  String docid=request.getParameter("docID"); 
        
-        String newDocName = request.getParameter("docname");
+        String newDocName = request.getParameter("narration");
         
         String docType = request.getParameter("doctype");
         
@@ -74,7 +74,7 @@ public class UploadOtherDocument extends HttpServlet {
             System.out.println("File found,");
             
 
-            PreparedStatement statement = con.prepareStatement("INSERT INTO otherdocument(docno, doctypeid ,doc, pno) values (?,?,?,?)");
+            PreparedStatement statement = con.prepareStatement("INSERT INTO otherdocument(docno, doctypeid ,doc, pno,docname) values (?,?,?,?,?)");
            
             // setting up values to columns.
             
@@ -96,6 +96,8 @@ public class UploadOtherDocument extends HttpServlet {
             statement.setString(4,pno);  // called by the session
             
             System.out.println("set 4 is done");
+            
+            statement.setString(5, newDocName);
             
            
  

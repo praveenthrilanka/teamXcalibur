@@ -54,7 +54,7 @@ public class GetFile extends HttpServlet {
 
         HttpSession session=request.getSession();
         String pno=(String)session.getAttribute("pno");
-        String srsid=(String)session.getAttribute("srsid");
+        String srsid=(String)session.getAttribute("docno");
         
         System.out.println(srsid+"/"+pno);
         

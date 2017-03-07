@@ -95,10 +95,11 @@ public class Project {
         Connection con=DatabaseConnection.createConnection();        
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.PMID='"+pmid+"'");
+            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.PMID='"+pmid+"' order by p.pno desc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             System.out.println(pmid);
+            
             Project p;
             
             while(rs.next()){
@@ -120,7 +121,7 @@ public class Project {
         Connection con=DatabaseConnection.createConnection();        
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from SRSApprovedBy a,project p,employee e,srs s where s.DOCNO=a.DOCNO and p.PNO=s.PNO and a.STKID=e.EMPID and a.STKID='"+stkid+"'");
+            PreparedStatement ps=con.prepareStatement("select * from SRSApprovedBy a,project p,employee e,srs s where s.DOCNO=a.DOCNO and p.PNO=s.PNO and a.STKID=e.EMPID and a.STKID='"+stkid+"' order by p.pno desc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             System.out.println(stkid);
@@ -265,6 +266,42 @@ public class Project {
   
     }
     
+        public static String getStatusByProject(String pno){
+            
+            
+        Connection con=DatabaseConnection.createConnection();
+        String status="Approved";
+        try {
+            System.out.println("Execution strt");
+            PreparedStatement ps=con.prepareStatement("select a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"'");
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done");
+            
+            
+            while(rs.next()){
+                System.out.println("CQQQQQQ " +rs.getString("STATUS"));
+               
+                if(rs.getString("STATUS")!=null)
+                {    
+                 if(!(rs.getString("STATUS").equalsIgnoreCase("approved")))
+                 {  
+                     status="Pending";
+                     break;
+                 }
+                }
+                else
+                    status="Pending";
+                
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+            return status;
+  
+    }
+    
     public static Boolean getAddedStakeholders(String pno){
             
             
@@ -276,7 +313,7 @@ public class Project {
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
                         
-                System.out.println(rs.next());
+               // System.out.println(rs.next());
                  added=rs.next();
                 System.out.println("completed");
                 
@@ -288,9 +325,6 @@ public class Project {
         }
             return added ;
   
-    }
-    
-    
-    
+    }    
     
 }
