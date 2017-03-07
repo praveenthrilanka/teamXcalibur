@@ -266,6 +266,42 @@ public class Project {
   
     }
     
+        public static String getStatusByProject(String pno){
+            
+            
+        Connection con=DatabaseConnection.createConnection();
+        String status="Approved";
+        try {
+            System.out.println("Execution strt");
+            PreparedStatement ps=con.prepareStatement("select a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"'");
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done");
+            
+            
+            while(rs.next()){
+                System.out.println("CQQQQQQ " +rs.getString("STATUS"));
+               
+                if(rs.getString("STATUS")!=null)
+                {    
+                 if(!(rs.getString("STATUS").equalsIgnoreCase("approved")))
+                 {  
+                     status="Pending";
+                     break;
+                 }
+                }
+                else
+                    status="Pending";
+                
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+            return status;
+  
+    }
+    
     public static Boolean getAddedStakeholders(String pno){
             
             

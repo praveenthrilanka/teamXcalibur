@@ -3,13 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/AddEmp.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Project.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/PM_Projects.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SetIcon.java</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/BA_SideBar.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/PMLogin.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Comment.java</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/PM_SideBar_Project.jsp</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Admin_add_user.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Login.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SignIn.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/SubWall.jsp</file>
@@ -64,18 +66,12 @@
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/UploadAgreement.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Version_history.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/EncryptPassword.java</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/MSD_SideBar_Project.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/EditUser.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/GetFile.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Stakeholder.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/PM_Dashboard.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/DatabaseConnection.java</file>
-=======
-            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Stakeholder.java</file>
-            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/web/filexweb/AddStakeHolders.jsp</file>
-            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Employee.java</file>
-            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/AddStakeholders.java</file>
-            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/web/filexweb/SubWall.jsp</file>
->>>>>>> 12db6462df5bc457817a2961c5c8f7d5fec0e769
         </group>
     </open-files>
 </project-private>
