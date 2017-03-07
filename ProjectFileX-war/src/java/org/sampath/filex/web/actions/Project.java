@@ -313,7 +313,7 @@ public class Project {
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
                         
-                System.out.println(rs.next());
+               // System.out.println(rs.next());
                  added=rs.next();
                 System.out.println("completed");
                 

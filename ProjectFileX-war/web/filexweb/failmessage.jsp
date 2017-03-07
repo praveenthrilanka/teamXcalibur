@@ -35,8 +35,5 @@
                     
                 </section></section>>
 
-<<<<<<< HEAD
+
 <%@ include file="Down.jsp" %>
-=======
-<%@ include file="Down.jsp" %>
->>>>>>> 79c856ac45603783c10a1110c03684a908c7e85f

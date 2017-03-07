@@ -7,15 +7,12 @@ package org.sampath.filex.web.actions;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.Blob;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -25,14 +22,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 /**
  *
- * @author Ashantha
+ * @author Reshani
  */
-@WebServlet("/GetFile")
-public class GetFile extends HttpServlet {
+@WebServlet("/ViewOtherDocuments")
+public class ViewOtherDocuments extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,7 +39,8 @@ public class GetFile extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+   
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/pdf");
         //PrintWriter out = response.getWriter();
@@ -54,9 +51,9 @@ public class GetFile extends HttpServlet {
 
         HttpSession session=request.getSession();
         String pno=(String)session.getAttribute("pno");
-        String srsid=(String)session.getAttribute("docno");
+        String docid=request.getParameter("docno");
         
-        System.out.println(srsid+"/"+pno);
+        System.out.println(docid+"/"+pno);
         
         Connection con=DatabaseConnection.createConnection();
         
@@ -66,12 +63,12 @@ public class GetFile extends HttpServlet {
         ResultSet rset=null;
         ServletOutputStream os = response.getOutputStream();
         System.out.println("SOS done");
-        PreparedStatement pstmt = con.prepareStatement("Select pdffile from versionhistory v,srs s where s.docno=v.docno and s.pno='"+pno+"' and v.srsversion in (select max(v.srsversion) from versionhistory v,srs s where s.docno=v.docno and s.pno='"+pno+"')");
+        PreparedStatement pstmt = con.prepareStatement("Select doc from otherdocument where pno='"+pno+"' and docno= '"+docid+"' ");
         //pstmt.setString(1, bookId.trim());
         rset = pstmt.executeQuery();
         System.out.println("Query execution done");
         if (rset.next()){
-                Blob blob = rset.getBlob("pdffile");
+                Blob blob = rset.getBlob("doc");
                 InputStream inputStream = blob.getBinaryStream();
                 //OutputStream outputStream = new FileOutputStream(filePath);
  
@@ -93,7 +90,6 @@ public class GetFile extends HttpServlet {
             System.out.println("Something went wrong in Connection "+ex);
         }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
