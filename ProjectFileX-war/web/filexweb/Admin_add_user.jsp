@@ -42,7 +42,7 @@
                         </tbody></table>
                 </div><br/>
                 <label>Email :</label>
-                <input type="text" id="email" name="email" value="" placeholder="Enter email here"><br>
+                <input type="text" id="email" name="email" value="" placeholder="Enter email here" required><br>
                 <br>
                 <div class="clearfix"></div>
                 <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Add User"><br>

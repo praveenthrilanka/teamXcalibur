@@ -4,6 +4,7 @@
     Author     : Ashantha
 --%>
 
+<%@page import="org.sampath.filex.web.actions.SRS"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.sampath.filex.web.actions.Comment"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,11 +26,60 @@
         </script>
       
     </head>
-    <body>
+           <%
+                session=request.getSession();
+                String pno=(String)session.getAttribute("pno");
+                String eid=(String)session.getAttribute("eid");
+                String status=SRS.getSRSStatus(pno, eid);
+                String modal;
+                
+           %>
+    
+           <%   
+                if(status!=null)
+                {    
+                    if(status.equals("approved"))
+                    {
+           %> 
+                    <script type="text/javascript">
+                        $(window).load(function(){
+                            $('#ModalApproval').modal('show');
+                        });
+                    </script>
+           <%       }
+                    else if(status.equals("rejected"))
+                    {
+           %>
+                    <script type="text/javascript">
+                        $(window).load(function(){
+                            $('#ModalRejection').modal('show');
+                        });
+                    </script>
+           <%       }
+                }
+           %>
+    
+    <body onload="">
         <!--<a style="float:right;" title="Home" id="link" target="_parent" href="uploadFile.jsp"><img src="logos/home.png" height="40" width="40"></a>-->
         
        <div style ="margin: auto;width: 95%; left: 1%;  padding: 1px">
-           <a style="padding:10px" href="#" title="Approve" data-toggle="modal" data-target="#myModalApproval" role="button"><img src="logos/approve.png" height="40" width="40"></a>
+                     
+           <%
+               if(status!=null)
+                {
+                    if(!(status.equals("approved") || status.equals("rejected")) && status.equals("noresponse") )
+                    {
+           %>        
+                    <a style="padding:10px" href="#" title="Approve" data-toggle="modal" data-target="#myModalApproval" role="button"><img src="logos/approve.png" height="40" width="40"></a>
+                    <a style="padding:10px" href="#" title="Reject" data-toggle="modal" data-target="#myModalRejection" role="button"><img src="logos/reject.png" height="40" width="40"></a>
+           <%
+                    }
+                }
+               
+           %>
+           
+          
+           
            <a style="padding:10px" href="Comment.jsp" title="Add Comment" role="button"><img src="logos/addcomment.png" height="40" width="40"></a>
        </div>
         
@@ -120,8 +170,74 @@
               <p>Once the SRS is approved, you will not be able to undo it.</p>
             </div>
             <div class="modal-footer">
-              <a  href="../SRSApproval" class="btn btn-default">Approve</a>
+                <a  href="../SRSApproval?status=approve" class="btn btn-default">Approve</a>
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+       
+        <!-- Modal for rejection -->
+      <div class="modal fade" id="myModalRejection" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Are you sure?</h4>
+            </div>
+            <div class="modal-body">
+              <p>Once the SRS is rejected, you will not be able to undo it.</p>
+            </div>
+            <div class="modal-footer">
+              <a  href="../SRSApproval?status=reject" class="btn btn-default">Reject</a>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+        
+      <!-- Modal for approval -->
+      <div class="modal fade" id="ModalApproval" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Approved</h4>
+            </div>
+            <div class="modal-body">
+              <p>You have already approved the project.</p>
+            </div>
+            <div class="modal-footer">
+              
+              <button type="button" class="btn btn-default" data-dismiss="modal">Got It</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+      <!-- Modal for Approval -->
+      <div class="modal fade" id="ModalRejection" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Already Rejected</h4>
+            </div>
+            <div class="modal-body">
+              <p>You have already rejected the SRS.</p>
+            </div>
+            <div class="modal-footer">
+           
+              <button type="button" class="btn btn-default" data-dismiss="modal">Got It</button>
             </div>
           </div>
 

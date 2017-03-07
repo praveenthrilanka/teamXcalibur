@@ -44,6 +44,7 @@ public class AddEmp extends HttpServlet {
         String ba = request.getParameter("ba");
         String stk = request.getParameter("stk");
         String email = request.getParameter("email");
+        String mail=null;
         
         String pw = EncryptPassword.cryptWithMD5(id);
         System.out.println(pw);
@@ -75,6 +76,13 @@ public class AddEmp extends HttpServlet {
 
             System.out.println("Insert Employee");
             con.close();
+              mail  = "Hello, "+name
+                    + "\nYou've been added as a FileX user.\n\n"
+                    + "FileX is to automate the SRS approval system.\n\n"
+                    + "Click Here : http://localhost:7001/ProjectFileX-war/";
+            
+            Mail.sendmail(email, "Welcome to FileX",mail);
+            
             response.sendRedirect("filexweb/message.jsp?message=User added successfully.!");
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
