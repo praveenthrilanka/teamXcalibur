@@ -12,11 +12,11 @@
         
         <%
             session=request.getSession(false);
-        ArrayList<Project> project=null;
+            ArrayList<Project> project=null;
             
             project=Project.getProjectByBAid(request.getParameter("eid"));
             
-        System.out.println("Output test2");
+            System.out.println("Output test2");
         %>
         
        
@@ -49,9 +49,6 @@
             <thead>
 
                 <tr role="row">
-
-                    <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1"  style="width: 80px;" aria-sort="ascending">Project No</th>
-
                     <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 291px;">Project Name</th>
 
                     <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 160px;">Date Created</th>

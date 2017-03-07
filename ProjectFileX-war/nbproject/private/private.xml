@@ -3,15 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/AddEmp.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Project.java</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/SideBar_Project.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/PM_Projects.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SetIcon.java</file>
-            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/BA_SideBar.jsp</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/ViewOtherDocuments.java</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/MSDnPM.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/PMLogin.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Comment.java</file>
-            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/PM_SideBar_Project.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Admin_add_user.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Login.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SignIn.java</file>
@@ -19,22 +19,23 @@
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Employee.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/UploadSRS.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Down.jsp</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/ViewOtherDocument.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/WEB-INF/web.xml</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/BA_Projects.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/ApprovedProjects.jsp</file>
-            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/MSDLogin.jsp</file>
-            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/AddStk.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Admin_edit_user.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Constants.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Admin_view_user.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SignOut.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/MSD_Dashboard.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Wall.jsp</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/View_assigned_projects.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Intermediate.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/EditComment.java</file>
-            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/ViewSRS.jsp</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/OngoingProjects.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/HoldProjects.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/FileControll.java</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/UploadOtherDocument.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/ExStkLogin.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Up.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Document.java</file>
@@ -42,21 +43,22 @@
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/GetIconByID.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/MSD_Projects.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/AddStakeholders.java</file>
-            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/BA_SideBar_Project.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/AddStakeHolders.jsp</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/SideBar.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/GetIcon.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/EditProfile.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/BA_Dashboard.jsp</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/UploadAgreement.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/MSD_CreateProject.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/ProjectControl.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/ESH_Dashboard.jsp</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Login.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Login-invalid.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/AddNewDoc.java</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/failmessage.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SRSApproval.java</file>
-            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/uploadFile.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SRS.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/PMLogin2.jsp</file>
-            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/MSDViewBA.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SetUser.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/UploadSRS.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Notification.java</file>
@@ -68,26 +70,18 @@
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/UploadAgreement.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Version_history.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/EncryptPassword.java</file>
-            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/MSD_SideBar_Project.jsp</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Admin_Dashboard.jsp</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/message.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/EditUser.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/GetFile.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Stakeholder.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/ManagerSDLogin.jsp</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Comment.jsp</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/UploadOtherDocument.java</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Successandfailmessage.jsp</file>
+            <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/CommentEdit.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/PM_Dashboard.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/DatabaseConnection.java</file>
-=======
-<<<<<<< HEAD
-            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SetIcon.java</file>
-            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/web/filexweb/EditProfile.jsp</file>
-            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/web/filexweb/failmessage.jsp</file>
-            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/EncryptPassword.java</file>
-=======
-            <file>file:/C:/Users/Reshani/Desktop/new%20version/teamXcalibur/ProjectFileX-war/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/Reshani/Desktop/new%20version/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/UploadOtherDocument.java</file>
-            <file>file:/C:/Users/Reshani/Desktop/new%20version/teamXcalibur/ProjectFileX-war/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Reshani/Desktop/new%20version/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/ViewOtherDocuments.java</file>
->>>>>>> de76299d921b6b8b00bffd4e71a7ad16a057ad7d
->>>>>>> 6ec93d018af728c013a52d9167cbec03dcccde41
         </group>
     </open-files>
 </project-private>

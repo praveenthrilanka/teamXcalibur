@@ -101,9 +101,9 @@
                                             <label>Password :</label>
 
 
-                                            <input type="password" id=oldpassword" name="pw" placeholder="Enter the old password" required="">				<br/><br/><br/>
-                                            <input type="password" id=newpassword" name="npw" placeholder="Enter the new password">				<br/><br/><br/>
-                                            <input type="password" id=cnewpassword" name="cnpw" placeholder="Confirm the new password">				<br/><br/><br/>
+                                            <input type="password" id=oldpassword" name="pw" placeholder="Enter the old password" required="">				<br/><br/>
+                                            <input type="password" id=newpassword" name="npw" placeholder="Enter the new password">				<br/><br/>
+                                            <input type="password" id=cnewpassword" name="cnpw" placeholder="Confirm the new password">				<br/><br/>
 
                                             
 

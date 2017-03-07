@@ -96,16 +96,10 @@
                 }
             %>
 
-
-
-
         </div>
-
-
     </section>
 </section>
 <!-- END CONTENT -->
-
 
 
 <%@ include file="Down.jsp" %>
