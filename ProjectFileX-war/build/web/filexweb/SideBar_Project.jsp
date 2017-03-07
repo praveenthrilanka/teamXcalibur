@@ -24,7 +24,7 @@
                             <ul class="sub-menu">
                                 <li > <a> <span class="title">Manager SD : <% out.print(Employee.getEmployee(p.getMsdid()).getEmployeename()); %></span></a> </li>
                                 <li > <a> <span class="title">Project Manager : <% out.print(Employee.getEmployee(p.getPmid()).getEmployeename()); %></span></a> </li> 
-                                <li > <a> <span class="title">Manager SD : <% out.print(Employee.getEmployee(p.getBaid()).getEmployeename()); %></span></a> </li>
+                                <li > <a> <span class="title">Business Analyst  : <% out.print(Employee.getEmployee(p.getBaid()).getEmployeename()); %></span></a> </li>
                                 <li > <a> <span class="title">SRS Status : <% out.print(srsid); %></span> </a> </li>
                             </ul>
                     <%

@@ -268,31 +268,43 @@ public class Project {
   
     }
     
-        public static String getStatusByProject(String pno){
+        public static String getStatusByProject(String pno,String eid){
             
             
         Connection con=DatabaseConnection.createConnection();
-        String status="Approved";
+        String acknowledgement="Approved";
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"'");
+            PreparedStatement ps=con.prepareStatement("select a.stkid,a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+Project.getSRSVersion(pno)+"' order by priorityno asc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             
             
             while(rs.next()){
-                System.out.println("CQQQQQQ " +rs.getString("STATUS"));
-               
-                if(rs.getString("STATUS")!=null)
+                    String status=rs.getString("STATUS");
+                    
+                if(status!=null)
                 {    
-                 if(!(rs.getString("STATUS").equalsIgnoreCase("approved")))
-                 {  
-                     status="Pending";
-                     break;
-                 }
+                    if(status.equals("noresponse") && rs.getString("STKID").equals(eid))
+                    {
+                        acknowledgement="Waiting for your approval";
+                        break;
+                    }    
+                    else if(status.equals("noresponse"))
+                    {
+                        acknowledgement="Approval process at " + Employee.getEmployee(rs.getString("STKID")).getEmployeename();
+                        break;
+                    }
+                    else if(status.equals("rejected"))
+                    {
+                        acknowledgement="Rejected by " + Employee.getEmployee(rs.getString("STKID")).getEmployeename();
+                        break;
+                    }
+                    else
+                        acknowledgement="Project is approved";
                 }
                 else
-                    status="Pending";
+                    acknowledgement="Undefined";
                 
             }
             con.close();
@@ -300,7 +312,7 @@ public class Project {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Something went wrong in Connection "+ex);
         }
-            return status;
+            return acknowledgement;
   
     }
     
