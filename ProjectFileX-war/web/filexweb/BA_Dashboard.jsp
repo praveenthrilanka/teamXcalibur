@@ -43,7 +43,7 @@
 											<div class="caption-text">
 												<h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">View Documents</h3>
 												<button type="button" class="btn btn-warning" style="margin-top:3; width:140;" onclick="window.location.href='Wall.jsp'">SRS</button><br/>
-												<button type="button" class="btn btn-warning" style="margin-top:8; width:140;" onclick="window.location.href='#'">Other Documents</button><br/>
+												<button type="button" class="btn btn-warning" style="margin-top:8; width:140;" onclick="window.location.href='ViewOtherDocument.jsp'">Other Documents</button><br/>
 													
 											</div>
 										</div>
