@@ -112,7 +112,7 @@ try {
               System.out.println("File uploaded and saved into database");
               }
             
-           response.sendRedirect("filexweb/message.jsp?message=Your rofile pictutre updated successfully.!");
+           response.sendRedirect("filexweb/message.jsp?message=Your profile pictutre updated successfully.!");
          
             
            }
@@ -162,7 +162,7 @@ try {
 
             }
             
-            else if(cnewpass.equals("") && (!newpass.equals(""))){
+           else if(cnewpass.equals("") && (!newpass.equals(""))){
             
                 response.sendRedirect("filexweb/failmessage.jsp?failmessage=Confirm your password!");
             }
@@ -178,7 +178,7 @@ try {
             }
             
             
-            else{
+           else{
              
                 response.sendRedirect("filexweb/failmessage.jsp?failmessage=Passwords do not match!");
 
