@@ -18,12 +18,12 @@
 <script type="text/javascript">
 
     function f(j, num) {
-        var index = document.getElementById(j).selectedIndex;
+        var index = document.getElementById('selection_'+j).selectedIndex;
         var l;
         var k;
         for (l = j + 1; l < num; l++) {
 
-            var op = document.getElementById(l);
+            var op = document.getElementById('selection_'+l);
             if (op.selectedIndex == index) {
                 op.selectedIndex = 0;
             }
@@ -36,7 +36,7 @@
         var k;
 
         for (j = 0; j < num; j++) {
-            var op = document.getElementById(j);
+            var op = document.getElementById('selection_'+j);
             for (k = 0; k <= num; k++) {
                 op.options[k].style.display = 'block';
             }
@@ -46,15 +46,48 @@
             f(j, num);
         }
     }
+    
+    function validatePriority()
+    {
+       <%  
+            
+            ArrayList<Employee> sh2=Employee.getStakeHolders();    
+            int num2 = sh2.size(); 
+       %>
+        var num = <%=num2 %>;
+        
+       
+        for(var i=0; i<=num;i++)
+        {
+
+            if(document.getElementById('selection_'+i).selectedIndex!==0)
+            {
+                if(document.getElementById('prio_'+i).value==="")
+                {
+                    document.getElementById('req_'+i).innerHTML="Required!";
+                    return false;
+                }
+                else
+                {
+                    document.getElementById('req_'+i).innerHTML="";
+                     return true;
+                }
+                    
+            }
+        }
+        
+        
+
+    }
 
     function populate() {
-        var s = document.getElementById('prefList').value;
+ 	var s = document.getElementById('prefList').value;
         var num = document.getElementById('num').value;
         var arr = s.split(",");
         var len = arr.length;
         var i;
         for (i = 0; i < len && i < num; i++) {
-            document.getElementById(i).options.selectedIndex = arr[i];
+            document.getElementById('selection_'+i).options.selectedIndex = arr[i];
         }
         update(num);
 
@@ -63,6 +96,8 @@
         populate();
         
     };
+    
+        
 </script>
 
 <section id="main-content" class=" ">
@@ -103,7 +138,7 @@
                                                   
                             <tr>
                                 <td>
-                                <select name="<%="selection"+i %>" id="<%=i %>" onChange="update(<%=num %>);">
+                                <select name="<%="selection_"+i %>" id="<%="selection_"+i %>" onChange="update(<%=num %>);">
                                 <option value="0">Select</option>
 
                                 <%
@@ -119,7 +154,9 @@
                                 </td>
                                                     
                                 <td>
-                                <input type="text" name="prio<%=i %>" size="2"/>
+                                <input type="text" name="prio_<%=i %>" id="prio_<%= i %>" size="2" />
+                                
+                                <span id="req_<%=i %>"></span>
                                                 
                                             
                                 <%
@@ -132,7 +169,7 @@
                     <br/><br/>
                     <input type="hidden" id="count" name="count" value="<% out.print(num); %>" />
                     <input type="hidden" id="docno" name="docno" value="<% out.print(srsid); %>" />
-                    <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Add">
+                    <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="button" onclick="validatePriority() value="Add">
                     <br/>
                                         
                     </form>
@@ -198,7 +235,7 @@
                 <h5><strong>Update the SRS Flow</strong></h5>
                     
                     <table align="center" width="80%" style="border-collapse: separate;border-spacing: 0 1.5em;">
-                        <form name="addstk" action="../AddStakeholders" method="post" id="ContactForm">
+                        <form name="addstk" action="../AddStakeholders" method="post" onsubmit="return validatePriority()" id="ContactForm">
                                            
                             <tr>
                                 <td><strong>Employee</strong></td>
@@ -222,7 +259,7 @@
                                                   
                             <tr>
                                 <td>
-                                <select name="<%="selection"+i %>" id="<%=i %>" onChange="update(<%=num %>);">
+                                <select name="<%="selection_"+i %>" id="<%="selection_"+i %>" onChange="update(<%=num %>);">
                                     <option value="0">Select</option>
 
                                         <%
@@ -236,15 +273,15 @@
                                 </select>
                                 </td>
                                 <td>
-                                    <input type="text" name="prio<%=i %>" size="2"/>
-                                                               
+                                    <input type="text" name="prio_<%=i %>"  id="prio_<%= i %>" size="2"/>
+                                              <span id="req_<%=i %>"></span>                 
                                         <%
                                             }
                                             }
                                         %>
                                 </td>
                             </tr>
-                        </table>
+                        </table>`
                         <br/><br/>
                         <input type="hidden" id="count" name="count" value="<% out.print(num); %>" />
                         <input type="hidden" id="docno" name="docno" value="<% out.print(srsid); %>" />
@@ -266,10 +303,10 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="modal-title">Are you sure you want to Add Stakeholders?</h4>
+                                <h4 class="modal-title">You have successfully defined the SRS path</h4>
                             </div>
                             <div class="modal-body">
-                                You have already define the path of SRS.
+                                If you need you can update SRS path
                             </div>
                             <div class="modal-footer">
                                 <button data-dismiss="modal" class="btn btn-success" type="button">Ok</button>

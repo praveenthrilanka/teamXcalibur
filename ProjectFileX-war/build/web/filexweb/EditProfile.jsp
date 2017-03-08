@@ -1,6 +1,5 @@
 <%@ include file="Up.jsp" %>
-<<<<<<< HEAD
-<%@ include file="Clear_Sidebar.jsp" %>
+<%@ include file="Sidebar.jsp" %>
 
 
 
@@ -178,10 +177,10 @@
                 {
                     document.getElementById("newmail").disabled = false;
 
-=======
+
 <%@ include file="Sidebar.jsp" %>
          
->>>>>>> 4806a372bc3db25201c49da7f9be79e22974033e
+
                     
                 } else 
                 {
@@ -200,8 +199,6 @@
 
                 }
 
-<<<<<<< HEAD
-=======
 	opacity: .8;
 	
 	position: fixed;
@@ -420,7 +417,7 @@
    }
    
 }
->>>>>>> 4806a372bc3db25201c49da7f9be79e22974033e
+
 
             }
 
