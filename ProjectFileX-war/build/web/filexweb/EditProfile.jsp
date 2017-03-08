@@ -177,13 +177,6 @@
                 {
                     document.getElementById("newmail").disabled = false;
 
-<<<<<<< HEAD
-
-<%@ include file="Sidebar.jsp" %>
-         
-
-=======
->>>>>>> eff387dbf0f00aa66ce7f2f369ce8dd160822a07
                     
                 } else 
                 {
@@ -203,8 +196,6 @@
                 }
 
 
-<<<<<<< HEAD
-
             }
 
             function Validate()
@@ -295,98 +286,6 @@
             var Alert = new CustomAlert();
 
 
-=======
-            }
-
-            function Validate()
-            {
-                if (document.getElementById("passcheck").checked == true && document.getElementById("emailcheck").checked == false && document.getElementById("propiccheck").checked == false) {
-
-                    if ((document.EditProfile.npw.value != "" && document.EditProfile.cnpw.value != "") && (document.EditProfile.npw.value != document.EditProfile.cnpw.value)) {
-
-                        Alert.render("Passswords do not match!");
-                        document.EditProfile.cnpw.focus();
-
-                        return false;
-                    }
-
-                    if (document.EditProfile.npw.value == "" && document.EditProfile.cnpw.value != "") {
-
-                        Alert.render("Enter the new password first!");
-                        document.EditProfile.cnpw.focus();
-
-                        return false;
-                    }
-                    if (document.EditProfile.npw.value != "" && document.EditProfile.cnpw.value == "") {
-
-                        Alert.render("Confirm your password!");
-                        document.EditProfile.cnpw.focus();
-
-                        return false;
-                    }
-                    if (document.EditProfile.npw.value == "" && document.EditProfile.cnpw.value == "") {
-
-                        Alert.render("Fill out the password fields!");
-                        document.EditProfile.cnpw.focus();
-
-                        return false;
-                    }
-
-
-                    document.EditProfile.submit();
-                }
-
-            }
-
-            function CustomAlert() 
-            {
-
-                this.render = function (dialog)
-                {
-
-                    var winW = window.innerWidth;
-
-                    var winH = window.innerHeight;
-
-                    var dialogoverlay = document.getElementById('dialogoverlay');
-
-                    var dialogbox = document.getElementById('dialogbox');
-
-
-                    dialogoverlay.style.display = "block";
-
-                    dialogoverlay.style.height = winH + "px";
-
-                    dialogbox.style.left = (winW / 2) - (550 * .5) + "px";
-
-                    dialogbox.style.top = "100px";
-
-                    dialogbox.style.display = "block";
-
-
-                    document.getElementById('dialogboxhead').innerHTML = "OOPS..! Something went wrong..";
-
-                    document.getElementById('dialogboxbody').innerHTML = dialog;
-
-                    document.getElementById('dialogboxfoot').innerHTML = '<button class="btn btn-success" onclick="Alert.ok()">OK</button>';
-
-                }
-
-                this.ok = function ()
-                {
-
-                    document.getElementById('dialogbox').style.display = "none";
-
-                    document.getElementById('dialogoverlay').style.display = "none";
-
-                }
-
-            }
-
-            var Alert = new CustomAlert();
-
-
->>>>>>> eff387dbf0f00aa66ce7f2f369ce8dd160822a07
         </script>
 
     </section></section>
