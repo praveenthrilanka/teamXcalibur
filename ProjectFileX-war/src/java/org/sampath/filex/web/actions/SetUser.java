@@ -13,10 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Ashantha
- */
+
 public class SetUser extends HttpServlet {
 
     /**
@@ -31,11 +28,12 @@ public class SetUser extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String pno=request.getParameter("pno");
-        String direct=request.getParameter("direct");
-        
-        HttpSession session=request.getSession();
+        String pno = request.getParameter("pno");
+        String direct = request.getParameter("direct");
+
+        HttpSession session = request.getSession();
         session.setAttribute("pno", pno);
+
         if(direct.equals("ba"))
         response.sendRedirect("filexweb/BA_Dashboard.jsp");
         else if(direct.equals("pm"))
@@ -46,6 +44,7 @@ public class SetUser extends HttpServlet {
         response.sendRedirect("filexweb/MSD_ViewProjects.jsp");
         
         
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
