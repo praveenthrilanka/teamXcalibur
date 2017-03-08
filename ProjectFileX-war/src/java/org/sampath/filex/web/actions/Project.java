@@ -297,13 +297,16 @@ public class Project {
             
             
         Connection con=DatabaseConnection.createConnection();
-        String acknowledgement="Approved";
+        String acknowledgement="Initial Project";
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select a.stkid,a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+Project.getSRSVersion(pno)+"' order by priorityno asc");
-            ResultSet rs=ps.executeQuery();
-            System.out.println("Execution done");
             
+            //PreparedStatement ps=con.prepareStatement("select a.stkid,a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+Project.getSRSVersion(pno)+"' order by priorityno asc");
+            PreparedStatement ps=con.prepareStatement("select a.stkid,a.status,a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+Project.getSRSVersion(pno)+"' order by priorityno asc");
+            ResultSet rs=ps.executeQuery();
+            ResultSet temp=rs;
+            System.out.println("Execution done");
+            int lastpriority=0;
             
             while(rs.next()){
                     String status=rs.getString("STATUS");
@@ -314,24 +317,48 @@ public class Project {
                     {
                         acknowledgement="Waiting for your approval";
                         break;
-                    }    
-                    else if(status.equals("noresponse"))
-                    {
-                        acknowledgement="Approval process at " + Employee.getEmployee(rs.getString("STKID")).getEmployeename();
-                        break;
                     }
                     else if(status.equals("rejected"))
                     {
                         acknowledgement="Rejected by " + Employee.getEmployee(rs.getString("STKID")).getEmployeename();
                         break;
                     }
-                    else
-                        acknowledgement="Project is approved";
+                    else if(status.equals("noresponse"))
+                    {   
+                        int prio=0;
+                        ps=con.prepareStatement("select a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and stkid='"+eid+"'");
+                        ResultSet rset=ps.executeQuery();
+                        if(rset.next())
+                        prio=Integer.parseInt(rset.getString("PRIORITYNO"));
+                        if(prio!=0)
+                        {
+                        ps=con.prepareStatement("select a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and a.priorityno='"+(prio-1)+"'");
+                        rset=ps.executeQuery();
+                        }
+                        if(rset.next())
+                        {
+                            if(rset.getString("STATUS").equals("approved"))
+                            {   System.out.println(Integer.parseInt(rs.getString("PRIORITYNO"))+"----------------------------"+lastpriority);
+                                acknowledgement="Waiting for your approval";
+                                break;
+                            }
+                        }
+                        
+                        acknowledgement="Approval process at " + Employee.getEmployee(rs.getString("STKID")).getEmployeename();
+                        break;
+                    }
+                    
+                    lastpriority=Integer.parseInt(rs.getString("PRIORITYNO"));
+                    
                 }
                 else
                     acknowledgement="Undefined";
                 
             }
+            
+            if(!temp.next())
+                acknowledgement="Stakeholders are not assigned yet";
+            
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
