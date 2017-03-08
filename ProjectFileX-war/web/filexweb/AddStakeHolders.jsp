@@ -118,7 +118,7 @@
             <h5><strong>Define SRS flow</strong></h5>
 
                 <table align="center" width="80%" style="border-collapse: separate;border-spacing: 0 1.5em;">
-                    <form name="addstk" action="../AddStakeholders" method="post" id="ContactForm">
+                    <form name="addstk" action="../AddStakeholders" method="post" onsubmit="return validatePriority()" id="ContactForm">
                                             
                         <tr>
                             <td><strong>Employee</strong></td>
@@ -169,7 +169,7 @@
                     <br/><br/>
                     <input type="hidden" id="count" name="count" value="<% out.print(num); %>" />
                     <input type="hidden" id="docno" name="docno" value="<% out.print(srsid); %>" />
-                    <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="button" onclick="validatePriority() value="Add">
+                    <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Add">
                     <br/>
                                         
                     </form>
