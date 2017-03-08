@@ -1,7 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
-<%@ include file="MSD_SideBar.jsp" %>
+<%@ include file="SideBar.jsp" %>
 
 
 <!-- START CONTENT -->
@@ -12,7 +12,7 @@
             <%
 
        
-            ArrayList<Project> project=Project.getProjectByPMid((String)session.getAttribute("eid"));
+            ArrayList<Project> project=Project.getProjectByMsdId((String)session.getAttribute("eid"));
 
                 
             String arr1[]={"bs-calltoaction bs-calltoaction-warning","bs-calltoaction bs-calltoaction-primary","bs-calltoaction bs-calltoaction-info","bs-calltoaction bs-calltoaction-success"};
@@ -38,13 +38,12 @@
                         <div class="col-md-9 cta-contents">
                             <h4 class="cta-title"><% out.print(p.getProjectname()); %></h4>
                             <div class="cta-desc">
-                            <label>Project ID</label><span style="padding:1em;">:</span><span style="padding:1.8em;"><% out.print(p.getProjectno()); %></span>
                                 <br/>
-                                <label>Status</label><span style="padding:2.7em;">:</span><span style="padding:0em;">Pending</span>
+                                <label>Status</label><span style="padding:2.7em;">:</span><span style="padding:0em;"><% out.print(Project.getStatusByProject(p.getProjectno(),(String) session.getAttribute("eid"))); %></span>
                             </div>
                         </div>
                         <div class="col-md-3 cta-button">
-                            <a href="../SetUser?pno=<% out.print(p.getProjectno()); %>&direct=pm" class="<% out.print(arr2[c]); %>">View Project</a>
+                            <a href="../SetUser?pno=<% out.print(p.getProjectno()); %>&direct=msd" class="<% out.print(arr2[c]); %>">View Project</a>
                         </div>
                      </div>
                 </div>

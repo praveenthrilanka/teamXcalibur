@@ -1,9 +1,3 @@
-<%-- 
-    Document   : ManagerSDLogin
-    Created on : Oct 14, 2016, 8:22:58 AM
-    Author     : Erandi
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

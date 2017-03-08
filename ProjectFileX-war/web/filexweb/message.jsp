@@ -1,12 +1,8 @@
 <%@ include file="Up.jsp" %>
-<%@ include file="Clear_Sidebar.jsp" %>
+<%@ include file="Sidebar.jsp" %>
                     
         <% 
-            
-        String message = request.getParameter("message");
-       
-
-       
+            String message = request.getParameter("message");
         %>
             <!-- START CONTENT -->
             <section id="main-content" class=" ">

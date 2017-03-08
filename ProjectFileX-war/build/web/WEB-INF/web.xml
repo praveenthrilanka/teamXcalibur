@@ -64,10 +64,6 @@
         <servlet-class>org.sampath.filex.web.actions.SetUser</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UploadAgreement</servlet-name>
-        <servlet-class>org.sampath.filex.web.actions.UploadAgreement</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AddStakeholders</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.AddStakeholders</servlet-class>
     </servlet>
@@ -102,6 +98,10 @@
     <servlet>
         <servlet-name>ViewOtherDocuments</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.ViewOtherDocuments</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NotificationHandling</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.NotificationHandling</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SignIn</servlet-name>
@@ -164,10 +164,6 @@
         <url-pattern>/SetUser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UploadAgreement</servlet-name>
-        <url-pattern>/UploadAgreement</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AddStakeholders</servlet-name>
         <url-pattern>/AddStakeholders</url-pattern>
     </servlet-mapping>
@@ -202,6 +198,10 @@
     <servlet-mapping>
         <servlet-name>ViewOtherDocuments</servlet-name>
         <url-pattern>/ViewOtherDocuments</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NotificationHandling</servlet-name>
+        <url-pattern>/NotificationHandling</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

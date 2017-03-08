@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@ include file="Up.jsp" %>
-<%@ include file="MSD_Sidebar.jsp" %>
+<%@ include file="Sidebar.jsp" %>
                     
             <% 
             ArrayList<Employee> emp=Employee.getEmployee();

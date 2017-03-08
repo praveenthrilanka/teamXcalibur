@@ -1,6 +1,6 @@
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
-<%@ include file="MSD_SideBar.jsp" %>
+<%@ include file="SideBar.jsp" %>
            
 <!-- START CONTENT -->
             
@@ -51,7 +51,7 @@
 				       <div class="col-lg-3">
 				    				<div class="cuadro_intro_hover " style="background-color:#CECEE9; width:300;">
 										<p style="text-align:center; margin-top:20px;">
-											<img src="images/quicklookup.png" class="img-responsive" alt="" style="padding:0em 6em">
+											<img src="images/view_user.png" class="img-responsive" alt="" style="padding:0em 6em">
 										</p>
 										<div class="caption">
 											<div class="blur"></div>
@@ -61,9 +61,19 @@
                                                 <form name="QuickLookup1" method="post" action="">
                                                     <select width="200" height="80">
                                                       <option value="Select">Select Project Manager</option>
-                                                      <option value="prj002">Saman Perera</option>
-                                                      <option value="prj003">Amal Gamage</option>
-                                                      <option value="prj004">Nishantha Mendis</option>
+                                                      <%  ArrayList<Employee> employees=Employee.getEmployee();
+                                                          for(int x=0;x<employees.size();x++) 
+                                                          {
+                                                            Employee em;
+                                                            em=employees.get(x);
+                                                            
+                                                          
+                                                      %>
+                                                      <option value="<% out.print(em.getEmployeeid()); %>"><% out.print(em.getEmployeename()); %></option>
+                                                           <%
+                                                           }
+                                                           %> 
+                                                        
                                                     </select>
                                                     <br/>
                                                     <button type="button" class="btn btn-warning" style="margin-top:10; width:140;" onclick="window.location.href='#'">View currently assigned projects</button>   
@@ -72,9 +82,17 @@
                                               <form name="QuickLookup2" method="post" action="">
                                                     <select width="200" height="80">
                                                       <option value="Select">Select Business Analyist</option>
-                                                      <option value="prj002">Saman Perera</option>
-                                                      <option value="prj003">Amal Gamage</option>
-                                                      <option value="prj004">Nishantha Mendis</option>
+                                                       <%  
+                                                          for(int x=0;x<employees.size();x++) 
+                                                          {
+                                                            Employee em;
+                                                            em=employees.get(x);
+                                                           
+                                                      %>
+                                                      <option value="<% out.print(em.getEmployeeid()); %>"><% out.print(em.getEmployeename()); %></option>
+                                                           <%
+                                                           }
+                                                           %>
                                                     </select>
                                                     <br/>
                                                     <button type="button" class="btn btn-warning" style="margin-top:10; width:140;" onclick="window.location.href='#'">View currently assigned projects</button>   

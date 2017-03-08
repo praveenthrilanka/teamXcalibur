@@ -1,6 +1,6 @@
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
-<%@ include file="BA_SideBar_Project.jsp" %>
+<%@ include file="SideBar_Project.jsp" %>
            
 <!-- START CONTENT -->
             
@@ -73,7 +73,5 @@
                 </section>
             </section>
             <!-- END CONTENT -->
-            
-            
 
 <%@ include file="Down.jsp" %>

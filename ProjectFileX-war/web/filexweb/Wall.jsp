@@ -1,11 +1,11 @@
 <%@ include file="Up.jsp" %>
-<%@ include file="BA_SideBar_Project.jsp" %>
+<%@ include file="SideBar_Project.jsp" %>
             
             <%
             
-            if(session.getAttribute("pno")==null){
-                //response.sendRedirect("message.jsp?message=Sorry, Selected project is not available.");
-            }        
+                if(session.getAttribute("pno")==null){
+                    //response.sendRedirect("message.jsp?message=Sorry, Selected project is not available.");
+                }        
             
             %>
             

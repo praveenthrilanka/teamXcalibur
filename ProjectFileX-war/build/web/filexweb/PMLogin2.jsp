@@ -1,13 +1,8 @@
-<%-- 
-    Document   : PMLogin
-    Created on : Dec 15, 2016, 2:40:56 PM
-    Author     : Erandi
---%>
 <%@page import="org.sampath.filex.web.actions.DateString"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
-<%@ include file="MSD_SideBar.jsp" %>
+<%@ include file="SideBar.jsp" %>
 
 
 <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
@@ -53,10 +48,7 @@
 
                 <tr role="row">
 
-                    <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1"  style="width: 80px;" aria-sort="ascending">Project No</th>
-
                     <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 291px;">Project Name</th>
-
                     <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 160px;">Date Created</th>
 
                 </tr>
@@ -72,7 +64,7 @@
         %>
       
        <tr>
-       <td> <% out.print(pr.getProjectno()); %></td>        
+              
        <td><% out.print(pr.getProjectname()); %></td>            
        <td><% out.print(pr.getDatentime()); %></td>            
  

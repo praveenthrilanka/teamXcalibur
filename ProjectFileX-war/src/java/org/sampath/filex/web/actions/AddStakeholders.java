@@ -71,7 +71,7 @@ public class AddStakeholders extends HttpServlet {
             System.out.println("Something went wrong in Connection "+ex);
         }
    
-        response.sendRedirect("filexweb/message.jsp?message=Stakeholders added successfully..!");
+        response.sendRedirect("filexweb/AddStakeHolders.jsp");
         
     }
 

@@ -1,14 +1,8 @@
-<%-- 
-    Document   : ViewOtherDocument
-    Created on : Mar 6, 2017, 2:02:44 AM
-    Author     : Reshani
---%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.sampath.filex.web.actions.Document"%>
 <%@page import="org.sampath.filex.web.actions.OtherDocuments"%>
 <%@ include file="Up.jsp" %>
-<%@ include file="Admin_Sidebar.jsp" %>
+<%@ include file="Sidebar.jsp" %>
 
 <!-- START CONTENT -->
 

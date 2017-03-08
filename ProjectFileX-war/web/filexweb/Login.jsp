@@ -44,8 +44,7 @@
 									<input type="text" name="un" required=""/>
 									<p>Password</p>
 									<input type="password" name="pw" required=""/>	 
-									<input type="checkbox" id="brand" value="">
-									<label for="brand"><span></span> Remember me ?</label> 
+									<br/><br/>
 									<input type="submit" value="LOGIN">
 								</form>  
 							</div>

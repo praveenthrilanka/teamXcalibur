@@ -2,7 +2,7 @@
 <%@page import="org.sampath.filex.web.actions.Stakeholder"%>
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
-<%@ include file="Admin_Sidebar.jsp" %>
+<%@ include file="Sidebar.jsp" %>
 
 <!-- START CONTENT -->
 
@@ -58,11 +58,6 @@
                                     <div class="info-details">
                                         <ul class="list-unstyled list-inline">
                                             <li><a href="#" class="text-muted"><% out.print(p.getDatentime()); %></a></li>
-                                            <li><a href="#" class="text-muted"><i class="fa fa-comment"></i> 584</a></li>
-                                            <li><a href="#" class="text-orange"><i class="fa fa-heart"></i> 12k</a></li>
-                                            <li><a href="#" class="text-info"><i class="fa fa-reply"></i> Reply</a></li>
-                                            <li><a href="#" class="text-warning"><i class="fa fa-star"></i> Favourite</a></li>
-                                            <li><a href="#" class="text-muted">More</a></li>
                                         </ul>
 
                                     </div>
@@ -92,7 +87,7 @@
                                             </div>	
                                             <div class="info-details">
                                                 <ul class="list-unstyled list-inline">
-                                                    <li><a href="#" class="text-muted">8 Minutes ago</a></li>
+                                                    <!--<li><a href="#" class="text-muted">8 Minutes ago</a></li>-->
                                                     
                                                 </ul>
                                             </div>

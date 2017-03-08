@@ -3,15 +3,11 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.sampath.filex.web.actions.Notification"%>
 <%@page import="org.sampath.filex.web.actions.Employee"%>
+
 <!DOCTYPE html>
 <html class=" ">
     <head>
-        <!-- 
-         * @Package: Ultra Admin - Responsive Theme
-         * @Subpackage: Bootstrap
-         * @Version: 2.0
-         * This file is part of Ultra Admin Theme.
-        -->
+     
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
         <meta charset="utf-8" />
         <title>FileX : Sampath Bank</title>
@@ -49,14 +45,15 @@
         <%
             session = request.getSession(false);
 
-            if(session.getAttribute("eid")==null)
-            response.sendRedirect("Login.jsp");
-            
+            if (session.getAttribute("eid") == null) {
+                response.sendRedirect("Login.jsp");
+            }
+
             Employee e = Employee.getEmployee((String) session.getAttribute("eid"));
 
 
         %>
-        
+
     </head>
     <!-- END HEAD -->
 
@@ -74,169 +71,23 @@
                                 <i class="fa fa-bars"></i>
                             </a>
                         </li>
-                        <li class="message-toggle-wrapper">
-                            <a href="#" data-toggle="dropdown" class="toggle">
-                                <i class="fa fa-envelope"></i>
-                                <span class="badge badge-primary">7</span>
-                            </a>
-                            <ul class="dropdown-menu messages animated fadeIn">
 
-                                <li class="list">
 
-                                    <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
-                                        <li class="unread status-available">
-                                            <a href="javascript:;">
-                                                <div class="user-img">
-                                                    <img src="data/profile/avatar-1.png" alt="user-image" class="img-circle img-inline">
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong>Clarine Vassar</strong>
-                                                        <span class="time small">- 15 mins ago</span>
-                                                        <span class="profile-status available pull-right"></span>
-                                                    </span>
-                                                    <span class="desc small">
-                                                        Sometimes it takes a lifetime to win a battle.
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class=" status-away">
-                                            <a href="javascript:;">
-                                                <div class="user-img">
-                                                    <img src="data/profile/avatar-2.png" alt="user-image" class="img-circle img-inline">
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong>Brooks Latshaw</strong>
-                                                        <span class="time small">- 45 mins ago</span>
-                                                        <span class="profile-status away pull-right"></span>
-                                                    </span>
-                                                    <span class="desc small">
-                                                        Sometimes it takes a lifetime to win a battle.
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class=" status-busy">
-                                            <a href="javascript:;">
-                                                <div class="user-img">
-                                                    <img src="data/profile/avatar-3.png" alt="user-image" class="img-circle img-inline">
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong>Clementina Brodeur</strong>
-                                                        <span class="time small">- 1 hour ago</span>
-                                                        <span class="profile-status busy pull-right"></span>
-                                                    </span>
-                                                    <span class="desc small">
-                                                        Sometimes it takes a lifetime to win a battle.
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class=" status-offline">
-                                            <a href="javascript:;">
-                                                <div class="user-img">
-                                                    <img src="data/profile/avatar-4.png" alt="user-image" class="img-circle img-inline">
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong>Carri Busey</strong>
-                                                        <span class="time small">- 5 hours ago</span>
-                                                        <span class="profile-status offline pull-right"></span>
-                                                    </span>
-                                                    <span class="desc small">
-                                                        Sometimes it takes a lifetime to win a battle.
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class=" status-offline">
-                                            <a href="javascript:;">
-                                                <div class="user-img">
-                                                    <img src="data/profile/avatar-5.png" alt="user-image" class="img-circle img-inline">
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong>Melissa Dock</strong>
-                                                        <span class="time small">- Yesterday</span>
-                                                        <span class="profile-status offline pull-right"></span>
-                                                    </span>
-                                                    <span class="desc small">
-                                                        Sometimes it takes a lifetime to win a battle.
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class=" status-available">
-                                            <a href="javascript:;">
-                                                <div class="user-img">
-                                                    <img src="data/profile/avatar-1.png" alt="user-image" class="img-circle img-inline">
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong>Verdell Rea</strong>
-                                                        <span class="time small">- 14th Mar</span>
-                                                        <span class="profile-status available pull-right"></span>
-                                                    </span>
-                                                    <span class="desc small">
-                                                        Sometimes it takes a lifetime to win a battle.
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class=" status-busy">
-                                            <a href="javascript:;">
-                                                <div class="user-img">
-                                                    <img src="data/profile/avatar-2.png" alt="user-image" class="img-circle img-inline">
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong>Linette Lheureux</strong>
-                                                        <span class="time small">- 16th Mar</span>
-                                                        <span class="profile-status busy pull-right"></span>
-                                                    </span>
-                                                    <span class="desc small">
-                                                        Sometimes it takes a lifetime to win a battle.
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class=" status-away">
-                                            <a href="javascript:;">
-                                                <div class="user-img">
-                                                    <img src="data/profile/avatar-3.png" alt="user-image" class="img-circle img-inline">
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong>Araceli Boatright</strong>
-                                                        <span class="time small">- 16th Mar</span>
-                                                        <span class="profile-status away pull-right"></span>
-                                                    </span>
-                                                    <span class="desc small">
-                                                        Sometimes it takes a lifetime to win a battle.
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                        <%                            ArrayList<Notification> notifications = Notification.getAllNotification(e.getEmployeeid());
+                            int count = Notification.notificationInfo(e.getEmployeeid());
+                            String empPosition = null;
+                            if (e.getPosition().equals("Business Analyist")) {
+                                empPosition = "ba";
+                            } else if (e.getPosition().equals("Project Manager")) {
+                                empPosition = "pm";
+                            } else if (e.getPosition().equals("PM/MSD")) {
+                                empPosition = "pm";
+                            } else if (e.getPosition().equals("ManagerSD")) {
+                                empPosition = "pm";
+                            } else if (e.getPosition().equals("Stakeholder")) {
+                                empPosition = "esh";
+                            }
 
-                                    </ul>
-
-                                </li>
-
-                                <li class="external">
-                                    <a href="javascript:;">
-                                        <span>Read All Messages</span>
-                                    </a>
-                                </li>
-                            </ul>
-
-                        </li>
-                        
-                        <%
-                            ArrayList<Notification> notifications =Notification.getNotificationByEMPID(e.getEmployeeid());
-                            int count= Notification.notificationInfo(e.getEmployeeid());
                         %>
                         <li class="notify-toggle-wrapper">
                             <a href="#" data-toggle="dropdown" class="toggle">
@@ -246,7 +97,7 @@
                             <ul class="dropdown-menu notifications animated fadeIn">
                                 <li class="total">
                                     <span class="small">
-                                        You have <strong>3</strong> new notifications.
+                                        You have <strong><% out.print(count); %></strong> new notifications.
                                         <a href="javascript:;" class="pull-right">Mark all as Read</a>
                                     </span>
                                 </li>
@@ -254,157 +105,36 @@
 
                                     <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
                                         <%
-                                            
+
                                             Notification n;
-                                            for(int x=0;x<notifications.size();x++){
-                                            n=notifications.get(x);
-                                            
+                                            String status = null;
+                                            for (int x = 0; x < notifications.size(); x++) {
+                                                n = notifications.get(x);
+                                                if (Notification.getStatus(n.getNotifino()).equals("comment")) {
+                                                    status = n.getEmpname() + " commented on project - " + n.getPname();
+                                                } else if (Notification.getStatus(n.getNotifino()).equals("project")) {
+                                                    status = n.getEmpname() + " assigned you as the " + e.getPosition() + " of the Project - " + n.getPname();
+                                                } else if (Notification.getStatus(n.getNotifino()).equals("srs")) {
+                                                    status = n.getEmpname() + " uploaded the SRS of the Project - " + n.getPname();
+                                                }
+
                                         %>
                                         <li class="unread available"> 
-                                            <a href="../SetUser?pno=<% out.print(n.getPno()); %>&direct=ba">
+                                            <a href="../NotificationHandling?pno=<% out.print(n.getPno()); %>&direct=<% out.print(empPosition); %>&status=viewNoti&empid=<% out.print(e.getEmployeeid()); %>&notifino=<% out.print(n.getNotifino()); %>">
                                                 <div class="notice-icon">
                                                     <img class="notification-icon" src="../GetIconByID?id=<%out.print(n.getEmpid());%>">
                                                 </div>
                                                 <div>
                                                     <span class="name">
-                                                        <strong><% out.print(n.getEmpname()); %> commented on project - <% out.print(n.getPname()); %> </strong>
+                                                        <strong><% out.print(status); %> </strong>
                                                         <span class="time small"><% out.print(n.getDatentime()); %></span>
                                                     </span>
                                                 </div>
                                             </a>
                                         </li>
                                         <%
-                                        }
+                                            }
                                         %>
-                                        
-                                        <%  
-                                            notifications =Notification.getProjectNotificationByEMPID(e.getEmployeeid());
-                                            for(int x=0;x<notifications.size();x++){
-                                            n=notifications.get(x);
-                                        %>
-                                        
-                                        <li class="unread away">
-                                            <a href="javascript:;">
-                                                <div class="notice-icon">
-                                                    
-                                                </div>
-                                                <div>
-                                                    <img class="notification-icon" src="../GetIconByID?id=<%out.print(n.getEmpid());%>">
-                                                    <span class="name">
-                                                        <strong><% out.print(n.getEmpname()); %> assigned you as the <% out.print(e.getPosition()); %> of the Project - <% out.print(n.getPname()); %></strong>
-                                                        <span class="time small"><% out.print(n.getDatentime()); %></span>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        
-                                        <%
-                                        }
-                                        %>
-                                        
-                                        <%  
-                                            notifications =Notification.getSRSNotificationByEMPID(e.getEmployeeid());
-                                            for(int x=0;x<notifications.size();x++){
-                                            n=notifications.get(x);
-                                        %>
-                                        
-                                        <li class="unread away">
-                                            <a href="javascript:;">
-                                                <div class="notice-icon">
-                                                    <img class="notification-icon" src="../GetIconByID?id=<%out.print(n.getEmpid());%>">
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong><% out.print(n.getEmpname()); %> uploaded the SRS of the Project - <% out.print(n.getPname()); %></strong>
-                                                        <span class="time small"><% out.print(n.getDatentime()); %></span>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        
-                                        <%
-                                        }
-                                        %>
-                                        
-                                        <!--<li class="unread away">
-                                            <a href="javascript:;">
-                                                <div class="notice-icon">
-                                                    <i class="fa fa-envelope"></i>
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong>45 new messages</strong>
-                                                        <span class="time small">45 mins ago</span>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class=" busy"> 
-                                            <a href="javascript:;">
-                                                <div class="notice-icon">
-                                                    <i class="fa fa-times"></i>
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong>Server IP Blocked</strong>
-                                                        <span class="time small">1 hour ago</span>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class=" offline">
-                                            <a href="javascript:;">
-                                                <div class="notice-icon">
-                                                    <i class="fa fa-user"></i>
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong>10 Orders Shipped</strong>
-                                                        <span class="time small">5 hours ago</span>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class=" offline"> 
-                                            <a href="javascript:;">
-                                                <div class="notice-icon">
-                                                    <i class="fa fa-user"></i>
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong>New Comment on blog</strong>
-                                                        <span class="time small">Yesterday</span>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class=" available"> 
-                                            <a href="javascript:;">
-                                                <div class="notice-icon">
-                                                    <i class="fa fa-check"></i>
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong>Great Speed Notify</strong>
-                                                        <span class="time small">14th Mar</span>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class=" busy"> 
-                                            <a href="javascript:;">
-                                                <div class="notice-icon">
-                                                    <i class="fa fa-times"></i>
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong>Team Meeting at 6PM</strong>
-                                                        <span class="time small">16th Mar</span>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>-->
-
                                     </ul>
 
                                 </li>
@@ -448,11 +178,11 @@
 
         </div>
         <!-- END TOPBAR -->
-		
-		
+
+
         <!-- START CONTAINER -->
         <div class="page-container row-fluid">
-            
+
             <!-- SIDEBAR - START -->
             <div class="page-sidebar ">
 
