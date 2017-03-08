@@ -113,6 +113,31 @@ public class Project {
         }
         return project;
     }
+     public static ArrayList<Project> getProjectByMsdId(String msdid){
+        ArrayList<Project> project=new ArrayList<Project>();
+//        FileControll fc=new FileControll();
+        System.out.println(msdid);
+        Connection con=DatabaseConnection.createConnection();        
+        try {
+            System.out.println("Execution strt");
+            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.MSDID and p.PNO=s.PNO(+) and p.MSDID='"+msdid+"' order by p.pno desc");
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done");
+            System.out.println(msdid);
+            
+            Project p;
+            
+            while(rs.next()){
+                p= getProjectFromRS(rs);
+                project.add(p);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+        return project;
+    }
     
     public static ArrayList<Project> getProjectByStkid(String stkid){
         ArrayList<Project> project=new ArrayList<Project>();

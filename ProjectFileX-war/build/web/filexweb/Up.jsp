@@ -1,6 +1,9 @@
+
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.sampath.filex.web.actions.Notification"%>
 <%@page import="org.sampath.filex.web.actions.Employee"%>
+
 <!DOCTYPE html>
 <html class=" ">
     <head>
@@ -42,12 +45,15 @@
         <%
             session = request.getSession(false);
 
-            if(session.getAttribute("eid")==null)
-            response.sendRedirect("Login.jsp");
-            
+            if (session.getAttribute("eid") == null) {
+                response.sendRedirect("Login.jsp");
+            }
+
             Employee e = Employee.getEmployee((String) session.getAttribute("eid"));
+
+
         %>
-        
+
     </head>
     <!-- END HEAD -->
 
@@ -65,20 +71,37 @@
                                 <i class="fa fa-bars"></i>
                             </a>
                         </li>
-                                                
-                        <%
-                            ArrayList<Notification> notifications =Notification.getNotificationByEMPID(e.getEmployeeid());
-                            int count= Notification.notificationInfo(e.getEmployeeid());
+
+
+                        <%                            ArrayList<Notification> notifications = Notification.getAllNotification(e.getEmployeeid());
+                            int count = Notification.notificationInfo(e.getEmployeeid());
+                            String empPosition = null;
+                            if (e.getPosition().equals("Business Analyist")) {
+                                empPosition = "ba";
+                            } else if (e.getPosition().equals("Project Manager")) {
+                                empPosition = "pm";
+                            } else if (e.getPosition().equals("PM/MSD")) {
+                                empPosition = "pm";
+                            } else if (e.getPosition().equals("ManagerSD")) {
+                                empPosition = "msd";
+                            } else if (e.getPosition().equals("Stakeholder")) {
+                                empPosition = "esh";
+                            }
+
                         %>
                         <li class="notify-toggle-wrapper">
                             <a href="#" data-toggle="dropdown" class="toggle">
                                 <i class="fa fa-bell"></i>
+                                <%if (count != 0) { %>
                                 <span class="badge badge-orange"><% out.print(count); %></span>
+                                <%
+                                    }
+                                %>
                             </a>
                             <ul class="dropdown-menu notifications animated fadeIn">
                                 <li class="total">
                                     <span class="small">
-                                        You have <strong>3</strong> new notifications.
+                                        You have <strong><% out.print(count); %></strong> new notifications.
                                         <a href="javascript:;" class="pull-right">Mark all as Read</a>
                                     </span>
                                 </li>
@@ -86,78 +109,36 @@
 
                                     <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
                                         <%
-                                            
+
                                             Notification n;
-                                            for(int x=0;x<notifications.size();x++){
-                                            n=notifications.get(x);
-                                            
+                                            String status = null;
+                                            for (int x = 0; x < notifications.size(); x++) {
+                                                n = notifications.get(x);
+                                                if (Notification.getStatus(n.getNotifino()).equals("comment")) {
+                                                    status = n.getEmpname() + " commented on project - " + n.getPname();
+                                                } else if (Notification.getStatus(n.getNotifino()).equals("project")) {
+                                                    status = n.getEmpname() + " assigned you as the " + e.getPosition() + " of the Project - " + n.getPname();
+                                                } else if (Notification.getStatus(n.getNotifino()).equals("srs")) {
+                                                    status = n.getEmpname() + " uploaded the SRS of the Project - " + n.getPname();
+                                                }
+
                                         %>
                                         <li class="unread available"> 
-                                            <a href="../SetUser?pno=<% out.print(n.getPno()); %>&direct=ba">
+                                            <a href="../NotificationHandling?pno=<% out.print(n.getPno()); %>&direct=<% out.print(empPosition); %>&status=viewNoti&empid=<% out.print(e.getEmployeeid()); %>&notifino=<% out.print(n.getNotifino()); %>">
                                                 <div class="notice-icon">
                                                     <img class="notification-icon" src="../GetIconByID?id=<%out.print(n.getEmpid());%>">
                                                 </div>
                                                 <div>
                                                     <span class="name">
-                                                        <strong><% out.print(n.getEmpname()); %> commented on project - <% out.print(n.getPname()); %> </strong>
+                                                        <strong><% out.print(status); %> </strong>
                                                         <span class="time small"><% out.print(n.getDatentime()); %></span>
                                                     </span>
                                                 </div>
                                             </a>
                                         </li>
                                         <%
-                                        }
+                                            }
                                         %>
-                                        
-                                        <%  
-                                            notifications =Notification.getProjectNotificationByEMPID(e.getEmployeeid());
-                                            for(int x=0;x<notifications.size();x++){
-                                            n=notifications.get(x);
-                                        %>
-                                        
-                                        <li class="unread away">
-                                            <a href="javascript:;">
-                                                <div class="notice-icon">
-                                                    
-                                                </div>
-                                                <div>
-                                                    <img class="notification-icon" src="../GetIconByID?id=<%out.print(n.getEmpid());%>">
-                                                    <span class="name">
-                                                        <strong><% out.print(n.getEmpname()); %> assigned you as the <% out.print(e.getPosition()); %> of the Project - <% out.print(n.getPname()); %></strong>
-                                                        <span class="time small"><% out.print(n.getDatentime()); %></span>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        
-                                        <%
-                                        }
-                                        %>
-                                        
-                                        <%  
-                                            notifications =Notification.getSRSNotificationByEMPID(e.getEmployeeid());
-                                            for(int x=0;x<notifications.size();x++){
-                                            n=notifications.get(x);
-                                        %>
-                                        
-                                        <li class="unread away">
-                                            <a href="javascript:;">
-                                                <div class="notice-icon">
-                                                    <img class="notification-icon" src="../GetIconByID?id=<%out.print(n.getEmpid());%>">
-                                                </div>
-                                                <div>
-                                                    <span class="name">
-                                                        <strong><% out.print(n.getEmpname()); %> uploaded the SRS of the Project - <% out.print(n.getPname()); %></strong>
-                                                        <span class="time small"><% out.print(n.getDatentime()); %></span>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        
-                                        <%
-                                        }
-                                        %>
-                                       
                                     </ul>
 
                                 </li>
@@ -201,11 +182,11 @@
 
         </div>
         <!-- END TOPBAR -->
-		
-		
+
+
         <!-- START CONTAINER -->
         <div class="page-container row-fluid">
-            
+
             <!-- SIDEBAR - START -->
             <div class="page-sidebar ">
 
@@ -217,15 +198,15 @@
                     <div class="profile-info row">
 
                         <div class="profile-image col-md-4 col-sm-4 col-xs-4">
-                            
+                            <a href="ui-profile.html">
                                 <img src="../GetIconByID?id=<% out.print(e.getEmployeeid()); %>" class="img-responsive img-circle">
-                            
+                            </a>
                         </div>
 
                         <div class="profile-details col-md-8 col-sm-8 col-xs-8">
 
                             <h3>
-                                <a href="#"><%out.print(e.getEmployeename());%></a>
+                                <a href="ui-profile.html"><%out.print(e.getEmployeename());%></a>
 
                                 <!-- Available statuses: online, idle, busy, away and offline -->
                                 <span class="profile-status online"></span>

@@ -67,7 +67,7 @@
                             %>
       
                                 <tr>
-                                    <td> <% out.print(pr.getProjectno()); %></td>        
+                                            
                                     <td><% out.print(pr.getProjectname()); %></td>            
                                     <td><% out.print(pr.getDatentime()); %></td>            
                                     
