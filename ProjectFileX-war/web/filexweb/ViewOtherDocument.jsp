@@ -104,7 +104,7 @@ a:hover{
                                                 //ArrayList<Company> list = CompanyDA.getCompany(s.getField()) ; 
                                                 int siz = od.size();
                                                 if(siz==0){
-                                                    out.print("Sorry. No Document available.!");
+                                                    out.print("No Document available.!");
                                                 }
                                                 else{
                                                    

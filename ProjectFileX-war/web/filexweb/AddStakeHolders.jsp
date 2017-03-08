@@ -169,11 +169,9 @@
                     <br/><br/>
                     <input type="hidden" id="count" name="count" value="<% out.print(num); %>" />
                     <input type="hidden" id="docno" name="docno" value="<% out.print(srsid); %>" />
-<<<<<<< HEAD
-                    <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="button" onclick="validatePriority() value= "Add">
-=======
+                    
                     <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Add">
->>>>>>> 7363ae961f2c65435f3ebf5acee340e5df71917e
+
                     <br/>
                                         
                     </form>
