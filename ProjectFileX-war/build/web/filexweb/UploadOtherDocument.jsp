@@ -2,6 +2,16 @@
 <%@page import="org.sampath.filex.web.actions.Document"%>
 <%@ include file="Up.jsp" %>
 <%@ include file="Sidebar_Project.jsp" %>
+
+<!-- CORE CSS FRAMEWORK - START -->
+        <link href="plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
+        <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="plugins/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+        <link href="fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+        <link href="css/animate.min.css" rel="stylesheet" type="text/css"/>
+        <link href="plugins/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" type="text/css"/>
+        <!-- CORE CSS FRAMEWORK - END -->
+
       
 <!-- START CONTENT -->
             <section id="main-content" class=" ">

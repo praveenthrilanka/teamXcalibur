@@ -198,42 +198,43 @@ public class Employee {
             System.out.println("Execution strt");
             PreparedStatement ps = con.prepareStatement("select * from employee e,department d where e.depid=d.depid and e.extsh='y'");
             ResultSet rs = ps.executeQuery();
-            PreparedStatement p=con.prepareStatement("select e.empid from srsapprovedby sa,project p,srs s,employee e where sa.DOCNO=s.DOCNO and s.PNO=p.PNO and e.empid=sa.STKID and p.PNO='"+pno+"'");
+            PreparedStatement p = con.prepareStatement("select e.empid from srsapprovedby sa,project p,srs s,employee e where sa.DOCNO=s.DOCNO and s.PNO=p.PNO and e.empid=sa.STKID and p.PNO='" + pno + "'");
             ResultSet r = p.executeQuery();
-            
-            PreparedStatement c=con.prepareStatement("select COUNT(*) as count from srsapprovedby sa,project p,srs s,employee e where sa.DOCNO=s.DOCNO and s.PNO=p.PNO and e.empid=sa.STKID and p.PNO='"+pno+"'");
-            ResultSet count=c.executeQuery();
-            
-            int employeecount=0;
-            
-            if(count.next())
-                employeecount=count.getInt("count");
-            System.out.println(employeecount+"eeeeeeeeeeeeeeeeeeeeeeeee");
-            String a[]=new String[employeecount];
-     
-                for(int x=0;x<a.length;x++){
-                    r.next();
-                    a[x]=r.getString("empid");
-                     System.out.println(a[x]);
-                }
-            
-            
+
+            PreparedStatement c = con.prepareStatement("select COUNT(*) as count from srsapprovedby sa,project p,srs s,employee e where sa.DOCNO=s.DOCNO and s.PNO=p.PNO and e.empid=sa.STKID and p.PNO='" + pno + "'");
+            ResultSet count = c.executeQuery();
+
+            int employeecount = 0;
+
+            if (count.next()) {
+                employeecount = count.getInt("count");
+            }
+            System.out.println(employeecount + "eeeeeeeeeeeeeeeeeeeeeeeee");
+            String a[] = new String[employeecount];
+
+            for (int x = 0; x < a.length; x++) {
+                r.next();
+                a[x] = r.getString("empid");
+                System.out.println(a[x]);
+            }
+
             System.out.println("Execution done");
             Employee e;
 
             while (rs.next()) {
-                String eid=rs.getString("empid");
-                boolean check=false;
-                for(int x=0;x<employeecount;x++){
-                    if(a[x].equals(eid)){
-                        check=true;
+                String eid = rs.getString("empid");
+                boolean check = false;
+                for (int x = 0; x < employeecount; x++) {
+                    if (a[x].equals(eid)) {
+                        check = true;
                     }
                 }
-                if(check==true)
+                if (check == true) {
                     continue;
-                else
-                        e = getEmployeeFromRS(rs);
-                        employee.add(e);
+                } else {
+                    e = getEmployeeFromRS(rs);
+                }
+                employee.add(e);
             }
             con.close();
         } catch (SQLException ex) {
@@ -242,9 +243,5 @@ public class Employee {
         }
         return employee;
     }
-    
+
 }
-
-    
-
-    

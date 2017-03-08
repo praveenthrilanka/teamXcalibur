@@ -4,15 +4,26 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import java.util.ArrayList;
+import org.sampath.filex.web.actions.Document;
+import java.util.ArrayList;
 import org.sampath.filex.web.actions.Notification;
 import org.sampath.filex.web.actions.Employee;
+import org.sampath.filex.web.actions.Employee;
+import org.sampath.filex.web.actions.Project;
 
-public final class Up_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class UploadOtherDocument_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List<String> _jspx_dependants;
+
+  static {
+    _jspx_dependants = new java.util.ArrayList<String>(3);
+    _jspx_dependants.add("/filexweb/Up.jsp");
+    _jspx_dependants.add("/filexweb/Sidebar_Project.jsp");
+    _jspx_dependants.add("/filexweb/Down.jsp");
+  }
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
@@ -44,6 +55,8 @@ public final class Up_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -142,17 +155,9 @@ public final class Up_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <li class=\"notify-toggle-wrapper\">\r\n");
       out.write("                            <a href=\"#\" data-toggle=\"dropdown\" class=\"toggle\">\r\n");
       out.write("                                <i class=\"fa fa-bell\"></i>\r\n");
-      out.write("                                ");
-if (count != 0) { 
-      out.write("\r\n");
       out.write("                                <span class=\"badge badge-orange\">");
  out.print(count); 
       out.write("</span>\r\n");
-      out.write("                                ");
-
-                                    }
-                                
-      out.write("\r\n");
       out.write("                            </a>\r\n");
       out.write("                            <ul class=\"dropdown-menu notifications animated fadeIn\">\r\n");
       out.write("                                <li class=\"total\">\r\n");
@@ -307,6 +312,253 @@ out.print(e.getDepartement());
       out.write("\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <!-- USER INFO - END -->\r\n");
+      out.write("\r\n");
+      out.write('\r');
+      out.write('\n');
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                <ul class='wraplist'>\t\r\n");
+      out.write("                        \r\n");
+      out.write("                    ");
+
+                        String pno=(String)session.getAttribute("pno");
+                        if(pno!=null){
+                        Project p=Project.getProject(pno);
+                        String srsid="Not Uploaded";
+                        try{
+                        if(p.getSrsid()!=null){
+                        session.setAttribute("srsid", p.getSrsid() );
+                        srsid="Uploaded";}
+                        else
+                        srsid="Not Uploaded";
+                        }
+                        catch(NullPointerException ex){
+                        System.out.println("Catch Exception");
+                        }
+                    
+      out.write("  \r\n");
+      out.write("                    \r\n");
+      out.write("                        <li class=\"open\"> <a> <i class=\"fa fa-folder-open\"></i> <span class=\"title\">");
+ out.print(p.getProjectname()); 
+      out.write("</span></a>\r\n");
+      out.write("                            <ul class=\"sub-menu\">\r\n");
+      out.write("                                <li > <a> <span class=\"title\">Manager SD : ");
+ out.print(Employee.getEmployee(p.getMsdid()).getEmployeename()); 
+      out.write("</span></a> </li>\r\n");
+      out.write("                                <li > <a> <span class=\"title\">Project Manager : ");
+ out.print(Employee.getEmployee(p.getPmid()).getEmployeename()); 
+      out.write("</span></a> </li> \r\n");
+      out.write("                                <li > <a> <span class=\"title\">Business Analyst  : ");
+ out.print(Employee.getEmployee(p.getBaid()).getEmployeename()); 
+      out.write("</span></a> </li>\r\n");
+      out.write("                                <li > <a> <span class=\"title\">SRS Status : ");
+ out.print(srsid); 
+      out.write("</span> </a> </li>\r\n");
+      out.write("                            </ul>\r\n");
+      out.write("                    ");
+
+                    }
+                    
+      out.write("\r\n");
+      out.write("                            \r\n");
+      out.write("                            \r\n");
+      out.write("                        <li class=\"\"> \r\n");
+      out.write("                            <a href=\"");
+ out.print(session.getAttribute("home")); 
+      out.write("\">\r\n");
+      out.write("                                <i class=\"fa fa-dashboard\"></i>\r\n");
+      out.write("                                <span class=\"title\">Home</span>\r\n");
+      out.write("                            </a>\r\n");
+      out.write("                        </li>\r\n");
+      out.write("                    </ul>\r\n");
+      out.write("                </div>\r\n");
+      out.write("                <!-- MAIN MENU - END -->\r\n");
+      out.write("            </div>\r\n");
+      out.write("            <!--  SIDEBAR - END -->\r\n");
+      out.write("\r\n");
+      out.write("      \r\n");
+      out.write("<!-- START CONTENT -->\r\n");
+      out.write("            <section id=\"main-content\" class=\" \">\r\n");
+      out.write("                <section class=\"wrapper\" style='margin-top:50px;display:inline-block;width:100%;padding:15px 0 0 15px;'>\r\n");
+      out.write("\t\t<div class=\"login-form\" style =\"\">\r\n");
+      out.write("                    <h4>Upload Documents</h4>\r\n");
+      out.write("\r\n");
+      out.write("                        <form name=\"AddOtherDocument\" method=\"post\" action=\"../UploadOtherDocument\" enctype=\"multipart/form-data\">\r\n");
+      out.write("\r\n");
+      out.write("                        \r\n");
+      out.write("                                            \r\n");
+      out.write("                             ");
+
+                                
+                                                ArrayList<Document> dd = Document.getDocumentType();
+                                                //String prefList = s.getCompanies();
+                                                //ArrayList<Company> list = CompanyDA.getCompany(s.getField()) ; 
+                                                int num = dd.size();
+                                                if(num==0){
+                                                    out.print("Sorry. No Document types  available.!");
+                                                }
+                                                else{
+                                                   
+
+                                           
+                             
+      out.write("  \r\n");
+      out.write("                             \r\n");
+      out.write("                            <select name=\"");
+      out.print("doctype" );
+      out.write("\">  \r\n");
+      out.write("                            <option value = \"\" selected =\"true\" disabled = \"disabled\"> Select Document Type</option>\r\n");
+      out.write("                            \r\n");
+      out.write("                            ");
+
+                                
+                               for(int j=0;j<num;j++){
+
+                            
+      out.write("\r\n");
+      out.write("                            \r\n");
+      out.write("                            <option value =");
+      out.print(dd.get(j). getDoctypeid() );
+      out.write(' ');
+      out.write('>');
+      out.print(dd.get(j).getDoctype() );
+      out.write(" </option>\r\n");
+      out.write("                            ");
+
+                                    
+                                }
+                            
+      out.write("\r\n");
+      out.write("                            \r\n");
+      out.write("                            \r\n");
+      out.write("                            \r\n");
+      out.write("                            </select>\r\n");
+      out.write("                            \r\n");
+      out.write("                            ");
+
+                                                   
+                                 }
+                             
+      out.write("\r\n");
+      out.write("                           \r\n");
+      out.write("                            \r\n");
+      out.write("                            \r\n");
+      out.write("                                </br></br>    \r\n");
+      out.write("                                <div style=\"display:block; margin:auto; width:30%;\">\r\n");
+      out.write("\t\t\t\t\t\t\t<img src=\"images/upload.png\" id=\"output\" width=\"130\" height=\"130\"/>\r\n");
+      out.write("\t\t\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t\t\t<br/>\r\n");
+      out.write("\t\t\t\t\t\t<div style=\"display:block; margin:auto; width:45%;\">\r\n");
+      out.write("                                                <input type=\"file\" name=\"otherFile\" accept=\".pdf , .docx \" onchange=\"loadFile(event)\" required/>\r\n");
+      out.write("\t\t\t\t\t\t\t\r\n");
+      out.write("\t\t\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t\t\r\n");
+      out.write("                                                <br/>\r\n");
+      out.write("                                                \r\n");
+      out.write("                                                \r\n");
+      out.write("\t\t\t\t <label><b>Narration :</b></label>\r\n");
+      out.write("                                <input type=\"text\" name=\"narration\" placeholder=\"Enter a name for the document \" required> <br/></br>\t\t\r\n");
+      out.write("                                                \r\n");
+      out.write("                                <div class=\"clearfix\"></div>                                      \r\n");
+      out.write("                                <input style=\"background-color:#FF9D26; border:none;\" class=\"btn btn-info btn-block\" type=\"submit\" value=\"Upload Document\">\r\n");
+      out.write("                                \r\n");
+      out.write("                                </form>\r\n");
+      out.write("                             \r\n");
+      out.write("                                <!--To add a new document -->\r\n");
+      out.write("                                <form name=\"addnewform\" action=\"../AddNewDoc\" method=\"post\">\r\n");
+      out.write("                                                \r\n");
+      out.write("                                                <div class=\"clearfix\"></div>\r\n");
+      out.write("                                                <button style=\"background-color:#02a7e7;  border:none;\" class=\"btn btn-info btn-block \" id=\"button1\" type = \"button\" onclick=\"showDiv()\">Add a New Document Type</button>\r\n");
+      out.write("                                                \r\n");
+      out.write("           \r\n");
+      out.write("                                                <!-- Display only if user wants to add a new document type -->\r\n");
+      out.write("                                               \r\n");
+      out.write("                                                <div id=\"div_ctrl\" style=\"display:none\">\r\n");
+      out.write("                                                </br>\r\n");
+      out.write("                                                <div id=\"addnew\">\r\n");
+      out.write("                                                    <label>Enter Document Type:</label> \r\n");
+      out.write("                                                    <input type=\"text\" name=\"docname\" placeholder=\"Name of the Document..\" />\r\n");
+      out.write("                                                </div> <br /> \r\n");
+      out.write("                                                    \r\n");
+      out.write("                                                <input  type=\"submit\" value=\"ADD\" onclick=\" return isEmpty()\"> <br /><br/>\r\n");
+      out.write("                                                </div>\r\n");
+      out.write("                                                \r\n");
+      out.write("                                                \r\n");
+      out.write("                                                <div id=\"success\" style=\"display: none\">\r\n");
+      out.write("                                                    <div>Document Type Saved successfully ! </div>\r\n");
+      out.write("                                                 </div>\r\n");
+      out.write("                                        </form>     \r\n");
+      out.write("\r\n");
+      out.write("                                        </div>\r\n");
+      out.write("                                \r\n");
+      out.write("                                           \r\n");
+      out.write("                                            <script>\r\n");
+      out.write("                                                    function showDiv(){  //  display the input field to add new document\r\n");
+      out.write("                                                        document.getElementById('div_ctrl').style.display = 'block' ;  \r\n");
+      out.write("                                                        \r\n");
+      out.write("                                                    }\r\n");
+      out.write("                              \r\n");
+      out.write("                                            </script>  \r\n");
+      out.write("                                            \r\n");
+      out.write("                                            <script>\r\n");
+      out.write("                                                 function showDiv2(){\r\n");
+      out.write("                                                     document.getElementById('success').style.display = 'block';\r\n");
+      out.write("                                                 }\r\n");
+      out.write("                                                </script>\r\n");
+      out.write("                                            \r\n");
+      out.write("                                            <script>\r\n");
+      out.write("                                                function isEmpty(){  // input field validation\r\n");
+      out.write("                                                    var empty = document.forms[\"addnewform\"][\"docname\"].value;\r\n");
+      out.write("                                                    if (empty === \"\" ){\r\n");
+      out.write("                                                        alert(\"Please Enter a Document type !\");\r\n");
+      out.write("                                                        return false;\r\n");
+      out.write("                                                        \r\n");
+      out.write("                                                    }else{\r\n");
+      out.write("                                                        showDiv2();\r\n");
+      out.write("                                                    }\r\n");
+      out.write("                                                    \r\n");
+      out.write("                                                    }   \r\n");
+      out.write("                                                \r\n");
+      out.write("                                            </script>\r\n");
+      out.write("                                            \r\n");
+      out.write("                                            \r\n");
+      out.write("                                <script>\r\n");
+      out.write("\t\t\t\t\t\t  var loadFile = function(event) {\r\n");
+      out.write("\t\t\t\t\t\t    var output = document.getElementById('output');\r\n");
+      out.write("\t\t\t\t\t\t    output.src = URL.createObjectURL(event.target.files[0]);\r\n");
+      out.write("\t\t\t\t\t\t  };\r\n");
+      out.write("                                </script>\r\n");
+      out.write("                </section></section>>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("        <!-- LOAD FILES AT PAGE END FOR FASTER LOADING -->\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("        <!-- CORE JS FRAMEWORK - START --> \r\n");
+      out.write("        <script src=\"js/jquery-1.11.2.min.js\" type=\"text/javascript\"></script> \r\n");
+      out.write("        <script src=\"js/jquery.easing.min.js\" type=\"text/javascript\"></script> \r\n");
+      out.write("        <script src=\"plugins/bootstrap/js/bootstrap.min.js\" type=\"text/javascript\"></script> \r\n");
+      out.write("        <script src=\"plugins/pace/pace.min.js\" type=\"text/javascript\"></script>  \r\n");
+      out.write("        <script src=\"plugins/perfect-scrollbar/perfect-scrollbar.min.js\" type=\"text/javascript\"></script> \r\n");
+      out.write("        <script src=\"plugins/viewport/viewportchecker.js\" type=\"text/javascript\"></script>  \r\n");
+      out.write("        <!-- CORE JS FRAMEWORK - END --> \r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START --> \r\n");
+      out.write("        <script src=\"plugins/rickshaw-chart/vendor/d3.v3.js\" type=\"text/javascript\"></script> <script src=\"assets/plugins/jquery-ui/smoothness/jquery-ui.min.js\" type=\"text/javascript\"></script> <script src=\"assets/plugins/rickshaw-chart/js/Rickshaw.All.js\"></script><script src=\"assets/js/chart-rickshaw.js\" type=\"text/javascript\"></script><!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END --> \r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("        <!-- CORE TEMPLATE JS - START --> \r\n");
+      out.write("        <script src=\"js/scripts.js\" type=\"text/javascript\"></script> \r\n");
+      out.write("        <!-- END CORE TEMPLATE JS - END --> \r\n");
+      out.write("\r\n");
+      out.write("      \r\n");
+      out.write("\r\n");
+      out.write("    </body>\r\n");
+      out.write("</html>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

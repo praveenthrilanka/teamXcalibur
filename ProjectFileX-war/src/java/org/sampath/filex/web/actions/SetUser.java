@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 public class SetUser extends HttpServlet {
 
     /**
@@ -34,16 +33,15 @@ public class SetUser extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("pno", pno);
 
-        if(direct.equals("ba"))
-        response.sendRedirect("filexweb/BA_Dashboard.jsp");
-        else if(direct.equals("pm"))
-        response.sendRedirect("filexweb/PM_Dashboard.jsp");
-        else if(direct.equals("esh"))
-        response.sendRedirect("filexweb/ESH_Dashboard.jsp");
-        else if(direct.equals("msd"))
-        response.sendRedirect("filexweb/MSD_ViewProjects.jsp");
-        
-        
+        if (direct.equals("ba")) {
+            response.sendRedirect("filexweb/BA_Dashboard.jsp");
+        } else if (direct.equals("pm")) {
+            response.sendRedirect("filexweb/PM_Dashboard.jsp");
+        } else if (direct.equals("esh")) {
+            response.sendRedirect("filexweb/ESH_Dashboard.jsp");
+        } else if (direct.equals("msd")) {
+            response.sendRedirect("filexweb/MSD_ViewProjects.jsp");
+        }
 
     }
 
