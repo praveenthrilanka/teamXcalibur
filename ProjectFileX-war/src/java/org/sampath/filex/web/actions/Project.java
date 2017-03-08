@@ -391,6 +391,41 @@ public class Project {
         }
             return added ;
   
-    }    
+    }
+
+public static ArrayList<Project> getOngoingProjectByBAid(String baid){
+        ArrayList<Project> project=new ArrayList<Project>();
+        System.out.println(baid);
+        Connection con=DatabaseConnection.createConnection();        
+        try {
+
+            PreparedStatement ps=con.prepareStatement("select p.PNO , p.PNAME , p.CREATEDDATENTIME , P.BAID , p.PMID , p.MSDID,s.DOCNO  from employee e,project p,srs s where e.EMPID=p.BAID and p.PNO=s.PNO(+) and p.BAID='"+baid+"' order by p.pno desc");
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done - getOngoingProjectByBAid");
+            Project p;
+            
+            while(rs.next()){
+               
+                String pstatus=SRS.getProjectStatusByStakeholder(rs.getString("PNO"));
+                
+                if(rs.getString("PNO")!=null && pstatus!=null)
+                {
+                System.out.println("stupiiiiiiiiiiiiiiiiiiiiiid");
+                if(pstatus.equals("rejected") || pstatus.equals("ongoing") )
+                {
+                    
+                    p= getProjectFromRS(rs);
+                    project.add(p);
+                }
+                }
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+        return project;
+    }
+    
     
 }

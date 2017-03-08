@@ -11,6 +11,7 @@
 
 <%
     ArrayList<Project> pro = Project.getProjectByBAid((String) session.getAttribute("eid"));
+    ArrayList<Project> Projectcount = Project.getOngoingProjectByBAid((String) session.getAttribute("eid"));
     String arr1[] = {"bs-calltoaction bs-calltoaction-warning", "bs-calltoaction bs-calltoaction-primary", "bs-calltoaction bs-calltoaction-info", "bs-calltoaction bs-calltoaction-success"};
     String arr2[] = {"btn btn-lg btn-block btn-warning", "btn btn-lg btn-block btn-primary", "btn btn-lg btn-block btn-info", "btn btn-lg btn-block btn-success"};
 %>
@@ -26,7 +27,7 @@
                     <div class="col-md-6 market-update-gd">
                         <div class="market-update-block clr-block-1">
                             <div class="col-md-8 market-update-left">
-                                <h3>6</h3>
+                                <h3><% out.print(Projectcount.size()); %></h3>
                                 <h4>Ongoing Projects</h4>
                             </div>
                             <div class="col-md-4 market-update-right">

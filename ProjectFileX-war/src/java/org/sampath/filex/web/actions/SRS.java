@@ -126,4 +126,49 @@ public class SRS {
         
         return status;
     }
+    
+    public static String getProjectStatusByStakeholder(String pno){
+     
+        String maxSrs = Project.getSRSVersion(pno);
+        String status = null ;
+        
+        try {
+                Connection con=DatabaseConnection.createConnection();
+                System.out.println("Connection Established");
+
+                PreparedStatement ps=con.prepareStatement("select a.status from srs s,srsapprovedby a where a.docno=s.docno and s.pno="+pno+" and a.srsversion='"+maxSrs+"'");
+                ResultSet rs=ps.executeQuery();
+                
+                while(rs.next())
+                {
+                    if(rs.getString("STATUS")!=null)
+                    {
+                        String tempstatus=rs.getString("STATUS");
+                        if(tempstatus.equals("noresponse"))
+                        {
+                            status = "ongoing";
+                            break;
+                        }
+                        else if(tempstatus.equals("rejected")){
+                            status = "rejected"; 
+                            break;
+                        }
+                        else{
+                            status =  "approved";
+                        }
+                    }
+                    else
+                        status="undefined";
+                            
+                }
+
+                con.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+        return status;
+    }
+    
 }
