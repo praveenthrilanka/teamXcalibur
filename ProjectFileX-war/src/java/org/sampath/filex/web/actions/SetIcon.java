@@ -54,7 +54,8 @@ public class SetIcon extends HttpServlet {
             String newpass=request.getParameter("npw");
             String cnewpass=request.getParameter("cnpw");
             
-           String editedcnewpass=EncryptPassword.cryptWithMD5(cnewpass);
+            System.out.println("PAAAAASSSWOOORD"+editedpw);
+           
 
             
             editedpw=EncryptPassword.cryptWithMD5(editedpw);
@@ -145,7 +146,7 @@ try {
          else if((piccheck==false && emailcheck==false && pwcheck==true)){
              
             if(newpass.equals(cnewpass) && !(newpass.equals("") && (cnewpass.equals("")))){
-   
+                String editedcnewpass=EncryptPassword.cryptWithMD5(cnewpass);
                 PreparedStatement statement = con.prepareStatement("update employee set password=? where empid=?");
     
                 statement.setString(1,editedcnewpass);
@@ -290,7 +291,7 @@ try {
               if(newpass.equals(cnewpass) && !(newpass.equals("") && (cnewpass.equals("")))){
    
                 PreparedStatement statement = con.prepareStatement("update employee set password=? where empid=?");
-    
+                String editedcnewpass=EncryptPassword.cryptWithMD5(cnewpass);
                 statement.setString(1,editedcnewpass);
                 statement.setString(2,eid);
 
@@ -338,7 +339,7 @@ try {
              if(newpass.equals(cnewpass) && !(newpass.equals("") && (cnewpass.equals("")))){
    
                 PreparedStatement statement = con.prepareStatement("update employee set password=? where empid=?");
-    
+                String editedcnewpass=EncryptPassword.cryptWithMD5(cnewpass);
                 statement.setString(1,editedcnewpass);
                 statement.setString(2,eid);
 
@@ -394,7 +395,7 @@ try {
              if(newpass.equals(cnewpass) && !(newpass.equals("") && (cnewpass.equals("")))){
    
                 PreparedStatement statement = con.prepareStatement("update employee set password=? where empid=?");
-    
+                String editedcnewpass=EncryptPassword.cryptWithMD5(cnewpass);
                 statement.setString(1,editedcnewpass);
                 statement.setString(2,eid);
 

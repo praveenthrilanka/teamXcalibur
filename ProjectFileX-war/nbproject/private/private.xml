@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/AddEmp.java</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/EditProfile.jsp</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Employee.java</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Up.jsp</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/NotificationHandling.java</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Login.jsp</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SetUser.java</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Notification.java</file>
+            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SetIcon.java</file>
+            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/web/filexweb/EditProfile.jsp</file>
+            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/EncryptPassword.java</file>
         </group>
     </open-files>
 </project-private>
