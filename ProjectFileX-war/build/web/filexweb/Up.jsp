@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html class=" ">
     <head>
-     
+
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
         <meta charset="utf-8" />
         <title>FileX : Sampath Bank</title>
@@ -83,7 +83,7 @@
                             } else if (e.getPosition().equals("PM/MSD")) {
                                 empPosition = "pm";
                             } else if (e.getPosition().equals("ManagerSD")) {
-                                empPosition = "pm";
+                                empPosition = "msd";
                             } else if (e.getPosition().equals("Stakeholder")) {
                                 empPosition = "esh";
                             }
@@ -92,7 +92,11 @@
                         <li class="notify-toggle-wrapper">
                             <a href="#" data-toggle="dropdown" class="toggle">
                                 <i class="fa fa-bell"></i>
+                                <%if (count != 0) { %>
                                 <span class="badge badge-orange"><% out.print(count); %></span>
+                                <%
+                                    }
+                                %>
                             </a>
                             <ul class="dropdown-menu notifications animated fadeIn">
                                 <li class="total">

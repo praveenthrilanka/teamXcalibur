@@ -56,14 +56,18 @@ public class NotificationHandling extends HttpServlet {
                 System.out.println("Notification Status Changed");
                 con.close();
             }
+
             HttpSession session = request.getSession();
             session.setAttribute("pno", pno);
+
             if (direct.equals("ba")) {
                 response.sendRedirect("filexweb/BA_Dashboard.jsp");
             } else if (direct.equals("pm")) {
                 response.sendRedirect("filexweb/PM_Dashboard.jsp");
             } else if (direct.equals("esh")) {
                 response.sendRedirect("filexweb/ESH_Dashboard.jsp");
+            } else if (direct.equals("msd")) {
+                response.sendRedirect("filexweb/MSD_ViewProjects.jsp");
             }
 
         } catch (SQLException ex) {
