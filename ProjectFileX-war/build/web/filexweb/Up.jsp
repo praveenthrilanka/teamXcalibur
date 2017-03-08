@@ -98,7 +98,7 @@
                                 <li class="total">
                                     <span class="small">
                                         You have <strong><% out.print(count); %></strong> new notifications.
-                                        <a href="javascript:;" class="pull-right">Mark all as Read</a>
+                                      
                                     </span>
                                 </li>
                                 <li class="list">
@@ -140,9 +140,7 @@
                                 </li>
 
                                 <li class="external">
-                                    <a href="javascript:;">
-                                        <span>Read All Notifications</span>
-                                    </a>
+                         
                                 </li>
                             </ul>
                         </li>
