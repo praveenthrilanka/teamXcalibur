@@ -42,6 +42,8 @@ public class SetUser extends HttpServlet {
         response.sendRedirect("filexweb/PM_Dashboard.jsp");
         else if(direct.equals("esh"))
         response.sendRedirect("filexweb/ESH_Dashboard.jsp");
+        else if(direct.equals("msd"))
+        response.sendRedirect("filexweb/MSD_ViewProjects.jsp");
         
         
     }

@@ -54,7 +54,7 @@
                            
                             
                             
-                                    
+                                </br></br>    
                                 <div style="display:block; margin:auto; width:30%;">
 							<img src="images/upload.png" id="output" width="130" height="130"/>
 						</div>
@@ -68,7 +68,7 @@
                                                 
                                                 
 				 <label><b>Narration :</b></label>
-                                <input type="text" name="narration" placeholder="Enter a name for the document " required> <br/>		
+                                <input type="text" name="narration" placeholder="Enter a name for the document " required> <br/></br>		
                                                 
                                 <div class="clearfix"></div>                                      
                                 <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Upload Document">
@@ -76,7 +76,6 @@
                                 </form>
                              
                                 <!--To add a new document -->
-                             
                                 <form name="addnewform" action="../AddNewDoc" method="post">
                                                 
                                                 <div class="clearfix"></div>
@@ -86,7 +85,7 @@
                                                 <!-- Display only if user wants to add a new document type -->
                                                
                                                 <div id="div_ctrl" style="display:none">
-                                                
+                                                </br>
                                                 <div id="addnew">
                                                     <label>Enter Document Type:</label> 
                                                     <input type="text" name="docname" placeholder="Name of the Document.." />

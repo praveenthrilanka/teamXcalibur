@@ -12,7 +12,7 @@
             <%
 
        
-            ArrayList<Project> project=Project.getProjectByPMid((String)session.getAttribute("eid"));
+            ArrayList<Project> project=Project.getProjectByMsdId((String)session.getAttribute("eid"));
 
                 
             String arr1[]={"bs-calltoaction bs-calltoaction-warning","bs-calltoaction bs-calltoaction-primary","bs-calltoaction bs-calltoaction-info","bs-calltoaction bs-calltoaction-success"};
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="col-md-3 cta-button">
-                            <a href="../SetUser?pno=<% out.print(p.getProjectno()); %>&direct=pm" class="<% out.print(arr2[c]); %>">View Project</a>
+                            <a href="../SetUser?pno=<% out.print(p.getProjectno()); %>&direct=msd" class="<% out.print(arr2[c]); %>">View Project</a>
                         </div>
                      </div>
                 </div>
