@@ -12,8 +12,11 @@
         <link href="plugins/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" type="text/css"/>
         <!-- CORE CSS FRAMEWORK - END -->
 
-      
-<!-- START CONTENT -->
+        <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
+        <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+        <script src="js/jquery-1.11.2.min.js"></script>
+
+        <!-- START CONTENT -->
             <section id="main-content" class=" ">
                 <section class="wrapper" style='margin-top:50px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
 		<div class="login-form" style ="">
@@ -61,7 +64,8 @@
                             <label><b>Narration :</b></label>
                                <input type="text" name="narration" placeholder="Enter a name for the document " required> <br/></br>		
                                <div class="clearfix"></div>                                      
-                                <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Upload Document">
+                               <input style="background-color:#FF9D26; border:none;" id="uploadButton" class="btn btn-info btn-block" type="submit" data-toggle="modal" data-target="#ultraModal-11" value="Upload Document" onclick="openModal()">
+                                
                                 
                             </form>
                              
@@ -124,6 +128,25 @@
 						    output.src = URL.createObjectURL(event.target.files[0]);
 						  };
                                             </script>
-                </section></section>>
-
+                                           
+                                            <script type = text/javascript>
+                                                 $('#AddOtherDocument').on('submit', function(ev) {
+                                                 $('#ultraModal-11').modal('show')}; 
+                                            </script>
+                                             
+                                            
+                </section></section>
+                            
+                <!--Model starts-->
+                <div class="modal fade" id="ultraModal-11" tabindex="-1" role="dialog" aria-labelledby="ultraModal-Label" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog animated fadeInUp"><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                              <h3 class="modal-title">Document Uploaded successfully !!</h3>
+                            </div>
+                            
+                         </div>
+                    </div>
+                </div>
+                            <!--model End--> 
 <%@ include file="Down.jsp" %>
