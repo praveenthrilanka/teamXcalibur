@@ -130,9 +130,9 @@
                                         for(int y=0;y<s.size();y++)
                                         {
                                             sh=s.get(y);
-                                            String status=sh.getStatus();
-                                            if(status==null)
-                                                status="No response";
+                                            String st=sh.getStatus();
+                                            if(st==null)
+                                                st="No response";
                                      %>
                                     <div class="clearfix"></div>
                                     <div class="comment" style="padding-left: 2cm;">
@@ -142,7 +142,7 @@
                                         <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">
                                             
                                             <div class="username">
-                                                <span>External Stakeholder </span><span class="bold"><% out.print(sh.getName()); %> (<% out.print(sh.getDepartment()); %>)</span> <span><% out.print(status); %></span>
+                                                <span>External Stakeholder </span><span class="bold"><% out.print(sh.getName()); %> (<% out.print(sh.getDepartment()); %>)</span> <span><% out.print(st); %></span>
                                             </div>
                                             
                                             	
