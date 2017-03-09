@@ -26,8 +26,8 @@
                 Project pr;
                 int c = 0;
                 for (int x = 0; x < pro.size(); x++) {
-                    c = c % 4;
-                    pr = pro.get(x);
+                c = c % 4;
+                pr = pro.get(x);
             %>
 
             <div class="<% out.print(arr1[c]); %>">

@@ -130,9 +130,15 @@
                                         for(int y=0;y<s.size();y++)
                                         {
                                             sh=s.get(y);
+<<<<<<< HEAD
                                             String st=sh.getStatus();
                                             if(st==null)
                                                 st="No response";
+=======
+                                            String stat=sh.getStatus();
+                                            if(stat==null)
+                                                stat="No response";
+>>>>>>> dc6f821dde84b44d969c00569be71b2381896b94
                                      %>
                                     <div class="clearfix"></div>
                                     <div class="comment" style="padding-left: 2cm;">

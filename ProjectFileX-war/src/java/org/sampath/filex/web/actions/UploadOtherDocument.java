@@ -37,7 +37,7 @@ public class UploadOtherDocument extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         HttpSession session=request.getSession(false);
         
         
@@ -46,24 +46,18 @@ public class UploadOtherDocument extends HttpServlet {
       //  String docid=request.getParameter("docID"); 
        
         String newDocName = request.getParameter("narration");
-        
         String docType = request.getParameter("doctype");
-        
         String pno =(String)session.getAttribute("pno");
         
         Connection con=DatabaseConnection.createConnection();
         
-       
-        
-         try {
-             
-        
-
-        InputStream inputStream = null; // input stream of the upload file
+        try {
+            InputStream inputStream = null; // input stream of the upload file
          
-        // obtains the upload file part in this multipart request
-        Part filePart = request.getPart("otherFile");
-        if (filePart != null) {
+            // obtains the upload file part in this multipart request
+             Part filePart = request.getPart("otherFile");
+             if (filePart != null) {
+            
             // prints out some information for debugging
             System.out.println(filePart.getName());
             System.out.println(filePart.getSize());
@@ -94,9 +88,7 @@ public class UploadOtherDocument extends HttpServlet {
             }
             
             statement.setString(4,pno);  // called by the session
-            
             System.out.println("set 4 is done");
-            
             statement.setString(5, newDocName);
             
            
@@ -106,7 +98,7 @@ public class UploadOtherDocument extends HttpServlet {
                 System.out.println("Document uploaded and saved into database");
             }
             con.close();
-            response.sendRedirect("filexweb/message.jsp?message=Document uploaded successfully..!");
+            response.sendRedirect("filexweb/UploadOtherDocument.jsp");
             
         }
         else 
@@ -157,5 +149,4 @@ public class UploadOtherDocument extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

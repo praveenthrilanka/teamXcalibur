@@ -1,3 +1,9 @@
+<%-- 
+    Document   : RejectedProjects
+    Created on : Mar 8, 2017, 8:17:04 AM
+    Author     : Reshani
+--%>
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
@@ -10,7 +16,7 @@
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 
 <%
-    ArrayList<Project> pro = Project.getApprovedProjectByBAid((String) session.getAttribute("eid"));
+    ArrayList<Project> pro = Project.getRejectedProjectByBAid((String) session.getAttribute("eid"));
     String arr1[] = {"bs-calltoaction bs-calltoaction-warning", "bs-calltoaction bs-calltoaction-primary", "bs-calltoaction bs-calltoaction-info", "bs-calltoaction bs-calltoaction-success"};
     String arr2[] = {"btn btn-lg btn-block btn-warning", "btn btn-lg btn-block btn-primary", "btn btn-lg btn-block btn-info", "btn btn-lg btn-block btn-success"};
 %>
@@ -21,7 +27,7 @@
 
 
         <div class="col-sm-10">
-            <b><h2>Approved Projects</h2></b><br/>
+            <b><h2>Rejected Projects</h2></b><br/>
             <%
                 Project pr;
                 int c = 0;

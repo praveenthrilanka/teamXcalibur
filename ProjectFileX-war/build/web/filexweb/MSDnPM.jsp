@@ -35,6 +35,15 @@
                         <div class="col-lg-2 col-md-2 col-xs-2"></div>
                     </div>
                 </div>
+                <script>
+                    
+                      history.pushState(null,null,document.URL);
+                window.addEventListener('popstate',function(){
+                    history.pushState(null,null,document.URL);
+                    
+                });
+                
+               </script>
 
                 </section>
                 </section>
