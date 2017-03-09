@@ -47,39 +47,6 @@
         }
     }
     
-    function validatePriority()
-    {
-       <%  
-            
-            ArrayList<Employee> sh2=Employee.getStakeHolders();    
-            int num2 = sh2.size(); 
-       %>
-        var num = <%=num2 %>;
-        
-       
-        for(var i=0; i<=num;i++)
-        {
-
-            if(document.getElementById('selection_'+i).selectedIndex!==0)
-            {
-                if(document.getElementById('prio_'+i).value==="")
-                {
-                    document.getElementById('req_'+i).innerHTML="Required!";
-                    return false;
-                }
-                else
-                {
-                    document.getElementById('req_'+i).innerHTML="";
-                     return true;
-                }
-                    
-            }
-        }
-        
-        
-
-    }
-
     function populate() {
  	var s = document.getElementById('prefList').value;
         var num = document.getElementById('num').value;
@@ -117,7 +84,7 @@
                                         
             <h5><strong>Define SRS flow</strong></h5>
 
-                <table align="center" width="80%" style="border-collapse: separate;border-spacing: 0 1.5em;">
+                <table align="center" width="95%" style="border-collapse: separate;border-spacing: 0 1.5em;">
                     <form name="addstk" action="../AddStakeholders" method="post" onsubmit="return validatePriority()" id="ContactForm">
                                             
                         <tr>
@@ -156,7 +123,7 @@
                                 <td>
                                 <input type="text" name="prio_<%=i %>" id="prio_<%= i %>" size="2" />
                                 
-                                <span id="req_<%=i %>"></span>
+                                <span id="req_<%=i %>" class="label label-danger"></span>
                                                 
                                             
                                 <%
@@ -234,7 +201,7 @@
                                 
                 <h5><strong>Update the SRS Flow</strong></h5>
                     
-                    <table align="center" width="80%" style="border-collapse: separate;border-spacing: 0 1.5em;">
+                    <table align="center" width="95%" style="border-collapse: separate;border-spacing: 0 1.5em;">
                         <form name="addstk" action="../AddStakeholders" method="post" onsubmit="return validatePriority()" id="ContactForm">
                                            
                             <tr>
@@ -274,7 +241,7 @@
                                 </td>
                                 <td>
                                     <input type="text" name="prio_<%=i %>"  id="prio_<%= i %>" size="2"/>
-                                              <span id="req_<%=i %>"></span>                 
+                                              <span id="req_<%=i %>" class="label label-danger"></span>                 
                                         <%
                                             }
                                             }
@@ -297,6 +264,48 @@
         </section>
     </section>
                 
+    <script type="text/javascript">                    
+    function validatePriority()
+    {
+       <%  
+            
+            /*ArrayList<Employee> sh2=Employee.getStakeHolders();    
+            int num2 = sh2.size(); */
+            session=request.getSession(false);
+            String s=(String)session.getAttribute("pno");
+            ArrayList<Employee> sh3=Employee.getUpdatedStakeHolders(s);
+            int num3=sh3.size();
+            //int num4=num2-num3;
+
+       %>
+        var num = <%=num3 %>;
+        
+        var validate=true;
+       
+        for(var i=0; i<=num;i++)
+        {
+
+            if(document.getElementById('selection_'+i).selectedIndex!==0)
+            {
+               
+                if(document.getElementById('prio_'+i).value==="")
+                {
+                    document.getElementById('req_'+i).innerHTML="Required!";
+                    validate=false;
+                    break;
+                }
+                else
+                {
+                    document.getElementById('req_'+i).innerHTML="";
+                }
+                    
+            }
+        }
+        
+        return validate;
+    
+    }
+    </script>
             <!--Model starts-->
                 <div class="modal fade" id="ultraModal-11" tabindex="-1" role="dialog" aria-labelledby="ultraModal-Label" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog animated fadeInUp"><br/><br/><br/><br/><br/><br/><br/><br/><br/>
