@@ -64,22 +64,20 @@ public class OtherDocuments {
         this.pno = pno;
     }
     
-     public static OtherDocuments getDocumentFromRS(ResultSet rs) throws SQLException {
-         return new OtherDocuments(
-                 
-                 rs.getString("DOCTYPEID"),
-                 rs.getString("PNO"),
-                 rs.getString("DOCNAME"),
-                 rs.getString("DOCNO"));
-                 
-        
-     }
+    public static OtherDocuments getDocumentFromRS(ResultSet rs) throws SQLException {
+        return new OtherDocuments(
+                rs.getString("DOCTYPEID"),
+                rs.getString("PNO"),
+                rs.getString("DOCNAME"),
+                rs.getString("DOCNO"));
+            }
      
-     public static ArrayList<OtherDocuments> getDocuments(String doctypeid , String pno){
+    public static ArrayList<OtherDocuments> getDocuments(String doctypeid , String pno){
         ArrayList<OtherDocuments> document = new ArrayList<OtherDocuments>();
         
         System.out.println(doctypeid);
         Connection con=DatabaseConnection.createConnection();
+        
         try {
             System.out.println("Execution strt");
             PreparedStatement ps=con.prepareStatement("select * from otherdocument d where d.doctypeid = '"+doctypeid+"' and d.pno = '"+pno+"'");
@@ -98,9 +96,4 @@ public class OtherDocuments {
         }
         return document;
     }
-     
-     
-     
-    
-            
 }

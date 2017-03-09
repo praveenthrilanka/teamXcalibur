@@ -38,15 +38,12 @@ public class AddNewDoc extends HttpServlet {
      */
   
      protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+        throws ServletException, IOException, SQLException {
         HttpSession session=request.getSession(false);
         
-        System.out.println("welcome");
-    
-        
         String docname=request.getParameter("docname"); 
-         
-       Connection con=DatabaseConnection.createConnection();
+        
+        Connection con=DatabaseConnection.createConnection();
        
        try{
            
@@ -58,20 +55,18 @@ public class AddNewDoc extends HttpServlet {
            System.out.println("set 2 done");
            
            int row = statement.executeUpdate();
-            if (row > 0) {
+            if (row > 0) 
+              {
                 System.out.println("Document saved into database");
-            
-            con.close();
-            response.sendRedirect("filexweb/UploadOtherDocument.jsp");
-            
-           
+                con.close();
+                response.sendRedirect("filexweb/UploadOtherDocument.jsp");
               } 
            } 
             else{
                   System.out.println("No Document Entered !");  
-                    }
+                }
            
-       }catch(SQLException ex){
+        }catch(SQLException ex){
            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Something went wrong in Connection "+ex);
        }
