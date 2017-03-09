@@ -15,7 +15,7 @@
                 if (document.login.un.value === "")
                 {
                     alert("User Name should not be blank..!");
-                    document.srslogin.srsid.focus();
+                    document.srslogin.srsid.focus(null,null,document;
                     return false;
                 }
                 if (document.login.pw.value === "")
@@ -25,6 +25,14 @@
                     return false;
                 }
             }
+            
+            
+           history.pushState(null,null,document.URL);
+                window.addEventListener('popstate',function(){
+                    history.pushState(null,null,document.URL);
+                    
+                });
+                
         </script>
 
     </head>
@@ -61,7 +69,7 @@
                     </div>	 
                 </div> 
 
-                <script>
+                <script type="text/javascript">
                     function validateForm()
                     {
                         if (document.login.UserName.value === "")
@@ -75,9 +83,15 @@
                             return false;
                         }
                     }
-                </script>
+                    
+                    
+                 history.pushState(null,null,document.URL);
+                 window.addEventListener('popstate',function(){
+                 history.pushState(null,null,document.URL);
+                    
+                });
+                
 
-                <script type="text/javascript">
                     $(document).ready(function () {
                         $('#horizontalTab').easyResponsiveTabs({
                             type: 'default',

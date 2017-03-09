@@ -78,8 +78,8 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
                     os.write(buffer, 0, bytesRead);
                 }
 
-            System.out.println("File Output is done");
-            //System.out.println(rset.getBytes("srs"));
+        System.out.println("File Output is done");
+        //System.out.println(rset.getBytes("srs"));
         }
         else
             System.out.println("File read faild");
