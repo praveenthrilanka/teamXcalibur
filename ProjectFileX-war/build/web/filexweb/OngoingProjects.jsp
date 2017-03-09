@@ -10,7 +10,7 @@
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 
 <%
-    ArrayList<Project> pro = Project.getProjectByBAid((String) session.getAttribute("eid"));
+    ArrayList<Project> pro = Project.getOngoingProjectByBAid((String) session.getAttribute("eid"));
     String arr1[] = {"bs-calltoaction bs-calltoaction-warning", "bs-calltoaction bs-calltoaction-primary", "bs-calltoaction bs-calltoaction-info", "bs-calltoaction bs-calltoaction-success"};
     String arr2[] = {"btn btn-lg btn-block btn-warning", "btn btn-lg btn-block btn-primary", "btn btn-lg btn-block btn-info", "btn btn-lg btn-block btn-success"};
 %>
@@ -26,8 +26,8 @@
                 Project pr;
                 int c = 0;
                 for (int x = 0; x < pro.size(); x++) {
-                    c = c % 4;
-                    pr = pro.get(x);
+                c = c % 4;
+                pr = pro.get(x);
             %>
 
             <div class="<% out.print(arr1[c]); %>">

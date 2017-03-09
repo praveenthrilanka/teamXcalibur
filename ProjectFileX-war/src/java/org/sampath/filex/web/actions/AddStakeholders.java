@@ -52,8 +52,8 @@ public class AddStakeholders extends HttpServlet {
 
             for(int x=0;x<count;x++)
             {
-            selection=request.getParameter("selection"+x);
-            priority=request.getParameter("prio"+x);
+            selection=request.getParameter("selection_"+x);
+            priority=request.getParameter("prio_"+x);
                 if(selection.equals("0"))
                     continue;
                 else{
