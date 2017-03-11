@@ -154,6 +154,8 @@
 
 
         <script type="text/javascript">
+            
+            
             var loadFile = function (event)
             {
                 var output = document.getElementById('output');
