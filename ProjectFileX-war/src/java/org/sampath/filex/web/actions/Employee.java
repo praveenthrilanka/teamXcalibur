@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static org.sampath.filex.web.actions.Employee.getEmployeeFromRS;
 
 /**
  *
@@ -243,5 +244,4 @@ public class Employee {
         }
         return employee;
     }
-
 }

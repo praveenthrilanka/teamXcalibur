@@ -2,14 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/web/filexweb/Login.jsp</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Project.java</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Stakeholder.java</file>
             <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/web/filexweb/AddStakeHolders.jsp</file>
-            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/AddStakeholders.java</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/OtherDocuments.java</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/web/filexweb/Version_history.jsp</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Constants.java</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Notification.java</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Comment.java</file>
         </group>
-=======
-        <group/>
->>>>>>> 18cf88ecea5af901e86cf3b6cc8d16d721d0eb1f
     </open-files>
 </project-private>
