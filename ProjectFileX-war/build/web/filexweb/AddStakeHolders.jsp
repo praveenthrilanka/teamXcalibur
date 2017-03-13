@@ -5,13 +5,6 @@
 <%@ include file="Up.jsp" %>
 <%@ include file="SideBar_Project.jsp" %>
 
-<%
-            if (!Employee.getEmployee((String)session.getAttribute("eid")).getPosition().equals("Administrator"))
-            {
-                response.sendRedirect("Login.jsp");
-            }
-%>
-
 <!-- START CONTENT -->
 <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
