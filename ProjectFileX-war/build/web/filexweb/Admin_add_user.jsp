@@ -22,7 +22,7 @@
             <h5><strong></strong></h5>
             
             
-            <form name="adduser" method="get" action="../AddEmp" enctype="multipart/form-data">
+            <form name="adduser" method="post" action="../AddEmp" enctype="multipart/form-data">
              <span style="float:top;"> </span>  
                 <center><img src="images/user_add.png" name="icon" id="output" width="130" height="130"></center>
                 <label>User ID :</label>
@@ -96,10 +96,10 @@
                                         <div id="div_ctrl" style="display:none">
                                             </br>
                                             <div id="addnew">
-                                                <label>Department ID:</label> 
+                                                <label>Department ID :</label> 
                                                 <input type="text" name="depid" placeholder="New ID" />
                                                 </br>
-                                                <label>Department Name:</label>
+                                                <label>Department Name :</label>
                                                 <input type = "text" name="depname" placeholder="Name of the new department">
                                                 </br>
                                             </div> 
