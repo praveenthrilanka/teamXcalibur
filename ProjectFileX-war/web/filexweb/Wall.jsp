@@ -19,11 +19,11 @@
                             <div class="container-fluid">
                             <br/><br/>
                              <div class="row">
-                                 <div class="col-lg-8" >
+                                 <div class="col-lg-7" >
                                      <iframe name='fra2' src='../GetFile' width="100%" height="550" ></iframe>
                                   
                               </div>
-                              <div class="col-lg-4" >
+                              <div class="col-lg-5" >
                                    <iframe name='fra1' src='SubWall.jsp'  width="100%" height="550" ></iframe>
                               </div>
                             </div>

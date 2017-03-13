@@ -44,8 +44,9 @@
 
         <%
             session = request.getSession(false);
-
-            if (session.getAttribute("eid") == null) {
+            
+            if (session.getAttribute("eid") == null)
+            {
                 response.sendRedirect("Login.jsp");
             }
 
@@ -73,7 +74,7 @@
                         </li>
 
 
-                        <%                            ArrayList<Notification> notifications = Notification.getAllNotification(e.getEmployeeid());
+                        <%ArrayList<Notification> notifications = Notification.getAllNotification(e.getEmployeeid());
                             int count = Notification.notificationInfo(e.getEmployeeid());
                             String empPosition = null;
                             if (e.getPosition().equals("Business Analyist")) {

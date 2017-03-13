@@ -1,6 +1,13 @@
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
 <%@ include file="SideBar_Project.jsp" %>
+
+<%
+            if (!Employee.getEmployee((String)session.getAttribute("eid")).getPosition().equals("Business Analyist"))
+            {
+                response.sendRedirect("Login.jsp");
+            }
+%>
            
 <!-- START CONTENT -->
             

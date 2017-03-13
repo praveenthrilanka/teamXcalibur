@@ -5,6 +5,16 @@
 
 
 <!-- START CONTENT -->
+
+            <%
+                String pos=Employee.getEmployee((String)session.getAttribute("eid")).getPosition();
+            if (!(pos.equals("ManagerSD") || pos.equals("PM/MSD")))
+            {
+                response.sendRedirect("Login.jsp");
+            }
+            %>
+
+
             
             <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
             <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -44,20 +54,56 @@
                         </div>
                         <div class="col-md-3 cta-button">
                             <a href="../SetUser?pno=<% out.print(p.getProjectno()); %>&direct=msd" class="<% out.print(arr2[c]); %>">View Project</a>
+                            <a data-toggle="modal" data-target="#ultraModal<%out.print(p.getProjectno() );%> "title="Delete User" class="<% out.print(arr2[c]); %>">Delete Project</a>
+
                         </div>
                      </div>
                 </div>
               
-             <% c++; 
+            
+                   <!--model begins-->          
+               <div class="modal fade" id="ultraModal<%out.print(p.getProjectno());%>" tabindex="-1" role="dialog" aria-labelledby="ultraModal-Label" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog animated fadeInUp"><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title">Are you sure you want to delete?</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Once a project is deleted, you will not be able to recover it.
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                                                        <a  href="../DelProject?pno=<%out.print(p.getProjectno());%>" class="btn btn-success">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--model End-->
+                 <% c++; 
              }
              %>
-                                
-
-                
 
             </div>
-       
+             
+             <script>
+                 
+                 $(document).ready(fuction()
+                 {
+                     $('.clickme').click(function(e){
+                         e.preventDefault()
+                             
+                
+                     });
+                    
+                   });
+                  
+                 
+             </script>
+                                               <!--Model starts-->
 
+                                         
+             
                 </section>
             </section>
             <!-- END CONTENT -->

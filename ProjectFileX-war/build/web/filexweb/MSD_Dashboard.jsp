@@ -3,6 +3,15 @@
 <%@ include file="SideBar.jsp" %>
            
 <!-- START CONTENT -->
+
+            <%
+                String pos=Employee.getEmployee((String)session.getAttribute("eid")).getPosition();
+            if (!(pos.equals("ManagerSD") || pos.equals("PM/MSD")))
+            {
+                response.sendRedirect("Login.jsp");
+            }
+            %>
+
             
             <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
             <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />

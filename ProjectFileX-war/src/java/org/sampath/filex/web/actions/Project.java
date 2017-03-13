@@ -36,7 +36,7 @@ public class Project {
         return srsid;
     }
 
-    public void setSrsid(String srsnid) {
+    public void setSrsid(String srsid) {
         this.srsid = srsid;
     }
 

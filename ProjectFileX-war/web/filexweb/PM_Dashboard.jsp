@@ -3,6 +3,14 @@
 <%@ include file="SideBar_Project.jsp" %>
            
 <!-- START CONTENT -->
+
+            <%
+                String pos=Employee.getEmployee((String)session.getAttribute("eid")).getPosition();
+            if (!(pos.equals("Project Manager") || pos.equals("PM/MSD")))
+            {
+                response.sendRedirect("Login.jsp");
+            }
+            %>
             
             <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
             <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />

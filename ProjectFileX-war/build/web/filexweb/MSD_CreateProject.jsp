@@ -1,11 +1,22 @@
 <%@page import="java.util.ArrayList"%>
 <%@ include file="Up.jsp" %>
 <%@ include file="Sidebar.jsp" %>
-                    
+          
+            <%
+                String pos=Employee.getEmployee((String)session.getAttribute("eid")).getPosition();
+            if (!(pos.equals("ManagerSD") || pos.equals("PM/MSD")))
+            {
+                response.sendRedirect("Login.jsp");
+            }
+            %>
+
+
             <% 
             ArrayList<Employee> emp=Employee.getEmployee();
             Employee em;
             %>
+            
+
 
             <!-- START CONTENT -->
             <section id="main-content" class=" ">
@@ -18,7 +29,7 @@
                             <!--<label>Project ID :</label><input type="text" name="pid" placeholder="Enter Project ID" required> <br/><br/>-->
 						      <label>Project Name :</label><input type="text" name="pname" placeholder="Enter Project Name" required> <br/><br/><br/>
                               <label>Project Manager :</label>
-                              <select name="pm" width="200" height="80">
+                              <select name="pm" width="200" height="80" required>
                                   <option value="">Select Project Manager</option>
                                   <%
                                   for(int x=0;x<emp.size();x++){
@@ -36,7 +47,7 @@
                             <div style="padding:0.8em 7em;"><input type="submit" name="pmassigned" class="btn btn-info btn-block" style="font-size:12pt;" value="Assigned projects"  alt="View currently assigned projects"></div>  
                              <br/>
                             <label>Business Analyst :</label>
-                              <select name="ba" width="200" height="80">
+                              <select required name="ba" width="200" height="80" required>
                                   <option value="Select">Select Business Analyst</option>
                                   
                                  <%

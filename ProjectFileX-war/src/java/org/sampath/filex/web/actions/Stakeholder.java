@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -142,10 +143,11 @@ public class Stakeholder {
         ArrayList<Stakeholder> addstk=new ArrayList<Stakeholder>();
 //        FileControll fc=new FileControll();
         System.out.println();
-        Connection con=DatabaseConnection.createConnection();        
+        Connection con=DatabaseConnection.createConnection();  
+        String s=Project.getSRSVersion(pno);
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select sa.priorityno,e.empname from srsapprovedby sa,project p,srs s,employee e where sa.DOCNO=s.DOCNO and s.PNO=p.PNO and e.empid=sa.STKID and p.PNO='"+pno+"' order by priorityno");
+            PreparedStatement ps=con.prepareStatement("select sa.priorityno,e.empname from srsapprovedby sa,project p,srs s,employee e where sa.srsversion='"+s+"' and sa.DOCNO=s.DOCNO and s.PNO=p.PNO and e.empid=sa.STKID and p.PNO='"+pno+"' order by priorityno");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             Stakeholder p;
