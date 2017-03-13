@@ -38,7 +38,7 @@ public class AddEmp extends HttpServlet {
 
         String id = request.getParameter("id");
         String name = request.getParameter("name");
-        String dept = request.getParameter("dept");
+        String dept = request.getParameter("depName");
         String msd = request.getParameter("msd");
         String pm = request.getParameter("pm");
         String ba = request.getParameter("ba");

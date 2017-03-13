@@ -1,6 +1,13 @@
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
 <%@ include file="SideBar_Project.jsp" %>
+
+<%
+            if (!Employee.getEmployee((String)session.getAttribute("eid")).getPosition().equals("Business Analyist"))
+            {
+                response.sendRedirect("Login.jsp");
+            }
+%>
            
 <!-- START CONTENT -->
             
@@ -50,6 +57,7 @@
 									</div>
 								
 					    </div>
+<<<<<<< HEAD
 				       <div class="col-lg-3">
 				    				<div class="cuadro_intro_hover " style="background-color:#CECEE9; width:300;">
 										<p style="text-align:center; margin-top:20px;">
@@ -66,6 +74,9 @@
 									</div>
 								
 					    </div>
+=======
+				       
+>>>>>>> ae24ca21c9409d3ea9dd4b5b7030d68ac32d3884
 					</div>
 			</div>
                    </footer> 

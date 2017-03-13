@@ -4,24 +4,15 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import java.util.ArrayList;
-import java.util.ArrayList;
 import org.sampath.filex.web.actions.Notification;
 import org.sampath.filex.web.actions.Employee;
-import org.sampath.filex.web.actions.Project;
 
-public final class MSD_005fCreateProject_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class Up_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List<String> _jspx_dependants;
-
-  static {
-    _jspx_dependants = new java.util.ArrayList<String>(3);
-    _jspx_dependants.add("/filexweb/Up.jsp");
-    _jspx_dependants.add("/filexweb/Sidebar.jsp");
-    _jspx_dependants.add("/filexweb/Down.jsp");
-  }
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
@@ -53,8 +44,6 @@ public final class MSD_005fCreateProject_jsp extends org.apache.jasper.runtime.H
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write('\r');
-      out.write('\n');
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -102,8 +91,9 @@ public final class MSD_005fCreateProject_jsp extends org.apache.jasper.runtime.H
       out.write("        ");
 
             session = request.getSession(false);
-
-            if (session.getAttribute("eid") == null) {
+            
+            if (session.getAttribute("eid") == null)
+            {
                 response.sendRedirect("Login.jsp");
             }
 
@@ -318,140 +308,6 @@ out.print(e.getDepartement());
       out.write("\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <!-- USER INFO - END -->\r\n");
-      out.write("\r\n");
-      out.write('\r');
-      out.write('\n');
-      out.write("                \r\n");
-      out.write("\r\n");
-      out.write("                ");
-
-                    session = request.getSession(false);
-                
-      out.write("\r\n");
-      out.write("                    <ul class='wraplist'>\t\r\n");
-      out.write("                            <li class=\"\"> \r\n");
-      out.write("                                <a href=\"");
- out.print(session.getAttribute("home")); 
-      out.write("\">\r\n");
-      out.write("                                    <i class=\"fa fa-dashboard\"></i>\r\n");
-      out.write("                                    <span class=\"title\">Home</span>\r\n");
-      out.write("                                </a>\r\n");
-      out.write("                            </li>\r\n");
-      out.write("                    </ul>\r\n");
-      out.write("                </div>\r\n");
-      out.write("                <!-- MAIN MENU - END -->\r\n");
-      out.write("            </div>\r\n");
-      out.write("            <!--  SIDEBAR - END -->\r\n");
-      out.write("\r\n");
-      out.write("                    \r\n");
-      out.write("            ");
- 
-            ArrayList<Employee> emp=Employee.getEmployee();
-            Employee em;
-            
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("            <!-- START CONTENT -->\r\n");
-      out.write("            <section id=\"main-content\" class=\" \">\r\n");
-      out.write("                <section class=\"wrapper\" style='margin-top:50px;display:inline-block;width:100%;padding:15px 0 0 15px;'>\r\n");
-      out.write("\t\t\t<div class=\"login-form\" style =\"\">\r\n");
-      out.write("\t\t<h4>Create New Project</h4>\r\n");
-      out.write("\r\n");
-      out.write("                        <form name=\"CreateProject\" method=\"get\" action=\"../ProjectControl\" enctype=\"multipart/form-data\">\r\n");
-      out.write("                            <br/>\r\n");
-      out.write("                            <!--<label>Project ID :</label><input type=\"text\" name=\"pid\" placeholder=\"Enter Project ID\" required> <br/><br/>-->\r\n");
-      out.write("\t\t\t\t\t\t      <label>Project Name :</label><input type=\"text\" name=\"pname\" placeholder=\"Enter Project Name\" required> <br/><br/><br/>\r\n");
-      out.write("                              <label>Project Manager :</label>\r\n");
-      out.write("                              <select name=\"pm\" width=\"200\" height=\"80\" required>\r\n");
-      out.write("                                  <option value=\"\">Select Project Manager</option>\r\n");
-      out.write("                                  ");
-
-                                  for(int x=0;x<emp.size();x++){
-                                  em=emp.get(x);
-                                  if(em.getPosition().equals("PM/MSD") ||em.getPosition().equals("Project Manager") ){
-                                  if(!em.getEmployeeid().equals((String)session.getAttribute("eid"))){
-                                  
-      out.write("\r\n");
-      out.write("                                  <option value=\"");
- out.print(em.getEmployeeid()); 
-      out.write('"');
-      out.write('>');
- out.print(em.getEmployeename()); 
-      out.write("</option>\r\n");
-      out.write("                                  ");
-  }
-                                    }
-                                  }
-                                  
-      out.write("\r\n");
-      out.write("                                  \r\n");
-      out.write("                             </select>\r\n");
-      out.write("                            <div style=\"padding:0.8em 7em;\"><input type=\"submit\" name=\"pmassigned\" class=\"btn btn-info btn-block\" style=\"font-size:12pt;\" value=\"Assigned projects\"  alt=\"View currently assigned projects\"></div>  \r\n");
-      out.write("                             <br/>\r\n");
-      out.write("                            <label>Business Analyst :</label>\r\n");
-      out.write("                              <select required name=\"ba\" width=\"200\" height=\"80\" required>\r\n");
-      out.write("                                  <option value=\"Select\">Select Business Analyst</option>\r\n");
-      out.write("                                  \r\n");
-      out.write("                                 ");
-
-                                  for(int x=0;x<emp.size();x++){
-                                  em=emp.get(x);
-                                  if(em.getPosition().equals("Business Analyist")){
-                                  if(!em.getEmployeeid().equals((String)session.getAttribute("eid"))){
-                                  
-      out.write("\r\n");
-      out.write("                                  <option value=\"");
- out.print(em.getEmployeeid()); 
-      out.write('"');
-      out.write('>');
- out.print(em.getEmployeename()); 
-      out.write("</option>\r\n");
-      out.write("                                  ");
-  }
-                                    }
-                                  }
-                                  
-      out.write("\r\n");
-      out.write("                                   \r\n");
-      out.write("                             </select>\r\n");
-      out.write("                                  <div style=\"padding:0.8em 7em;\"><input type=\"submit\" name=\"baassigned\" class=\"btn btn-info btn-block\" style=\"font-size:12pt;\" value=\"Assigned projects\"  alt=\"View currently assigned projects\"></div>  \r\n");
-      out.write("                            <br/><br/>\r\n");
-      out.write("\r\n");
-      out.write("\t\t\t\t\t\t<div class=\"clearfix\"></div>\r\n");
-      out.write("\t\t\t\t\t\t<input  class=\"btn btn-warning btn-block\" type=\"submit\" value=\"Create Project\">\r\n");
-      out.write("\t\t\t\t\t</form>\r\n");
-      out.write("\t\t\t\t</div>                    \r\n");
-      out.write("                        \r\n");
-      out.write("                </section></section>>\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("        <!-- LOAD FILES AT PAGE END FOR FASTER LOADING -->\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("        <!-- CORE JS FRAMEWORK - START --> \r\n");
-      out.write("        <script src=\"js/jquery-1.11.2.min.js\" type=\"text/javascript\"></script> \r\n");
-      out.write("        <script src=\"js/jquery.easing.min.js\" type=\"text/javascript\"></script> \r\n");
-      out.write("        <script src=\"plugins/bootstrap/js/bootstrap.min.js\" type=\"text/javascript\"></script> \r\n");
-      out.write("        <script src=\"plugins/pace/pace.min.js\" type=\"text/javascript\"></script>  \r\n");
-      out.write("        <script src=\"plugins/perfect-scrollbar/perfect-scrollbar.min.js\" type=\"text/javascript\"></script> \r\n");
-      out.write("        <script src=\"plugins/viewport/viewportchecker.js\" type=\"text/javascript\"></script>  \r\n");
-      out.write("        <!-- CORE JS FRAMEWORK - END --> \r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START --> \r\n");
-      out.write("        <script src=\"plugins/rickshaw-chart/vendor/d3.v3.js\" type=\"text/javascript\"></script> <script src=\"assets/plugins/jquery-ui/smoothness/jquery-ui.min.js\" type=\"text/javascript\"></script> <script src=\"assets/plugins/rickshaw-chart/js/Rickshaw.All.js\"></script><script src=\"assets/js/chart-rickshaw.js\" type=\"text/javascript\"></script><!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END --> \r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("        <!-- CORE TEMPLATE JS - START --> \r\n");
-      out.write("        <script src=\"js/scripts.js\" type=\"text/javascript\"></script> \r\n");
-      out.write("        <!-- END CORE TEMPLATE JS - END --> \r\n");
-      out.write("\r\n");
-      out.write("      \r\n");
-      out.write("\r\n");
-      out.write("    </body>\r\n");
-      out.write("</html>\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
       out.write("\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

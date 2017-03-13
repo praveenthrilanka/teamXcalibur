@@ -8,11 +8,8 @@ package org.sampath.filex.web.actions;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,10 +20,11 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Ashantha
+ * @author Reshani
  */
-public class SetComment extends HttpServlet {
+public class AddNewDepartment extends HttpServlet {
 
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,44 +33,45 @@ public class SetComment extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        String comment = request.getParameter("commentstr");
-        Date date = new Date();
-        HttpSession session = request.getSession(false);
-        String srsid = (String) session.getAttribute("srsid");
-        String eid = (String) session.getAttribute("eid");
-        String notifino = null;
-
-        try {
-            Connection con = DatabaseConnection.createConnection();
-            String datentime = DateString.getDate(date.toString());
-            PreparedStatement ps = con.prepareStatement("insert into comments values(emp_sequence.nextval,'" + comment + "','" + datentime + "','" + session.getAttribute("eid") + "','" + srsid + "','')");
-            ps.executeQuery();
-            System.out.println("Insert first Done ");
-            ps = con.prepareStatement("insert into notification(comno) values (EMP_SEQUENCE.currval)");
-            ps.executeQuery();
-            System.out.println("Insert second Done ");
-            ps = con.prepareStatement("SELECT notification_seq.currval as NOTIFINO FROM DUAL");
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                notifino = rs.getString("NOTIFINO");
-            }
-
-            System.out.println("Insert Done " + notifino);
-
-            Notification.setNotification(notifino, srsid, eid);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection " + ex);
-        }
-
-        response.sendRedirect("filexweb/SubWall.jsp");
-    }
+  
+     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException, SQLException {
+        HttpSession session=request.getSession(false);
+        
+        String depid=request.getParameter("depid"); 
+        String depname=request.getParameter("depname");
+        
+        Connection con=DatabaseConnection.createConnection();
+       
+       try{
+           
+           if(depid!= null && depname!= null){
+           PreparedStatement statement = con.prepareStatement("INSERT INTO department(depid, depnme ) values (?,?)");
+           statement.setString(1,depid);
+           System.out.println("set 1 done");
+           statement.setString(2,depname);
+           System.out.println("set 2 done");
+           
+           int row = statement.executeUpdate();
+            if (row > 0) 
+              {
+                System.out.println("Department saved into database");
+                con.close();
+                response.sendRedirect("filexweb/Admin_add_user.jsp");
+              } 
+           } 
+            else{
+                  System.out.println("No Department Entered !");  
+                }
+           
+        }catch(SQLException ex){
+           Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+       }
+     
+     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -86,7 +85,11 @@ public class SetComment extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         try {
+             processRequest(request, response);
+         } catch (SQLException ex) {
+             Logger.getLogger(AddNewDepartment.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }
 
     /**
@@ -100,7 +103,11 @@ public class SetComment extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         try {
+             processRequest(request, response);
+         } catch (SQLException ex) {
+             Logger.getLogger(AddNewDepartment.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }
 
     /**

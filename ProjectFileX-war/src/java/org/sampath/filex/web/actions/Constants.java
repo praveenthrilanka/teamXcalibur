@@ -14,10 +14,18 @@ public class Constants {
     public static final String DRIVER_NAME="oracle.jdbc.OracleDriver";
     
     public static final String DB_URL = "jdbc:oracle:thin:@localhost:1521:orcl";
-    public static final String DB_USERNAME = "hr";
-    public static final String DB_PASSWORD = "hr";
+   public static final String DB_USERNAME = "hr";
+  public static final String DB_PASSWORD = "hr";
     
     
+<<<<<<< HEAD
+=======
+   // public static final String DB_URL = "jdbc:oracle:thin:@192.248.12.15:1521:xe";
+    //public static final String DB_USERNAME = "sampathfilex";
+    //public static final String DB_PASSWORD = "teamx";
+
+  
+>>>>>>> ae24ca21c9409d3ea9dd4b5b7030d68ac32d3884
 //    public static final String DB_URL = "jdbc:oracle:thin:@192.248.12.15:1521:xe";
 //    public static final String DB_USERNAME = "sampathfilex";
 //    public static final String DB_PASSWORD = "teamx";
