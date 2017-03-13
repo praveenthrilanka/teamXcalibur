@@ -23,7 +23,7 @@
 						</div>
 						<br/>
 						<div style="display:block; margin:auto; width:45%;">
-							<input type="file" name="srs"  onchange="loadFile(event)" required/>
+							<input type="file" name="srs"  onchange="loadFile(event)" required accept=".pdf"/>
 							
 						</div>
 						
@@ -51,7 +51,7 @@
 						</div>
 						<br/>
 						<div style="display:block; margin:auto; width:45%;">
-							<input type="file" name="srs"  onchange="loadFile(event)" required/>
+							<input type="file" name="srs"  onchange="loadFile(event)" required accept=".pdf"/>
 							
 						</div>
 						

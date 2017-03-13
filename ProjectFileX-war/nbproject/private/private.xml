@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/web/filexweb/MSD_Projects.jsp</file>
             <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/DelProject.java</file>
             <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SetIcon.java</file>
@@ -10,6 +11,33 @@
             <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/web/filexweb/EditProfile.jsp</file>
             <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/FileControll.java</file>
             <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/UploadSRS.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Project.java</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Stakeholder.java</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/EncryptPassword.java</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/web/filexweb/AddStakeHolders.jsp</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/OtherDocuments.java</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/web/filexweb/Version_history.jsp</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Constants.java</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Notification.java</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Comment.java</file>
+=======
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/SubWall.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/NotificationHandling.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SRS.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Comment.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/OtherDocuments.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/ProjectControl.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Notification.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Document.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Wall.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Up.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/UploadSRS.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SetComment.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Constants.java</file>
+>>>>>>> ae24ca21c9409d3ea9dd4b5b7030d68ac32d3884
+>>>>>>> 6ca1c292776f964d13af8988a084e089bbb4bb2d
         </group>
     </open-files>
 </project-private>

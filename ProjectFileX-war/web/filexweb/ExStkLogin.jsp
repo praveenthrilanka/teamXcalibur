@@ -6,6 +6,13 @@
 <%@ include file="Up.jsp" %>
 <%@ include file="SideBar.jsp" %>
 
+<%
+          if (!Employee.getEmployee((String)session.getAttribute("eid")).getPosition().equals("Stakeholder"))
+            {
+                response.sendRedirect("Login.jsp");
+            }
+%>
+
 
 <!-- START CONTENT -->
             

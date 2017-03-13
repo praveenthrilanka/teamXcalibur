@@ -44,8 +44,9 @@
 
         <%
             session = request.getSession(false);
-
-            if (session.getAttribute("eid") == null) {
+            
+            if (session.getAttribute("eid") == null)
+            {
                 response.sendRedirect("Login.jsp");
             }
 
@@ -73,7 +74,7 @@
                         </li>
 
 
-                        <%                            ArrayList<Notification> notifications = Notification.getAllNotification(e.getEmployeeid());
+                        <%ArrayList<Notification> notifications = Notification.getAllNotification(e.getEmployeeid());
                             int count = Notification.notificationInfo(e.getEmployeeid());
                             String empPosition = null;
                             if (e.getPosition().equals("Business Analyist")) {
@@ -102,7 +103,7 @@
                                 <li class="total">
                                     <span class="small">
                                         You have <strong><% out.print(count); %></strong> new notifications.
-                                        <a href="javascript:;" class="pull-right">Mark all as Read</a>
+
                                     </span>
                                 </li>
                                 <li class="list">
@@ -145,7 +146,7 @@
 
                                 <li class="external">
                                     <a href="javascript:;">
-                                        <span>Read All Notifications</span>
+                                        <span></span>
                                     </a>
                                 </li>
                             </ul>

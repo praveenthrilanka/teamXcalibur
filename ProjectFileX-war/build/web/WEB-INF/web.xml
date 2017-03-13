@@ -104,6 +104,10 @@
         <servlet-class>org.sampath.filex.web.actions.NotificationHandling</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>AddNewDepartment</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.AddNewDepartment</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>DelProject</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.DelProject</servlet-class>
     </servlet>
@@ -206,6 +210,10 @@
     <servlet-mapping>
         <servlet-name>NotificationHandling</servlet-name>
         <url-pattern>/NotificationHandling</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNewDepartment</servlet-name>
+        <url-pattern>/AddNewDepartment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DelProject</servlet-name>

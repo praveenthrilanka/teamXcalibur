@@ -21,7 +21,7 @@ public class Comment {
     private String createddatentime;
     private String employeeid;
     private String srsno;
-    private String agreementno;
+    private String employeename;
 
     public String getEmployeename() {
         return employeename;
@@ -30,7 +30,7 @@ public class Comment {
     public void setEmployeename(String employeename) {
         this.employeename = employeename;
     }
-    private String employeename;
+    
 
     public String getCommentno() {
         return commentno;
@@ -52,23 +52,19 @@ public class Comment {
         return srsno;
     }
 
-    public String getAgreementno() {
-        return agreementno;
+   
+    public static void setComment(){
+    
+    
     }
     
-    public Comment(String commentno, String description, String createddatentime, String employeeid, String srsno, String agreementno, String employeename) {
+        public Comment(String commentno, String description, String createddatentime, String employeeid, String srsno, String employeename) {
         this.commentno = commentno;
         this.description = description;
         this.createddatentime = createddatentime;
         this.employeeid = employeeid;
         this.srsno = srsno;
-        this.agreementno = agreementno;
         this.employeename=employeename;
-    }
-    
-    public static void setComment(){
-    
-    
     }
 
     public static ArrayList<Comment> getComment(String srsid){
@@ -102,7 +98,6 @@ public class Comment {
                  rs.getString("CREATEDDATENTIME"),
                  rs.getString("EMPID"),
                  rs.getString("SRSNO"),
-                 rs.getString("AGRNO"),
                  rs.getString("EMPNAME"));
         
      } 

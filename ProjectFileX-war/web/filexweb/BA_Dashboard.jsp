@@ -1,6 +1,13 @@
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
 <%@ include file="SideBar_Project.jsp" %>
+
+<%
+            if (!Employee.getEmployee((String)session.getAttribute("eid")).getPosition().equals("Business Analyist"))
+            {
+                response.sendRedirect("Login.jsp");
+            }
+%>
            
 <!-- START CONTENT -->
             
@@ -50,6 +57,7 @@
 									</div>
 								
 					    </div>
+
 				       <div class="col-lg-3">
 				    				<div class="cuadro_intro_hover " style="background-color:#CECEE9; width:300;">
 										<p style="text-align:center; margin-top:20px;">
@@ -60,12 +68,15 @@
 											<div class="caption-text">
 												<h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">Other</h3>
 												<button type="button" class="btn btn-warning" style="margin-top:10; width:140;" onclick="window.location.href='Version_history.jsp'">View History</button><br/>
-												<button type="button" class="btn btn-warning" style="margin-top:15; width:140;" onclick="window.location.href='#'">Reminders</button>
+												
 											</div>
 										</div>
 									</div>
 								
 					    </div>
+
+				       
+
 					</div>
 			</div>
                    </footer> 

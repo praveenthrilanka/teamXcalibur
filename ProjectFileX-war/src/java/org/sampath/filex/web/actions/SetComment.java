@@ -40,37 +40,37 @@ public class SetComment extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String comment=request.getParameter("commentstr");
+        String comment = request.getParameter("commentstr");
         Date date = new Date();
-        HttpSession session=request.getSession(false);
-        String srsid=(String)session.getAttribute("srsid");
-        String notifino=null;
-        
+        HttpSession session = request.getSession(false);
+        String srsid = (String) session.getAttribute("srsid");
+        String eid = (String) session.getAttribute("eid");
+        String notifino = null;
 
         try {
-            Connection con=DatabaseConnection.createConnection();
-            String datentime=DateString.getDate(date.toString());
-            PreparedStatement ps=con.prepareStatement("insert into comments values(emp_sequence.nextval,'"+comment+"','"+datentime+"','"+session.getAttribute("eid")+"','"+srsid+"','')");
+            Connection con = DatabaseConnection.createConnection();
+            String datentime = DateString.getDate(date.toString());
+            PreparedStatement ps = con.prepareStatement("insert into comments values(emp_sequence.nextval,'" + comment + "','" + datentime + "','" + session.getAttribute("eid") + "','" + srsid + "','')");
             ps.executeQuery();
             System.out.println("Insert first Done ");
-            ps=con.prepareStatement("insert into notification(comno) values (EMP_SEQUENCE.currval)");
+            ps = con.prepareStatement("insert into notification(comno) values (EMP_SEQUENCE.currval)");
             ps.executeQuery();
             System.out.println("Insert second Done ");
-            ps=con.prepareStatement("SELECT notification_seq.currval as NOTIFINO FROM DUAL");
-            ResultSet rs=ps.executeQuery();
-            if(rs.next())
-                notifino=rs.getString("NOTIFINO");
-            
-            System.out.println("Insert Done "+notifino);
-            
-            Notification.setNotification(notifino, srsid);
-            
-            
+            ps = con.prepareStatement("SELECT notification_seq.currval as NOTIFINO FROM DUAL");
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                notifino = rs.getString("NOTIFINO");
+            }
+
+            System.out.println("Insert Done " + notifino);
+
+            Notification.setNotification(notifino, srsid, eid);
+
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection "+ex);
+            System.out.println("Something went wrong in Connection " + ex);
         }
-        
+
         response.sendRedirect("filexweb/SubWall.jsp");
     }
 

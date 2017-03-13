@@ -4,6 +4,13 @@
 
 <!-- START CONTENT -->
 
+<%
+            if (!Employee.getEmployee((String)session.getAttribute("eid")).getPosition().equals("Administrator"))
+            {
+                response.sendRedirect("Login.jsp");
+            }
+%>
+
 <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 
@@ -13,7 +20,7 @@
             <h4>Edit User</h4>
             <h5><strong></strong></h5>
 
-            <form name="adduser" method="get" action="../EditUser" enctype="multipart/form-data">
+            <form name="adduser" method="post" action="../EditUser" enctype="multipart/form-data">
                 <center><img src="../GetIconByID?id=<%out.print(request.getParameter("id"));%>" id="output" width="130" height="130"></center>
                 <input type="hidden" id="id" name="id" value="<%out.print(request.getParameter("id"));%>"><br>
                 <label>User Id :</label>

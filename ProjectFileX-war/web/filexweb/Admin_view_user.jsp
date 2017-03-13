@@ -5,6 +5,13 @@
 
 <!-- START CONTENT -->
 
+<%
+            if (!Employee.getEmployee((String)session.getAttribute("eid")).getPosition().equals("Administrator"))
+            {
+                response.sendRedirect("Login.jsp");
+            }
+%>
+
 <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 
@@ -33,15 +40,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="row">
                                 <div class="col-md-2 col-sm-2 col-xs-2"></div>
-                                <div class="col-md-8 col-sm-8 col-xs-8">
-                                    <div class="input-group primary">
-                                        <span class="input-group-addon">                
-                                            <span class="arrow"></span>
-                                            <i class="fa fa-search"></i>
-                                        </span>
-                                        <input type="text" class="form-control search-page-input" placeholder="Search" value="">
-                                    </div>
-                                </div>
+                                
                                 <div class="col-md-2 col-sm-2 col-xs-2"></div>
                             </div>
                             <br/>
