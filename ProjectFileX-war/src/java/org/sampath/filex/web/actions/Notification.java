@@ -14,7 +14,10 @@ import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+/**
+ *
+ * @author Praveen
+ */
 public class Notification {
 
     private int notifino;
@@ -39,14 +42,14 @@ public class Notification {
         this.pno = pno;
         this.empid = empid;
     }
-    
+
     public Notification(String empname, String pname, String datentime, String pno, String empid, int notifino) {
         this.empname = empname;
         this.pname = pname;
         this.datentime = datentime;
         this.pno = pno;
         this.empid = empid;
-        this.notifino=notifino;
+        this.notifino = notifino;
     }
 
     public String getEmpid() {
@@ -94,7 +97,7 @@ public class Notification {
 
         Connection con = DatabaseConnection.createConnection();
         try {
-            PreparedStatement ps = con.prepareStatement("select count(empid) as countcom from notifiedlist where empid= '"+empid+"' and status is null");
+            PreparedStatement ps = con.prepareStatement("select count(empid) as countcom from notifiedlist where empid= '" + empid + "' and status is null");
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
@@ -147,19 +150,44 @@ public class Notification {
                 rs.getString("EMPID"));
     }
 
-    public static void setNotification(String notifino, String docid) {
+    public static void setNotification(String notifino, String docid, String empid) {
+
+        Employee e = Employee.getEmployee(empid);
+        String empPosition = null;
 
         Connection con = DatabaseConnection.createConnection();
         try {
             PreparedStatement ps = con.prepareStatement("select unique baid,pmid,msdid from comments c,srs s,project p where c.srsno=s.docno and s.pno=p.pno and s.docno='" + docid + "'");
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("BAID") + "','')");
-                ps.executeQuery();
-                ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("PMID") + "','')");
-                ps.executeQuery();
-                ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("MSDID") + "','')");
-                ps.executeQuery();
+
+                if (e.getPosition().equals("Business Analyist")) {
+                    ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("PMID") + "','')");
+                    ps.executeQuery();
+                    ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("MSDID") + "','')");
+                    ps.executeQuery();
+                } else if (e.getPosition().equals("Project Manager")) {
+                    ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("BAID") + "','')");
+                    ps.executeQuery();
+                    ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("MSDID") + "','')");
+                    ps.executeQuery();
+                } else if (e.getPosition().equals("PM/MSD")) {
+                    ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("BAID") + "','')");
+                    ps.executeQuery();
+                } else if (e.getPosition().equals("ManagerSD")) {
+                    ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("BAID") + "','')");
+                    ps.executeQuery();
+                    ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("PMID") + "','')");
+                    ps.executeQuery();
+                } else if (e.getPosition().equals("Stakeholder")) {
+                    ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("BAID") + "','')");
+                    ps.executeQuery();
+                    ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("PMID") + "','')");
+                    ps.executeQuery();
+                    ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("MSDID") + "','')");
+                    ps.executeQuery();
+                }
+
             }
 
             ps = con.prepareStatement("select stkid from SRSApprovedBy where docno='" + docid + "' and srsversion='" + Project.getSRSVersionByDOCID(docid) + "'");
@@ -188,7 +216,6 @@ public class Notification {
                 ps.executeQuery();
                 ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("PMID") + "','')");
                 ps.executeQuery();
-
             }
 
             con.close();
@@ -249,7 +276,6 @@ public class Notification {
 
     }
 
-    
     public static Notification getAllNotificationFromRS(ResultSet rs) throws SQLException {
 
         return new Notification(
@@ -261,14 +287,13 @@ public class Notification {
                 Integer.parseInt(rs.getString("NOTIFINO")));
     }
 
-    
     public static ArrayList<Notification> getSRSNotificationByEMPID(String empid) {
         ArrayList<Notification> notification = new ArrayList<Notification>();
         Connection con = DatabaseConnection.createConnection();
         try {
             PreparedStatement ps = con.prepareStatement("select e.empname,p.pname,p.createddatentime,p.pno,e.empid,n.notifino\n"
                     + "  from notifiedlist l, notification n, employee e, project p,srs s\n"
-                    + "  where l.notifino=n.notifino and n.srsno=s.docno and s.pno=p.pno and p.baid=e.empid and l.empid='it010' and l.status is null order by s.docno desc");
+                    + "  where l.notifino=n.notifino and n.srsno=s.docno and s.pno=p.pno and p.baid=e.empid and l.empid='" + empid + "' and l.status is null order by s.docno desc");
 
             ResultSet rs = ps.executeQuery();
             System.out.println("Execution done");
@@ -292,11 +317,11 @@ public class Notification {
     public static ArrayList<Notification> getAllNotification(String empid) {
         ArrayList<Notification> notification = new ArrayList<Notification>();
         notification.addAll(getNotificationByEMPID(empid));
-        System.out.println("------=====--------"+notification.size()+"=======");
+        System.out.println("------=====--------" + notification.size() + "=======");
         notification.addAll(getProjectNotificationByEMPID(empid));
-        System.out.println("------=====--------"+notification.size()+"=======");
+        System.out.println("------=====--------" + notification.size() + "=======");
         notification.addAll(getSRSNotificationByEMPID(empid));
-        System.out.println("------=====--------"+notification.size()+"=======");
+        System.out.println("------=====--------" + notification.size() + "=======");
         notification = SortNotification(notification);
         Collections.reverse(notification);
         return notification;
@@ -318,24 +343,25 @@ public class Notification {
         }
 
         for (int i = 1; i < input.size(); i++) {
-            System.out.println("------=====--------"+input.get(i).notifino);
+            System.out.println("------=====--------" + input.get(i).notifino);
         }
         return input;
     }
 
     public static String getStatus(int nid) {
-        Connection con = DatabaseConnection.createConnection(); 
-        String status=null;
+        Connection con = DatabaseConnection.createConnection();
+        String status = null;
         try {
             PreparedStatement ps = con.prepareStatement("select * from notification where notifino='" + nid + "'");
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-               if(rs.getString("COMNO")!=null)
-                   status="comment";
-               else if(rs.getString("PRONO")!=null)
-                   status="project";
-               else if(rs.getString("SRSNO")!=null)
-                   status="srs";
+                if (rs.getString("COMNO") != null) {
+                    status = "comment";
+                } else if (rs.getString("PRONO") != null) {
+                    status = "project";
+                } else if (rs.getString("SRSNO") != null) {
+                    status = "srs";
+                }
             }
 
             con.close();
@@ -343,9 +369,8 @@ public class Notification {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Something went wrong in Connection " + ex);
         }
-        
-        
+
         return status;
     }
-    
+
 }
