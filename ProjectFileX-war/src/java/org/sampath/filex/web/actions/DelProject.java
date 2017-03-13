@@ -8,6 +8,7 @@ package org.sampath.filex.web.actions;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,31 +38,75 @@ public class DelProject extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       System.out.println("_________________+===disti didin");
+       System.out.println("________________");
       
-       
-        String pno = request.getParameter("pno");
-        
-   try{
+            String adminpw=request.getParameter("adminpw");   
+            String pno=request.getParameter("pno");        
+
+            
+            System.out.println("wooooooooooooooork"+adminpw);
+            
+        if(adminpw==null)
+     {
+         response.sendRedirect("filexweb/failmessage.jsp?failmessage=Admin password should ot be null !");
+         
+     }
+     
+     else
+      
+     {
+      
+            adminpw=EncryptPassword.cryptWithMD5(adminpw);
+            System.out.println(adminpw);
+            
+            
+            try{
                 Connection con=DatabaseConnection.createConnection();
                 System.out.println("Connection Establishedoooooo");
+                
+                
+                PreparedStatement ps=con.prepareStatement("select * from employee where empid='ADMIN'");
+                ResultSet rs=ps.executeQuery();
+                
+                
+                if(rs.next()){
+                      System.out.println("Connection true");
 
-                PreparedStatement ps=con.prepareStatement("Delete from Project where pno='"+pno+"'");
-                ps.executeQuery();
-               
-                System.out.println("Query Works");
-   
- 
-       
-         
-         
-    }   catch (SQLException ex) {
-            Logger.getLogger(DelProject.class.getName()).log(Level.SEVERE, null, ex);
+                    
+                    if(rs.getString("password").trim().equals(adminpw.trim()))
+                    {
+                        
+                           System.out.println("Connection trueeeeeeeeeeee");
+
+                        PreparedStatement ps1=con.prepareStatement("Delete from Project where pno='"+pno+"'");
+                        ps1.executeQuery();
+                          System.out.println("pno"+pno);
+
+                        
+                        System.out.println("Query Works");
+                        
+                        
+                        response.sendRedirect("filexweb/message.jsp?message=project deleted successfully !");
+                        
+                        
+                    }
+                    else
+                    {
+                        response.sendRedirect("filexweb/failmessage.jsp?failmessage=Incorrect admin password ! Try again");
+                        
+                        
+                    }
+                }
+                
+                
+                
+                
+            }   catch (SQLException ex) {
+                Logger.getLogger(DelProject.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-   
-      response.sendRedirect("filexweb/message.jsp?message=project deleted successfully !");
-
-    }
+     }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

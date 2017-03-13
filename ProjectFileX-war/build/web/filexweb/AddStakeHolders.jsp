@@ -88,8 +88,18 @@
                     {
                                             
                 %>
-                                        
-                                        
+                     <% 
+                         Project p=Project.getProject(pno);
+                         if(p.getSrsid()==null){
+                     %>                   
+                           
+                     <script type="text/javascript">
+                        $(window).load(function () {
+                        $('#ultraModal-12').modal('show');
+                        });
+                    </script> 
+                     
+                     <% } %>
             <h5><strong>Define SRS flow</strong></h5>
 
                 <table align="center" width="95%" style="border-collapse: separate;border-spacing: 0 1.5em;">
@@ -336,6 +346,29 @@
                             <!--model End-->
                                     
 <!-- END CONTENT -->
+
+            <!--Model starts-->
+                <div class="modal fade" id="ultraModal-12" tabindex="-1" role="dialog" aria-labelledby="ultraModal-Label" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog animated fadeInUp"><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title">SRS is not uploaded</h4>
+                            </div>   
+                            <div class="modal-body">
+                                Please define the path after SRS is uploaded.
+                            </div>
+                            <div class="modal-footer">
+                    
+                               <a class="btn btn-success" type="button" href="<% out.print(session.getAttribute("home"));%>">Ok</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <!--model End-->
+                                    
+<!-- END CONTENT -->
+
 
 
 

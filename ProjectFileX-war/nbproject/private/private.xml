@@ -3,7 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/AddEmp.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Project.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/SideBar_Project.jsp</file>
@@ -82,21 +81,6 @@
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Successandfailmessage.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/CommentEdit.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/PM_Dashboard.jsp</file>
-=======
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/SubWall.jsp</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/NotificationHandling.java</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SRS.java</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Comment.jsp</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/OtherDocuments.java</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/ProjectControl.java</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Notification.java</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Document.java</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Wall.jsp</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Up.jsp</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/UploadSRS.java</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SetComment.java</file>
-            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Constants.java</file>
->>>>>>> ae24ca21c9409d3ea9dd4b5b7030d68ac32d3884
         </group>
     </open-files>
 </project-private>
