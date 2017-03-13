@@ -3,25 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/web/filexweb/Version_history.jsp</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/web/filexweb/ESH_Dashboard.jsp</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/web/filexweb/View_assigned_projects.jsp</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Stakeholder.java</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/web/filexweb/MSD_Dashboard.jsp</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/UploadSRS.java</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SetIcon.java</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/web/filexweb/BA_Dashboard.jsp</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/web/filexweb/ApprovedProjects.jsp</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/web/filexweb/Admin_add_user.jsp</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/web/filexweb/Admin_Dashboard.jsp</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SignIn.java</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/web/filexweb/Admin_edit_user.jsp</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Constants.java</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SetUser.java</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/web/filexweb/Admin_view_user.jsp</file>
-            <file>file:/C:/Users/Reshani/Desktop/filex/teamXcalibur/ProjectFileX-war/web/filexweb/SubWall.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/SubWall.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/NotificationHandling.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SRS.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Comment.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/OtherDocuments.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/ProjectControl.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Notification.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Document.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Wall.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Up.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/UploadSRS.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SetComment.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Constants.java</file>
         </group>
     </open-files>
 </project-private>
