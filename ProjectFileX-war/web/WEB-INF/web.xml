@@ -103,6 +103,10 @@
         <servlet-name>NotificationHandling</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.NotificationHandling</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddNewDepartment</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.AddNewDepartment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignIn</servlet-name>
         <url-pattern>/SignIn</url-pattern>
@@ -202,6 +206,10 @@
     <servlet-mapping>
         <servlet-name>NotificationHandling</servlet-name>
         <url-pattern>/NotificationHandling</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNewDepartment</servlet-name>
+        <url-pattern>/AddNewDepartment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
