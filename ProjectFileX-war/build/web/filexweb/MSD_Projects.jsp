@@ -68,6 +68,7 @@
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         <h4 class="modal-title">Are you sure you want to delete?</h4>
+                                                  
                                                     </div>
                                                     <div class="modal-body">
                                                         Once a project is deleted, you will not be able to recover it.
