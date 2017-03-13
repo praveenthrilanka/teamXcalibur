@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/web/filexweb/MSD_Projects.jsp</file>
             <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/DelProject.java</file>
-            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/web/filexweb/Comment.jsp</file>
-            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/web/filexweb/Wall.jsp</file>
-            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/web/filexweb/SubWall.jsp</file>
+            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SetIcon.java</file>
+            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/web/filexweb/UploadOtherDocument.jsp</file>
+            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/web/filexweb/EditProfile.jsp</file>
+            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/FileControll.java</file>
+            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/UploadSRS.java</file>
         </group>
     </open-files>
 </project-private>

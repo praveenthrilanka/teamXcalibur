@@ -4,10 +4,15 @@
 <%@ include file="SideBar.jsp" %>
 
 
+
 <!-- START CONTENT -->
             
             <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
             <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+            <script src="js/jquery-1.11.2.min.js"> </script>
+                
+                
+            </style>
             
             <%
 
@@ -58,17 +63,50 @@
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         <h4 class="modal-title">Are you sure you want to delete?</h4>
+                                                   
+
+                                                        
                                                     </div>
                                                     <div class="modal-body">
                                                         Once a project is deleted, you will not be able to recover it.
-                                                    </div>
+                                                        <div align="right">
+                                                        <button data-dismiss="modal" class="btn btn-default" type="button">No</button>
+                                                        <button  id="modalbutton" class="btn btn-success" onclick="showDiv()" >Yes</button>
+                                                        </div>
+                                                        <script>
+                                                        function showDiv(){  //  display the input of the admin's password
+                                                       
+                                                           document.getElementById('div_pass').style.display = 'block' ;  
+                                                          }
+                                                        </script>
+                                                              <form name="admispass" action="../DelProject" method="post">
+                                                    
+                                                                  <div id="div_pass" style="display:none">
+                                                                    </br>
+                                                                    <div id="adminpass">
+                                                                        <label>Enter the Administrator's password :</label> 
+                                                                        <input type="password" id="adminpass" name="adminpw" placeholder="Password here.." required=""/>
+                                                                         <input type="hidden" name="pno" value="<%out.print(p.getProjectno());%>"/>
+
+                                                                    </div> 
+                                                                    <br /> 
+                                                                  </div>
+                                                                  
+                                                          </div>
+
+                                                        
                                                     <div class="modal-footer">
                                                         <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                                                        <a  href="../DelProject?pno=<%out.print(p.getProjectno());%>" class="btn btn-success">Delete</a>
+                                                        <input   type="submit" value="Delete" class="btn btn-warning"/>
                                                     </div>
+                                                    </form>
+
                                                 </div>
                                             </div>
                                         </div>
+                                         
+                          
+                                            
                                         <!--model End-->
                  <% c++; 
              }
@@ -76,7 +114,10 @@
 
             </div>
              
-             <script>
+                <script>
+                 
+                  
+                  
                  
                  $(document).ready(fuction()
                  {
@@ -89,7 +130,7 @@
                    });
                   
                  
-             </script>
+                 </script>
                                                <!--Model starts-->
 
                                          
