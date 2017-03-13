@@ -348,6 +348,8 @@ public class Project {
                         break;
                     }
                     
+                    acknowledgement="The project is approved";
+                    
                     lastpriority=Integer.parseInt(rs.getString("PRIORITYNO"));
                     
                 }
@@ -356,7 +358,7 @@ public class Project {
                 
             }
             
-            if(!temp.next())
+            if(temp.next())
                 acknowledgement="Stakeholders are not assigned yet";
             
             con.close();

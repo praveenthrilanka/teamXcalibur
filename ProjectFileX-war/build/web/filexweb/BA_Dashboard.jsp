@@ -57,22 +57,7 @@
 									</div>
 								
 					    </div>
-				       <div class="col-lg-3">
-				    				<div class="cuadro_intro_hover " style="background-color:#CECEE9; width:300;">
-										<p style="text-align:center; margin-top:20px;">
-											<img src="images/others.png" class="img-responsive" alt="" style="padding:0em 6em">
-										</p>
-										<div class="caption">
-											<div class="blur"></div>
-											<div class="caption-text">
-												<h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">Other</h3>
-												<button type="button" class="btn btn-warning" style="margin-top:10; width:140;" onclick="window.location.href='Version_history.jsp'">View History</button><br/>
-												<button type="button" class="btn btn-warning" style="margin-top:15; width:140;" onclick="window.location.href='#'">Reminders</button>
-											</div>
-										</div>
-									</div>
-								
-					    </div>
+				       
 					</div>
 			</div>
                    </footer> 

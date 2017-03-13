@@ -6,7 +6,7 @@
 
             <%
                 String pos=Employee.getEmployee((String)session.getAttribute("eid")).getPosition();
-            if (!(pos.equals("Project Manager") || pos.equals("PM/MSD")))
+            if (!(pos.equals("Project Manager") || pos.equals("PM/MSD") || pos.equals("ManagerSD")))
             {
                 response.sendRedirect("Login.jsp");
             }

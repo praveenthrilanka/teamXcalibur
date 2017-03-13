@@ -45,7 +45,7 @@
 
                             <div class="uprofile_wall_posts col-md-12 col-sm-12 col-xs-12">
                                 <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">
-                                    <img src="../GetIconByID?id=<% out.print(pm.getEmployeeid()); %>" class="" alt="">
+                                    <img src="../GetIconByID?id=<% out.print(msd.getEmployeeid()); %>" class="" alt="">
                                 </div>
                                 <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">					
                                     <div class="username">

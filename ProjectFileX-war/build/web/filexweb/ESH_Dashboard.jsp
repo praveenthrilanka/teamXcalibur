@@ -3,7 +3,7 @@
 <%@ include file="SideBar.jsp" %>
 
 <%
-            if (!Employee.getEmployee((String)session.getAttribute("eid")).getPosition().equals("Project Manager"))
+            if (!Employee.getEmployee((String)session.getAttribute("eid")).getPosition().equals("Stakeholder"))
             {
                 response.sendRedirect("Login.jsp");
             }
