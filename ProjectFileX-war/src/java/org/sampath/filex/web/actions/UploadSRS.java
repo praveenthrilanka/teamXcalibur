@@ -81,23 +81,8 @@ public class UploadSRS extends HttpServlet {
 
             System.out.println("set1 done");
             statement.setString(1,DateString.getDate(dte.toString()));
-<<<<<<< HEAD
-            
-            
-           /* if (inputStream != null) {
-                // fetches input stream of the upload file for the blob column
-                statement.setBinaryStream(2,inputStream,inputStream.available());
-                System.out.println("Input Stream Done");
-            }*/
-           
-            statement.setString(2,"");
-            statement.setString(3,pno);
-            statement.setString(4,"");
- 
-=======
             statement.setString(2,pno);
 
->>>>>>> 538fdc4dd27fc90180581b57f65c4052bce54c11
             row = statement.executeUpdate();
             if (row > 0) 
             {
