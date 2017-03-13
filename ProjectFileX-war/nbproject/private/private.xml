@@ -3,22 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Project.java</file>
             <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Stakeholder.java</file>
+            <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/EncryptPassword.java</file>
             <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/web/filexweb/AddStakeHolders.jsp</file>
             <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/OtherDocuments.java</file>
             <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/web/filexweb/Version_history.jsp</file>
             <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Constants.java</file>
             <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Notification.java</file>
             <file>file:/D:/Sampath%20IT%20project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Comment.java</file>
-=======
-            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/web/filexweb/MSD_Projects.jsp</file>
-            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/DelProject.java</file>
-            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/web/filexweb/Comment.jsp</file>
-            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/web/filexweb/Wall.jsp</file>
-            <file>file:/C:/Filex/teamXcalibur/ProjectFileX-war/web/filexweb/SubWall.jsp</file>
->>>>>>> c2913cd1bdb3c4b81bfe94deed87c7097ab23663
         </group>
     </open-files>
 </project-private>
