@@ -161,7 +161,7 @@ if (count != 0) {
       out.write("                                        You have <strong>");
  out.print(count); 
       out.write("</strong> new notifications.\r\n");
-      out.write("                                        <a href=\"javascript:;\" class=\"pull-right\">Mark all as Read</a>\r\n");
+      out.write("\r\n");
       out.write("                                    </span>\r\n");
       out.write("                                </li>\r\n");
       out.write("                                <li class=\"list\">\r\n");
@@ -222,7 +222,7 @@ out.print(n.getEmpid());
       out.write("\r\n");
       out.write("                                <li class=\"external\">\r\n");
       out.write("                                    <a href=\"javascript:;\">\r\n");
-      out.write("                                        <span>Read All Notifications</span>\r\n");
+      out.write("                                        <span>.</span>\r\n");
       out.write("                                    </a>\r\n");
       out.write("                                </li>\r\n");
       out.write("                            </ul>\r\n");
