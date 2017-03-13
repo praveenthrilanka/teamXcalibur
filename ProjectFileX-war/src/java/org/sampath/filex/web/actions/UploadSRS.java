@@ -77,23 +77,15 @@ public class UploadSRS extends HttpServlet {
             {
             srsversion="1";
             changes="Initial SRS";
-            statement = con.prepareStatement("INSERT INTO srs(createddatentime,approveddatentime,pno,status) values (?,?,?,?)");
+            statement = con.prepareStatement("INSERT INTO srs(createddatentime,pno) values (?,?)");
 
             System.out.println("set1 done");
             statement.setString(1,DateString.getDate(dte.toString()));
-            
-            /*
-            if (inputStream != null) {
-                // fetches input stream of the upload file for the blob column
-                statement.setBinaryStream(2,inputStream,inputStream.available());
-                System.out.println("Input Stream Done");
-            }*/
-            statement.setString(2,"");
-            statement.setString(3,pno);
-            statement.setString(4,"");
- 
+            statement.setString(2,pno);
+
             row = statement.executeUpdate();
-            if (row > 0) {
+            if (row > 0) 
+            {
                 System.out.println("SRS table entry is inserted");
             }
             

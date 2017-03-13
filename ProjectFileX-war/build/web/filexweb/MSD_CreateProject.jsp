@@ -1,11 +1,22 @@
 <%@page import="java.util.ArrayList"%>
 <%@ include file="Up.jsp" %>
 <%@ include file="Sidebar.jsp" %>
-                    
+          
+            <%
+                String pos=Employee.getEmployee((String)session.getAttribute("eid")).getPosition();
+            if (!(pos.equals("ManagerSD") || pos.equals("PM/MSD")))
+            {
+                response.sendRedirect("Login.jsp");
+            }
+            %>
+
+
             <% 
             ArrayList<Employee> emp=Employee.getEmployee();
             Employee em;
             %>
+            
+
 
             <!-- START CONTENT -->
             <section id="main-content" class=" ">

@@ -44,8 +44,9 @@
 
         <%
             session = request.getSession(false);
-
-            if (session.getAttribute("eid") == null) {
+            
+            if (session.getAttribute("eid") == null)
+            {
                 response.sendRedirect("Login.jsp");
             }
 

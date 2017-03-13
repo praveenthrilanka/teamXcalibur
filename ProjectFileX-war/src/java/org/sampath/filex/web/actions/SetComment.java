@@ -50,8 +50,14 @@ public class SetComment extends HttpServlet {
         try {
             Connection con=DatabaseConnection.createConnection();
             String datentime=DateString.getDate(date.toString());
-            PreparedStatement ps=con.prepareStatement("insert into comments values(emp_sequence.nextval,'"+comment+"','"+datentime+"','"+session.getAttribute("eid")+"','"+srsid+"','')");
-            ps.executeQuery();
+         //   PreparedStatement ps=con.prepareStatement("insert into comments values(emp_sequence.nextval,'"+comment+"','"+datentime+"','"+session.getAttribute("eid")+"','"+srsid+"')");
+            PreparedStatement ps=con.prepareStatement("insert into comments(description,createddatentime,empid,srsno) values(?,?,?,?)"); 
+            ps.setString(1,comment);
+            ps.setString(2,datentime);
+            ps.setString(3,(String)session.getAttribute("eid"));
+            ps.setString(4,srsid);
+            System.out.println("Comment test");
+            ps.executeUpdate();
             System.out.println("Insert first Done ");
             ps=con.prepareStatement("insert into notification(comno) values (EMP_SEQUENCE.currval)");
             ps.executeQuery();
