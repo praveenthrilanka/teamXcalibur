@@ -304,11 +304,17 @@ public class Project {
             //PreparedStatement ps=con.prepareStatement("select a.stkid,a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+Project.getSRSVersion(pno)+"' order by priorityno asc");
             PreparedStatement ps=con.prepareStatement("select a.stkid,a.status,a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+Project.getSRSVersion(pno)+"' order by priorityno asc");
             ResultSet rs=ps.executeQuery();
-            ResultSet temp=rs;
+            ps=con.prepareStatement("select a.stkid,a.status,a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+Project.getSRSVersion(pno)+"' order by priorityno asc");
+            ResultSet temp=ps.executeQuery();
             System.out.println("Execution done");
             int lastpriority=0;
             
-            while(rs.next()){
+            if(!temp.next())
+                acknowledgement="Stakeholders are not assigned yet";
+            else
+            {
+            while(rs.next())
+            {
                     String status=rs.getString("STATUS");
                     
                 if(status!=null)
@@ -326,11 +332,11 @@ public class Project {
                     else if(status.equals("noresponse"))
                     {   
                         int prio=0;
-                        ps=con.prepareStatement("select a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and stkid='"+eid+"'");
+                        ps=con.prepareStatement("select a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and s.pno='"+pno+"' and a.stkid='"+eid+"'");
                         ResultSet rset=ps.executeQuery();
                         if(rset.next())
                         prio=Integer.parseInt(rset.getString("PRIORITYNO"));
-                        if(prio!=0)
+                        if(prio!=0 && prio!=1)
                         {
                         ps=con.prepareStatement("select a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and a.priorityno='"+(prio-1)+"'");
                         rset=ps.executeQuery();
@@ -356,12 +362,12 @@ public class Project {
                 else
                     acknowledgement="Undefined";
                 
+                }
             }
             
-            if(temp.next())
-                acknowledgement="Stakeholders are not assigned yet";
+               
             
-            con.close();
+       con.close();
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Something went wrong in Connection "+ex);

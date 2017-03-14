@@ -70,7 +70,8 @@
                             </form>
                              
                        <!--To add a new document -->
-                                              <div class="clearfix"></div>
+                            <form name="addnewform" action="../AddNewDoc" method="post">
+                                <div class="clearfix"></div>
                                     <button style="background-color:#02a7e7;  border:none;" class="btn btn-info btn-block " id="button1" type = "button" onclick="showDiv()">Add a New Document Type</button>
                                                 
            

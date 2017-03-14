@@ -126,7 +126,7 @@ public class Stakeholder {
             {
                 s=stakeholder.get(x);
                 System.out.println(s.getName()+"Added"+version);
-                PreparedStatement ps=con.prepareStatement("insert into srsapprovedby values((SELECT docno FROM srs WHERE pno = '"+pno+"'),'"+version+"','"+s.getEmpid()+"','"+s.getPriorityno()+"','')");
+                PreparedStatement ps=con.prepareStatement("insert into srsapprovedby values((SELECT docno FROM srs WHERE pno = '"+pno+"'),'"+version+"','"+s.getEmpid()+"','"+s.getPriorityno()+"','noresponse')");
                 ps.executeQuery();
             }
             
