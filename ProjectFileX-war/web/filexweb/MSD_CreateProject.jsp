@@ -29,8 +29,8 @@
                             <!--<label>Project ID :</label><input type="text" name="pid" placeholder="Enter Project ID" required> <br/><br/>-->
 						      <label>Project Name :</label><input type="text" name="pname" placeholder="Enter Project Name" required> <br/><br/><br/>
                               <label>Project Manager :</label>
-                              <select name="pm" width="200" height="80" required>
-                                  <option value="">Select Project Manager</option>
+                              <select name="pm" width="200" height="80" >
+                                  <option selected disabled value="" >Select Project Manager</option>
                                   <%
                                   for(int x=0;x<emp.size();x++){
                                   em=emp.get(x);
@@ -47,8 +47,8 @@
                             <div style="padding:0.8em 7em;"><input type="submit" name="pmassigned" class="btn btn-info btn-block" style="font-size:12pt;" value="Assigned projects"  alt="View currently assigned projects"></div>  
                              <br/>
                             <label>Business Analyst :</label>
-                              <select required name="ba" width="200" height="80" required>
-                                  <option value="Select">Select Business Analyst</option>
+                            <select  name="ba" width="200" height="80">
+                                  <option selected disabled value="">Select Business Analyst</option>
                                   
                                  <%
                                   for(int x=0;x<emp.size();x++){
@@ -68,6 +68,7 @@
 
 						<div class="clearfix"></div>
 						<input  class="btn btn-warning btn-block" type="submit" value="Create Project">
+						<input  class="btn btn-warning btn-block" type="reset" value="Reset">
 					</form>
 				</div>                    
                         

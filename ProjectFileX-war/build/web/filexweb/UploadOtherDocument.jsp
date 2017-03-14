@@ -15,6 +15,23 @@
         <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
         <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
         <script src="js/jquery-1.11.2.min.js"></script>
+        
+            <%
+                String successmsg = request.getParameter("scs");
+                System.out.println(successmsg);
+                if(successmsg != null){
+                    if(successmsg.equals("pass")){
+                        %>
+                            <script>
+                            $(document).ready(function() {
+                            $('#ultraModal-11').modal('show');
+                        });
+
+                            </script>
+                        <%
+                    }
+                }
+            %>
 
         <!-- START CONTENT -->
             <section id="main-content" class=" ">
@@ -34,7 +51,7 @@
                             else{
                          %>  
                              
-                        <select name="<%="doctype" %>">  
+                         <select name="<%="doctype" %>" required>  
                         <option value = "" selected ="true" disabled = "disabled"> Select Document Type</option>
                             
                             <%
@@ -64,10 +81,11 @@
                             <label><b>Narration :</b></label>
                                <input type="text" name="narration" placeholder="Enter a name for the document " required> <br/></br>		
                                <div class="clearfix"></div>                                      
-                               <input style="background-color:#FF9D26; border:none;" id="uploadButton" class="btn btn-info btn-block" type="submit" data-toggle="modal" data-target="#ultraModal-11" value="Upload Document" onclick="openModal()">
+                               <input style="background-color:#FF9D26; border:none;" id="uploadButton" class="btn btn-info btn-block" type="submit"  value="Upload Document">
                                 
                                 
                             </form>
+                            
                              
                        <!--To add a new document -->
                             <form name="addnewform" action="../AddNewDoc" method="post">
@@ -120,8 +138,9 @@
                                                     }
                                                     
                                                     }   
-                                                
+                                             
                                             </script>
+                                
                                             <script>
 						  var loadFile = function(event) {
 						    var output = document.getElementById('output');
@@ -129,11 +148,11 @@
 						  };
                                             </script>
                                            
-                                            <script type = text/javascript>
+                                           <!-- <script type = text/javascript>
                                                  $('#AddOtherDocument').on('submit', function(ev) {
                                                  $('#ultraModal-11').modal('show')}; 
                                             </script>
-                                             
+                                             -->
                                             
                 </section></section>
                             

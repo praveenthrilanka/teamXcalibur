@@ -46,6 +46,7 @@ public class AddEmp extends HttpServlet {
         String email = request.getParameter("email");
         String mail=null;
         
+        System.out.println("YOUR ID IS"+id+"4654"+name);
         String pw = EncryptPassword.cryptWithMD5(id);
         System.out.println(pw);
         try {

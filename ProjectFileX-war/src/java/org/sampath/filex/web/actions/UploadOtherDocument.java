@@ -98,7 +98,7 @@ public class UploadOtherDocument extends HttpServlet {
                 System.out.println("Document uploaded and saved into database");
             }
             con.close();
-            response.sendRedirect("filexweb/UploadOtherDocument.jsp");
+            response.sendRedirect("filexweb/UploadOtherDocument.jsp?scs=pass");
             
         }
         else 

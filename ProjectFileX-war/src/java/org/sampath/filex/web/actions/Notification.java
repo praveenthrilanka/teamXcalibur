@@ -20,6 +20,7 @@ import java.util.logging.Logger;
  */
 public class Notification {
 
+    
     private int notifino;
     private String empname;
     private String pname;

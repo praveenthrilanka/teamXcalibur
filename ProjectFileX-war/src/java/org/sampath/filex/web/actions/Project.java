@@ -161,6 +161,8 @@ public class Project {
                     p= getProjectFromRS(rs);
                     project.add(p);}
                 else{
+                    if(!rs.getString("SRSVERSION").equals(srsversion))
+                        continue;
                     int prio=Integer.parseInt(rs.getString("PRIORITYNO"));
                     ps=con.prepareStatement("select status from SRSApprovedBy where docno='"+docno+"' and priorityno='"+(prio-1)+"' and srsversion='"+srsversion+"'");
                     ResultSet temprs=ps.executeQuery();

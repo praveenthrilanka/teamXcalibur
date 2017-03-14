@@ -49,13 +49,18 @@ public class ProjectControl extends HttpServlet {
         String msd=(String)session.getAttribute("eid");
         String notifino=null;
         String pno=null;
+    
+
         
+         
         if(request.getParameter("baassigned")!=null)
             response.sendRedirect("filexweb/PMLogin.jsp?eid="+ba);
         else if(request.getParameter("pmassigned")!=null)
             response.sendRedirect("filexweb/PMLogin2.jsp?eid="+pm);
         else
         {
+            
+             if(pm!=null && ba!=null){  
             try {
                 Connection con=DatabaseConnection.createConnection();
                 System.out.println("Connection Established");
@@ -89,8 +94,17 @@ public class ProjectControl extends HttpServlet {
 
 
 
-                response.sendRedirect("filexweb/message.jsp?message=Project created successfully.!");
+         
+            response.sendRedirect("filexweb/message.jsp?message=Project created successfully.!");
+            
+            
+         }else
+        {
+          response.sendRedirect("filexweb/failmessage.jsp?failmessage=Assign both PM and BA to create a project.!");
+
         }
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

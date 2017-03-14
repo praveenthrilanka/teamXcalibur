@@ -35,8 +35,6 @@ public class NotificationHandling extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
         String empid = request.getParameter("empid");
         String status = request.getParameter("status");
         String pno = request.getParameter("pno");
@@ -68,12 +66,15 @@ public class NotificationHandling extends HttpServlet {
                 response.sendRedirect("filexweb/ESH_Dashboard.jsp");
             } else if (direct.equals("msd")) {
                 response.sendRedirect("filexweb/MSD_ViewProjects.jsp");
+            } else if (direct.equals("pmMsd")) {
+                response.sendRedirect("filexweb/MSD_ViewProjects.jsp");
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Something went wrong in Connection " + ex);
         }
+
 
     }
 
