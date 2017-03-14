@@ -146,7 +146,7 @@ public class Project {
         Connection con=DatabaseConnection.createConnection();        
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from SRSApprovedBy a,project p,employee e,srs s where s.DOCNO=a.DOCNO and p.PNO=s.PNO and a.STKID=e.EMPID and a.STKID='"+stkid+"' order by p.pno desc");
+            PreparedStatement ps=con.prepareStatement("select * from SRSApprovedBy a,project p,employee e,srs s where s.DOCNO=a.DOCNO and p.PNO=s.PNO(+) and a.STKID=e.EMPID and a.STKID='"+stkid+"' order by p.pno desc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             System.out.println(stkid);

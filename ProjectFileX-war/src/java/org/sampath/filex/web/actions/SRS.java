@@ -109,7 +109,7 @@ public class SRS {
                 Connection con=DatabaseConnection.createConnection();
                 System.out.println("Connection Established");
                 
-                PreparedStatement ps=con.prepareStatement("select a.status from srs s,project p,srsapprovedby a where s.pno=p.pno and a.docno=s.docno and p.pno="+pno+" and a.stkid='"+eid+"'");
+                PreparedStatement ps=con.prepareStatement("select a.status from srs s,project p,srsapprovedby a where s.pno=p.pno and a.docno=s.docno and p.pno="+pno+" and a.stkid='"+eid+"' and a.srsversion='"+Project.getSRSVersion(pno)+"'");
                 ResultSet rs=ps.executeQuery();
                 
                 if(rs.next())

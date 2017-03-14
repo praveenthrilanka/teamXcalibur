@@ -12,15 +12,17 @@
             
             <!-- START CONTENT -->
             <section id="main-content" class=" ">
-                <section class="wrapper" style='margin-top:35px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
+                <section class="wrapper" style='margin-top:25px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
                    
-					<div id="pageset">
+		<div id="pageset">
                     <div class="main-page">
                             <div class="container-fluid">
-                            <br/><br/>
+                            <br/>
+                            <a title="Full Screen" target="_blank" href="../GetFile"><img src="logos/full.png" height="33" width="33" align="right"></a>
                              <div class="row">
-                                 <div class="col-lg-7" >
-                                     <iframe name='fra2' src='../GetFile' width="100%" height="550" ></iframe>
+                                 <br/>
+                                 <div class="col-lg-7"  >
+                                     <iframe style='margin-top:10px'  name='fra2' src='../GetFile' width="100%" height="550" ></iframe>
                                   
                               </div>
                               <div class="col-lg-5" >

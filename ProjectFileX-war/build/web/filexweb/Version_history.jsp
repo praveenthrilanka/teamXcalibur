@@ -64,10 +64,22 @@
                                     <div class="clearfix"></div>
                                     
                                     <div class="clearfix"></div>
+                                    
+                                    <%    
+                                            ArrayList<Stakeholder> s=Stakeholder.getStakeholders(pno, "1");
+                                            Stakeholder sh;
+                                            if(s.size()!=0)
+                                            {
+                                        %>
+                                    
                                     <div class="comment">
+                                        
+                                         
+                                        
                                         <div class="pic-wrapper col-md-1 col-sm-1 col-xs-2 text-center">
                                             <img src="../GetIconByID?id=<% out.print(pm.getEmployeeid()); %>" alt="">
                                         </div>
+                                            
                                         <div class="info-wrapper col-md-11 col-sm-11 col-xs-10">					
                                             <div class="username">
                                                 <span>Project Manager </span><span class="bold"><% out.print(pm.getEmployeename()); %></span> <span>Approved</span><span> the document</span> <!-- approved or Reject if approved view the stake holders-->
@@ -75,9 +87,10 @@
                                             <div class="info text-muted">
                                                 <span class="bold">Added Stakeholders</span><br/>
                                                 
+                                             
+                                                
                                                 <%
-                                                ArrayList<Stakeholder> s=Stakeholder.getStakeholders(pno, "1");
-                                                Stakeholder sh;
+
                                                 for(int x=0;x<s.size();x++){
                                                     sh=s.get(x);
                                                 %>
@@ -95,6 +108,10 @@
                                         </div>	
                                         <div class="clearfix"></div>						
                                     </div>
+                                            
+                                        <%    
+                                            }
+                                        %> 
                                     
                                     <%
                                         ArrayList<SRS> srs=SRS.getSRSDetails(pno);
