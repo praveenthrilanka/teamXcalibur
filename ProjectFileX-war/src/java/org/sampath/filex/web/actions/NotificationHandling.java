@@ -65,16 +65,15 @@ public class NotificationHandling extends HttpServlet {
             } else if (direct.equals("esh")) {
                 response.sendRedirect("filexweb/ESH_Dashboard.jsp");
             } else if (direct.equals("msd")) {
-                response.sendRedirect("filexweb/MSD_ViewProjects.jsp");
+                response.sendRedirect("filexweb/MSD_Dashboard.jsp");
             } else if (direct.equals("pmMsd")) {
-                response.sendRedirect("filexweb/MSD_ViewProjects.jsp");
+                response.sendRedirect("filexweb/MSDnPM.jsp");
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Something went wrong in Connection " + ex);
         }
-
 
     }
 

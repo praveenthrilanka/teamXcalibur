@@ -22,7 +22,7 @@
             <h5><strong></strong></h5>
             
             
-            <form name="adduser" method="post" action="../AddEmp" enctype="multipart/form-data">
+            <form name="adduser" method="post" action="../AddEmp" >
              <span style="float:top;"> </span>  
                 <center><img src="images/user_add.png" name="icon" id="output" width="130" height="130"></center>
                 <label>User ID :</label>

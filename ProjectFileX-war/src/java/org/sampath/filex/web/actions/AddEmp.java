@@ -77,10 +77,16 @@ public class AddEmp extends HttpServlet {
 
             System.out.println("Insert Employee");
             con.close();
-              mail  = "Hello, "+name
-                    + "\nYou've been added as a FileX user.\n\n"
-                    + "FileX is to automate the SRS approval system.\n\n"
-                    + "Click Here : http://localhost:7001/ProjectFileX-war/";
+              mail  = "Hello, "+name+""
+                      + "\nWe are pleased to have you as a user of 'FileX',"
+                      + "the Online Document Sharing and Approval System of Sampath Bank"
+                      + " PLC.\n"
+                      + "\nPlease use your username and password in your initial login.\n"
+                      + "We recommend you to change your password to ensure the security of your profile."
+                      + "Follow the provided link to access the System FileX\n"
+                      + "http://localhost:7001/ProjectFileX-war/filexweb/Login.jsp";
+                     
+                    
             
             Mail.sendmail(email, "Welcome to FileX",mail);
             

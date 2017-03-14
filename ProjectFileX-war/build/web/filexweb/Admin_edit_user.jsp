@@ -1,3 +1,4 @@
+<%@page import="org.sampath.filex.web.actions.Department"%>
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
 <%@ include file="Sidebar.jsp" %>
@@ -20,7 +21,7 @@
             <h4>Edit User</h4>
             <h5><strong></strong></h5>
 
-            <form name="adduser" method="post" action="../EditUser" enctype="multipart/form-data">
+            <form name="adduser" method="post" action="../EditUser" >
                 <center><img src="../GetIconByID?id=<%out.print(request.getParameter("id"));%>" id="output" width="130" height="130"></center>
                 <input type="hidden" id="id" name="id" value="<%out.print(request.getParameter("id"));%>"><br>
                 <label>User Id :</label>
@@ -29,13 +30,36 @@
                 <label>Name :</label>
                 <input type="text" id="name" name="name" value="" placeholder="Enter user name here" required=""><br>
                <br/>
+                
+                <!-- Retrieving department names from the database-->
+                 <%
+                            ArrayList<Department> dept = Department.getDepartmentType();
+                            int num = dept.size();
+                            if(num==0)
+                                {
+                                    out.print("No Departments available.!");
+                                }
+                            else{
+                         %>  
+                
                 <label>Department ID :</label>
-                <select id="dept" name="dept" width="200" height="80">
-                    <option value="">Select Department</option>
-                    <option value="it">IT</option>
-                    <option value="mkt">Marketing</option>
-                    <option value="sa">System Audit</option>
-                </select>
+                
+                <select name="<%="depName" %>" required=""> 
+                        <option value = "" selected ="true" disabled = "disabled"> Select the Department </option>
+                            
+                            <%
+                               for(int j=0;j<num;j++){
+                             %>
+                            
+                        <option value =<%=dept.get(j). getDepartmentID() %> ><%=dept.get(j).getDepartmentName() %> </option>
+                            <%
+                                }
+                            %>
+                        </select>
+                         
+                         <%
+                               }
+                         %>
                 <br/><br/><div>
                     <table align="center" width="70%">
                         <tbody><tr>
@@ -56,12 +80,7 @@
                 <input style="background-color:FFC682; border:none;" class="btn btn-info btn-block" type="reset" id="reset">
             </form>
         </div>
-        <script>
-            var loadFile = function (event) {
-                var output = document.getElementById('output');
-                output.src = URL.createObjectURL(event.target.files[0]);
-            };
-        </script>
+       
     </section></section>
 
 <!-- END CONTENT -->

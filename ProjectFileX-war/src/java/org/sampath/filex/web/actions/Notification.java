@@ -20,7 +20,6 @@ import java.util.logging.Logger;
  */
 public class Notification {
 
-    
     private int notifino;
     private String empname;
     private String pname;
@@ -188,9 +187,7 @@ public class Notification {
                     ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("MSDID") + "','')");
                     ps.executeQuery();
                 }
-
             }
-
             ps = con.prepareStatement("select stkid from SRSApprovedBy where docno='" + docid + "' and srsversion='" + Project.getSRSVersionByDOCID(docid) + "'");
             rs = ps.executeQuery();
             while (rs.next()) {

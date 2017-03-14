@@ -45,9 +45,11 @@
                         </div>
                     </div>
                     <div class="col-md-3 cta-button">
-                        <a href="../SetUser?pno=<% out.print(p.getProjectno()); %>&direct=msd" class="<% out.print(arr2[c]); %>">View Project</a>
-                        <a data-toggle="modal" data-target="#ultraModal<%out.print(p.getProjectno());%> "title="Delete Project"class="<% out.print(arr2[c]); %>" align="right" style="height: 40px; width: 20px; align:right;"><img src="images/projectbin.png" width="18px" height="18px" align="center"/></a>
-
+                        <div align="right">
+                            <a href="../SetUser?pno=<% out.print(p.getProjectno()); %>&direct=msd" class="<% out.print(arr2[c]); %>">View Project</a>
+                        
+                            <a  data-toggle="modal" data-target="#ultraModal<%out.print(p.getProjectno());%> "title="Delete Project"class="<% out.print(arr2[c]); %>" align="right" style="height: 40px; width: 20px;"><img src="images/projectbin.png" width="18px" height="18px"/></a>
+                        </div> 
                     </div>
                 </div>
             </div>

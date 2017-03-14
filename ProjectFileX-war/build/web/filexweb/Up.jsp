@@ -82,7 +82,7 @@
                             } else if (e.getPosition().equals("Project Manager")) {
                                 empPosition = "pm";
                             } else if (e.getPosition().equals("PM/MSD")) {
-                                empPosition = "pm";
+                                empPosition = "pmMsd";
                             } else if (e.getPosition().equals("ManagerSD")) {
                                 empPosition = "msd";
                             } else if (e.getPosition().equals("Stakeholder")) {
