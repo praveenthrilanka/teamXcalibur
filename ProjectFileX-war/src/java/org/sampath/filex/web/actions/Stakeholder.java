@@ -15,10 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static org.sampath.filex.web.actions.Project.getProjectFromRS;
 
-/**
- *
- * @author Ashantha
- */
+
 public class Stakeholder {
 
     private String empid;

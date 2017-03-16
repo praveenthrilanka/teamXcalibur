@@ -27,10 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-/**
- *
- * @author Ashantha
- */
+
 @WebServlet("/GetFile")
 public class GetFile extends HttpServlet {
 

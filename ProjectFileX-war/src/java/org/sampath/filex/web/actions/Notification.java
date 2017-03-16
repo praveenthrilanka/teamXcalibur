@@ -14,10 +14,7 @@ import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Praveen
- */
+
 public class Notification {
 
     private int notifino;

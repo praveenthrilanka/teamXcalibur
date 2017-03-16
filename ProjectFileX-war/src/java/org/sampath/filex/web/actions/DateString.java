@@ -5,10 +5,7 @@
  */
 package org.sampath.filex.web.actions;
 
-/**
- *
- * @author Ashantha
- */
+
 public class DateString {
     
     public static String getDate(String date){

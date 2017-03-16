@@ -22,10 +22,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 import org.sampath.filex.web.actions.Project;
 import org.sampath.filex.web.actions.Stakeholder;
-/**
- *
- * @author Ashantha
- */
+
 public class AddStakeholders extends HttpServlet {
 
     /**

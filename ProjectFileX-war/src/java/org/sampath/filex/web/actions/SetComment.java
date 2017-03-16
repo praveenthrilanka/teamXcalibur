@@ -21,10 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Ashantha
- */
+
 public class SetComment extends HttpServlet {
 
     /**
@@ -53,6 +50,7 @@ public class SetComment extends HttpServlet {
             PreparedStatement ps = con.prepareStatement("insert into comments values(emp_sequence.nextval,'" + comment + "','" + datentime + "','" + session.getAttribute("eid") + "','" + srsid + "')");
             ps.executeQuery();
             System.out.println("Insert first Done ");
+            //NOTIFICATION
             ps = con.prepareStatement("insert into notification(comno) values (EMP_SEQUENCE.currval)");
             ps.executeQuery();
             System.out.println("Insert second Done ");
@@ -61,7 +59,7 @@ public class SetComment extends HttpServlet {
             if (rs.next()) {
                 notifino = rs.getString("NOTIFINO");
             }
-
+            //NOTIFICATION
             System.out.println("Insert Done " + notifino);
 
             Notification.setNotification(notifino, srsid, eid);

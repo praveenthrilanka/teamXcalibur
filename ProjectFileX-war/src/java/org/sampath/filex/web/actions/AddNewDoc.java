@@ -19,10 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-/**
- *
- * @author Reshani
- */
+
 public class AddNewDoc extends HttpServlet {
     
     

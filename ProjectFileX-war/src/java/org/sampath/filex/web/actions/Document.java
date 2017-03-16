@@ -15,10 +15,7 @@ import java.util.logging.Logger;
 import static org.sampath.filex.web.actions.Employee.getEmployeeFromRS;
 import static org.sampath.filex.web.actions.Stakeholder.getStakeholdersFromRS;
 
-/**
- *
- * @author Reshani
- */
+
 public class Document {
     
     private String doctypeid;

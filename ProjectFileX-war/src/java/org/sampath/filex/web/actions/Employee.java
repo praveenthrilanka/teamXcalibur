@@ -15,10 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static org.sampath.filex.web.actions.Employee.getEmployeeFromRS;
 
-/**
- *
- * @author Ashantha
- */
+
 public class Employee {
 
     private String employeeid;

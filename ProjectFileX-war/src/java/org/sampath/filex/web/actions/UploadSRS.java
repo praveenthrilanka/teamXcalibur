@@ -23,10 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-/**
- *
- * @author Ashantha
- */
+
 @MultipartConfig(maxFileSize = 16177215)
 public class UploadSRS extends HttpServlet {
 
@@ -42,10 +39,8 @@ public class UploadSRS extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HttpSession session=request.getSession(false);
-        
+        HttpSession session=request.getSession(false);    
         Date dte=new Date();
-  
         String pno=(String)session.getAttribute("pno");
         String srsversion=request.getParameter("srsversion");
         String changes=request.getParameter("changes");
@@ -89,6 +84,8 @@ public class UploadSRS extends HttpServlet {
                 System.out.println("SRS table entry is inserted");
             }
             
+            
+            //NOTIFICATION
             statement=con.prepareStatement("insert into notification(srsno) values (SRS_SEQ.currval)");
             statement.executeQuery();
             System.out.println("Insert second Done ");
@@ -101,8 +98,9 @@ public class UploadSRS extends HttpServlet {
             System.out.println("Insert Done "+notifino +" ProjectNO"+pno);
             
             Notification.setNotificationBySRS(notifino,pno);
+            //NOTIFICATION
             }
-
+            //version history table update
             statement=con.prepareStatement("INSERT INTO versionhistory(docno,srsversion,pdffile,changes,modifieddate) values ( (SELECT docno FROM srs WHERE pno = '"+pno+"'),'"+srsversion+"',?,?,?)");
             if (inputStream != null) {
                 // fetches input stream of the upload file for the blob column
@@ -115,6 +113,7 @@ public class UploadSRS extends HttpServlet {
             statement.executeUpdate();
                 System.out.println("VERSIONHISTORY table entry is inserted");
 
+                //add stakeholders to SRSAPPROVEDBY new version
             if(!srsversion.equals("1"))
                 Stakeholder.setStakeholders(pno, srsversion);
             

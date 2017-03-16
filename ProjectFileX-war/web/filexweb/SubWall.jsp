@@ -87,6 +87,7 @@
        System.out.println("Output test");
        ArrayList<Comment> comments=Comment.getComment(srsid);
        System.out.println("Output test2");
+       //Variable y to declare the unique modals
        int y=0;
        for(int x=0;x<comments.size();x++){
        Comment c;

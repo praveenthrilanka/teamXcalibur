@@ -15,12 +15,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-/**
- *
- * @author Ashantha
- */
 public class Mail {
-    
+
     private static Message setUp() {
 
         Properties props = new Properties();
@@ -35,11 +31,11 @@ public class Mail {
 
         session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
-                    @Override
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(Constants.EMAIL_USERNAME, Constants.EMAIL_PASSWORD);
-                    }
-                });
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(Constants.EMAIL_USERNAME, Constants.EMAIL_PASSWORD);
+            }
+        });
         try {
             Message message = new MimeMessage(session);
             try {
@@ -70,15 +66,15 @@ public class Mail {
         try {
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(emails));
-            
+
             message.setSubject(title);
             message.setText(text);
-            
+
             Transport.send(message);
         } catch (MessagingException ex) {
             System.out.println("Email sending failed to " + emails);
             System.out.println("Error " + ex.getLocalizedMessage());
         }
     }
-    
+
 }

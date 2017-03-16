@@ -22,10 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-/**
- *
- * @author Ashantha
- */
+
 @MultipartConfig(maxFileSize = 16177215)
 public class SetIcon extends HttpServlet {
 

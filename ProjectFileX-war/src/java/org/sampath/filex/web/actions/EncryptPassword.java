@@ -8,10 +8,7 @@ package org.sampath.filex.web.actions;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-/**
- *
- * @author Ashantha
- */
+
 public class EncryptPassword {
     
     

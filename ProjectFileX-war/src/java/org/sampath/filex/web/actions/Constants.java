@@ -5,10 +5,7 @@
  */
 package org.sampath.filex.web.actions;
 
-/**
- *
- * @author Ashantha
- */
+
 public class Constants {
     
     public static final String DRIVER_NAME="oracle.jdbc.OracleDriver";
@@ -19,9 +16,9 @@ public class Constants {
     
     
 
-    //public static final String DB_URL = "jdbc:oracle:thin:@192.248.12.15:1521:xe";
-   // public static final String DB_USERNAME = "sampathfilex";
-   // public static final String DB_PASSWORD = "teamx";
+//    public static final String DB_URL = "jdbc:oracle:thin:@192.248.12.15:1521:xe";
+//    public static final String DB_USERNAME = "sampathfilex";
+//    public static final String DB_PASSWORD = "teamx";
 
    // public static final String DB_URL = "jdbc:oracle:thin:@192.248.12.15:1521:xe";
     //public static final String DB_USERNAME = "sampathfilex";
