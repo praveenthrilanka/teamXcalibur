@@ -352,7 +352,21 @@ public class Project {
                             }
                         }
                         
-                        acknowledgement="Approval process at " + Employee.getEmployee(rs.getString("STKID")).getEmployeename();
+                        acknowledgement="Approval process at ";
+                        int tempPrio=Integer.parseInt(rs.getString("PRIORITYNO"));
+                        ps=con.prepareStatement("select * from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and a.priorityno='"+(tempPrio)+"'");
+                        ResultSet r=ps.executeQuery();
+                        int c=1;
+                        while(r.next() )
+                        {   if(!r.getString("STATUS").equals("noresponse"))
+                            continue;
+                            if(c==1)
+                            acknowledgement+=Employee.getEmployee(r.getString("STKID")).getEmployeename();
+                            else
+                            acknowledgement+=", "+Employee.getEmployee(r.getString("STKID")).getEmployeename();
+                            c++;
+                        }
+                        
                         break;
                     }
                     
