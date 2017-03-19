@@ -334,22 +334,31 @@ public class Project {
                     else if(status.equals("noresponse"))
                     {   
                         int prio=0;
-                        ps=con.prepareStatement("select a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and s.pno='"+pno+"' and a.stkid='"+eid+"'");
+                        ps=con.prepareStatement("select * from srsapprovedby a,srs s where s.docno=a.docno and s.pno='"+pno+"' and a.stkid='"+eid+"'");
                         ResultSet rset=ps.executeQuery();
                         if(rset.next())
-                        prio=Integer.parseInt(rset.getString("PRIORITYNO"));
-                        if(prio!=0 && prio!=1)
+                            prio=Integer.parseInt(rset.getString("PRIORITYNO"));
+                        if(prio==1)
                         {
-                        ps=con.prepareStatement("select a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and a.priorityno='"+(prio-1)+"'");
-                        rset=ps.executeQuery();
-                        }
-                        if(rset.next())
-                        {
-                            if(rset.getString("STATUS").equals("approved"))
+                            if(rset.getString("STATUS").equals("noresponse"))
                             {   System.out.println(Integer.parseInt(rs.getString("PRIORITYNO"))+"----------------------------"+lastpriority);
                                 acknowledgement="Waiting for your approval";
                                 break;
+                            }  
+                        }
+                        else if(prio!=0)
+                        {
+                        ps=con.prepareStatement("select a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and a.priorityno='"+(prio-1)+"'");
+                        ResultSet r=ps.executeQuery();
+                        
+                        if(r.next())
+                        {
+                            if(r.getString("STATUS").equals("approved") && !(rset.getString("STATUS").equals("approved") || rset.getString("STATUS").equals("rejected")) )
+                            {   System.out.println(Integer.parseInt(rs.getString("PRIORITYNO"))+"--------------******--------------"+lastpriority);
+                                acknowledgement="Waiting for your approval";
+                                break;
                             }
+                        }
                         }
                         
                         acknowledgement="Approval process at ";

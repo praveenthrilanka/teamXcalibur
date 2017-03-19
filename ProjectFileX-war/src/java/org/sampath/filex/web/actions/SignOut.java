@@ -28,8 +28,16 @@ public class SignOut extends HttpServlet {
             throws ServletException, IOException {
        
             HttpSession session=request.getSession(false);
-            session.setAttribute("eid",null);
-            response.sendRedirect("filexweb/Login.jsp");
+            if (session.getAttribute("eid") == null)
+            {
+                
+                response.sendRedirect("filexweb/Login.jsp");
+            }
+            else
+            {   session.setAttribute("eid",null);
+                response.sendRedirect("filexweb/Login.jsp");
+            }
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
