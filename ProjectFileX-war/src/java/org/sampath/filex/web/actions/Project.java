@@ -166,17 +166,33 @@ public class Project {
                     int prio=Integer.parseInt(rs.getString("PRIORITYNO"));
                     ps=con.prepareStatement("select status from SRSApprovedBy where docno='"+docno+"' and priorityno='"+(prio-1)+"' and srsversion='"+srsversion+"'");
                     ResultSet temprs=ps.executeQuery();
-                        if(temprs.next())
-                        {   try{
-                            if(temprs.getString("status").toLowerCase().equals("approved")){
+                    if(temprs.next())
+                    {
+                        try{
+                            boolean approval=true;
+                            //Since already in temprs.next(), initial check
+                            if(!temprs.getString("status").toLowerCase().equals("approved"))
+                                    approval=false;
+
+                            while(temprs.next())
+                            {
+                                if(!temprs.getString("status").toLowerCase().equals("approved"))
+                                {
+                                    approval=false;
+                                    break;
+                                }
+                            }
+                            
+                            if(approval)
+                            {
                                 p= getProjectFromRS(rs);
                                 project.add(p);
                             }
-                            }
+                          }
                             catch(Exception r){
                             
                             }
-                        }
+                    }
                 }
             }
             con.close();
