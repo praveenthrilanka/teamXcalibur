@@ -2,7 +2,7 @@
 <%@page import="org.sampath.filex.web.actions.Stakeholder"%>
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
-<%@ include file="Sidebar.jsp" %>
+<%@ include file="Sidebar_Project.jsp" %>
 
 <!-- START CONTENT -->
 
@@ -41,8 +41,8 @@
         </div>
         <%
             session=request.getSession();
-            String pno=(String)session.getAttribute("pno");
-            Project p=Project.getProject(pno);
+            String prono=(String)session.getAttribute("pno");
+            Project p=Project.getProject(prono);
             
             Employee ba=Employee.getEmployee(p.getBaid());
             Employee msd=Employee.getEmployee(p.getMsdid());
@@ -86,7 +86,7 @@
                                     <div class="clearfix"></div>
                                     
                                     <%    
-                                            ArrayList<Stakeholder> s=Stakeholder.getStakeholders(pno, "1");
+                                            ArrayList<Stakeholder> s=Stakeholder.getStakeholders(prono, "1");
                                             Stakeholder sh;
                                             if(s.size()!=0)
                                             {
@@ -134,12 +134,12 @@
                                         %> 
                                     
                                     <%
-                                        ArrayList<SRS> srs=SRS.getSRSDetails(pno);
+                                        ArrayList<SRS> srs=SRS.getSRSDetails(prono);
                                         SRS d;
                                         for(int x=0;x<srs.size();x++)
                                         {
                                             d=srs.get(x);
-                                            s=Stakeholder.getStakeholders(pno, d.getSrsversion());
+                                            s=Stakeholder.getStakeholders(prono, d.getSrsversion());
                                         
                                     %>        
                                             
