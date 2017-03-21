@@ -35,12 +35,16 @@ public class SetUser extends HttpServlet {
 
         if (direct.equals("ba")) {
             response.sendRedirect("filexweb/BA_Dashboard.jsp");
+            session.setAttribute("project_home", "BA_Dashboard.jsp");
         } else if (direct.equals("pm")) {
             response.sendRedirect("filexweb/PM_Dashboard.jsp");
+            session.setAttribute("project_home", "PM_Dashboard.jsp");
         } else if (direct.equals("esh")) {
             response.sendRedirect("filexweb/ESH_Dashboard.jsp");
+            session.setAttribute("project_home", "ESH_Dashboard.jsp");
         } else if (direct.equals("msd")) {
             response.sendRedirect("filexweb/MSD_ViewProjects.jsp");
+            session.setAttribute("project_home", "MSD_ViewProjects.jsp");
         }
 
     }

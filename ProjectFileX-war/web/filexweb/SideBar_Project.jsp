@@ -31,6 +31,12 @@
                     }
                     %>
                             
+                        <li class=""> 
+                            <a href="<% out.print(session.getAttribute("project_home")); %>">
+                                <i class="fa fa-suitcase"></i>
+                                <span class="title">Back to Project</span>
+                            </a>
+                        </li>
                             
                         <li class=""> 
                             <a href="<% out.print(session.getAttribute("home")); %>">
