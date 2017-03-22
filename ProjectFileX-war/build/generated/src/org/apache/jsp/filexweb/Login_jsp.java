@@ -48,7 +48,7 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>FileX - Login</title>\r\n");
       out.write("        <link rel=\"shortcut icon\" href=\"logos/fav-icon.ico\" type=\"image/x-icon\"/>\r\n");
       out.write("        <link href=\"css/stylex.css\" rel=\"stylesheet\" type=\"text/css\" media=\"all\" />\r\n");
-      out.write("\r\n");
+      out.write("        \r\n");
       out.write("        <script src=\"js/jquery.min.js\"></script>\r\n");
       out.write("        <script src=\"js/easyResponsiveTabs.js\" type=\"text/javascript\"></script>\r\n");
       out.write("\r\n");
@@ -82,13 +82,13 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <body>\r\n");
       out.write("\r\n");
       out.write("        <div class=\"main\">\r\n");
-      out.write("            <br/><br/><br/>\r\n");
+      out.write("            <br/><br/><br/><br/>\r\n");
       out.write("            <div class=\"login-form\">\r\n");
       out.write("                <div class=\"sap_tabs w3ls-tabs\">\r\n");
       out.write("                    <div id=\"horizontalTab\" style=\"display: block; width: 100%; margin: 0px;\">\r\n");
       out.write("\r\n");
       out.write("                        <ul class=\"resp-tabs-list\">\r\n");
-      out.write("                            <li class=\"\"><img width=\"1050\" src=\"images/logo.png\"/></li> \r\n");
+      out.write("                            <li class=\"\"><img src=\"images/logo.png\" width=\"222px\"/></li> \r\n");
       out.write("                        </ul>\t\r\n");
       out.write("\r\n");
       out.write("                        <div class=\"resp-tabs-container\">\r\n");

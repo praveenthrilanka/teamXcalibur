@@ -5,7 +5,7 @@
         <title>FileX - Login</title>
         <link rel="shortcut icon" href="logos/fav-icon.ico" type="image/x-icon"/>
         <link href="css/stylex.css" rel="stylesheet" type="text/css" media="all" />
-
+        
         <script src="js/jquery.min.js"></script>
         <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 

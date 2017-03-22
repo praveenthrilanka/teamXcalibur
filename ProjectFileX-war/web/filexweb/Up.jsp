@@ -44,14 +44,12 @@
 
         <%
             session = request.getSession(false);
-            
-            if (session.getAttribute("eid") == null)
-            {
+
+            if (session.getAttribute("eid") == null) {
                 response.sendRedirect("Login.jsp");
             }
 
             Employee e = Employee.getEmployee((String) session.getAttribute("eid"));
-
 
         %>
 
@@ -118,7 +116,11 @@
                                                 if (Notification.getStatus(n.getNotifino()).equals("comment")) {
                                                     status = n.getEmpname() + " commented on project - " + n.getPname();
                                                 } else if (Notification.getStatus(n.getNotifino()).equals("project")) {
-                                                    status = n.getEmpname() + " assigned you as the " + e.getPosition() + " of the Project - " + n.getPname();
+                                                    if (e.getPosition().equals("Business Analyist")) {
+                                                        status = n.getEmpname() + " assigned you as the Business Analyist of the Project - " + n.getPname();
+                                                    } else {
+                                                        status = n.getEmpname() + " assigned you as the Project Manager of the Project - " + n.getPname();
+                                                    }
                                                 } else if (Notification.getStatus(n.getNotifino()).equals("srs")) {
                                                     status = n.getEmpname() + " uploaded the SRS of the Project - " + n.getPname();
                                                 }
