@@ -117,6 +117,7 @@ public class UploadSRS extends HttpServlet {
 
                 //add stakeholders to SRSAPPROVEDBY new version
             if(!srsversion.equals("1"))
+            {
                 Stakeholder.setStakeholders(pno, srsversion);
             
             //Changes will show as a comment on the wall
@@ -126,6 +127,7 @@ public class UploadSRS extends HttpServlet {
             ps.executeQuery();
             System.out.println("Insert first Done ");
             //End Comment
+            }
             
             con.close();
             response.sendRedirect("filexweb/message.jsp?message=SRS uploaded successfully..!");
