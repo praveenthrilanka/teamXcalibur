@@ -3,6 +3,23 @@
 <%@ include file="SideBar_Project.jsp" %>
 
 <%
+                String successmsg = request.getParameter("scs");
+                System.out.println(successmsg);
+                if(successmsg != null){
+                    if(successmsg.equals("pass")){
+                        %>
+                            <script type="text/javascript">
+                            $(document).ready(function() {
+                            $('#Uploaded').modal('show');
+                            });
+                            </script>
+                        <%
+                    }
+                }
+%>
+
+
+<%
             if (!Employee.getEmployee((String)session.getAttribute("eid")).getPosition().equals("Business Analyist"))
             {
                 response.sendRedirect("Login.jsp");
@@ -126,6 +143,26 @@
                     </div>
                 </div>
                             <!--model End-->
+                            
+                <!--Model starts-->
+                            <div class="modal fade" id="Uploaded" tabindex="-1" role="dialog" aria-labelledby="ultraModal-Label" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog animated fadeInUp"><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title">Success</h4>
+                            </div>   
+                            <div class="modal-body">
+                                SRS Uploaded Successfully.
+                            </div>
+                            <div class="modal-footer">
+                    
+                               <a class="btn btn-success" type="button" data-dismiss="modal" >Got It</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--model End-->
             
 
 
