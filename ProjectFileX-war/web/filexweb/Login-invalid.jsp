@@ -10,8 +10,8 @@
     <body>
         <br/><br/><br/><br/>
         <div class="not-found" style="background-color:black; opacity:0.8;">
-            <div class="notfound-top"><br>
-                <img src="images/logo.png" width="150px">
+            <div class="notfound-top" style="margin-left:60px;"><br/><br/><br/>
+                <img src="images/logo.png" width="300px">
             </div>
             <div class="content">
                 <img src="images/warning.gif" alt="" title="" width="100px">

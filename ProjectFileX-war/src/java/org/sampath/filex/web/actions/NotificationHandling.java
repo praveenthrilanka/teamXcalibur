@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.sampath.filex.web.actions;
 
 import java.io.IOException;
@@ -17,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 public class NotificationHandling extends HttpServlet {
 
@@ -42,6 +36,7 @@ public class NotificationHandling extends HttpServlet {
         try {
             Connection con = DatabaseConnection.createConnection();
             System.out.println("Connection Established");
+
             if (status.equals("viewNoti")) {
                 System.out.println("Connection Established  123");
                 //PreparedStatement ps = con.prepareStatement("update notifiedlist set STATUS='seen' where EMPID='it011'");

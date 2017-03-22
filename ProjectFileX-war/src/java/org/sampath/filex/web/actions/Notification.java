@@ -14,7 +14,6 @@ import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class Notification {
 
     private int notifino;
@@ -95,6 +94,7 @@ public class Notification {
         Connection con = DatabaseConnection.createConnection();
         try {
             PreparedStatement ps = con.prepareStatement("select count(empid) as countcom from notifiedlist where empid= '" + empid + "' and status is null");
+            
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
