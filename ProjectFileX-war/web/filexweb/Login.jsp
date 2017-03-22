@@ -45,7 +45,7 @@
                     <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
 
                         <ul class="resp-tabs-list">
-                            <li class=""><img src="images/logo.png" width="220px"/></li> 
+                            <li class=""><img src="images/logo.png" width="222px"/></li> 
                         </ul>	
 
                         <div class="resp-tabs-container">
