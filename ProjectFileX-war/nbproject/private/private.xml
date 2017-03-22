@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/AddEmp.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Project.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/SideBar_Project.jsp</file>
@@ -88,6 +89,13 @@
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/Successandfailmessage.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/CommentEdit.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/PM_Dashboard.jsp</file>
+=======
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/NotificationHandling.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/SRSApproval.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Login.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Login-invalid.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Notification.java</file>
+>>>>>>> 25db217c4d133d3b551ac2aaef90da2ba8a8331f
         </group>
     </open-files>
 </project-private>

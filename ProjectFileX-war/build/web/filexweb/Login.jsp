@@ -39,13 +39,13 @@
     <body>
 
         <div class="main">
-            <br/><br/><br/>
+            <br/><br/><br/><br/>
             <div class="login-form">
                 <div class="sap_tabs w3ls-tabs">
                     <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
 
                         <ul class="resp-tabs-list">
-                            <li class=""><img class="logo" src="images/logo.png"/></li> 
+                            <li class=""><img src="images/logo.png" width="222px"/></li> 
                         </ul>	
 
                         <div class="resp-tabs-container">
