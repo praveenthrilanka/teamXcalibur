@@ -44,6 +44,8 @@ public class UploadSRS extends HttpServlet {
         String pno=(String)session.getAttribute("pno");
         String srsversion=request.getParameter("srsversion");
         String changes=request.getParameter("changes");
+        String srsid = (String) session.getAttribute("srsid");
+        
         int row;
         String notifino=null;
         String srsno=null;
@@ -117,9 +119,17 @@ public class UploadSRS extends HttpServlet {
             if(!srsversion.equals("1"))
                 Stakeholder.setStakeholders(pno, srsversion);
             
+            //Changes will show as a comment on the wall
+            String comment="SRS Version "+srsversion+" Uploaded. \n"+changes;
+            String datentime = DateString.getDate(dte.toString());
+            PreparedStatement ps = con.prepareStatement("insert into comments values(emp_sequence.nextval,'" + comment + "','" + datentime + "','" + session.getAttribute("eid") + "','" + srsid + "')");
+            ps.executeQuery();
+            System.out.println("Insert first Done ");
+            //End Comment
+            
             con.close();
             response.sendRedirect("filexweb/message.jsp?message=SRS uploaded successfully..!");
-            
+                            
         }
         else 
             System.out.println("No file found");
