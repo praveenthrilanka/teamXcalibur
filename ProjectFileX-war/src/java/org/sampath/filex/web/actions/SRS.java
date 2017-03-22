@@ -128,12 +128,14 @@ public class SRS {
      
         String maxSrs = Project.getSRSVersion(pno);
         String status = null ;
+        System.out.println(pno+"////////********///////******////////*/////////*****////"+maxSrs);
+        
         
         try {
                 Connection con=DatabaseConnection.createConnection();
                 System.out.println("Connection Established");
 
-                PreparedStatement ps=con.prepareStatement("select a.status from srs s,srsapprovedby a where a.docno=s.docno and s.pno="+pno+" and a.srsversion='"+maxSrs+"'");
+                PreparedStatement ps=con.prepareStatement("select a.status from srs s,srsapprovedby a where a.docno=s.docno and s.pno="+pno+" and a.srsversion='"+maxSrs+"' order by a.priorityno asc");
                 ResultSet rs=ps.executeQuery();
                 
                 while(rs.next())
