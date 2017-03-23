@@ -94,7 +94,7 @@ public class Notification {
         Connection con = DatabaseConnection.createConnection();
         try {
             PreparedStatement ps = con.prepareStatement("select count(empid) as countcom from notifiedlist where empid= '" + empid + "' and status is null");
-            
+
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
@@ -185,7 +185,7 @@ public class Notification {
                     ps.executeQuery();
                 }
             }
-            ps = con.prepareStatement("select stkid from SRSApprovedBy where docno='" + docid + "' and srsversion='" + Project.getSRSVersionByDOCID(docid) + "'");
+            ps = con.prepareStatement("select stkid,status from SRSApprovedBy where docno='" + docid + "' and srsversion='" + Project.getSRSVersionByDOCID(docid) + "' and status!='noresponse'");
             rs = ps.executeQuery();
             while (rs.next()) {
                 ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("stkid") + "','')");
