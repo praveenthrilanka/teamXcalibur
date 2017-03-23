@@ -2,6 +2,8 @@
 <%@ include file="Up.jsp" %>
 <%@ include file="SideBar_Project.jsp" %>
 
+        <script src="js/jquery-1.11.2.min.js"></script>
+
 <%
                 String successmsg = request.getParameter("scs");
                 System.out.println(successmsg);

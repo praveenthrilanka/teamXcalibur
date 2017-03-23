@@ -122,15 +122,16 @@ public class UploadSRS extends HttpServlet {
             
             //Changes will show as a comment on the wall
             String comment="SRS Version "+srsversion+" Uploaded. \n"+changes;
+            String editedString = comment.replace("'","''");
             String datentime = DateString.getDate(dte.toString());
-            PreparedStatement ps = con.prepareStatement("insert into comments values(emp_sequence.nextval,'" + comment + "','" + datentime + "','" + session.getAttribute("eid") + "','" + srsid + "')");
+            PreparedStatement ps = con.prepareStatement("insert into comments values(emp_sequence.nextval,'" + editedString + "','" + datentime + "','" + session.getAttribute("eid") + "','" + srsid + "')");
             ps.executeQuery();
             System.out.println("Insert first Done ");
             //End Comment
             }
             
             con.close();
-            response.sendRedirect("filexweb/message.jsp?message=SRS uploaded successfully..!");
+            response.sendRedirect("filexweb/BA_Dashboard.jsp?scs=pass");
                             
         }
         else 

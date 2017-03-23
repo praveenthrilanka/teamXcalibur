@@ -60,7 +60,8 @@ public class EditComment extends HttpServlet {
         else if(status.equals("edit"))
         {
         try{
-        PreparedStatement ps=con.prepareStatement("update comments set description='"+comment+"' where comno='"+commentid+"'");
+        String editedString = comment.replace("'","''");
+        PreparedStatement ps=con.prepareStatement("update comments set description='"+editedString+"' where comno='"+commentid+"'");
         ResultSet rs=ps.executeQuery();
         
         }
