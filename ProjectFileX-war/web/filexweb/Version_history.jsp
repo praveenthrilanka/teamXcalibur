@@ -10,6 +10,11 @@
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 
 <style type="text/css">
+
+@media all {
+	.page-break	{ display: none; }
+}    
+    
 @media print{
   body{ background-color:#FFFFFF; background-image:none; color:#000000 ;position: absolute; top: 0; left: 0;}
   .page-sidebar { display:none;}
@@ -25,6 +30,7 @@
     width: 100%;
     height: 100%;}
   .content-body{position: absolute;left:0;}
+  .page-break	{ display: block; page-break-before: always; }
 }
 </style>
 

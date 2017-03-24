@@ -32,9 +32,10 @@ public class Stakeholder {
         this.status = status;
     }
     
-    public Stakeholder(String name,String priorityno) {
+    public Stakeholder(String name,String priorityno,String department) {
         this.name = name;
         this.priorityno = priorityno;
+        this.department=department;
     }
     
     public String getEmpid() {
@@ -144,7 +145,7 @@ public class Stakeholder {
         String s=Project.getSRSVersion(pno);
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select sa.priorityno,e.empname from srsapprovedby sa,project p,srs s,employee e where sa.srsversion='"+s+"' and sa.DOCNO=s.DOCNO and s.PNO=p.PNO and e.empid=sa.STKID and p.PNO='"+pno+"' order by priorityno");
+            PreparedStatement ps=con.prepareStatement("select sa.priorityno,e.empname,d.depnme from srsapprovedby sa,project p,srs s,employee e,department d where sa.srsversion='"+s+"' and sa.DOCNO=s.DOCNO and s.PNO=p.PNO and e.empid=sa.STKID and e.depid=d.depid and p.PNO='"+pno+"' order by priorityno");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             Stakeholder p;
@@ -165,7 +166,8 @@ public class Stakeholder {
     public static Stakeholder getAddedStakeholdersFromRS(ResultSet rs) throws SQLException {
          return new Stakeholder(
                  rs.getString("EMPNAME"),
-                 rs.getString("PRIORITYNO"));
+                 rs.getString("PRIORITYNO"),
+                 rs.getString("DEPNME"));
         
      }
 }

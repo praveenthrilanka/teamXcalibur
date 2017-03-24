@@ -318,11 +318,11 @@ public class Project {
         String acknowledgement="Initial Project";
         try {
             System.out.println("Execution strt");
-            
+            String version=Project.getSRSVersion(pno);
             //PreparedStatement ps=con.prepareStatement("select a.stkid,a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+Project.getSRSVersion(pno)+"' order by priorityno asc");
-            PreparedStatement ps=con.prepareStatement("select a.stkid,a.status,a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+Project.getSRSVersion(pno)+"' order by priorityno asc");
+            PreparedStatement ps=con.prepareStatement("select a.stkid,a.status,a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+version+"' order by priorityno asc");
             ResultSet rs=ps.executeQuery();
-            ps=con.prepareStatement("select a.stkid,a.status,a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+Project.getSRSVersion(pno)+"' order by priorityno asc");
+            ps=con.prepareStatement("select a.stkid,a.status,a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+version+"' order by priorityno asc");
             ResultSet temp=ps.executeQuery();
             System.out.println("Execution done");
             int lastpriority=0;
@@ -344,13 +344,14 @@ public class Project {
                     }
                     else if(status.equals("rejected"))
                     {
-                        acknowledgement="Rejected by " + Employee.getEmployee(rs.getString("STKID")).getEmployeename();
+                        Employee emp=Employee.getEmployee(rs.getString("STKID"));
+                        acknowledgement="Rejected by " + emp.getEmployeename()+" ("+emp.getDepartement()+")";
                         break;
                     }
                     else if(status.equals("noresponse"))
                     {   
                         int prio=0;
-                        ps=con.prepareStatement("select * from srsapprovedby a,srs s where s.docno=a.docno and s.pno='"+pno+"' and a.stkid='"+eid+"'");
+                        ps=con.prepareStatement("select * from srsapprovedby a,srs s where s.docno=a.docno and s.pno='"+pno+"' and a.stkid='"+eid+"' and a.srsversion='"+version+"'");
                         ResultSet rset=ps.executeQuery();
                         if(rset.next())
                             prio=Integer.parseInt(rset.getString("PRIORITYNO"));
@@ -364,7 +365,7 @@ public class Project {
                         }
                         else if(prio!=0)
                         {
-                        ps=con.prepareStatement("select a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and a.priorityno='"+(prio-1)+"'");
+                        ps=con.prepareStatement("select a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and a.priorityno='"+(prio-1)+"' and a.srsversion='"+version+"'");
                         ResultSet r=ps.executeQuery();
                         
                         if(r.next())
@@ -379,16 +380,17 @@ public class Project {
                         
                         acknowledgement="Approval process at ";
                         int tempPrio=Integer.parseInt(rs.getString("PRIORITYNO"));
-                        ps=con.prepareStatement("select * from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and a.priorityno='"+(tempPrio)+"'");
+                        ps=con.prepareStatement("select * from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and a.priorityno='"+(tempPrio)+"' and a.srsversion='"+version+"'");
                         ResultSet r=ps.executeQuery();
                         int c=1;
                         while(r.next() )
                         {   if(!r.getString("STATUS").equals("noresponse"))
                             continue;
+                            Employee emp= Employee.getEmployee(r.getString("STKID"));
                             if(c==1)
-                            acknowledgement+=Employee.getEmployee(r.getString("STKID")).getEmployeename();
+                            acknowledgement+=emp.getEmployeename()+" ("+emp.getDepartement()+")";
                             else
-                            acknowledgement+=", "+Employee.getEmployee(r.getString("STKID")).getEmployeename();
+                            acknowledgement+=", "+emp.getEmployeename()+" ("+emp.getDepartement()+")";
                             c++;
                         }
                         

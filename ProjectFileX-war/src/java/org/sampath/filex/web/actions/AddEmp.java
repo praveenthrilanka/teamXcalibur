@@ -78,10 +78,8 @@ public class AddEmp extends HttpServlet {
                       + "\nWe are pleased to have you as a user of 'FileX',"
                       + "the Online Document Sharing and Approval System of Sampath Bank"
                       + " PLC.\n"
-                      + "\nPlease use your username and password in your initial login.\n"
-                      + "We recommend you to change your password to ensure the security of your profile."
-                      + "Follow the provided link to access the System FileX\n"
-                      + "http://localhost:7001/ProjectFileX-war/filexweb/Login.jsp";
+                      + "\nPlease use your username as the password in your initial login.\n"
+                      + "We recommend you to change your password to ensure the security of your profile.";
                      
                     
             

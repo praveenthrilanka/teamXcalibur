@@ -207,7 +207,7 @@
            %>
       
             <tr>
-            <td> <% out.print(pr.getName()); %></td>  
+            <td> <% out.print(pr.getName()); %> (<% out.print(pr.getDepartment()); %>)</td>  
             <td><% out.print(pr.getPriorityno()); %></td> 
       
                   
