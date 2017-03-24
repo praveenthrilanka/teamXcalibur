@@ -37,6 +37,8 @@ public class SRSApproval extends HttpServlet {
        String pno=(String)session.getAttribute("pno");
        String eshid=(String)session.getAttribute("eid");
        String status=request.getParameter("status");
+       Project p=Project.getProject(pno);
+       
        
         try {
             Connection con=DatabaseConnection.createConnection();
@@ -47,15 +49,52 @@ public class SRSApproval extends HttpServlet {
             String docno=null;
             if(rs.next())
                 docno=rs.getString("DOCNO");
+            String version=Project.getSRSVersionByDOCID(docno);
             
             if(status.equals("approve"))
             {
-                ps=con.prepareStatement("update srsapprovedby set status='approved' where stkid='"+eshid+"' and srsversion='"+Project.getSRSVersionByDOCID(docno)+"' and docno='"+docno+"'");
+                ps=con.prepareStatement("update srsapprovedby set status='approved' where stkid='"+eshid+"' and srsversion='"+version+"' and docno='"+docno+"'");
+                ps.executeQuery();
+                
+                ps=con.prepareStatement("select priorityno from srsapprovedby where stkid='"+eshid+"' and srsversion='"+version+"' and docno='"+docno+"'");
                 rs=ps.executeQuery();
+                
+                if(rs.next())
+                {
+                    String currentPriority=rs.getString("PRIORITYNO");
+                    ps=con.prepareStatement("select status from srsapprovedby where priorityno='"+currentPriority+"' and srsversion='"+version+"' and docno='"+docno+"'");
+                    rs=ps.executeQuery();
+                    boolean approval=false;
+                    while(rs.next())
+                    {   approval=true;
+                        if(!rs.getString("STATUS").equals("approved"))
+                        {
+                            approval=false;
+                            break;
+                        }
+                    }
+                    
+                    if(approval)
+                    {
+                    
+                        String mail = "You have been assigned to the project '"+p.getProjectname()+"'.\n\n"
+                                    + "Please log in to FileX system to refer the document and feel free to "
+                                    + "approve/reject document with your suggestions.\n\n"
+                                    + "Thank You.";
+                        
+                        String emails=Stakeholder.getStakeholdersEmail(pno, version, (Integer.parseInt(currentPriority)+1));
+                        System.out.println("EMAILS ----"+emails);
+                        Mail.sendmail(emails, "Kind Reminder",mail);
+                    
+                    }
+                
+                }
+                
+
             }
             else if(status.equals("reject"))
             {
-                ps=con.prepareStatement("update srsapprovedby set status='rejected' where stkid='"+eshid+"' and srsversion='"+Project.getSRSVersionByDOCID(docno)+"' and docno='"+docno+"'");
+                ps=con.prepareStatement("update srsapprovedby set status='rejected' where stkid='"+eshid+"' and srsversion='"+version+"' and docno='"+docno+"'");
                 rs=ps.executeQuery();
             }
             

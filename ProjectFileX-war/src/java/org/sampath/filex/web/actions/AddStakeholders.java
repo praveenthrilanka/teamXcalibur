@@ -36,12 +36,13 @@ public class AddStakeholders extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        HttpSession session=request.getSession(false);
         String selection;
         String priority;
         String docno=request.getParameter("docno");
         String srsversion=Project.getSRSVersionByDOCID(docno);
         int count=Integer.parseInt(request.getParameter("count"));
+        Project p=Project.getProject((String)session.getAttribute("pno"));
           
         try {
             Connection con=DatabaseConnection.createConnection();
@@ -55,6 +56,20 @@ public class AddStakeholders extends HttpServlet {
                     continue;
                 else{
                 System.out.println(docno+"   |  "+selection+"   |  "+priority);
+                if(priority.equals("1"))
+                {
+                    
+                    String mail="You have been assigned to the project '"+p.getProjectname()+"'.\n\n"
+                            + "Please log in to FileX system to refer the document and feel free to "
+                            + "approve/reject document with your suggestions.\n\n"
+                            + "Thank You.";
+                    
+                    PreparedStatement ps=con.prepareStatement("select email from employee where empid='"+selection+"'");
+                    ResultSet rs=ps.executeQuery();
+                    if(rs.next())
+                    Mail.sendmail(rs.getString("EMAIL"), "Kind Reminder",mail);
+                }
+                
                 PreparedStatement ps=con.prepareStatement("insert/*+append*/ into srsapprovedby values ('"+docno+"','"+srsversion+"','"+selection+"','"+priority+"','noresponse')");
 
                 ResultSet rs=ps.executeQuery();

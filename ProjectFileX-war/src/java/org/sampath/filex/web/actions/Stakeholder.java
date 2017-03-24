@@ -170,4 +170,26 @@ public class Stakeholder {
                  rs.getString("DEPNME"));
         
      }
+    
+    public static String getStakeholdersEmail(String pno,String version,int prio){
+        String email="";
+        Connection con=DatabaseConnection.createConnection();
+        try {
+            System.out.println("Execution strt");
+            PreparedStatement ps=con.prepareStatement("select e.email from srsapprovedby a, employee e,srs s\n" +
+                                                      "where s.docno=a.docno and a.stkid=e.empid and s.pno='"+pno+"' and a.srsversion='"+version+"' and a.priorityno='"+prio+"' order by priorityno");
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done");
+            
+            
+            while(rs.next()){
+               email+=rs.getString("EMAIL")+",";
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+        return email;
+    }
 }
