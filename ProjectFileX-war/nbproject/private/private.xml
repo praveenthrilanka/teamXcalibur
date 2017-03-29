@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/AddEmp.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Project.java</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/SideBar_Project.jsp</file>
@@ -87,6 +88,33 @@
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/CommentEdit.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/web/filexweb/PM_Dashboard.jsp</file>
             <file>file:/E:/Mora%20Project/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/DatabaseConnection.java</file>
+=======
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Mail.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/sampath.png</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/bell.png</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/NotificationHandling.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Project.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/logo.png</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/msd.jpg</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/src/java/org/sampath/filex/web/actions/Notification.java</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/upload.png</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/user_edit.png</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/view_user.png</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/PMLogin2.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/projectbin.png</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/MSD_Projects.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/tick.png</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/old.png</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/warning.gif</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/user_add.png</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/sampathlogo.png</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Up.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/msg.png</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Login.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Login-invalid.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/addstk.png</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/images/view.png</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
