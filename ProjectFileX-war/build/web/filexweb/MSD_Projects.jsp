@@ -23,8 +23,11 @@
 
 <section id="main-content" class=" ">
     <section class="wrapper" style='margin-top:6%; margin-left: 5%; display:inline-block;width:100%;padding:25px 0 0 15px;'>
+            <div class="col-sm-8"></div>  
+            <div class="col-sm-4">
+            <a href="Project_Summary.jsp"><button type="button" class="btn btn-purple btn-corner" ><i class="fa fa-search"></i><span> Search Projects</span></button></a>
 
-
+            </div>            <br/>
         <div class="col-sm-10">
 
             <%
@@ -47,7 +50,7 @@
                     <div class="col-md-3 cta-button">
                         <div align="right">
                             <a href="../SetUser?pno=<% out.print(p.getProjectno()); %>&direct=msd" class="<% out.print(arr2[c]); %>">View Project</a>
-                        
+
                             <a  data-toggle="modal" data-target="#ultraModal<%out.print(p.getProjectno());%> "title="Delete Project"class="<% out.print(arr2[c]); %>" align="right" style="height: 40px; width: 20px;"><img src="images/projectbin.png" width="18px" height="18px"/></a>
                         </div> 
                     </div>
