@@ -24,6 +24,7 @@
 
 
 
+
         <!-- CORE CSS FRAMEWORK - START -->
         <link href="plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
         <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -32,7 +33,13 @@
         <link href="css/animate.min.css" rel="stylesheet" type="text/css"/>
         <link href="plugins/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" type="text/css"/>
         <!-- CORE CSS FRAMEWORK - END -->
+        
+        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START --> 
+        <link href="plugins/daterangepicker/css/daterangepicker-bs3.css" rel="stylesheet" type="text/css" media="screen"/>
 
+             
+        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END --> 
+       
         <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START --> 
         <link href="plugins/jquery-ui/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" media="screen"/><link href="assets/plugins/rickshaw-chart/css/graph.css" rel="stylesheet" type="text/css" media="screen"/><link href="assets/plugins/rickshaw-chart/css/detail.css" rel="stylesheet" type="text/css" media="screen"/><link href="assets/plugins/rickshaw-chart/css/legend.css" rel="stylesheet" type="text/css" media="screen"/><link href="assets/plugins/rickshaw-chart/css/extensions.css" rel="stylesheet" type="text/css" media="screen"/><link href="assets/plugins/rickshaw-chart/css/rickshaw.min.css" rel="stylesheet" type="text/css" media="screen"/><link href="assets/plugins/rickshaw-chart/css/lines.css" rel="stylesheet" type="text/css" media="screen"/>        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END --> 
 
