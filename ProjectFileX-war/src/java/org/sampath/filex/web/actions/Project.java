@@ -32,6 +32,12 @@ public class Project {
         this.srsid=srsid;
     }
     
+    public Project(String projectno,String projectname, String datentime) {
+        this.projectno = projectno;
+        this.projectname = projectname;
+        this.datentime = datentime;
+    }
+    
      public String getSrsid() {
         return srsid;
     }
@@ -670,4 +676,58 @@ public static ArrayList<Project> getApprovedProjectByPMid(String pmid){
         return project;
     }
     
+    //Project Summary
+
+    public static ArrayList<Project> getProjectSummary(String msdid,String pmid,String baid,String date){
+        ArrayList<Project> project=new ArrayList<Project>();
+        Connection con=DatabaseConnection.createConnection();  
+       
+        if(msdid.equals("all"))
+            msdid="msdid";
+        else
+            msdid="'"+msdid+"'";
+        if(pmid.equals("all"))
+            pmid="pmid";
+        else
+            pmid="'"+pmid+"'";
+        if(baid.equals("all"))
+            baid="baid";
+        else
+            baid="'"+baid+"'";
+        
+        try {
+            System.out.println("Execution strt");
+            PreparedStatement ps=con.prepareStatement("select PNO,PNAME,CREATEDDATENTIME from project where baid="+baid+" and pmid="+pmid+" and msdid="+msdid+" order by pno desc");
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done");
+            System.out.println(pmid);
+            
+            Project p;
+            
+            while(rs.next()){
+                
+                if(DateString.compareDate(date, rs.getString("CREATEDDATENTIME").substring(0, 11)))
+                {
+                    p= getProjectSummaryFromRS(rs);
+                    project.add(p);
+                }
+                else 
+                    continue;
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+        return project;
+    }
+
+    
+    public static Project getProjectSummaryFromRS(ResultSet rs) throws SQLException {
+         return new Project(
+                 rs.getString("PNO"),
+                 rs.getString("PNAME"),
+                 rs.getString("CREATEDDATENTIME"));
+        
+     }
 }
