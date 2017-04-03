@@ -27,13 +27,19 @@
                             <div class="content-body">    
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 col-xs-12">
-
+                                       <% if(pro.size()==0){ %>
+                                       <h4 align="center">No Search Results Found</h4>
+                                       <%}else{%>
+                                       
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
                                                     <th>Project Name</th>
                                                     <th>Status</th>
+                                                    <th>MSD ID</th>
+                                                    <th>PM ID</th>
+                                                    <th>BA ID</th>
                                                     <th>Created Date</th>
                                                 </tr>
                                             </thead>
@@ -53,6 +59,9 @@
                                                     <th scope="row"><% out.print(x+1); %></th>
                                                     <td><% out.print(p.getProjectname()); %></td>
                                                     <td><% out.print(projectStatus); %></td>
+                                                    <td><% out.print(p.getMsdid()); %></td>
+                                                    <td><% out.print(p.getPmid()); %></td>
+                                                    <td><% out.print(p.getBaid()); %></td>
                                                     <td><% out.print(p.getDatentime()); %></td>
                                                 </tr>
                                                 <%
@@ -60,6 +69,7 @@
                                                 %>
                                             </tbody>
                                         </table>
+                                            <%}%>
 
                                     </div>
                                 </div>
