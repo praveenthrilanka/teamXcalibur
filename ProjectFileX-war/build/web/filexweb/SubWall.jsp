@@ -105,7 +105,7 @@
                     y++;
             %>
             <a style="float:right;" href="#" data-toggle="modal" data-target="#myModal<%out.print(y);%>" title="Delete Comment"><img src="logos/deletecomment.png" height="30" width="30"></a>
-            <a style="float:right;" href="CommentEdit.jsp?description=<%out.print(c.getDescription());%>&commentid=<%out.print(c.getCommentno());%>&editcomment=edit" title="Edit Comment"><img src="logos/editcomment.png" height="30" width="30"></a>
+            <!--<a style="float:right;" href="CommentEdit.jsp?description=<%//out.print(c.getDescription());%>&commentid=<%out.print(c.getCommentno());%>&editcomment=edit" title="Edit Comment"><img src="logos/editcomment.png" height="30" width="30"></a>-->
 
             <div class="container">
                 <!-- Modal -->
@@ -235,13 +235,13 @@
                     </div>
                     <div class="modal-body">
 
-                        <form class="form-horizontal" role="form">
+                        <form name="commentform" method="post" action="../SetComment" class="form-horizontal" role="form">
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="arrow"></span>
                                     <img src="images/addstk.png" width="25px" height="25px"/>     
                                 </span>
-                                <textarea class="form-control" cols="5" rows="4" id="field-6"></textarea>
+                                <textarea name="commentstr" class="form-control" cols="5" rows="4" id="field-6"></textarea>
                             </div>
                             <br/>
 
