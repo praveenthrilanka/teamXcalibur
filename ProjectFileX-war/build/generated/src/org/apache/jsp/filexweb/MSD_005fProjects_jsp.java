@@ -82,6 +82,7 @@ public final class MSD_005fProjects_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
       out.write("        <!-- CORE CSS FRAMEWORK - START -->\r\n");
       out.write("        <link href=\"plugins/pace/pace-theme-flash.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\"/>\r\n");
       out.write("        <link href=\"plugins/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\" type=\"text/css\"/>\r\n");
@@ -90,7 +91,13 @@ public final class MSD_005fProjects_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("        <link href=\"css/animate.min.css\" rel=\"stylesheet\" type=\"text/css\"/>\r\n");
       out.write("        <link href=\"plugins/perfect-scrollbar/perfect-scrollbar.css\" rel=\"stylesheet\" type=\"text/css\"/>\r\n");
       out.write("        <!-- CORE CSS FRAMEWORK - END -->\r\n");
+      out.write("        \r\n");
+      out.write("        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START --> \r\n");
+      out.write("        <link href=\"plugins/daterangepicker/css/daterangepicker-bs3.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\"/>\r\n");
       out.write("\r\n");
+      out.write("             \r\n");
+      out.write("        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END --> \r\n");
+      out.write("       \r\n");
       out.write("        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START --> \r\n");
       out.write("        <link href=\"plugins/jquery-ui/smoothness/jquery-ui.min.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\"/><link href=\"assets/plugins/rickshaw-chart/css/graph.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\"/><link href=\"assets/plugins/rickshaw-chart/css/detail.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\"/><link href=\"assets/plugins/rickshaw-chart/css/legend.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\"/><link href=\"assets/plugins/rickshaw-chart/css/extensions.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\"/><link href=\"assets/plugins/rickshaw-chart/css/rickshaw.min.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\"/><link href=\"assets/plugins/rickshaw-chart/css/lines.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\"/>        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END --> \r\n");
       out.write("\r\n");
@@ -103,14 +110,12 @@ public final class MSD_005fProjects_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("        ");
 
             session = request.getSession(false);
-            
-            if (session.getAttribute("eid") == null)
-            {
+
+            if (session.getAttribute("eid") == null) {
                 response.sendRedirect("Login.jsp");
             }
 
             Employee e = Employee.getEmployee((String) session.getAttribute("eid"));
-
 
         
       out.write("\r\n");
@@ -143,7 +148,7 @@ ArrayList<Notification> notifications = Notification.getAllNotification(e.getEmp
                             } else if (e.getPosition().equals("Project Manager")) {
                                 empPosition = "pm";
                             } else if (e.getPosition().equals("PM/MSD")) {
-                                empPosition = "pm";
+                                empPosition = "pmMsd";
                             } else if (e.getPosition().equals("ManagerSD")) {
                                 empPosition = "msd";
                             } else if (e.getPosition().equals("Stakeholder")) {
@@ -189,7 +194,11 @@ if (count != 0) {
                                                 if (Notification.getStatus(n.getNotifino()).equals("comment")) {
                                                     status = n.getEmpname() + " commented on project - " + n.getPname();
                                                 } else if (Notification.getStatus(n.getNotifino()).equals("project")) {
-                                                    status = n.getEmpname() + " assigned you as the " + e.getPosition() + " of the Project - " + n.getPname();
+                                                    if (e.getPosition().equals("Business Analyist")) {
+                                                        status = n.getEmpname() + " assigned you as the Business Analyist of the Project - " + n.getPname();
+                                                    } else {
+                                                        status = n.getEmpname() + " assigned you as the Project Manager of the Project - " + n.getPname();
+                                                    }
                                                 } else if (Notification.getStatus(n.getNotifino()).equals("srs")) {
                                                     status = n.getEmpname() + " uploaded the SRS of the Project - " + n.getPname();
                                                 }
@@ -291,7 +300,7 @@ out.print(n.getEmpid());
       out.write("                    <div class=\"profile-info row\">\r\n");
       out.write("\r\n");
       out.write("                        <div class=\"profile-image col-md-4 col-sm-4 col-xs-4\">\r\n");
-      out.write("                            <a href=\"ui-profile.html\">\r\n");
+      out.write("                            <a href=\"#\">\r\n");
       out.write("                                <img src=\"../GetIconByID?id=");
  out.print(e.getEmployeeid()); 
       out.write("\" class=\"img-responsive img-circle\">\r\n");
@@ -301,7 +310,7 @@ out.print(n.getEmpid());
       out.write("                        <div class=\"profile-details col-md-8 col-sm-8 col-xs-8\">\r\n");
       out.write("\r\n");
       out.write("                            <h3>\r\n");
-      out.write("                                <a href=\"ui-profile.html\">");
+      out.write("                                <a href=\"#\">");
 out.print(e.getEmployeename());
       out.write("</a>\r\n");
       out.write("\r\n");
@@ -350,201 +359,195 @@ out.print(e.getDepartement());
       out.write("\r\n");
       out.write("<!-- START CONTENT -->\r\n");
       out.write("\r\n");
+      out.write("<link href=\"css/stylesba.css\" rel='stylesheet' type='text/css' />\r\n");
+      out.write("<link href=\"css/bootstrap.css\" rel='stylesheet' type='text/css' />\r\n");
+      out.write("<script src=\"js/jquery-1.11.2.min.js\"></script>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("</style>\r\n");
+      out.write("\r\n");
+
+    ArrayList<Project> project = Project.getProjectByMsdId((String) session.getAttribute("eid"));
+
+    String arr1[] = {"bs-calltoaction bs-calltoaction-warning", "bs-calltoaction bs-calltoaction-primary", "bs-calltoaction bs-calltoaction-info", "bs-calltoaction bs-calltoaction-success"};
+    String arr2[] = {"btn btn-lg btn-block btn-warning", "btn btn-lg btn-block btn-primary", "btn btn-lg btn-block btn-info", "btn btn-lg btn-block btn-success"};
+
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<section id=\"main-content\" class=\" \">\r\n");
+      out.write("    <section class=\"wrapper\" style='margin-top:6%; margin-left: 5%; display:inline-block;width:100%;padding:25px 0 0 15px;'>\r\n");
+      out.write("            <div class=\"col-sm-8\"></div>  \r\n");
+      out.write("            <div class=\"col-sm-4\">\r\n");
+      out.write("            <a href=\"Project_Summary.jsp\"><button type=\"button\" class=\"btn btn-purple btn-corner\" ><i class=\"fa fa-search\"></i><span> Search Projects</span></button></a>\r\n");
+      out.write("\r\n");
+      out.write("            </div>            <br/>\r\n");
+      out.write("        <div class=\"col-sm-10\">\r\n");
+      out.write("\r\n");
       out.write("            ");
 
-                String pos=Employee.getEmployee((String)session.getAttribute("eid")).getPosition();
-            if (!(pos.equals("ManagerSD") || pos.equals("PM/MSD")))
-            {
-                response.sendRedirect("Login.jsp");
-            }
+                Project p;
+                int c = 0;
+                for (int x = 0; x < project.size(); x++) {
+                    c = c % 4;
+                    p = project.get(x);
             
       out.write("\r\n");
       out.write("\r\n");
-      out.write("\r\n");
-      out.write("            \r\n");
-      out.write("            <link href=\"css/stylesba.css\" rel='stylesheet' type='text/css' />\r\n");
-      out.write("            <link href=\"css/bootstrap.css\" rel='stylesheet' type='text/css' />\r\n");
-      out.write("            <script src=\"js/jquery-1.11.2.min.js\"> </script>\r\n");
-      out.write("                \r\n");
-      out.write("                \r\n");
-      out.write("            </style>\r\n");
-      out.write("            \r\n");
-      out.write("            ");
-
-
-       
-            ArrayList<Project> project=Project.getProjectByMsdId((String)session.getAttribute("eid"));
-
-                
-            String arr1[]={"bs-calltoaction bs-calltoaction-warning","bs-calltoaction bs-calltoaction-primary","bs-calltoaction bs-calltoaction-info","bs-calltoaction bs-calltoaction-success"};
-            String arr2[]={"btn btn-lg btn-block btn-warning","btn btn-lg btn-block btn-primary","btn btn-lg btn-block btn-info","btn btn-lg btn-block btn-success"};
-            
-      out.write("\r\n");
-      out.write("            \r\n");
-      out.write("            <section id=\"main-content\" class=\" \">\r\n");
-      out.write("                <section class=\"wrapper\" style='margin-top:6%; margin-left: 5%; display:inline-block;width:100%;padding:25px 0 0 15px;'>\r\n");
-      out.write("                   \r\n");
-      out.write("                    \r\n");
-      out.write("            <div class=\"col-sm-10\">\r\n");
-      out.write("\r\n");
-      out.write("                 ");
-
-                    Project p; 
-                    int c=0;
-                    for(int x=0;x<project.size();x++){
-                    c=c%4; 
-                    p=project.get(x);
-                 
-      out.write("\r\n");
-      out.write("                \r\n");
-      out.write("                <div class=\"");
+      out.write("            <div class=\"");
  out.print(arr1[c]); 
       out.write("\">\r\n");
-      out.write("                    <div class=\"row\">\r\n");
-      out.write("                        <div class=\"col-md-9 cta-contents\">\r\n");
-      out.write("                            <h4 class=\"cta-title\">");
+      out.write("                <div class=\"row\">\r\n");
+      out.write("                    <div class=\"col-md-9 cta-contents\">\r\n");
+      out.write("                        <h4 class=\"cta-title\">");
  out.print(p.getProjectname()); 
       out.write("</h4>\r\n");
-      out.write("                            <div class=\"cta-desc\">\r\n");
-      out.write("                                <br/>\r\n");
-      out.write("                                <label>Status</label><span style=\"padding:2.7em;\">:</span><span style=\"padding:0em;\">");
- out.print(Project.getStatusByProject(p.getProjectno(),(String) session.getAttribute("eid"))); 
+      out.write("                        <div class=\"cta-desc\">\r\n");
+      out.write("                            <br/>\r\n");
+      out.write("                            <label>Status</label><span style=\"padding:2.7em;\">:</span><span style=\"padding:0em;\">");
+ out.print(Project.getStatusByProject(p.getProjectno(), (String) session.getAttribute("eid"))); 
       out.write("</span>\r\n");
-      out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
-      out.write("                        <div class=\"col-md-3 cta-button\">\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                    <div class=\"col-md-3 cta-button\">\r\n");
+      out.write("                        <div align=\"right\">\r\n");
       out.write("                            <a href=\"../SetUser?pno=");
  out.print(p.getProjectno()); 
       out.write("&direct=msd\" class=\"");
  out.print(arr2[c]); 
       out.write("\">View Project</a>\r\n");
-      out.write("                            <a data-toggle=\"modal\" data-target=\"#ultraModal");
-out.print(p.getProjectno() );
-      out.write(" \"title=\"Delete User\" class=\"");
- out.print(arr2[c]); 
-      out.write("\">Delete Project</a>\r\n");
       out.write("\r\n");
-      out.write("                        </div>\r\n");
-      out.write("                     </div>\r\n");
+      out.write("                            <a  data-toggle=\"modal\" data-target=\"#ultraModal");
+out.print(p.getProjectno());
+      out.write(" \"title=\"Delete Project\"class=\"");
+ out.print(arr2[c]); 
+      out.write("\" align=\"right\" style=\"height: 40px; width: 20px;\"><img src=\"images/projectbin.png\" width=\"18px\" height=\"18px\"/></a>\r\n");
+      out.write("                        </div> \r\n");
+      out.write("                    </div>\r\n");
       out.write("                </div>\r\n");
-      out.write("              \r\n");
-      out.write("            \r\n");
-      out.write("                   <!--model begins-->          \r\n");
-      out.write("               <div class=\"modal fade\" id=\"ultraModal");
+      out.write("            </div>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("            <!--model begins-->          \r\n");
+      out.write("            <div class=\"modal fade\" id=\"ultraModal");
 out.print(p.getProjectno());
       out.write("\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"ultraModal-Label\" aria-hidden=\"true\" style=\"display: none;\">\r\n");
-      out.write("                                            <div class=\"modal-dialog animated fadeInUp\"><br/><br/><br/><br/><br/><br/><br/><br/><br/>\r\n");
-      out.write("                                                <div class=\"modal-content\">\r\n");
-      out.write("                                                    <div class=\"modal-header\">\r\n");
-      out.write("                                                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>\r\n");
-      out.write("                                                        <h4 class=\"modal-title\">Are you sure you want to delete?</h4>\r\n");
-      out.write("                                                   \r\n");
+      out.write("                <div class=\"modal-dialog animated fadeInUp\"><br/><br/><br/><br/><br/><br/><br/><br/><br/>\r\n");
+      out.write("                    <div class=\"modal-content\">\r\n");
+      out.write("                        <div class=\"modal-header\">\r\n");
+      out.write("                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>\r\n");
+      out.write("                            <h4 class=\"modal-title\">Are you sure you want to delete?</h4>\r\n");
       out.write("\r\n");
-      out.write("                                                        \r\n");
-      out.write("                                                    </div>\r\n");
-      out.write("                                                    <div class=\"modal-body\">\r\n");
-      out.write("                                                        Once a project is deleted, you will not be able to recover it.\r\n");
-      out.write("                                                        <div align=\"right\">\r\n");
-      out.write("                                                        <button data-dismiss=\"modal\" class=\"btn btn-default\" type=\"button\">No</button>\r\n");
-      out.write("                                                        <button  id=\"modalbutton\" class=\"btn btn-success\" onclick=\"showDiv()\" >Yes</button>\r\n");
-      out.write("                                                        </div>\r\n");
-      out.write("                                                        <script>\r\n");
-      out.write("                                                        function showDiv(){  //  display the input of the admin's password\r\n");
-      out.write("                                                       \r\n");
-      out.write("                                                           document.getElementById('div_pass').style.display = 'block' ;  \r\n");
-      out.write("                                                          }\r\n");
-      out.write("                                                        </script>\r\n");
-      out.write("                                                              <form name=\"admispass\" action=\"../DelProject\" method=\"post\">\r\n");
-      out.write("                                                    \r\n");
-      out.write("                                                                  <div id=\"div_pass\" style=\"display:none\">\r\n");
-      out.write("                                                                    </br>\r\n");
-      out.write("                                                                    <div id=\"adminpass\">\r\n");
-      out.write("                                                                        <label>Enter the Administrator's password :</label> \r\n");
-      out.write("                                                                        <input type=\"password\" id=\"adminpass\" name=\"adminpw\" placeholder=\"Password here..\" required=\"\"/>\r\n");
-      out.write("                                                                         <input type=\"hidden\" name=\"pno\" value=\"");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                        </div>\r\n");
+      out.write("                        <div class=\"modal-body\">\r\n");
+      out.write("                            Once a project is deleted, you will not be able to recover it.\r\n");
+      out.write("                            <div align=\"right\">\r\n");
+      out.write("                                <button data-dismiss=\"modal\" class=\"btn btn-default\" type=\"button\">No</button>\r\n");
+      out.write("                                <button  id=\"modalbutton\" class=\"btn btn-success\" onclick=\"showDiv()\" >Yes</button>\r\n");
+      out.write("                            </div>\r\n");
+      out.write("                            <script>\r\n");
+      out.write("                                function showDiv() {  //  display the input of the admin's password\r\n");
+      out.write("\r\n");
+      out.write("                                    document.getElementById('div_pass').style.display = 'block';\r\n");
+      out.write("                                }\r\n");
+      out.write("                            </script>\r\n");
+      out.write("                            <form name=\"admispass\" action=\"../DelProject\" method=\"post\">\r\n");
+      out.write("\r\n");
+      out.write("                                <div id=\"div_pass\" style=\"display:none\">\r\n");
+      out.write("                                    </br>\r\n");
+      out.write("                                    <div id=\"adminpass\">\r\n");
+      out.write("                                        <label>Enter the Administrator password :</label> \r\n");
+      out.write("                                        <input type=\"password\" id=\"adminpass\" name=\"adminpw\" placeholder=\"Password here..\" required=\"\"/>\r\n");
+      out.write("                                        <input type=\"hidden\" name=\"pno\" value=\"");
 out.print(p.getProjectno());
       out.write("\"/>\r\n");
       out.write("\r\n");
-      out.write("                                                                    </div> \r\n");
-      out.write("                                                                    <br /> \r\n");
-      out.write("                                                                  </div>\r\n");
-      out.write("                                                                  \r\n");
-      out.write("                                                          </div>\r\n");
+      out.write("                                    </div> \r\n");
+      out.write("                                    <br /> \r\n");
+      out.write("                                </div>\r\n");
       out.write("\r\n");
-      out.write("                                                        \r\n");
-      out.write("                                                    <div class=\"modal-footer\">\r\n");
-      out.write("                                                        <button data-dismiss=\"modal\" class=\"btn btn-default\" type=\"button\">Cancel</button>\r\n");
-      out.write("                                                        <input   type=\"submit\" value=\"Delete\" class=\"btn btn-warning\"/>\r\n");
-      out.write("                                                    </div>\r\n");
-      out.write("                                                    </form>\r\n");
-      out.write("\r\n");
-      out.write("                                                </div>\r\n");
-      out.write("                                            </div>\r\n");
-      out.write("                                        </div>\r\n");
-      out.write("                                         \r\n");
-      out.write("                          \r\n");
-      out.write("                                            \r\n");
-      out.write("                                        <!--model End-->\r\n");
-      out.write("                 ");
- c++; 
-             }
-             
+      out.write("                        </div>\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("                        <div class=\"modal-footer\">\r\n");
+      out.write("                            <button data-dismiss=\"modal\" class=\"btn btn-default\" type=\"button\">Cancel</button>\r\n");
+      out.write("                            <input   type=\"submit\" value=\"Delete\" class=\"btn btn-warning\"/>\r\n");
+      out.write("                        </div>\r\n");
+      out.write("                        </form>\r\n");
+      out.write("\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                </div>\r\n");
       out.write("            </div>\r\n");
-      out.write("             \r\n");
-      out.write("                <script>\r\n");
-      out.write("                 \r\n");
-      out.write("                  \r\n");
-      out.write("                  \r\n");
-      out.write("                 \r\n");
-      out.write("                 $(document).ready(fuction()\r\n");
-      out.write("                 {\r\n");
-      out.write("                     $('.clickme').click(function(e){\r\n");
-      out.write("                         e.preventDefault()\r\n");
-      out.write("                             \r\n");
-      out.write("                \r\n");
-      out.write("                     });\r\n");
-      out.write("                    \r\n");
-      out.write("                   });\r\n");
-      out.write("                  \r\n");
-      out.write("                 \r\n");
-      out.write("                 </script>\r\n");
-      out.write("                                               <!--Model starts-->\r\n");
-      out.write("\r\n");
-      out.write("                                         \r\n");
-      out.write("             \r\n");
-      out.write("                </section>\r\n");
-      out.write("            </section>\r\n");
-      out.write("            <!-- END CONTENT -->\r\n");
-      out.write("            \r\n");
-      out.write("            \r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("        <!-- LOAD FILES AT PAGE END FOR FASTER LOADING -->\r\n");
+      out.write("\r\n");
+      out.write("            <!--model End-->\r\n");
+      out.write("            ");
+
+                    c++;
+                }
+            
       out.write("\r\n");
       out.write("\r\n");
-      out.write("        <!-- CORE JS FRAMEWORK - START --> \r\n");
-      out.write("        <script src=\"js/jquery-1.11.2.min.js\" type=\"text/javascript\"></script> \r\n");
-      out.write("        <script src=\"js/jquery.easing.min.js\" type=\"text/javascript\"></script> \r\n");
-      out.write("        <script src=\"plugins/bootstrap/js/bootstrap.min.js\" type=\"text/javascript\"></script> \r\n");
-      out.write("        <script src=\"plugins/pace/pace.min.js\" type=\"text/javascript\"></script>  \r\n");
-      out.write("        <script src=\"plugins/perfect-scrollbar/perfect-scrollbar.min.js\" type=\"text/javascript\"></script> \r\n");
-      out.write("        <script src=\"plugins/viewport/viewportchecker.js\" type=\"text/javascript\"></script>  \r\n");
-      out.write("        <!-- CORE JS FRAMEWORK - END --> \r\n");
+      out.write("        </div>\r\n");
+      out.write("\r\n");
+      out.write("        <script>\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("        <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START --> \r\n");
-      out.write("        <script src=\"plugins/rickshaw-chart/vendor/d3.v3.js\" type=\"text/javascript\"></script> <script src=\"assets/plugins/jquery-ui/smoothness/jquery-ui.min.js\" type=\"text/javascript\"></script> <script src=\"assets/plugins/rickshaw-chart/js/Rickshaw.All.js\"></script><script src=\"assets/js/chart-rickshaw.js\" type=\"text/javascript\"></script><!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END --> \r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("        <!-- CORE TEMPLATE JS - START --> \r\n");
-      out.write("        <script src=\"js/scripts.js\" type=\"text/javascript\"></script> \r\n");
-      out.write("        <!-- END CORE TEMPLATE JS - END --> \r\n");
+      out.write("            $(document).ready(fuction()\r\n");
+      out.write("            {\r\n");
+      out.write("                $('.clickme').click(function (e) {\r\n");
+      out.write("                    e.preventDefault()\r\n");
       out.write("\r\n");
-      out.write("      \r\n");
       out.write("\r\n");
-      out.write("    </body>\r\n");
+      out.write("                });\r\n");
+      out.write("\r\n");
+      out.write("            }\r\n");
+      out.write("            );\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("        </script>\r\n");
+      out.write("        <!--Model starts-->\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("    </section>\r\n");
+      out.write("</section>\r\n");
+      out.write("<!-- END CONTENT -->\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!-- LOAD FILES AT PAGE END FOR FASTER LOADING -->\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!-- CORE JS FRAMEWORK - START --> \r\n");
+      out.write("<script src=\"js/jquery-1.11.2.min.js\" type=\"text/javascript\"></script> \r\n");
+      out.write("<script src=\"js/jquery.easing.min.js\" type=\"text/javascript\"></script> \r\n");
+      out.write("<script src=\"plugins/bootstrap/js/bootstrap.min.js\" type=\"text/javascript\"></script> \r\n");
+      out.write("<script src=\"plugins/pace/pace.min.js\" type=\"text/javascript\"></script>  \r\n");
+      out.write("<script src=\"plugins/perfect-scrollbar/perfect-scrollbar.min.js\" type=\"text/javascript\"></script> \r\n");
+      out.write("<script src=\"plugins/viewport/viewportchecker.js\" type=\"text/javascript\"></script>  \r\n");
+      out.write("<!-- CORE JS FRAMEWORK - END --> \r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START --> \r\n");
+      out.write("<script src=\"plugins/rickshaw-chart/vendor/d3.v3.js\" type=\"text/javascript\"></script> <script src=\"assets/plugins/jquery-ui/smoothness/jquery-ui.min.js\" type=\"text/javascript\"></script> <script src=\"assets/plugins/rickshaw-chart/js/Rickshaw.All.js\"></script><script src=\"assets/js/chart-rickshaw.js\" type=\"text/javascript\"></script><!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END --> \r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!-- CORE TEMPLATE JS - START --> \r\n");
+      out.write("<script src=\"js/scripts.js\" type=\"text/javascript\"></script> \r\n");
+      out.write("<!-- END CORE TEMPLATE JS - END --> \r\n");
+      out.write("\r\n");
+      out.write("<!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START --> \r\n");
+      out.write("<script src=\"plugins/daterangepicker/js/moment.min.js\" type=\"text/javascript\"></script> \r\n");
+      out.write("<script src=\"plugins/daterangepicker/js/daterangepicker.js\" type=\"text/javascript\"></script> \r\n");
+      out.write("<!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END --> \r\n");
+      out.write("\r\n");
+      out.write("</body>\r\n");
       out.write("</html>\r\n");
       out.write("\r\n");
       out.write("\r\n");
