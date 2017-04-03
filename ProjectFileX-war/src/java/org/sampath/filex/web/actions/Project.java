@@ -32,10 +32,13 @@ public class Project {
         this.srsid=srsid;
     }
     
-    public Project(String projectno,String projectname, String datentime) {
+    public Project(String projectno,String projectname, String datentime, String baid, String pmid, String msdid) {
         this.projectno = projectno;
         this.projectname = projectname;
         this.datentime = datentime;
+        this.baid = baid;
+        this.pmid = pmid;
+        this.msdid = msdid;
     }
     
      public String getSrsid() {
@@ -697,7 +700,7 @@ public static ArrayList<Project> getApprovedProjectByPMid(String pmid){
         
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select PNO,PNAME,CREATEDDATENTIME from project where baid="+baid+" and pmid="+pmid+" and msdid="+msdid+" order by pno desc");
+            PreparedStatement ps=con.prepareStatement("select PNO,PNAME,CREATEDDATENTIME,BAID,PMID,MSDID from project where baid="+baid+" and pmid="+pmid+" and msdid="+msdid+" order by pno desc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             System.out.println(pmid);
@@ -727,7 +730,10 @@ public static ArrayList<Project> getApprovedProjectByPMid(String pmid){
          return new Project(
                  rs.getString("PNO"),
                  rs.getString("PNAME"),
-                 rs.getString("CREATEDDATENTIME"));
+                 rs.getString("CREATEDDATENTIME"),
+                 rs.getString("BAID"),
+                 rs.getString("PMID"),
+                 rs.getString("MSDID"));
         
      }
 }
