@@ -23,13 +23,23 @@ public class Stakeholder {
     private String department;
     private String priorityno;
     private String status;
-    
-    public Stakeholder(String empid, String name, String department, String priorityno, String status) {
+    private String email;
+       
+    public Stakeholder(String empid, String name, String department, String email, String priorityno, String status) {
         this.empid = empid;
         this.name = name;
         this.department = department;
+        this.email=email;
         this.priorityno = priorityno;
         this.status = status;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
     public Stakeholder(String name,String priorityno,String department) {
@@ -84,7 +94,7 @@ public class Stakeholder {
         Connection con=DatabaseConnection.createConnection();
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select e.empid,e.empname,a.priorityno,a.status,d.depnme,a.srsversion,s.pno from srsapprovedby a, employee e, department d,srs s\n" +
+            PreparedStatement ps=con.prepareStatement("select e.empid,e.empname,a.priorityno,a.status,d.depnme,a.srsversion,s.pno,e.email from srsapprovedby a, employee e, department d,srs s\n" +
                                                       "where s.docno=a.docno and a.stkid=e.empid and e.depid=d.depid and s.pno='"+pno+"' and a.srsversion='"+version+"' order by priorityno");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
@@ -107,6 +117,7 @@ public class Stakeholder {
                  rs.getString("EMPID"),
                  rs.getString("EMPNAME"),
                  rs.getString("DEPNME"),
+                 rs.getString("EMAIL"),
                  rs.getString("PRIORITYNO"),
                  rs.getString("STATUS"));
         
@@ -116,6 +127,7 @@ public class Stakeholder {
 
         ArrayList<Stakeholder> stakeholder=Stakeholder.getStakeholders(pno,String.valueOf(Integer.parseInt(version)-1));
         System.out.print("Added"+version+"Size"+stakeholder.size());
+        Project p=Project.getProject(pno);
         
         Connection con=DatabaseConnection.createConnection();
         try {
@@ -123,6 +135,18 @@ public class Stakeholder {
             for(int x=0;x<stakeholder.size();x++)
             {
                 s=stakeholder.get(x);
+                if(s.getPriorityno().equals("1"))
+                {
+                    String mail="You have been assigned to the project '"+p.getProjectname()+"'.\n\n"
+                            + "Please log in to FileX system to refer the document and feel free to "
+                            + "approve/reject document with your suggestions.\n\n"
+                            + "Thank You.";
+                    
+                    Mail.sendmail(s.getEmail(), "Kind Reminder",mail);
+
+                
+                }
+                
                 System.out.println(s.getName()+"Added"+version);
                 PreparedStatement ps=con.prepareStatement("insert into srsapprovedby values((SELECT docno FROM srs WHERE pno = '"+pno+"'),'"+version+"','"+s.getEmpid()+"','"+s.getPriorityno()+"','noresponse')");
                 ps.executeQuery();
