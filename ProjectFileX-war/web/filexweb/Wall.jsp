@@ -12,7 +12,7 @@
             
             <!-- START CONTENT -->
             <section id="main-content" class=" ">
-                <section class="wrapper" style='margin-top:25px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
+                <section class="wrapper" style='margin-top:25px;display:inline-block;width:100%;height: 100%; padding:15px 0 0 15px;'>
                    
 		<div id="pageset">
                     <div class="main-page">
