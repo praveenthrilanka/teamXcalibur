@@ -43,9 +43,22 @@ public class SetComment extends HttpServlet {
         String srsid = (String) session.getAttribute("srsid");
         String eid = (String) session.getAttribute("eid");
         String notifino = null;
+        
+        
 
         try {
             Connection con = DatabaseConnection.createConnection();
+            //This is for rejection process
+            if(request.getParameter("info")!=null)
+            {   
+                if(request.getParameter("info").equals("reject"))
+                {
+                    System.out.print("REJECT SUCCESSFULLy");
+                    PreparedStatement p=con.prepareStatement("update srsapprovedby set status='rejected' where stkid='"+eid+"' and srsversion='"+Project.getSRSVersionByDOCID(srsid)+"' and docno='"+srsid+"'");
+                    p.executeQuery();
+                }
+            }
+            
             String datentime = DateString.getDate(date.toString());
             
             String editedString = comment.replace("'","''");

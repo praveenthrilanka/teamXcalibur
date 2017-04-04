@@ -72,7 +72,7 @@
                 if (!(status.equals("approved") || status.equals("rejected")) && status.equals("noresponse")) {
         %>        
         <a style="padding:10px" href="#" title="Approve" data-toggle="modal" data-target="#myModalApproval" role="button"><img src="logos/approve.png" height="40" width="40"></a>
-        <a style="padding:10px" href="#" title="Reject" data-toggle="modal" data-target="#myModalRejection" role="button"><img src="logos/reject.png" height="40" width="40"></a>
+        <a style="padding:10px" href="#" title="Reject" data-toggle="modal" data-target="#rejectComment" role="button"><img src="logos/reject.png" height="40" width="40"></a>
             <%
                     }
                 }
@@ -278,5 +278,40 @@
                 </div>
             </div>
             <!--model End-->
+            
+            <!--Model starts-->
+            <div class="modal fade" id="rejectComment" tabindex="-1" role="dialog" aria-labelledby="ultraModal-Label" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog animated fadeInUp"><br/><br/><br/><br/><br/>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                            <h4 class="modal-title">Add Comment</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <form name="commentform" method="post" action="../SetComment?info=reject" class="form-horizontal" role="form">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="arrow"></span>
+                                        <img src="images/addstk.png" width="25px" height="25px"/>     
+                                    </span>
+                                    <textarea name="commentstr" class="form-control" cols="5" rows="4" id="field-6" required></textarea>
+                                </div>
+                                <br/>
+
+                                <div class="input-group">
+                                    <div class="">
+                                        <button type="submit" class="btn btn-primary">Reject</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--model End-->
+            
             </body>
             </html>
