@@ -180,11 +180,11 @@
                 </div>
             </div>
 
-            <!-- Modal for rejection -->
+            <!-- Modal for rejection 
             <div class="modal fade" id="myModalRejection" role="dialog">
                 <div class="modal-dialog">
 
-                    <!-- Modal content-->
+                    
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -200,7 +200,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div>-->
 
             <!-- Modal for approval -->
             <div class="modal fade" id="ModalApproval" role="dialog">
@@ -285,17 +285,18 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                            <h4 class="modal-title">Add Comment</h4>
+                            <h4 class="modal-title">Are You Sure?</h4>
                         </div>
                         <div class="modal-body">
-
+                            <p>Once the SRS is rejected, you will not be able to undo it.</p>
+                        
                             <form name="commentform" method="post" action="../SetComment?info=reject" class="form-horizontal" role="form">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <span class="arrow"></span>
                                         <img src="images/addstk.png" width="25px" height="25px"/>     
                                     </span>
-                                    <textarea name="commentstr" class="form-control" cols="5" rows="4" id="field-6" required></textarea>
+                                    <textarea name="commentstr" placeholder="Rejection Note" class="form-control" cols="5" rows="4" id="field-6" required></textarea>
                                 </div>
                                 <br/>
 
