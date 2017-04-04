@@ -103,8 +103,7 @@
             <h5><strong>Define SRS flow</strong></h5>
 
                 <table align="center" width="95%" style="border-collapse: separate;border-spacing: 0 1.5em;">
-                    <form name="addstk" action="../AddStakeholders" method="post" onsubmit="return 
-validatePriority()" id="ContactForm">
+                    <form name="addstk" action="../AddStakeholders" method="post" onsubmit="return validatePriority()" id="ContactForm">
                                             
                         <tr>
                             <td><strong>Approving Authority</strong></td>
@@ -124,8 +123,7 @@ validatePriority()" id="ContactForm">
                                                   
                             <tr>
                                 <td>
-                                <select name="<%="selection_"+i %>" id="<%="selection_"+i %>" onChange="update
-(<%=num %>);">
+                                <select name="<%="selection_"+i %>" id="<%="selection_"+i %>" onChange="update(<%=num %>);">
                                 <option value="0">Select</option>
 
                                 <%
@@ -133,8 +131,7 @@ validatePriority()" id="ContactForm">
 
                                 %>
 
-                                <option value =<%=sh.get(j).getEmployeeid() %> ><%=sh.get(j).getEmployeename() 
-%> (<%=sh.get(j).getDepartement() %>) </option>
+                                <option value =<%=sh.get(j).getEmployeeid() %> ><%=sh.get(j).getEmployeename() %> (<%=sh.get(j).getDepartement() %>) </option>
                                 <%
                                     }
                                 %>
@@ -158,8 +155,7 @@ validatePriority()" id="ContactForm">
                     <input type="hidden" id="count" name="count" value="<% out.print(num); %>" />
                     <input type="hidden" id="docno" name="docno" value="<% out.print(srsid); %>" />
                     
-                    <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" 
-type="submit" value="Add">
+                    <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Add">
 
                     <br/>
                                         
@@ -190,16 +186,13 @@ type="submit" value="Add">
                         System.out.println("Output test2");
                     %>
                                 
-            <table id="example-1" class="table table-striped dt-responsive display dataTable dtr-inline" 
-cellspacing="0" width="100%" role="grid" aria-describedby="example-1_info" style="width: 100%;">
+            <table id="example-1" class="table table-striped dt-responsive display dataTable dtr-inline" cellspacing="0" width="100%" role="grid" aria-describedby="example-1_info" style="width: 100%;">
 
             <thead>
 
                 <tr role="row">
-                    <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1"  style="width: 291px;" 
->Approving Authority</th>
-                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 80px;" aria-
-sort="ascending">Priority No</th>
+                    <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1"  style="width: 291px;" >Approving Authority</th>
+                    <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 80px;" aria-sort="ascending">Priority No</th>
                     
                </tr>
             </thead>
@@ -228,10 +221,8 @@ sort="ascending">Priority No</th>
                                 
                 <h5><strong>Update the SRS Flow</strong></h5>
                     
-                    <table align="center" width="95%" style="border-collapse: separate;border-spacing: 0 
-1.5em;">
-                        <form name="addstk" action="../AddStakeholders" method="post" onsubmit="return 
-validatePriority()" id="ContactForm">
+                    <table align="center" width="95%" style="border-collapse: separate;border-spacing: 0 1.5em;">
+                        <form name="addstk" action="../AddStakeholders" method="post" onsubmit="return validatePriority()" id="ContactForm">
                                            
                             <tr>
                                 <td><strong>Approving Authority</strong></td>
@@ -255,16 +246,14 @@ validatePriority()" id="ContactForm">
                                                   
                             <tr>
                                 <td>
-                                <select name="<%="selection_"+i %>" id="<%="selection_"+i %>" onChange="update
-(<%=num %>);">
+                                <select name="<%="selection_"+i %>" id="<%="selection_"+i %>" onChange="update(<%=num %>);">
                                     <option value="0">Select</option>
 
                                         <%
                                             for(int j=0;j<num;j++){
                                         %>
 
-                                    <option value =<%=sh.get(j).getEmployeeid() %> ><%=sh.get
-(j).getEmployeename() %> (<%=sh.get(j).getDepartement() %>) </option>
+                                    <option value =<%=sh.get(j).getEmployeeid() %> ><%=sh.get(j).getEmployeename() %> (<%=sh.get(j).getDepartement() %>) </option>
                                         <%
                                             }
                                         %>
@@ -272,8 +261,7 @@ validatePriority()" id="ContactForm">
                                 </td>
                                 <td>
                                     <input type="text" name="prio_<%=i %>"  id="prio_<%= i %>" size="2"/>
-                                              <span id="req_<%=i %>" class="label label-danger"></span>          
-       
+                                              <span id="req_<%=i %>" class="label label-danger"></span>                 
                                         <%
                                             }
                                             }
@@ -284,8 +272,7 @@ validatePriority()" id="ContactForm">
                         <br/><br/>
                         <input type="hidden" id="count" name="count" value="<% out.print(num); %>" />
                         <input type="hidden" id="docno" name="docno" value="<% out.print(srsid); %>" />
-                        <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" 
-type="submit" value="Add" >
+                        <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Add" >
                         <br/>
                                         
                     </form>
@@ -340,13 +327,11 @@ type="submit" value="Add" >
     }
     </script>
             <!--Model starts-->
-                <div class="modal fade" id="ultraModal-11" tabindex="-1" role="dialog" aria-
-labelledby="ultraModal-Label" aria-hidden="true" style="display: none;">
+                <div class="modal fade" id="ultraModal-11" tabindex="-1" role="dialog" aria-labelledby="ultraModal-Label" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog animated fadeInUp"><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-
-hidden="true">×</button>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 <h4 class="modal-title">You have successfully defined the SRS path</h4>
                             </div>
                             <div class="modal-body">
@@ -363,13 +348,11 @@ hidden="true">×</button>
 <!-- END CONTENT -->
 
             <!--Model starts-->
-                <div class="modal fade" id="ultraModal-12" tabindex="-1" role="dialog" aria-
-labelledby="ultraModal-Label" aria-hidden="true" style="display: none;">
+                <div class="modal fade" id="ultraModal-12" tabindex="-1" role="dialog" aria-labelledby="ultraModal-Label" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog animated fadeInUp"><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-
-hidden="true">×</button>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 <h4 class="modal-title">SRS is not uploaded</h4>
                             </div>   
                             <div class="modal-body">
@@ -377,8 +360,7 @@ hidden="true">×</button>
                             </div>
                             <div class="modal-footer">
                     
-                               <a class="btn btn-success" type="button" href="<% out.print(session.getAttribute
-("home"));%>">Ok</a>
+                               <a class="btn btn-success" type="button" href="<% out.print(session.getAttribute("home"));%>">Ok</a>
                             </div>
                         </div>
                     </div>
