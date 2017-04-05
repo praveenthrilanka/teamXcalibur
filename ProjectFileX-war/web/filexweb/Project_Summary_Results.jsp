@@ -16,6 +16,32 @@
             Project p;
 %>
 
+<style type="text/css">
+
+@media all {
+	.page-break	{ display: none; }
+}    
+    
+@media print{
+  body{ background-color:#FFFFFF; background-image:none; color:#000000 ;position: absolute; top: 0; left: 0;}
+  .page-sidebar { display:none;}
+  .page-topbar { display:none;}
+  .page-title { display:none;}
+  .box{ position: absolute; width:100%; height: 100%; position:fixed;
+    padding:0;
+    margin:0;
+
+    top:0;
+    left:0;
+
+    width: 100%;
+    height: 100%;}
+  .content-body{position: absolute;left:0;}
+  .page-break	{ display: block; page-break-before: always; }
+}
+</style>
+
+
 <section id="main-content" class=" ">
     <section class="wrapper" style='margin-top:50px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
 
