@@ -83,6 +83,28 @@ public class ProjectControl extends HttpServlet {
                 Notification.setNotificationByProject(notifino,pno);
 
                 con.close();
+                
+                //Send Email Notification
+                Employee empBA=Employee.getEmployee(ba);
+                Employee empPM=Employee.getEmployee(pm);
+                
+                if(empPM.getEmail()!=null)
+                {
+                String mail="You have been assigned to the project '"+pname+"' as 'Project Manager'.\n\n"
+                            + "Please log in to FileX system to refer the document.\n"
+                            + "Thank You.";
+                
+                Mail.sendmail(empPM.getEmail(), "Kind Reminder",mail);
+                }
+                if(empBA.getEmail()!=null)
+                {
+                String mail="You have been assigned to the project '"+pname+"' as 'Business Analyst'.\n\n"
+                            + "Please log in to FileX system to refer the document.\n"
+                            + "Thank You.";
+                
+                Mail.sendmail(empBA.getEmail(), "Kind Reminder",mail);
+                }
+                //End Email
 
             } catch (SQLException ex) {
                 Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
