@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.http.HttpSession;
 import org.sampath.filex.web.actions.Project;
 import org.sampath.filex.web.actions.Stakeholder;
@@ -43,13 +44,16 @@ public class AddStakeholders extends HttpServlet {
         String srsversion=Project.getSRSVersionByDOCID(docno);
         int count=Integer.parseInt(request.getParameter("count"));
         Project p=Project.getProject((String)session.getAttribute("pno"));
-          
+        Date dte=new Date();  
+        String date;
         try {
             Connection con=DatabaseConnection.createConnection();
             System.out.println("Connection Established");
 
             for(int x=0;x<count;x++)
             {
+                
+            date="novalue";
             selection=request.getParameter("selection_"+x);
             priority=request.getParameter("prio_"+x);
                 if(selection.equals("0"))
@@ -68,9 +72,10 @@ public class AddStakeholders extends HttpServlet {
                     ResultSet rs=ps.executeQuery();
                     if(rs.next())
                     Mail.sendmail(rs.getString("EMAIL"), "Kind Reminder",mail);
+                    date=DateString.getDate(dte.toString());
                 }
                 
-                PreparedStatement ps=con.prepareStatement("insert/*+append*/ into srsapprovedby values ('"+docno+"','"+srsversion+"','"+selection+"','"+priority+"','noresponse')");
+                PreparedStatement ps=con.prepareStatement("insert/*+append*/ into srsapprovedby values ('"+docno+"','"+srsversion+"','"+selection+"','"+priority+"','noresponse','novalue','"+date+"')");
 
                 ResultSet rs=ps.executeQuery();
                 }

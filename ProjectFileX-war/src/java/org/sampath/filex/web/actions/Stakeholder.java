@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static org.sampath.filex.web.actions.Project.getProjectFromRS;
@@ -24,6 +25,17 @@ public class Stakeholder {
     private String priorityno;
     private String status;
     private String email;
+    private String assignedtime;
+    private String responsetime;
+
+    public String getAssignedtime() {
+        return assignedtime;
+    }
+
+    public void setAssignedtime(String assignedtime) {
+        this.assignedtime = assignedtime;
+    }
+    
        
     public Stakeholder(String empid, String name, String department, String email, String priorityno, String status) {
         this.empid = empid;
@@ -32,6 +44,26 @@ public class Stakeholder {
         this.email=email;
         this.priorityno = priorityno;
         this.status = status;
+    }
+    
+    public Stakeholder(String empid, String name, String department, String email, String priorityno, String status,String responsetime, String assignedtime) {
+        this.empid = empid;
+        this.name = name;
+        this.department = department;
+        this.email=email;
+        this.priorityno = priorityno;
+        this.status = status;
+        this.responsetime=responsetime;
+        this.assignedtime=assignedtime;
+        
+    }
+    
+    public String getResponsetime() {
+        return responsetime;
+    }
+
+    public void setResponsetime(String responsetime) {
+        this.responsetime = responsetime;
     }
     
     public String getEmail() {
@@ -128,12 +160,15 @@ public class Stakeholder {
         ArrayList<Stakeholder> stakeholder=Stakeholder.getStakeholders(pno,String.valueOf(Integer.parseInt(version)-1));
         System.out.print("Added"+version+"Size"+stakeholder.size());
         Project p=Project.getProject(pno);
+        Date dte=new Date();
+        String date;
         
         Connection con=DatabaseConnection.createConnection();
         try {
             Stakeholder s=null;
             for(int x=0;x<stakeholder.size();x++)
             {
+                date="novalue";
                 s=stakeholder.get(x);
                 if(s.getPriorityno().equals("1"))
                 {
@@ -143,12 +178,12 @@ public class Stakeholder {
                             + "Thank You.";
                     
                     Mail.sendmail(s.getEmail(), "Kind Reminder",mail);
-
+                    date=DateString.getDate(dte.toString());
                 
                 }
                 
                 System.out.println(s.getName()+"Added"+version);
-                PreparedStatement ps=con.prepareStatement("insert into srsapprovedby values((SELECT docno FROM srs WHERE pno = '"+pno+"'),'"+version+"','"+s.getEmpid()+"','"+s.getPriorityno()+"','noresponse')");
+                PreparedStatement ps=con.prepareStatement("insert into srsapprovedby values((SELECT docno FROM srs WHERE pno = '"+pno+"'),'"+version+"','"+s.getEmpid()+"','"+s.getPriorityno()+"','noresponse','novalue','"+date+"')");
                 ps.executeQuery();
             }
             
@@ -216,4 +251,43 @@ public class Stakeholder {
         }
         return email;
     }
+    
+    public static ArrayList<Stakeholder> getStakeholdersForVH(String pno,String version){
+        ArrayList<Stakeholder> stakeholder=new ArrayList<Stakeholder>();
+
+        Connection con=DatabaseConnection.createConnection();
+        try {
+            System.out.println("Execution strt");
+            PreparedStatement ps=con.prepareStatement("select e.empid,e.empname,a.priorityno,a.status,d.depnme,a.srsversion,s.pno,e.email,a.datentime,a.assigneddate from srsapprovedby a, employee e, department d,srs s\n" +
+                                                      "where s.docno=a.docno and a.stkid=e.empid and e.depid=d.depid and s.pno='"+pno+"' and a.srsversion='"+version+"' order by priorityno");
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done");
+            Stakeholder s;
+            
+            while(rs.next()){
+                s= getStakeholdersForVHFromRS(rs);
+                stakeholder.add(s);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+        return stakeholder;
+    }
+    
+        public static Stakeholder getStakeholdersForVHFromRS(ResultSet rs) throws SQLException {
+            System.out.println(rs.getString("DATENTIME")+"************************"+rs.getString("ASSIGNEDDATE")+"**********/////////"+rs.getString("EMPID"));
+            
+         return new Stakeholder(
+                 rs.getString("EMPID"),
+                 rs.getString("EMPNAME"),
+                 rs.getString("DEPNME"),
+                 rs.getString("EMAIL"),
+                 rs.getString("PRIORITYNO"),
+                 rs.getString("STATUS"),
+                 rs.getString("DATENTIME"),
+                 rs.getString("ASSIGNEDDATE"));
+        
+     }
 }

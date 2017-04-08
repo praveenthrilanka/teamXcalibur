@@ -54,7 +54,7 @@ public class SetComment extends HttpServlet {
                 if(request.getParameter("info").equals("reject"))
                 {
                     System.out.print("REJECT SUCCESSFULLy");
-                    PreparedStatement p=con.prepareStatement("update srsapprovedby set status='rejected' where stkid='"+eid+"' and srsversion='"+Project.getSRSVersionByDOCID(srsid)+"' and docno='"+srsid+"'");
+                    PreparedStatement p=con.prepareStatement("update srsapprovedby set status='rejected',datentime='"+DateString.getDate(date.toString())+"' where stkid='"+eid+"' and srsversion='"+Project.getSRSVersionByDOCID(srsid)+"' and docno='"+srsid+"'");
                     p.executeQuery();
                 }
             }

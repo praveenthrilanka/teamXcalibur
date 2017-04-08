@@ -92,7 +92,7 @@
                                     <div class="clearfix"></div>
                                     
                                     <%    
-                                            ArrayList<Stakeholder> s=Stakeholder.getStakeholders(prono, "1");
+                                            ArrayList<Stakeholder> s=Stakeholder.getStakeholdersForVH(prono, "1");
                                             Stakeholder sh;
                                             if(s.size()!=0)
                                             {
@@ -126,7 +126,7 @@
                                             </div>	
                                             <div class="info-details">
                                                 <ul class="list-unstyled list-inline">
-                                                    <!--<li><a href="#" class="text-muted">8 Minutes ago</a></li>-->
+                                                    <li><a href="#" class="text-muted"><% out.print(s.get(0).getAssignedtime()); %></a></li>
                                                     
                                                 </ul>
                                             </div>
@@ -145,7 +145,7 @@
                                         for(int x=0;x<srs.size();x++)
                                         {
                                             d=srs.get(x);
-                                            s=Stakeholder.getStakeholders(prono, d.getSrsversion());
+                                            s=Stakeholder.getStakeholdersForVH(prono, d.getSrsversion());
                                         
                                     %>        
                                             
@@ -181,7 +181,15 @@
                                             String stat=sh.getStatus();
                                             if(stat==null)
                                                 stat="No response";
-
+                                            
+                                            String arrived=sh.getAssignedtime();
+                                            String responsed=sh.getResponsetime();
+                                            
+                                            if(arrived.equals("novalue"))
+                                                arrived="Not Arrived";
+                                            if(responsed.equals("novalue"))
+                                                responsed="No Response";
+                                                
                                      %>
                                     <div class="clearfix"></div>
                                     <div class="comment" style="padding-left: 2cm;">
@@ -197,7 +205,7 @@
                                             	
                                             <div class="info-details">
                                                 <ul class="list-unstyled list-inline">
-                                                    <li><a href="#" class="text-muted"></a></li>
+                                                    <li><table style="width:150%"><tr><td><b>SRS Arrival</b></td> <td>:</td> <td><% out.print(arrived); %></td></tr> <% if(!arrived.equals("Not Arrived")) { %> <tr><td><b>Response</b></td> <td>:</td> <td><% out.print(responsed); %></td></tr><% } %></table></li>
                                                     
                                                 </ul>
                                             </div>

@@ -2,7 +2,7 @@
 <%@page import="org.sampath.filex.web.actions.Stakeholder"%>
 <%@page import="org.sampath.filex.web.actions.Project"%>
 <%@ include file="Up.jsp" %>
-<%@ include file="Sidebar_Project.jsp" %>
+<%@ include file="SideBar.jsp" %>
 
 <!-- START CONTENT -->
 
@@ -46,8 +46,8 @@
             </div>
         </div>
         <%
-            session=request.getSession();
-            String prono=(String)session.getAttribute("pno");
+           
+            String prono=request.getParameter("pno");
             Project p=Project.getProject(prono);
             
             Employee ba=Employee.getEmployee(p.getBaid());
@@ -175,6 +175,7 @@
                                             sh=s.get(y);
 
                                             String st=sh.getStatus();
+                                            System.out.println("STAAAAAAAATUS 0="+st);
                                             if(st==null)
                                                 st="No response";
 

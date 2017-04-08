@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -38,7 +39,8 @@ public class SRSApproval extends HttpServlet {
        String eshid=(String)session.getAttribute("eid");
        String status=request.getParameter("status");
        Project p=Project.getProject(pno);
-       
+       Date dte=new Date();
+       String date=DateString.getDate(dte.toString());
        
         try {
             Connection con=DatabaseConnection.createConnection();
@@ -53,7 +55,7 @@ public class SRSApproval extends HttpServlet {
             
             if(status.equals("approve"))
             {
-                ps=con.prepareStatement("update srsapprovedby set status='approved' where stkid='"+eshid+"' and srsversion='"+version+"' and docno='"+docno+"'");
+                ps=con.prepareStatement("update srsapprovedby set status='approved',datentime='"+date+"' where stkid='"+eshid+"' and srsversion='"+version+"' and docno='"+docno+"'");
                 ps.executeQuery();
                 
                 ps=con.prepareStatement("select priorityno from srsapprovedby where stkid='"+eshid+"' and srsversion='"+version+"' and docno='"+docno+"'");
@@ -86,15 +88,17 @@ public class SRSApproval extends HttpServlet {
                         System.out.println("EMAILS ----"+emails);
                         Mail.sendmail(emails, "Kind Reminder",mail);
                     
+                         ps=con.prepareStatement("update srsapprovedby set assigneddate='"+date+"' where priorityno='"+(Integer.parseInt(currentPriority)+1)+"' and srsversion='"+version+"' and docno='"+docno+"'");
+                         ps.executeQuery();
                     }
                 
                 }
                 
 
             }
-            else if(status.equals("reject"))
+            else if(status.equals("reject"))//Instead of this, SetComment.java Rejection is used according to the new requirement
             {
-                ps=con.prepareStatement("update srsapprovedby set status='rejected' where stkid='"+eshid+"' and srsversion='"+version+"' and docno='"+docno+"'");
+                ps=con.prepareStatement("update srsapprovedby set status='rejected',datentime='"+DateString.getDate(dte.toString())+"' where stkid='"+eshid+"' and srsversion='"+version+"' and docno='"+docno+"'");
                 rs=ps.executeQuery();
             }
             

@@ -427,6 +427,80 @@ public class Project {
             return acknowledgement;
   
     }
+        
+       public static String getStatusByProjectForSummary(String pno){
+            
+            
+        Connection con=DatabaseConnection.createConnection();
+        String acknowledgement="Initial Project";
+        try {
+            System.out.println("Execution strt");
+            String version=Project.getSRSVersion(pno);
+            //PreparedStatement ps=con.prepareStatement("select a.stkid,a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+Project.getSRSVersion(pno)+"' order by priorityno asc");
+            PreparedStatement ps=con.prepareStatement("select a.stkid,a.status,a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+version+"' order by priorityno asc");
+            ResultSet rs=ps.executeQuery();
+            ps=con.prepareStatement("select a.stkid,a.status,a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+version+"' order by priorityno asc");
+            ResultSet temp=ps.executeQuery();
+            System.out.println("Execution done");
+            
+            if(!temp.next())
+                acknowledgement="Stakeholders are not assigned yet";
+            else
+            {
+            while(rs.next())
+            {
+                    String status=rs.getString("STATUS");
+                    
+                if(status!=null)
+                {    
+                   
+                    if(status.equals("rejected"))
+                    {
+                        Employee emp=Employee.getEmployee(rs.getString("STKID"));
+                        acknowledgement="Rejected by " + emp.getEmployeename()+" ("+emp.getDepartement()+")";
+                        break;
+                    }
+                    else if(status.equals("noresponse"))
+                    {   
+                        
+                        acknowledgement="Approval process at ";
+                        int tempPrio=Integer.parseInt(rs.getString("PRIORITYNO"));
+                        ps=con.prepareStatement("select * from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and a.priorityno='"+(tempPrio)+"' and a.srsversion='"+version+"'");
+                        ResultSet r=ps.executeQuery();
+                        int c=1;
+                        while(r.next() )
+                        {   if(!r.getString("STATUS").equals("noresponse"))
+                            continue;
+                            Employee emp= Employee.getEmployee(r.getString("STKID"));
+                            if(c==1)
+                            acknowledgement+=emp.getEmployeename()+" ("+emp.getDepartement()+")";
+                            else
+                            acknowledgement+=", "+emp.getEmployeename()+" ("+emp.getDepartement()+")";
+                            c++;
+                        }
+                        
+                        break;
+                    }
+                    
+                    acknowledgement="The project is approved";
+                    
+                }
+                else
+                    acknowledgement="Undefined";
+                
+                }
+            }
+            
+               
+            
+       con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+            return acknowledgement;
+  
+    }    
     
     public static Boolean getAddedStakeholders(String pno){
             

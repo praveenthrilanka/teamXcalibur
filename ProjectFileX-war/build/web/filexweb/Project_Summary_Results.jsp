@@ -83,8 +83,8 @@
                                                 %>
                                                 <tr>
                                                     <th scope="row"><% out.print(x+1); %></th>
-                                                    <td><% out.print(p.getProjectname()); %></td>
-                                                    <td><% out.print(projectStatus); %></td>
+                                                    <td><a href="Version_History_Summary.jsp?pno=<% out.print(p.getProjectno()); %>"><% out.print(p.getProjectname()); %></a></td>
+                                                    <td><% out.print(Project.getStatusByProjectForSummary(p.getProjectno())); %></td>
                                                     <td><% out.print(p.getMsdid()); %></td>
                                                     <td><% out.print(p.getPmid()); %></td>
                                                     <td><% out.print(p.getBaid()); %></td>
