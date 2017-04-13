@@ -62,7 +62,7 @@ public class ProjectControl extends HttpServlet {
                 Connection con=DatabaseConnection.createConnection();
                 System.out.println("Connection Established");
 
-                PreparedStatement ps=con.prepareStatement("insert into Project(PNAME,CREATEDDATENTIME,BAID,PMID,MSDID) values('"+pname+"','"+DateString.getDate(dte.toString())+"','"+ba+"','"+pm+"','"+msd+"')");
+                PreparedStatement ps=con.prepareStatement("insert into Project(PNAME,CREATEDDATENTIME,BAID,PMID,MSDID,STATUS) values('"+pname+"','"+DateString.getDate(dte.toString())+"','"+ba+"','"+pm+"','"+msd+"','ongoing')");
                 ps.executeQuery();
 
                 ps=con.prepareStatement("insert into notification(prono) values (PRO_SEQ.currval)");

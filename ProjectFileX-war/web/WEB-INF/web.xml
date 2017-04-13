@@ -111,6 +111,10 @@
         <servlet-name>DelProject</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.DelProject</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HoldProject</servlet-name>
+        <servlet-class>org.sampath.filex.web.actions.HoldProject</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignIn</servlet-name>
         <url-pattern>/SignIn</url-pattern>
@@ -218,6 +222,10 @@
     <servlet-mapping>
         <servlet-name>DelProject</servlet-name>
         <url-pattern>/DelProject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HoldProject</servlet-name>
+        <url-pattern>/HoldProject</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

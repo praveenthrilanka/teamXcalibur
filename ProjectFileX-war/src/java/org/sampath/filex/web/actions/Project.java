@@ -104,7 +104,7 @@ public class Project {
         Connection con=DatabaseConnection.createConnection();        
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.PMID='"+pmid+"' order by p.pno desc");
+            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.PMID='"+pmid+"' and p.status='ongoing' order by p.pno desc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             System.out.println(pmid);
@@ -155,7 +155,7 @@ public class Project {
         Connection con=DatabaseConnection.createConnection();        
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from SRSApprovedBy a,project p,employee e,srs s where s.DOCNO=a.DOCNO and p.PNO=s.PNO(+) and a.STKID=e.EMPID and a.STKID='"+stkid+"' order by p.pno desc");
+            PreparedStatement ps=con.prepareStatement("select * from SRSApprovedBy a,project p,employee e,srs s where s.DOCNO=a.DOCNO and p.PNO=s.PNO(+) and a.STKID=e.EMPID and a.STKID='"+stkid+"' and p.status='ongoing' order by p.pno desc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             System.out.println(stkid);
@@ -220,7 +220,7 @@ public class Project {
         Connection con=DatabaseConnection.createConnection();        
         try {
             System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.BAID='"+baid+"' order by p.pno desc");
+            PreparedStatement ps=con.prepareStatement("select * from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.BAID='"+baid+"' and p.status='ongoing' order by p.pno desc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done");
             Project p;
@@ -533,7 +533,7 @@ public static ArrayList<Project> getOngoingProjectByBAid(String baid){
         Connection con=DatabaseConnection.createConnection();        
         try {
 
-            PreparedStatement ps=con.prepareStatement("select p.PNO , p.PNAME , p.CREATEDDATENTIME , P.BAID , p.PMID , p.MSDID,s.DOCNO  from employee e,project p,srs s where e.EMPID=p.BAID and p.PNO=s.PNO(+) and p.BAID='"+baid+"' order by p.pno desc");
+            PreparedStatement ps=con.prepareStatement("select p.PNO , p.PNAME , p.CREATEDDATENTIME , P.BAID , p.PMID , p.MSDID,s.DOCNO  from employee e,project p,srs s where e.EMPID=p.BAID and p.PNO=s.PNO(+) and p.BAID='"+baid+"' and p.status='ongoing' order by p.pno desc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done - getOngoingProjectByBAid");
             Project p;
@@ -571,7 +571,7 @@ public static ArrayList<Project> getRejectedProjectByBAid(String baid){
         Connection con=DatabaseConnection.createConnection();        
         try {
 
-            PreparedStatement ps=con.prepareStatement("select p.PNO , p.PNAME , p.CREATEDDATENTIME , P.BAID , p.PMID , p.MSDID,s.DOCNO  from employee e,project p,srs s where e.EMPID=p.BAID and p.PNO=s.PNO(+) and p.BAID='"+baid+"' order by p.pno desc");
+            PreparedStatement ps=con.prepareStatement("select p.PNO , p.PNAME , p.CREATEDDATENTIME , P.BAID , p.PMID , p.MSDID,s.DOCNO  from employee e,project p,srs s where e.EMPID=p.BAID and p.PNO=s.PNO(+) and p.BAID='"+baid+"' and p.status='ongoing' order by p.pno desc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done - getOngoingProjectByBAid");
             Project p;
@@ -608,7 +608,7 @@ public static ArrayList<Project> getApprovedProjectByBAid(String baid){
         Connection con=DatabaseConnection.createConnection();        
         try {
 
-            PreparedStatement ps=con.prepareStatement("select p.PNO , p.PNAME , p.CREATEDDATENTIME , P.BAID , p.PMID , p.MSDID,s.DOCNO  from employee e,project p,srs s where e.EMPID=p.BAID and p.PNO=s.PNO(+) and p.BAID='"+baid+"' order by p.pno desc");
+            PreparedStatement ps=con.prepareStatement("select p.PNO , p.PNAME , p.CREATEDDATENTIME , P.BAID , p.PMID , p.MSDID,s.DOCNO  from employee e,project p,srs s where e.EMPID=p.BAID and p.PNO=s.PNO(+) and p.BAID='"+baid+"' and p.status='ongoing' order by p.pno desc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done - getOngoingProjectByBAid");
             Project p;
@@ -646,7 +646,7 @@ public static ArrayList<Project> getOngoingProjectByPMid(String pmid){
         Connection con=DatabaseConnection.createConnection();        
         try {
 
-            PreparedStatement ps=con.prepareStatement("select p.PNO , p.PNAME , p.CREATEDDATENTIME , P.BAID , p.PMID , p.MSDID,s.DOCNO  from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.PMID='"+pmid+"' order by p.pno desc");
+            PreparedStatement ps=con.prepareStatement("select p.PNO , p.PNAME , p.CREATEDDATENTIME , P.BAID , p.PMID , p.MSDID,s.DOCNO  from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.PMID='"+pmid+"' and p.status='ongoing' order by p.pno desc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done - getOngoingProjectByPMid");
             Project p;
@@ -684,7 +684,7 @@ public static ArrayList<Project> getRejectedProjectByPMid(String pmid){
         Connection con=DatabaseConnection.createConnection();        
         try {
 
-            PreparedStatement ps=con.prepareStatement("select p.PNO , p.PNAME , p.CREATEDDATENTIME , P.BAID , p.PMID , p.MSDID,s.DOCNO  from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.PMID='"+pmid+"' order by p.pno desc");
+            PreparedStatement ps=con.prepareStatement("select p.PNO , p.PNAME , p.CREATEDDATENTIME , P.BAID , p.PMID , p.MSDID,s.DOCNO  from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.PMID='"+pmid+"' and p.status='ongoing' order by p.pno desc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done - getOngoingProjectByPMid");
             Project p;
@@ -722,7 +722,7 @@ public static ArrayList<Project> getApprovedProjectByPMid(String pmid){
         Connection con=DatabaseConnection.createConnection();        
         try {
 
-            PreparedStatement ps=con.prepareStatement("select p.PNO , p.PNAME , p.CREATEDDATENTIME , P.BAID , p.PMID , p.MSDID,s.DOCNO  from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.PMID='"+pmid+"' order by p.pno desc");
+            PreparedStatement ps=con.prepareStatement("select p.PNO , p.PNAME , p.CREATEDDATENTIME , P.BAID , p.PMID , p.MSDID,s.DOCNO  from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.PMID='"+pmid+"' and p.status='ongoing' order by p.pno desc");
             ResultSet rs=ps.executeQuery();
             System.out.println("Execution done - getOngoingProjectByPMid");
             Project p;
@@ -810,4 +810,29 @@ public static ArrayList<Project> getApprovedProjectByPMid(String pmid){
                  rs.getString("MSDID"));
         
      }
+    
+    public static ArrayList<Project> getHeldProjectByPMid(String pmid){
+        ArrayList<Project> project=new ArrayList<Project>();
+        System.out.println(pmid);
+        Connection con=DatabaseConnection.createConnection();        
+        try {
+
+            PreparedStatement ps=con.prepareStatement("select p.PNO , p.PNAME , p.CREATEDDATENTIME , P.BAID , p.PMID , p.MSDID,s.DOCNO  from employee e,project p,srs s where e.EMPID=p.PMID and p.PNO=s.PNO(+) and p.status='hold' and p.PMID='"+pmid+"' order by p.pno desc");
+            ResultSet rs=ps.executeQuery();
+            System.out.println("Execution done - getOngoingProjectByPMid");
+            Project p;
+           
+            while(rs.next()){
+                p= getProjectFromRS(rs);
+                project.add(p);
+            }
+            
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something went wrong in Connection "+ex);
+        }
+        return project;
+    }
+
 }
