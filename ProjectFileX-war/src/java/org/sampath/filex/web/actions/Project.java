@@ -329,8 +329,13 @@ public class Project {
             System.out.println("Execution strt");
             String version=Project.getSRSVersion(pno);
             //PreparedStatement ps=con.prepareStatement("select a.stkid,a.status from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+Project.getSRSVersion(pno)+"' order by priorityno asc");
-            PreparedStatement ps=con.prepareStatement("select a.stkid,a.status,a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+version+"' order by priorityno asc");
+            PreparedStatement ps=con.prepareStatement("select * from srs where pno='"+pno+"'");
             ResultSet rs=ps.executeQuery();
+            if(rs.next())
+            {
+            
+            ps=con.prepareStatement("select a.stkid,a.status,a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+version+"' order by priorityno asc");
+            rs=ps.executeQuery();
             ps=con.prepareStatement("select a.stkid,a.status,a.priorityno from srsapprovedby a,srs s where s.docno=a.docno and pno='"+pno+"' and srsversion='"+version+"' order by priorityno asc");
             ResultSet temp=ps.executeQuery();
             System.out.println("Execution done");
@@ -417,7 +422,9 @@ public class Project {
                 }
             }
             
-               
+            }
+            else
+                acknowledgement="SRS is not uploaded yet";
             
        con.close();
         } catch (SQLException ex) {
