@@ -68,7 +68,7 @@
 
                 <div class="clearfix"></div>
                 <a class="btn btn-purple btn-block" data-toggle="modal" href="#ultraModal-27">Zoom</a>
-                <input  class="btn btn-warning btn-block" type="submit" value="Create Project">
+                <button  class="btn btn-warning btn-block" data-toggle="modal" data-target="#ultraModal-27" type="submit" value="Create Project">Submit</button>
                 <input  class="btn btn-warning btn-block" type="reset" value="Reset">
             </form>
         </div>                    
