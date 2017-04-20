@@ -142,7 +142,7 @@
                     <div class="col-md-3 cta-button">
                         <a href="../SetUser?pno=<% out.print(pr.getProjectno()); %>&direct=pm" class="<% out.print(arr2[c]); %>">View Project</a>
 
-                        <a data-target="#holdModel<% out.print(a); %>" data-toggle="modal" href="#" class="<% out.print(arr2[c]); %>" align="right" style="height: 40px; width: 20px;"><img src="images/pause.png" width="25px" height="25px"/></a>
+                        <a data-target="#holdModel<% out.print(a); %>" data-toggle="modal" href="#" class="<% out.print(arr2[c]); %>" style=" width: 65px;"><i class="fa fa-eye-slash icon-sm "></i></a>
                     </div>
                 </div>
             </div>
