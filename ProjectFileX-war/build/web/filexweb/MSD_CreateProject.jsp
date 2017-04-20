@@ -76,7 +76,7 @@
             <div class="modal-dialog animated zoomIn"><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                 <div class="modal-content">
                     <div class="modal-header">
-                        <center><img src="images/loading.gif" width="100px"></center>              
+                        <center><img src="images/loading.gif" width="80px"></center>              
                 </div>
             </div>
         </div>
