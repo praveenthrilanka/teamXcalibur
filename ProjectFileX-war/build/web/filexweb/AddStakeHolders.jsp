@@ -260,8 +260,8 @@
                                 </select>
                                 </td>
                                 <td>
-                                    <input type="text" name="prio_<%=i %>"  id="prio_<%= i %>" size="2"/>
-                                              <span id="req_<%=i %>" class="label label-danger"></span>                 
+                                    <input type="text" name="prio_<%=i %>"  id="prio_<%= i %>" size="2"/> <span id="req_<%=i %>" class="label label-danger"></span>
+                                                              
                                         <%
                                             }
                                             }
