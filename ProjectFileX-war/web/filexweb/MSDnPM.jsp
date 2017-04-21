@@ -8,7 +8,7 @@
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 
 <section id="main-content" class=" ">
-    <section class="wrapper" style='margin-top:50px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
+    <section class="wrapper" style='margin-top:50px;display:inline-block;width:100%;padding:15px 0 0 15px; overflow-x: hidden; overflow-y: hidden;'>
             <br/><br/><br/><br/><br/><br/><br/><br/>
         <div class="row">
             <div class="col-lg-12">
