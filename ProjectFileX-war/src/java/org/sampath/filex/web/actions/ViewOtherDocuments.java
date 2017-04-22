@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
- 
 @WebServlet("/ViewOtherDocuments")
 public class ViewOtherDocuments extends HttpServlet {
 
@@ -36,57 +35,49 @@ public class ViewOtherDocuments extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
-protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/pdf");
-        //PrintWriter out = response.getWriter();
-        response.setHeader("Content-disposition","inline; filename=SRSTest.pdf" );
-        
-//        String srsid=request.getParameter("srsid");
-//        String pno=request.getParameter("pno");
 
-        HttpSession session=request.getSession();
-        String pno=(String)session.getAttribute("pno");
-        String docid=request.getParameter("docno");
-        
-        System.out.println(docid+"/"+pno);
-        
-        Connection con=DatabaseConnection.createConnection();
-        
+        response.setHeader("Content-disposition", "inline; filename=SRSTest.pdf");
+
+        HttpSession session = request.getSession();
+        String pno = (String) session.getAttribute("pno");
+        String docid = request.getParameter("docno");
+
+        Connection con = DatabaseConnection.createConnection();
+
         try {
-   
-        //InputStream inputStream = null; // input stream of the upload file
-        ResultSet rset=null;
-        ServletOutputStream os = response.getOutputStream();
-        System.out.println("SOS done");
-        PreparedStatement pstmt = con.prepareStatement("Select doc from otherdocument where pno='"+pno+"' and docno= '"+docid+"' ");
-        //pstmt.setString(1, bookId.trim());
-        rset = pstmt.executeQuery();
-        System.out.println("Query execution done");
-        if (rset.next()){
+
+            // input stream of the upload file
+            ResultSet rset = null;
+            ServletOutputStream os = response.getOutputStream();
+
+            PreparedStatement pstmt = con.prepareStatement("Select doc from otherdocument where pno='" + pno + "' and docno= '" + docid + "' ");
+
+            rset = pstmt.executeQuery();
+
+            if (rset.next()) {
                 Blob blob = rset.getBlob("doc");
                 InputStream inputStream = blob.getBinaryStream();
                 //OutputStream outputStream = new FileOutputStream(filePath);
- 
+
                 int bytesRead = -1;
                 byte[] buffer = new byte[4096];
                 while ((bytesRead = inputStream.read(buffer)) != -1) {
                     os.write(buffer, 0, bytesRead);
                 }
 
-        System.out.println("File Output is done");
-        //System.out.println(rset.getBytes("srs"));
-        }
-        else
-            System.out.println("File read faild");
-        
-            
+            } else {
+                System.out.println("File read faild");
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection "+ex);
+            System.out.println("Something went wrong in Connection " + ex);
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

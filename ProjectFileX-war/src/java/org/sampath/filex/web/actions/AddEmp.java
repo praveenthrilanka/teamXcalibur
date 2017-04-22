@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 public class AddEmp extends HttpServlet {
 
     /**
@@ -41,14 +40,12 @@ public class AddEmp extends HttpServlet {
         String ba = request.getParameter("ba");
         String stk = request.getParameter("stk");
         String email = request.getParameter("email");
-        String mail=null;
-        
-        System.out.println("YOUR ID IS"+id+"4654"+name);
+        String mail = null;
+
         String pw = EncryptPassword.cryptWithMD5(id);
-        System.out.println(pw);
+
         try {
             Connection con = DatabaseConnection.createConnection();
-            System.out.println("Connection Established");
 
             if ("y".equals(msd) && "y".equals(ba) || "y".equals(msd) && "y".equals(stk) || "y".equals(pm) && "y".equals(ba) || "y".equals(pm) && "y".equals(stk) || "y".equals(ba) && "y".equals(stk) || "y".equals(msd) && "y".equals(pm) && "y".equals(ba) || "y".equals(msd) && "y".equals(pm) && "y".equals(stk) || "y".equals(pm) && "y".equals(ba) && "y".equals(stk) || "y".equals(msd) && "y".equals(ba) && "y".equals(stk) || "y".equals(msd) && "y".equals(pm) && "y".equals(ba) && "y".equals(stk)) {
                 con.close();
@@ -72,19 +69,16 @@ public class AddEmp extends HttpServlet {
                 ps.executeQuery();
             }
 
-            System.out.println("Insert Employee");
             con.close();
-              mail  = "Hello, "+name+""
-                      + "\nWe are pleased to have you as a user of 'FileX',"
-                      + "the Online Document Sharing and Approval System of Sampath Bank"
-                      + " PLC.\n"
-                      + "\nPlease use your username as the password in your initial login.\n"
-                      + "We recommend you to change your password to ensure the security of your profile.";
-                     
-                    
-            
-            Mail.sendmail(email, "Welcome to FileX",mail);
-            
+            mail = "Hello, " + name + ""
+                    + "\nWe are pleased to have you as a user of 'FileX',"
+                    + "the Online Document Sharing and Approval System of Sampath Bank"
+                    + " PLC.\n"
+                    + "\nPlease use your username as the password in your initial login.\n"
+                    + "We recommend you to change your password to ensure the security of your profile.";
+
+            Mail.sendmail(email, "Welcome to FileX", mail);
+
             response.sendRedirect("filexweb/message.jsp?message=User added successfully.!");
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);

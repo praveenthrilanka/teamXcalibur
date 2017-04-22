@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 public class SetComment extends HttpServlet {
 
     /**
@@ -43,40 +42,34 @@ public class SetComment extends HttpServlet {
         String srsid = (String) session.getAttribute("srsid");
         String eid = (String) session.getAttribute("eid");
         String notifino = null;
-        
-        
 
         try {
             Connection con = DatabaseConnection.createConnection();
             //This is for rejection process
-            if(request.getParameter("info")!=null)
-            {   
-                if(request.getParameter("info").equals("reject"))
-                {
-                    System.out.print("REJECT SUCCESSFULLy");
-                    PreparedStatement p=con.prepareStatement("update srsapprovedby set status='rejected',datentime='"+DateString.getDate(date.toString())+"' where stkid='"+eid+"' and srsversion='"+Project.getSRSVersionByDOCID(srsid)+"' and docno='"+srsid+"'");
+            if (request.getParameter("info") != null) {
+                if (request.getParameter("info").equals("reject")) {
+                    PreparedStatement p = con.prepareStatement("update srsapprovedby set status='rejected',datentime='" + DateString.getDate(date.toString()) + "' where stkid='" + eid + "' and srsversion='" + Project.getSRSVersionByDOCID(srsid) + "' and docno='" + srsid + "'");
                     p.executeQuery();
                 }
             }
-            
+
             String datentime = DateString.getDate(date.toString());
-            
-            String editedString = comment.replace("'","''");
-            
+
+            String editedString = comment.replace("'", "''");
+
             PreparedStatement ps = con.prepareStatement("insert into comments values(emp_sequence.nextval,'" + editedString + "','" + datentime + "','" + session.getAttribute("eid") + "','" + srsid + "')");
             ps.executeQuery();
-            System.out.println("Insert first Done ");
+
             //NOTIFICATION
             ps = con.prepareStatement("insert into notification(comno) values (EMP_SEQUENCE.currval)");
             ps.executeQuery();
-            System.out.println("Insert second Done ");
+
             ps = con.prepareStatement("SELECT notification_seq.currval as NOTIFINO FROM DUAL");
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 notifino = rs.getString("NOTIFINO");
             }
             //NOTIFICATION
-            System.out.println("Insert Done " + notifino);
 
             Notification.setNotification(notifino, srsid, eid);
 

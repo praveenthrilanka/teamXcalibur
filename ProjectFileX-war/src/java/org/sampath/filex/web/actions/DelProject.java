@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 @WebServlet(name = "DelProject", urlPatterns = {"/DelProject"})
 public class DelProject extends HttpServlet {
 
@@ -35,75 +34,43 @@ public class DelProject extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       System.out.println("________________");
-      
-            String adminpw=request.getParameter("adminpw");   
-            String pno=request.getParameter("pno");        
 
-            
-            System.out.println("wooooooooooooooork"+adminpw);
-            
-        if(adminpw==null)
-     {
-         response.sendRedirect("filexweb/failmessage.jsp?failmessage=Admin password should ot be null !");
-         
-     }
-     
-     else
-      
-     {
-      
-            adminpw=EncryptPassword.cryptWithMD5(adminpw);
-            System.out.println(adminpw);
-            
-            
-            try{
-                Connection con=DatabaseConnection.createConnection();
-                System.out.println("Connection Establishedoooooo");
-                
-                
-                PreparedStatement ps=con.prepareStatement("select * from employee where empid='ADMIN'");
-                ResultSet rs=ps.executeQuery();
-                
-                
-                if(rs.next()){
-                      System.out.println("Connection true");
+        String adminpw = request.getParameter("adminpw");
+        String pno = request.getParameter("pno");
 
-                    
-                    if(rs.getString("password").trim().equals(adminpw.trim()))
-                    {
-                        
-                           System.out.println("Connection trueeeeeeeeeeee");
+        if (adminpw == null) {
+            response.sendRedirect("filexweb/failmessage.jsp?failmessage=Admin password should ot be null !");
 
-                        PreparedStatement ps1=con.prepareStatement("Delete from Project where pno='"+pno+"'");
+        } else {
+
+            adminpw = EncryptPassword.cryptWithMD5(adminpw);
+
+            try {
+                Connection con = DatabaseConnection.createConnection();
+
+                PreparedStatement ps = con.prepareStatement("select * from employee where empid='ADMIN'");
+                ResultSet rs = ps.executeQuery();
+
+                if (rs.next()) {
+
+                    if (rs.getString("password").trim().equals(adminpw.trim())) {
+
+                        PreparedStatement ps1 = con.prepareStatement("Delete from Project where pno='" + pno + "'");
                         ps1.executeQuery();
-                          System.out.println("pno"+pno);
 
-                        
-                        System.out.println("Query Works");
-                        
-                        
                         response.sendRedirect("filexweb/message.jsp?message=project deleted successfully !");
-                        
-                        
-                    }
-                    else
-                    {
+
+                    } else {
                         response.sendRedirect("filexweb/failmessage.jsp?failmessage=Incorrect admin password ! Try again");
-                        
-                        
+
                     }
                 }
-                
-                
-                
-                
-            }   catch (SQLException ex) {
+
+            } catch (SQLException ex) {
                 Logger.getLogger(DelProject.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-     }
-    
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

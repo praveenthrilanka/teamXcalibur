@@ -32,18 +32,15 @@ public class NotificationHandling extends HttpServlet {
         String direct = request.getParameter("direct");
         String notifino = request.getParameter("notifino");
 
-        System.out.println(empid + "_____" + status);
         try {
             Connection con = DatabaseConnection.createConnection();
-            System.out.println("Connection Established");
 
             if (status.equals("viewNoti")) {
-                System.out.println("Connection Established  123");
-                //PreparedStatement ps = con.prepareStatement("update notifiedlist set STATUS='seen' where EMPID='it011'");
+
                 PreparedStatement statement = con.prepareStatement("update notifiedlist set STATUS='seen' where EMPID='" + empid + "' and NOTIFINO='" + notifino + "'");
 
                 statement.executeUpdate();
-                System.out.println("Notification Status Changed");
+
                 con.close();
             }
 

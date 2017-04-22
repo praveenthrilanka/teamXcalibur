@@ -89,7 +89,7 @@
                 }
                 String srsid = (String) session.getAttribute("srsid");
                 
-                String [] collorarray={"unread status-available"," status-away","status-busy","status-offline"," status-available"};
+                //String [] collorarray={"unread status-available"," status-away","status-busy","status-offline"," status-available"};
 
                 System.out.println("Output test");
                 ArrayList<Comment> comments = Comment.getComment(srsid);
@@ -99,11 +99,17 @@
                 for (int x = 0; x < comments.size(); x++) {
                     Comment c;
                     c = comments.get(x);
-                    a%=5;
+                    //a%=5;
+                    String commentColor;
+                    if(session.getAttribute("eid").equals(c.getEmployeeid()))
+                        commentColor=" status-away";
+                    else
+                        commentColor="unread status-available";
+
             %>
 
 
-            <li class="<% out.print(collorarray[a]); %>">
+            <li class="<% out.print(commentColor); %>">
                 <a href="javascript:;">
                     <div class="user-img">
                         <img src="../GetIconByID?id=<%out.print(c.getEmployeeid());%>" alt="user-image" style="width:50px;height:50px;" class="img-circle img-inline">

@@ -40,7 +40,6 @@ public class HoldProject extends HttpServlet {
 
         try {
             Connection con = DatabaseConnection.createConnection();
-            System.out.println("Connection Established");
 
             if (status.equals("hold")) {
                 PreparedStatement ps = con.prepareStatement("update project set status='hold' where pno='" + pno + "'");
@@ -55,7 +54,6 @@ public class HoldProject extends HttpServlet {
                 response.sendRedirect("filexweb/PM_Projects.jsp?scs=continue");
             }
 
-            System.out.println("User Deleted");
             
 
         } catch (SQLException ex) {

@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 public class SRSApproval extends HttpServlet {
 
     /**
@@ -34,81 +33,75 @@ public class SRSApproval extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       HttpSession session=request.getSession();
-       String pno=(String)session.getAttribute("pno");
-       String eshid=(String)session.getAttribute("eid");
-       String status=request.getParameter("status");
-       Project p=Project.getProject(pno);
-       Date dte=new Date();
-       String date=DateString.getDate(dte.toString());
-       
+        HttpSession session = request.getSession();
+        String pno = (String) session.getAttribute("pno");
+        String eshid = (String) session.getAttribute("eid");
+        String status = request.getParameter("status");
+        Project p = Project.getProject(pno);
+        Date dte = new Date();
+        String date = DateString.getDate(dte.toString());
+
         try {
-            Connection con=DatabaseConnection.createConnection();
-            System.out.println("Connection Established");
-            
-            PreparedStatement ps=con.prepareStatement("select docno from srs where pno='"+pno+"'");
-            ResultSet rs=ps.executeQuery();
-            String docno=null;
-            if(rs.next())
-                docno=rs.getString("DOCNO");
-            String version=Project.getSRSVersionByDOCID(docno);
-            
-            if(status.equals("approve"))
-            {
-                ps=con.prepareStatement("update srsapprovedby set status='approved',datentime='"+date+"' where stkid='"+eshid+"' and srsversion='"+version+"' and docno='"+docno+"'");
+            Connection con = DatabaseConnection.createConnection();
+
+            PreparedStatement ps = con.prepareStatement("select docno from srs where pno='" + pno + "'");
+            ResultSet rs = ps.executeQuery();
+            String docno = null;
+            if (rs.next()) {
+                docno = rs.getString("DOCNO");
+            }
+            String version = Project.getSRSVersionByDOCID(docno);
+
+            if (status.equals("approve")) {
+                ps = con.prepareStatement("update srsapprovedby set status='approved',datentime='" + date + "' where stkid='" + eshid + "' and srsversion='" + version + "' and docno='" + docno + "'");
                 ps.executeQuery();
-                
-                ps=con.prepareStatement("select priorityno from srsapprovedby where stkid='"+eshid+"' and srsversion='"+version+"' and docno='"+docno+"'");
-                rs=ps.executeQuery();
-                
-                if(rs.next())
-                {
-                    String currentPriority=rs.getString("PRIORITYNO");
-                    ps=con.prepareStatement("select status from srsapprovedby where priorityno='"+currentPriority+"' and srsversion='"+version+"' and docno='"+docno+"'");
-                    rs=ps.executeQuery();
-                    boolean approval=false;
-                    while(rs.next())
-                    {   approval=true;
-                        if(!rs.getString("STATUS").equals("approved"))
-                        {
-                            approval=false;
+
+                ps = con.prepareStatement("select priorityno from srsapprovedby where stkid='" + eshid + "' and srsversion='" + version + "' and docno='" + docno + "'");
+                rs = ps.executeQuery();
+
+                if (rs.next()) {
+                    String currentPriority = rs.getString("PRIORITYNO");
+                    ps = con.prepareStatement("select status from srsapprovedby where priorityno='" + currentPriority + "' and srsversion='" + version + "' and docno='" + docno + "'");
+                    rs = ps.executeQuery();
+                    boolean approval = false;
+                    while (rs.next()) {
+                        approval = true;
+                        if (!rs.getString("STATUS").equals("approved")) {
+                            approval = false;
                             break;
                         }
                     }
-                    
-                    if(approval)
-                    {
-                    
-                        String mail = "You have been assigned to the project '"+p.getProjectname()+"'.\n\n"
-                                    + "Please log in to FileX system to refer the document and feel free to "
-                                    + "approve/reject document with your suggestions.\n\n"
-                                    + "Thank You.";
-                        
-                        String emails=Stakeholder.getStakeholdersEmail(pno, version, (Integer.parseInt(currentPriority)+1));
-                        System.out.println("EMAILS ----"+emails);
-                        Mail.sendmail(emails, "Kind Reminder",mail);
-                    
-                         ps=con.prepareStatement("update srsapprovedby set assigneddate='"+date+"' where priorityno='"+(Integer.parseInt(currentPriority)+1)+"' and srsversion='"+version+"' and docno='"+docno+"'");
-                         ps.executeQuery();
-                    }
-                
-                }
-                
 
-            }
-            else if(status.equals("reject"))//Instead of this, SetComment.java Rejection is used according to the new requirement
+                    if (approval) {
+
+                        String mail = "You have been assigned to the project '" + p.getProjectname() + "'.\n\n"
+                                + "Please log in to FileX system to refer the document and feel free to "
+                                + "approve/reject document with your suggestions.\n\n"
+                                + "Thank You.";
+
+                        String emails = Stakeholder.getStakeholdersEmail(pno, version, (Integer.parseInt(currentPriority) + 1));
+
+                        Mail.sendmail(emails, "Kind Reminder", mail);
+
+                        ps = con.prepareStatement("update srsapprovedby set assigneddate='" + date + "' where priorityno='" + (Integer.parseInt(currentPriority) + 1) + "' and srsversion='" + version + "' and docno='" + docno + "'");
+                        ps.executeQuery();
+                    }
+
+                }
+
+            } else if (status.equals("reject"))//Instead of this, SetComment.java Rejection is used according to the new requirement
             {
-                ps=con.prepareStatement("update srsapprovedby set status='rejected',datentime='"+DateString.getDate(dte.toString())+"' where stkid='"+eshid+"' and srsversion='"+version+"' and docno='"+docno+"'");
-                rs=ps.executeQuery();
+                ps = con.prepareStatement("update srsapprovedby set status='rejected',datentime='" + DateString.getDate(dte.toString()) + "' where stkid='" + eshid + "' and srsversion='" + version + "' and docno='" + docno + "'");
+                rs = ps.executeQuery();
             }
-            
+
             con.close();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection "+ex);
+            System.out.println("Something went wrong in Connection " + ex);
         }
-        
+
         response.sendRedirect("filexweb/SubWall.jsp");
     }
 

@@ -13,23 +13,24 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class DateString {
-    
-    public static String getDate(String date){
+
+    public static String getDate(String date) {
 
         String time;
-        if(Integer.parseInt(date.substring(11, 13))>12)
-            time=Integer.toString(Integer.parseInt(date.substring(11, 13))-12)+(date.substring(13, 19))+" PM";
-        else if(Integer.parseInt(date.substring(11, 13))==00)
-            time="12"+(date.substring(13, 19))+" AM";
-        else 
-            time=date.substring(11, 19)+" AM";
-        
-        date=date.substring(4, 11)+date.substring(24, 28)+" at "+time;
-        
+        if (Integer.parseInt(date.substring(11, 13)) > 12) {
+            time = Integer.toString(Integer.parseInt(date.substring(11, 13)) - 12) + (date.substring(13, 19)) + " PM";
+        } else if (Integer.parseInt(date.substring(11, 13)) == 00) {
+            time = "12" + (date.substring(13, 19)) + " AM";
+        } else {
+            time = date.substring(11, 19) + " AM";
+        }
+
+        date = date.substring(4, 11) + date.substring(24, 28) + " at " + time;
+
         return date;
     }
+
     /*
     public static String compareDate(String first,String second)
     {
@@ -117,46 +118,40 @@ public class DateString {
         }
         return null;
     }
-*/
- 
-    public static String getDateRange(String range)
-    {
-        String array[]={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
-        String dateRange="";
-        String drange[]=range.split(" - ");//splits the string based on string;
-        String temp[]=drange[0].split("/");
-        
-        int month=Integer.parseInt(temp[0]);
-        dateRange+=array[month-1]+" "+temp[1]+" "+temp[2]+",";
-        
-        temp=drange[1].split("/");
-        month=Integer.parseInt(temp[0]);
-        dateRange+=array[month-1]+" "+temp[1]+" "+temp[2];
-        
+     */
+
+    public static String getDateRange(String range) {
+        String array[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        String dateRange = "";
+        String drange[] = range.split(" - ");//splits the string based on string;
+        String temp[] = drange[0].split("/");
+
+        int month = Integer.parseInt(temp[0]);
+        dateRange += array[month - 1] + " " + temp[1] + " " + temp[2] + ",";
+
+        temp = drange[1].split("/");
+        month = Integer.parseInt(temp[0]);
+        dateRange += array[month - 1] + " " + temp[1] + " " + temp[2];
+
         return dateRange;
     }
-    
-    public static boolean compareDate(String compare,String date)
-    {
+
+    public static boolean compareDate(String compare, String date) {
         try {
             DateFormat format = new SimpleDateFormat("MMM dd yyyy", Locale.ENGLISH);
             Date tdate = format.parse(date);
-            
+
             String dateRange[] = DateString.getDateRange(compare).split(",");
-            System.out.println(dateRange[0]+"<<------>>"+dateRange[1]);
-            System.out.println(tdate);
-            Date leftdate=format.parse(dateRange[0]);
-            Date rightdate=format.parse(dateRange[1]);
-            
-            System.out.println("THIS IS DATE RANGE\n "+leftdate.toString()+"++"+rightdate.toString());
-            
+
+            Date leftdate = format.parse(dateRange[0]);
+            Date rightdate = format.parse(dateRange[1]);
+
             return !(tdate.before(leftdate) || tdate.after(rightdate));
-            
-            
+
         } catch (ParseException ex) {
             Logger.getLogger(DateString.class.getName()).log(Level.SEVERE, null, ex);
         }
-     
+
         return false;
     }
 }

@@ -47,20 +47,17 @@ public class AddNewDepartment extends HttpServlet {
            if(depid!= null && depname!= null){
            PreparedStatement statement = con.prepareStatement("INSERT INTO department(depid, depnme ) values (?,?)");
            statement.setString(1,depid);
-           System.out.println("set 1 done");
            statement.setString(2,depname);
-           System.out.println("set 2 done");
            
            int row = statement.executeUpdate();
             if (row > 0) 
               {
-                System.out.println("Department saved into database");
                 con.close();
                 response.sendRedirect("filexweb/Admin_add_user.jsp");
               } 
            } 
             else{
-                  System.out.println("No Department Entered !");  
+               System.out.println("No Department Entered !"); 
                 }
            
         }catch(SQLException ex){

@@ -22,7 +22,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 public class GetIconByID extends HttpServlet {
 
     /**
@@ -39,58 +38,51 @@ public class GetIconByID extends HttpServlet {
 
         super.init();
 
-        String empid=request.getParameter("id");
-        
+        String empid = request.getParameter("id");
+
         response.setContentType("image/jpg");
-        //PrintWriter out = response.getWriter();
-        response.setHeader("Content-disposition","inline; filename=Logo.jpg" );
-        
-        
-        
-        Connection con=DatabaseConnection.createConnection();
-        
+        response.setHeader("Content-disposition", "inline; filename=Logo.jpg");
+
+        Connection con = DatabaseConnection.createConnection();
+
         try {
-   
-        //InputStream inputStream = null; // input stream of the upload file
-        ResultSet rset=null;
-        ServletOutputStream os = response.getOutputStream();
-        System.out.println("SOS done");
-        PreparedStatement pstmt = con.prepareStatement("Select PHOTO from employee where empid='"+empid+"'");
-        //pstmt.setString(1, bookId.trim());
-        rset = pstmt.executeQuery();
-        System.out.println("Query execution done");
-        if (rset.next()){
-               
+
+            ResultSet rset = null;
+            ServletOutputStream os = response.getOutputStream();
+
+            PreparedStatement pstmt = con.prepareStatement("Select PHOTO from employee where empid='" + empid + "'");
+
+            rset = pstmt.executeQuery();
+
+            if (rset.next()) {
+
                 Blob blob = rset.getBlob("photo");
-                if(blob==null)
-                    response.sendRedirect("filexweb/images/user/user.png"); 
-                else
+                if (blob == null) {
+                    response.sendRedirect("filexweb/images/user/user.png");
+                } else {
                     System.out.println("NOT NULL");
-                try{
-                InputStream inputStream = blob.getBinaryStream();
-                //OutputStream outputStream = new FileOutputStream(filePath);
-                
-                int bytesRead = -1;
-                byte[] buffer = new byte[4096];
-                while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    os.write(buffer, 0, bytesRead);
                 }
+                try {
+                    InputStream inputStream = blob.getBinaryStream();
+
+                    int bytesRead = -1;
+                    byte[] buffer = new byte[4096];
+                    while ((bytesRead = inputStream.read(buffer)) != -1) {
+                        os.write(buffer, 0, bytesRead);
+                    }
+                } catch (NullPointerException ex) {
+                    System.out.println("FOUND EXCEPTION");
+
                 }
-                catch(NullPointerException ex)
-                {
-                System.out.println("FOUND EXCEPTION");
-                //InputStream is = new BufferedInputStream(new FileInputStream("user.png"));
-                }
-        }
-        else
-            System.out.println("File read faild");
-        
-            
+            } else {
+                System.out.println("File read faild");
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection "+ex);
+            System.out.println("Something went wrong in Connection " + ex);
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

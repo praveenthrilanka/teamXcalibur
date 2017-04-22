@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 public class EditUser extends HttpServlet {
 
     /**
@@ -41,11 +40,9 @@ public class EditUser extends HttpServlet {
         String email = request.getParameter("email");
 
         String pw = EncryptPassword.cryptWithMD5(id);
-        System.out.println(pw);
-        
+
         try {
             Connection con = DatabaseConnection.createConnection();
-            System.out.println("Connection Established");
 
             if ("y".equals(msd) && "y".equals(ba) || "y".equals(msd) && "y".equals(stk) || "y".equals(pm) && "y".equals(ba) || "y".equals(pm) && "y".equals(stk) || "y".equals(ba) && "y".equals(stk) || "y".equals(msd) && "y".equals(pm) && "y".equals(ba) || "y".equals(msd) && "y".equals(pm) && "y".equals(stk) || "y".equals(pm) && "y".equals(ba) && "y".equals(stk) || "y".equals(msd) && "y".equals(ba) && "y".equals(stk) || "y".equals(msd) && "y".equals(pm) && "y".equals(ba) && "y".equals(stk)) {
                 con.close();
@@ -53,23 +50,22 @@ public class EditUser extends HttpServlet {
             }
 
             if ("y".equals(msd) && "y".equals(pm)) {
-                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='"+name+"',PASSWORD='"+pw+"',DEPID='"+dept+"',BA='n',PM='y',MSD='y',EXTSH='n',EMAIL='"+email+"' where EMPID='"+id+"'");
+                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='" + name + "',PASSWORD='" + pw + "',DEPID='" + dept + "',BA='n',PM='y',MSD='y',EXTSH='n',EMAIL='" + email + "' where EMPID='" + id + "'");
                 ps.executeQuery();
             } else if ("y".equals(msd)) {
-                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='"+name+"',PASSWORD='"+pw+"',DEPID='"+dept+"',BA='n',PM='n',MSD='y',EXTSH='n',EMAIL='"+email+"' where EMPID='"+id+"'");
+                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='" + name + "',PASSWORD='" + pw + "',DEPID='" + dept + "',BA='n',PM='n',MSD='y',EXTSH='n',EMAIL='" + email + "' where EMPID='" + id + "'");
                 ps.executeQuery();
             } else if ("y".equals(pm)) {
-                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='"+name+"',PASSWORD='"+pw+"',DEPID='"+dept+"',BA='n',PM='y',MSD='n',EXTSH='n',EMAIL='"+email+"' where EMPID='"+id+"'");
+                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='" + name + "',PASSWORD='" + pw + "',DEPID='" + dept + "',BA='n',PM='y',MSD='n',EXTSH='n',EMAIL='" + email + "' where EMPID='" + id + "'");
                 ps.executeQuery();
             } else if ("y".equals(ba)) {
-                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='"+name+"',PASSWORD='"+pw+"',DEPID='"+dept+"',BA='y',PM='n',MSD='n',EXTSH='n',EMAIL='"+email+"' where EMPID='"+id+"'");
+                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='" + name + "',PASSWORD='" + pw + "',DEPID='" + dept + "',BA='y',PM='n',MSD='n',EXTSH='n',EMAIL='" + email + "' where EMPID='" + id + "'");
                 ps.executeQuery();
             } else if ("y".equals(stk)) {
-                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='"+name+"',PASSWORD='"+pw+"',DEPID='"+dept+"',BA='n',PM='n',MSD='n',EXTSH='y',EMAIL='"+email+"' where EMPID='"+id+"'");
+                PreparedStatement ps = con.prepareStatement("update employee set EMPNAME='" + name + "',PASSWORD='" + pw + "',DEPID='" + dept + "',BA='n',PM='n',MSD='n',EXTSH='y',EMAIL='" + email + "' where EMPID='" + id + "'");
                 ps.executeQuery();
             }
 
-            System.out.println("Insert Employee");
             con.close();
             response.sendRedirect("filexweb/message.jsp?message=User Updated successfully.!");
         } catch (SQLException ex) {

@@ -13,22 +13,20 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class SRS {
 
-    
     private String pno;
     private String srsversion;
     private String change;
     private String date;
-    
+
     public SRS(String pno, String srsversion, String change, String date) {
         this.pno = pno;
         this.srsversion = srsversion;
         this.change = change;
         this.date = date;
     }
-    
+
     public String getPno() {
         return pno;
     }
@@ -61,113 +59,96 @@ public class SRS {
         this.date = date;
     }
 
+    public static ArrayList<SRS> getSRSDetails(String pno) {
+        ArrayList<SRS> srsdetails = new ArrayList<SRS>();
 
-  
-    
-    
-      
-    public static ArrayList<SRS> getSRSDetails(String pno){
-        ArrayList<SRS> srsdetails=new ArrayList<SRS>();
-
-        Connection con=DatabaseConnection.createConnection();
+        Connection con = DatabaseConnection.createConnection();
         try {
-            System.out.println("Execution strt");
-            PreparedStatement ps=con.prepareStatement("select v.docno,v.srsversion,v.changes,v.modifieddate from versionhistory v,srs s \n" +
-                                                      "where v.docno=s.docno and s.pno='"+pno+"' order by v.srsversion desc");
-            ResultSet rs=ps.executeQuery();
-            System.out.println("Execution done");
+            PreparedStatement ps = con.prepareStatement("select v.docno,v.srsversion,v.changes,v.modifieddate from versionhistory v,srs s \n"
+                    + "where v.docno=s.docno and s.pno='" + pno + "' order by v.srsversion desc");
+            ResultSet rs = ps.executeQuery();
             SRS s;
-            
-            while(rs.next()){
-                s= getSRSDetailsFromRS(rs);
+
+            while (rs.next()) {
+                s = getSRSDetailsFromRS(rs);
                 srsdetails.add(s);
             }
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection "+ex);
+            System.out.println("Something went wrong in Connection " + ex);
         }
         return srsdetails;
     }
- 
+
     public static SRS getSRSDetailsFromRS(ResultSet rs) throws SQLException {
-         return new SRS(
-                 rs.getString("DOCNO"),
-                 rs.getString("SRSVERSION"),
-                 rs.getString("CHANGES"),
-                 rs.getString("MODIFIEDDATE"));
-        
-     } 
-    
-    public static String getSRSStatus(String pno,String eid){
-        
-        String status=null;
+        return new SRS(
+                rs.getString("DOCNO"),
+                rs.getString("SRSVERSION"),
+                rs.getString("CHANGES"),
+                rs.getString("MODIFIEDDATE"));
+
+    }
+
+    public static String getSRSStatus(String pno, String eid) {
+
+        String status = null;
         try {
-                Connection con=DatabaseConnection.createConnection();
-                System.out.println("Connection Established");
-                
-                PreparedStatement ps=con.prepareStatement("select a.status from srs s,project p,srsapprovedby a where s.pno=p.pno and a.docno=s.docno and p.pno="+pno+" and a.stkid='"+eid+"' and a.srsversion='"+Project.getSRSVersion(pno)+"'");
-                ResultSet rs=ps.executeQuery();
-                
-                if(rs.next())
-                    status=rs.getString("STATUS");
+            Connection con = DatabaseConnection.createConnection();
 
-                
+            PreparedStatement ps = con.prepareStatement("select a.status from srs s,project p,srsapprovedby a where s.pno=p.pno and a.docno=s.docno and p.pno=" + pno + " and a.stkid='" + eid + "' and a.srsversion='" + Project.getSRSVersion(pno) + "'");
+            ResultSet rs = ps.executeQuery();
 
-                con.close();
-            
+            if (rs.next()) {
+                status = rs.getString("STATUS");
+            }
+
+            con.close();
+
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection "+ex);
+            System.out.println("Something went wrong in Connection " + ex);
         }
-        
+
         return status;
     }
-    
-    public static String getProjectStatusByStakeholder(String pno){
-     
-        String maxSrs = Project.getSRSVersion(pno);
-        String status = null ;
-        System.out.println(pno+"////////********///////******////////*/////////*****////"+maxSrs);
-        
-        
-        try {
-                Connection con=DatabaseConnection.createConnection();
-                System.out.println("Connection Established");
 
-                PreparedStatement ps=con.prepareStatement("select a.status from srs s,srsapprovedby a where a.docno=s.docno and s.pno="+pno+" and a.srsversion='"+maxSrs+"' order by a.priorityno asc");
-                ResultSet rs=ps.executeQuery();
-                
-                while(rs.next())
-                {
-                    if(rs.getString("STATUS")!=null)
-                    {
-                        String tempstatus=rs.getString("STATUS");
-                        if(tempstatus.equals("noresponse"))
-                        {
-                            status = "ongoing";
-                            break;
-                        }
-                        else if(tempstatus.equals("rejected")){
-                            status = "rejected"; 
-                            break;
-                        }
-                        else{
-                            status =  "approved";
-                        }
+    public static String getProjectStatusByStakeholder(String pno) {
+
+        String maxSrs = Project.getSRSVersion(pno);
+        String status = null;
+
+        try {
+            Connection con = DatabaseConnection.createConnection();
+
+            PreparedStatement ps = con.prepareStatement("select a.status from srs s,srsapprovedby a where a.docno=s.docno and s.pno=" + pno + " and a.srsversion='" + maxSrs + "' order by a.priorityno asc");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getString("STATUS") != null) {
+                    String tempstatus = rs.getString("STATUS");
+                    if (tempstatus.equals("noresponse")) {
+                        status = "ongoing";
+                        break;
+                    } else if (tempstatus.equals("rejected")) {
+                        status = "rejected";
+                        break;
+                    } else {
+                        status = "approved";
                     }
-                    else
-                        status="undefined";
-                            
+                } else {
+                    status = "undefined";
                 }
 
-                con.close();
-            
+            }
+
+            con.close();
+
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection "+ex);
+            System.out.println("Something went wrong in Connection " + ex);
         }
         return status;
     }
-    
+
 }

@@ -36,15 +36,13 @@ public class DeleteEmp extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("id");
-       
+
         try {
             Connection con = DatabaseConnection.createConnection();
-            System.out.println("Connection Established");
 
-                PreparedStatement ps = con.prepareStatement("update employee set password='' where empid='"+id+"'");
-                ps.executeQuery();   
+            PreparedStatement ps = con.prepareStatement("update employee set password='' where empid='" + id + "'");
+            ps.executeQuery();
 
-            System.out.println("User Deleted");
             con.close();
             response.sendRedirect("filexweb/message.jsp?message=User deleted successfully.!");
         } catch (SQLException ex) {

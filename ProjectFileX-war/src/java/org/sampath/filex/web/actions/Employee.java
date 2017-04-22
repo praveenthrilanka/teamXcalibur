@@ -15,7 +15,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static org.sampath.filex.web.actions.Employee.getEmployeeFromRS;
 
-
 public class Employee {
 
     private String employeeid;
@@ -94,14 +93,11 @@ public class Employee {
 
     public static ArrayList<Employee> getEmployee() {
         ArrayList<Employee> employee = new ArrayList<Employee>();
-//        FileControll fc=new FileControll();
-//        System.out.println("THIS IS FC.SRSID"+fc.srsid);
         Connection con = DatabaseConnection.createConnection();
         try {
-            System.out.println("Execution strt");
+
             PreparedStatement ps = con.prepareStatement("select * from employee e,department d where e.depid=d.depid and password is not null");
             ResultSet rs = ps.executeQuery();
-            System.out.println("Execution done");
             Employee e;
 
             while (rs.next()) {
@@ -150,10 +146,9 @@ public class Employee {
         Employee employee = null;
         Connection con = DatabaseConnection.createConnection();
         try {
-            System.out.println("Execution strt");
+
             PreparedStatement ps = con.prepareStatement("select * from employee e,department d where e.depid=d.depid and e.empid='" + eid + "'");
             ResultSet rs = ps.executeQuery();
-            System.out.println("Execution done");
 
             if (rs.next()) {
                 employee = getEmployeeFromRS(rs);
@@ -171,10 +166,10 @@ public class Employee {
         ArrayList<Employee> employee = new ArrayList<Employee>();
         Connection con = DatabaseConnection.createConnection();
         try {
-            System.out.println("Execution strt");
+
             PreparedStatement ps = con.prepareStatement("select * from employee e,department d where e.depid=d.depid and e.extsh='y'");
             ResultSet rs = ps.executeQuery();
-            System.out.println("Execution done");
+
             Employee e;
 
             while (rs.next()) {
@@ -193,7 +188,7 @@ public class Employee {
         ArrayList<Employee> employee = new ArrayList<Employee>();
         Connection con = DatabaseConnection.createConnection();
         try {
-            System.out.println("Execution strt");
+
             PreparedStatement ps = con.prepareStatement("select * from employee e,department d where e.depid=d.depid and e.extsh='y'");
             ResultSet rs = ps.executeQuery();
             PreparedStatement p = con.prepareStatement("select e.empid from srsapprovedby sa,project p,srs s,employee e where sa.DOCNO=s.DOCNO and s.PNO=p.PNO and e.empid=sa.STKID and p.PNO='" + pno + "'");
@@ -207,16 +202,15 @@ public class Employee {
             if (count.next()) {
                 employeecount = count.getInt("count");
             }
-            System.out.println(employeecount + "eeeeeeeeeeeeeeeeeeeeeeeee");
+
             String a[] = new String[employeecount];
 
             for (int x = 0; x < a.length; x++) {
                 r.next();
                 a[x] = r.getString("empid");
-                System.out.println(a[x]);
+
             }
 
-            System.out.println("Execution done");
             Employee e;
 
             while (rs.next()) {

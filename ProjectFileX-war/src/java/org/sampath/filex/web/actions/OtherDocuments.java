@@ -71,15 +71,12 @@ public class OtherDocuments {
      
     public static ArrayList<OtherDocuments> getDocuments(String doctypeid , String pno){
         ArrayList<OtherDocuments> document = new ArrayList<OtherDocuments>();
-        
-        System.out.println(doctypeid);
+
         Connection con=DatabaseConnection.createConnection();
         
         try {
-            System.out.println("Execution strt");
             PreparedStatement ps=con.prepareStatement("select * from otherdocument d where d.doctypeid = '"+doctypeid+"' and d.pno = '"+pno+"'");
             ResultSet rs=ps.executeQuery();
-            System.out.println("Execution done");
             OtherDocuments od;
             
             while(rs.next()){

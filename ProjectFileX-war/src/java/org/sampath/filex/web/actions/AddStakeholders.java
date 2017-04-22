@@ -37,59 +37,56 @@ public class AddStakeholders extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session=request.getSession(false);
+        HttpSession session = request.getSession(false);
         String selection;
         String priority;
-        String docno=request.getParameter("docno");
-        String srsversion=Project.getSRSVersionByDOCID(docno);
-        int count=Integer.parseInt(request.getParameter("count"));
-        Project p=Project.getProject((String)session.getAttribute("pno"));
-        Date dte=new Date();  
+        String docno = request.getParameter("docno");
+        String srsversion = Project.getSRSVersionByDOCID(docno);
+        int count = Integer.parseInt(request.getParameter("count"));
+        Project p = Project.getProject((String) session.getAttribute("pno"));
+        Date dte = new Date();
         String date;
         try {
-            Connection con=DatabaseConnection.createConnection();
-            System.out.println("Connection Established");
+            Connection con = DatabaseConnection.createConnection();
 
-            for(int x=0;x<count;x++)
-            {
-                
-            date="novalue";
-            selection=request.getParameter("selection_"+x);
-            priority=request.getParameter("prio_"+x);
-                if(selection.equals("0"))
+            for (int x = 0; x < count; x++) {
+
+                date = "novalue";
+                selection = request.getParameter("selection_" + x);
+                priority = request.getParameter("prio_" + x);
+                if (selection.equals("0")) {
                     continue;
-                else{
-                System.out.println(docno+"   |  "+selection+"   |  "+priority);
-                if(priority.equals("1"))
-                {
-                    
-                    String mail="You have been assigned to the project '"+p.getProjectname()+"'.\n\n"
-                            + "Please log in to FileX system to refer the document and feel free to "
-                            + "approve/reject document with your suggestions.\n\n"
-                            + "Thank You.";
-                    
-                    PreparedStatement ps=con.prepareStatement("select email from employee where empid='"+selection+"'");
-                    ResultSet rs=ps.executeQuery();
-                    if(rs.next())
-                    Mail.sendmail(rs.getString("EMAIL"), "Kind Reminder",mail);
-                    date=DateString.getDate(dte.toString());
-                }
-                
-                PreparedStatement ps=con.prepareStatement("insert/*+append*/ into srsapprovedby values ('"+docno+"','"+srsversion+"','"+selection+"','"+priority+"','noresponse','novalue','"+date+"')");
+                } else {
+                    if (priority.equals("1")) {
 
-                ResultSet rs=ps.executeQuery();
+                        String mail = "You have been assigned to the project '" + p.getProjectname() + "'.\n\n"
+                                + "Please log in to FileX system to refer the document and feel free to "
+                                + "approve/reject document with your suggestions.\n\n"
+                                + "Thank You.";
+
+                        PreparedStatement ps = con.prepareStatement("select email from employee where empid='" + selection + "'");
+                        ResultSet rs = ps.executeQuery();
+                        if (rs.next()) {
+                            Mail.sendmail(rs.getString("EMAIL"), "Kind Reminder", mail);
+                        }
+                        date = DateString.getDate(dte.toString());
+                    }
+
+                    PreparedStatement ps = con.prepareStatement("insert/*+append*/ into srsapprovedby values ('" + docno + "','" + srsversion + "','" + selection + "','" + priority + "','noresponse','novalue','" + date + "')");
+
+                    ResultSet rs = ps.executeQuery();
                 }
             }
-            
+
             con.close();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection "+ex);
+            System.out.println("Something went wrong in Connection " + ex);
         }
-   
+
         response.sendRedirect("filexweb/AddStakeHolders.jsp");
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -130,5 +127,5 @@ public class AddStakeholders extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-   
+
 }

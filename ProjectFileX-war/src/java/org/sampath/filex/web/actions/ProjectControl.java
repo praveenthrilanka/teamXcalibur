@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 public class ProjectControl extends HttpServlet {
 
     /**
@@ -37,91 +36,78 @@ public class ProjectControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        Date dte=new Date();
-        HttpSession session=request.getSession();
-        
-        String pname=request.getParameter("pname");
-        String pm=request.getParameter("pm");
-        String ba=request.getParameter("ba");
-        String msd=(String)session.getAttribute("eid");
-        String notifino=null;
-        String pno=null;
-    
+        Date dte = new Date();
+        HttpSession session = request.getSession();
 
-        
-         
-        if(request.getParameter("baassigned")!=null)
-            response.sendRedirect("filexweb/PMLogin.jsp?eid="+ba);
-        else if(request.getParameter("pmassigned")!=null)
-            response.sendRedirect("filexweb/PMLogin2.jsp?eid="+pm);
-        else
-        {
-            
-             if(pm!=null && ba!=null){  
-            try {
-                Connection con=DatabaseConnection.createConnection();
-                System.out.println("Connection Established");
+        String pname = request.getParameter("pname");
+        String pm = request.getParameter("pm");
+        String ba = request.getParameter("ba");
+        String msd = (String) session.getAttribute("eid");
+        String notifino = null;
+        String pno = null;
 
-                PreparedStatement ps=con.prepareStatement("insert into Project(PNAME,CREATEDDATENTIME,BAID,PMID,MSDID,STATUS) values('"+pname+"','"+DateString.getDate(dte.toString())+"','"+ba+"','"+pm+"','"+msd+"','ongoing')");
-                ps.executeQuery();
+        if (request.getParameter("baassigned") != null) {
+            response.sendRedirect("filexweb/PMLogin.jsp?eid=" + ba);
+        } else if (request.getParameter("pmassigned") != null) {
+            response.sendRedirect("filexweb/PMLogin2.jsp?eid=" + pm);
+        } else {
 
-                ps=con.prepareStatement("insert into notification(prono) values (PRO_SEQ.currval)");
-                ps.executeQuery();
-                System.out.println("Insert second Done ");
-                ps=con.prepareStatement("SELECT notification_seq.currval as NOTIFINO FROM DUAL");
-                ResultSet rs=ps.executeQuery();
-                if(rs.next())
-                    notifino=rs.getString("NOTIFINO");
+            if (pm != null && ba != null) {
+                try {
+                    Connection con = DatabaseConnection.createConnection();
 
-                ps=con.prepareStatement("SELECT PRO_SEQ.currval as PRONO FROM DUAL");
-                rs=ps.executeQuery();
-                if(rs.next())
-                    pno=rs.getString("PRONO");
+                    PreparedStatement ps = con.prepareStatement("insert into Project(PNAME,CREATEDDATENTIME,BAID,PMID,MSDID,STATUS) values('" + pname + "','" + DateString.getDate(dte.toString()) + "','" + ba + "','" + pm + "','" + msd + "','ongoing')");
+                    ps.executeQuery();
 
-                System.out.println(pno+"Insert Done "+notifino);
+                    ps = con.prepareStatement("insert into notification(prono) values (PRO_SEQ.currval)");
+                    ps.executeQuery();
+                    ps = con.prepareStatement("SELECT notification_seq.currval as NOTIFINO FROM DUAL");
+                    ResultSet rs = ps.executeQuery();
+                    if (rs.next()) {
+                        notifino = rs.getString("NOTIFINO");
+                    }
 
-                Notification.setNotificationByProject(notifino,pno);
+                    ps = con.prepareStatement("SELECT PRO_SEQ.currval as PRONO FROM DUAL");
+                    rs = ps.executeQuery();
+                    if (rs.next()) {
+                        pno = rs.getString("PRONO");
+                    }
 
-                con.close();
-                
-                //Send Email Notification
-                Employee empBA=Employee.getEmployee(ba);
-                Employee empPM=Employee.getEmployee(pm);
-                
-                if(empPM.getEmail()!=null)
-                {
-                String mail="You have been assigned to the project '"+pname+"' as 'Project Manager'.\n\n"
-                            + "Please log in to FileX system to refer the document.\n"
-                            + "Thank You.";
-                
-                Mail.sendmail(empPM.getEmail(), "Kind Reminder",mail);
+                    Notification.setNotificationByProject(notifino, pno);
+
+                    con.close();
+
+                    //Send Email Notification
+                    Employee empBA = Employee.getEmployee(ba);
+                    Employee empPM = Employee.getEmployee(pm);
+
+                    if (empPM.getEmail() != null) {
+                        String mail = "You have been assigned to the project '" + pname + "' as 'Project Manager'.\n\n"
+                                + "Please log in to FileX system to refer the document.\n"
+                                + "Thank You.";
+
+                        Mail.sendmail(empPM.getEmail(), "Kind Reminder", mail);
+                    }
+                    if (empBA.getEmail() != null) {
+                        String mail = "You have been assigned to the project '" + pname + "' as 'Business Analyst'.\n\n"
+                                + "Please log in to FileX system to refer the document.\n"
+                                + "Thank You.";
+
+                        Mail.sendmail(empBA.getEmail(), "Kind Reminder", mail);
+                    }
+                    //End Email
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Something went wrong in Connection " + ex);
                 }
-                if(empBA.getEmail()!=null)
-                {
-                String mail="You have been assigned to the project '"+pname+"' as 'Business Analyst'.\n\n"
-                            + "Please log in to FileX system to refer the document.\n"
-                            + "Thank You.";
-                
-                Mail.sendmail(empBA.getEmail(), "Kind Reminder",mail);
-                }
-                //End Email
 
-            } catch (SQLException ex) {
-                Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("Something went wrong in Connection "+ex);
+                response.sendRedirect("filexweb/message.jsp?message=Project created successfully.!");
+
+            } else {
+                response.sendRedirect("filexweb/failmessage.jsp?failmessage=Assign both PM and BA to create a project.!");
+
             }
-
-
-
-         
-            response.sendRedirect("filexweb/message.jsp?message=Project created successfully.!");
-            
-            
-         }else
-        {
-          response.sendRedirect("filexweb/failmessage.jsp?failmessage=Assign both PM and BA to create a project.!");
-
-        }
         }
 
     }

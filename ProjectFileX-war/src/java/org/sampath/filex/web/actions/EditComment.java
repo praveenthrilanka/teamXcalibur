@@ -35,7 +35,7 @@ public class EditComment extends HttpServlet {
         String commentid = request.getParameter("commentid");
         String comment = request.getParameter("commentstr");
         String status = request.getParameter("editcomment");
-        System.out.println( commentid+"///"+comment+"//"+status);
+
         
         if(status.equals("delete"))
         {
@@ -67,7 +67,7 @@ public class EditComment extends HttpServlet {
         }
         catch(Exception e){
             System.out.println("Exception in SQL Query "+e);
-        }
+            }
         }
         response.sendRedirect("filexweb/SubWall.jsp");
         

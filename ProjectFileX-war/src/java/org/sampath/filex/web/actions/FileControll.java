@@ -24,7 +24,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-
 @MultipartConfig(maxFileSize = 16177215)
 public class FileControll extends HttpServlet {
 
@@ -37,38 +36,32 @@ public class FileControll extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            response.setContentType("text/html;charset=UTF-8");
-            //PrintWriter out = response.getWriter();
-            Date dte=new Date();
-            
-            String srsid=request.getParameter("srsid");            
-            String pno=request.getParameter("pno");
-            String redirect=request.getParameter("redirect");
+        response.setContentType("text/html;charset=UTF-8");
+        //PrintWriter out = response.getWriter();
+        Date dte = new Date();
 
-            HttpSession session=request.getSession();
-            session.setAttribute("pno", pno);
-            session.setAttribute("srsid",srsid);
-            
-         if (redirect.equals("wall")) {
-                response.sendRedirect("filexweb/Wall.jsp");
-                return;
-         }
-            
-         else if (request.getParameter("getsrs") != null) {
-              new GetFile().processRequest(request, response);
-                //response.sendRedirect("GetFile");
-                return;
-         }
-         else if (request.getParameter("viewwall") != null) {
+        String srsid = request.getParameter("srsid");
+        String pno = request.getParameter("pno");
+        String redirect = request.getParameter("redirect");
+
+        HttpSession session = request.getSession();
+        session.setAttribute("pno", pno);
+        session.setAttribute("srsid", srsid);
+
+        if (redirect.equals("wall")) {
             response.sendRedirect("filexweb/Wall.jsp");
             return;
-         }
-        
-         
+        } else if (request.getParameter("getsrs") != null) {
+            new GetFile().processRequest(request, response);
+            //response.sendRedirect("GetFile");
+            return;
+        } else if (request.getParameter("viewwall") != null) {
+            response.sendRedirect("filexweb/Wall.jsp");
+            return;
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

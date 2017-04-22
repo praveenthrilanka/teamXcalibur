@@ -27,7 +27,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-
 @WebServlet("/GetFile")
 public class GetFile extends HttpServlet {
 
@@ -43,51 +42,40 @@ public class GetFile extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/pdf");
-        //PrintWriter out = response.getWriter();
-        response.setHeader("Content-disposition","inline; filename=SRSTest.pdf" );
-        
-//        String srsid=request.getParameter("srsid");
-//        String pno=request.getParameter("pno");
 
-        HttpSession session=request.getSession();
-        String pno=(String)session.getAttribute("pno");
-        String srsid=(String)session.getAttribute("docno");
-        
-        System.out.println(srsid+"/"+pno);
-        
-        Connection con=DatabaseConnection.createConnection();
-        
+        response.setHeader("Content-disposition", "inline; filename=SRSTest.pdf");
+
+        HttpSession session = request.getSession();
+        String pno = (String) session.getAttribute("pno");
+        String srsid = (String) session.getAttribute("docno");
+
+        Connection con = DatabaseConnection.createConnection();
+
         try {
-   
-        //InputStream inputStream = null; // input stream of the upload file
-        ResultSet rset=null;
-        ServletOutputStream os = response.getOutputStream();
-        System.out.println("SOS done");
-        PreparedStatement pstmt = con.prepareStatement("Select pdffile from versionhistory v,srs s where s.docno=v.docno and s.pno='"+pno+"' and v.srsversion in (select max(v.srsversion) from versionhistory v,srs s where s.docno=v.docno and s.pno='"+pno+"')");
-        //pstmt.setString(1, bookId.trim());
-        rset = pstmt.executeQuery();
-        System.out.println("Query execution done");
-        if (rset.next()){
+
+            ResultSet rset = null;
+            ServletOutputStream os = response.getOutputStream();
+
+            PreparedStatement pstmt = con.prepareStatement("Select pdffile from versionhistory v,srs s where s.docno=v.docno and s.pno='" + pno + "' and v.srsversion in (select max(v.srsversion) from versionhistory v,srs s where s.docno=v.docno and s.pno='" + pno + "')");
+
+            rset = pstmt.executeQuery();
+            if (rset.next()) {
                 Blob blob = rset.getBlob("pdffile");
                 InputStream inputStream = blob.getBinaryStream();
-                //OutputStream outputStream = new FileOutputStream(filePath);
- 
+
                 int bytesRead = -1;
                 byte[] buffer = new byte[4096];
                 while ((bytesRead = inputStream.read(buffer)) != -1) {
                     os.write(buffer, 0, bytesRead);
                 }
 
-            System.out.println("File Output is done");
-            //System.out.println(rset.getBytes("srs"));
-        }
-        else
-            System.out.println("File read faild");
-        
-            
+            } else {
+                System.out.println("File read faild");
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection "+ex);
+            System.out.println("Something went wrong in Connection " + ex);
         }
     }
 

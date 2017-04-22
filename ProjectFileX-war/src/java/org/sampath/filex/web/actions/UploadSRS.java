@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-
 @MultipartConfig(maxFileSize = 16177215)
 public class UploadSRS extends HttpServlet {
 
@@ -38,111 +37,102 @@ public class UploadSRS extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        HttpSession session=request.getSession(false);    
-        Date dte=new Date();
-        String pno=(String)session.getAttribute("pno");
-        String srsversion=request.getParameter("srsversion");
-        String changes=request.getParameter("changes");
+
+        HttpSession session = request.getSession(false);
+        Date dte = new Date();
+        String pno = (String) session.getAttribute("pno");
+        String srsversion = request.getParameter("srsversion");
+        String changes = request.getParameter("changes");
         String srsid = (String) session.getAttribute("srsid");
-        
+
         int row;
-        String notifino=null;
-        String srsno=null;
-        
-        Connection con=DatabaseConnection.createConnection();
-        System.out.println("PROJECT"+srsversion);
+        String notifino = null;
+        String srsno = null;
+
+        Connection con = DatabaseConnection.createConnection();
+
         try {
 
-        InputStream inputStream = null; // input stream of the upload file
-         
-        // obtains the upload file part in this multipart request
-        Part filePart = request.getPart("srs");
-        if (filePart != null) {
-            // prints out some information for debugging
-            System.out.println(filePart.getName());
-            System.out.println(filePart.getSize());
-            System.out.println(filePart.getContentType());
-             
-            // obtains input stream of the upload file
-            inputStream = filePart.getInputStream();
-            System.out.println("File found,");
-            
-            PreparedStatement statement;
-            
-            if(srsversion==null || srsversion.equals(""))
-            {
-            srsversion="1";
-            changes="Initial SRS";
-            statement = con.prepareStatement("INSERT INTO srs(createddatentime,pno) values (?,?)");
+            InputStream inputStream = null; // input stream of the upload file
 
-            System.out.println("set1 done");
-            statement.setString(1,DateString.getDate(dte.toString()));
-            statement.setString(2,pno);
+            // obtains the upload file part in this multipart request
+            Part filePart = request.getPart("srs");
+            if (filePart != null) {
+                // prints out some information for debugging
+                System.out.println(filePart.getName());
+                System.out.println(filePart.getSize());
+                System.out.println(filePart.getContentType());
 
-            row = statement.executeUpdate();
-            if (row > 0) 
-            {
-                System.out.println("SRS table entry is inserted");
-            }
-            
-            
-            //NOTIFICATION
-            statement=con.prepareStatement("insert into notification(srsno) values (SRS_SEQ.currval)");
-            statement.executeQuery();
-            System.out.println("Insert second Done ");
-            statement=con.prepareStatement("SELECT notification_seq.currval as NOTIFINO FROM DUAL");
-            ResultSet rs=statement.executeQuery();
-            if(rs.next())
-                notifino=rs.getString("NOTIFINO");
-            
-           
-            System.out.println("Insert Done "+notifino +" ProjectNO"+pno);
-            
-            Notification.setNotificationBySRS(notifino,pno);
-            //NOTIFICATION
-            }
-            //version history table update
-            statement=con.prepareStatement("INSERT INTO versionhistory(docno,srsversion,pdffile,changes,modifieddate) values ( (SELECT docno FROM srs WHERE pno = '"+pno+"'),'"+srsversion+"',?,?,?)");
-            if (inputStream != null) {
-                // fetches input stream of the upload file for the blob column
-                statement.setBinaryStream(1,inputStream,inputStream.available());
-                System.out.println("Input Stream Done");
-            }
-            statement.setString(2,changes);
-            statement.setString(3,DateString.getDate(dte.toString()));
-            
-            statement.executeUpdate();
+                // obtains input stream of the upload file
+                inputStream = filePart.getInputStream();
+
+                PreparedStatement statement;
+
+                if (srsversion == null || srsversion.equals("")) {
+                    srsversion = "1";
+                    changes = "Initial SRS";
+                    statement = con.prepareStatement("INSERT INTO srs(createddatentime,pno) values (?,?)");
+
+                    statement.setString(1, DateString.getDate(dte.toString()));
+                    statement.setString(2, pno);
+
+                    row = statement.executeUpdate();
+                    if (row > 0) {
+                        System.out.println("SRS table entry is inserted");
+                    }
+
+                    //NOTIFICATION
+                    statement = con.prepareStatement("insert into notification(srsno) values (SRS_SEQ.currval)");
+                    statement.executeQuery();
+
+                    statement = con.prepareStatement("SELECT notification_seq.currval as NOTIFINO FROM DUAL");
+                    ResultSet rs = statement.executeQuery();
+                    if (rs.next()) {
+                        notifino = rs.getString("NOTIFINO");
+                    }
+
+                    System.out.println("Insert Done " + notifino + " ProjectNO" + pno);
+
+                    Notification.setNotificationBySRS(notifino, pno);
+                    //NOTIFICATION
+                }
+                //version history table update
+                statement = con.prepareStatement("INSERT INTO versionhistory(docno,srsversion,pdffile,changes,modifieddate) values ( (SELECT docno FROM srs WHERE pno = '" + pno + "'),'" + srsversion + "',?,?,?)");
+                if (inputStream != null) {
+                    // fetches input stream of the upload file for the blob column
+                    statement.setBinaryStream(1, inputStream, inputStream.available());
+                }
+                statement.setString(2, changes);
+                statement.setString(3, DateString.getDate(dte.toString()));
+
+                statement.executeUpdate();
                 System.out.println("VERSIONHISTORY table entry is inserted");
 
                 //add stakeholders to SRSAPPROVEDBY new version
-            if(!srsversion.equals("1"))
-            {
-                Stakeholder.setStakeholders(pno, srsversion);
-            
-            //Changes will show as a comment on the wall
-            String comment="SRS Version "+srsversion+" Uploaded. \n"+changes;
-            String editedString = comment.replace("'","''");
-            String datentime = DateString.getDate(dte.toString());
-            PreparedStatement ps = con.prepareStatement("insert into comments values(emp_sequence.nextval,'" + editedString + "','" + datentime + "','" + session.getAttribute("eid") + "','" + srsid + "')");
-            ps.executeQuery();
-            System.out.println("Insert first Done ");
-            //End Comment
+                if (!srsversion.equals("1")) {
+                    Stakeholder.setStakeholders(pno, srsversion);
+
+                    //Changes will show as a comment on the wall
+                    String comment = "SRS Version " + srsversion + " Uploaded. \n" + changes;
+                    String editedString = comment.replace("'", "''");
+                    String datentime = DateString.getDate(dte.toString());
+                    PreparedStatement ps = con.prepareStatement("insert into comments values(emp_sequence.nextval,'" + editedString + "','" + datentime + "','" + session.getAttribute("eid") + "','" + srsid + "')");
+                    ps.executeQuery();
+                    //End Comment
+                }
+
+                con.close();
+                response.sendRedirect("filexweb/BA_Dashboard.jsp?scs=pass");
+
+            } else {
+                System.out.println("No file found");
             }
-            
-            con.close();
-            response.sendRedirect("filexweb/BA_Dashboard.jsp?scs=pass");
-                            
-        }
-        else 
-            System.out.println("No file found");
-        
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection "+ex);
+            System.out.println("Something went wrong in Connection " + ex);
         }
-         
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

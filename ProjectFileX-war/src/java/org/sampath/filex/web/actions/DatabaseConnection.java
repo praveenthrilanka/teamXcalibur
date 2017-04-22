@@ -14,12 +14,11 @@ import java.sql.SQLException;
  * @author Ashantha
  */
 public class DatabaseConnection {
-    
+
     public static Connection createConnection() {
         try {
             Class.forName(Constants.DRIVER_NAME);
             Connection conn = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USERNAME, Constants.DB_PASSWORD);
-            System.out.println("Connection Established");
             return conn;
         } catch (ClassNotFoundException ex) {
 
@@ -31,6 +30,5 @@ public class DatabaseConnection {
         return null;
 
     }
-    
-    
+
 }

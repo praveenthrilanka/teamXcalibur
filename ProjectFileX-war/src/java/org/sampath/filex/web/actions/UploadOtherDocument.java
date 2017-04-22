@@ -26,7 +26,6 @@ import javax.servlet.http.Part;
 @MultipartConfig(maxFileSize = 16177215)
 public class UploadOtherDocument extends HttpServlet {
 
-     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,77 +36,66 @@ public class UploadOtherDocument extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-        HttpSession session=request.getSession(false);
-        
-        
-        
-       
-      //  String docid=request.getParameter("docID"); 
-       
+            throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+
         String newDocName = request.getParameter("narration");
         String docType = request.getParameter("doctype");
-        String pno =(String)session.getAttribute("pno");
-        
-        Connection con=DatabaseConnection.createConnection();
-        
+        String pno = (String) session.getAttribute("pno");
+
+        Connection con = DatabaseConnection.createConnection();
+
         try {
             InputStream inputStream = null; // input stream of the upload file
-         
-            // obtains the upload file part in this multipart request
-             Part filePart = request.getPart("otherFile");
-             if (filePart != null) {
-            
-            // prints out some information for debugging
-            System.out.println(filePart.getName());
-            System.out.println(filePart.getSize());
-            System.out.println(filePart.getContentType());
-             
-            // obtains input stream of the upload file
-            inputStream = filePart.getInputStream();
-            System.out.println("File found,");
-            
 
-            PreparedStatement statement = con.prepareStatement("INSERT INTO otherdocument(docno, doctypeid ,doc, pno,docname) values (?,?,?,?,?)");
-           
-            // setting up values to columns.
-            
-            statement.setString(1,"");  // generated dinamically in the table
-            
-            System.out.println("set1 done");
-            
-            statement.setString(2,docType);
-            
-            System.out.println("set 2 is done");
-            
-            
-            if (inputStream != null) {
-                // fetches input stream of the upload file for the blob column
-                statement.setBinaryStream(3,inputStream,inputStream.available());
-                System.out.println("Input Stream Done");
+            // obtains the upload file part in this multipart request
+            Part filePart = request.getPart("otherFile");
+            if (filePart != null) {
+
+                // prints out some information for debugging
+                System.out.println(filePart.getName());
+                System.out.println(filePart.getSize());
+                System.out.println(filePart.getContentType());
+
+                // obtains input stream of the upload file
+                inputStream = filePart.getInputStream();
+                System.out.println("File found,");
+
+                PreparedStatement statement = con.prepareStatement("INSERT INTO otherdocument(docno, doctypeid ,doc, pno,docname) values (?,?,?,?,?)");
+
+                // setting up values to columns.
+                statement.setString(1, "");  // generated dinamically in the table
+
+                System.out.println("set1 done");
+
+                statement.setString(2, docType);
+
+                System.out.println("set 2 is done");
+
+                if (inputStream != null) {
+                    // fetches input stream of the upload file for the blob column
+                    statement.setBinaryStream(3, inputStream, inputStream.available());
+                    System.out.println("Input Stream Done");
+                }
+
+                statement.setString(4, pno);  // called by the session
+                System.out.println("set 4 is done");
+                statement.setString(5, newDocName);
+
+                int row = statement.executeUpdate();
+                if (row > 0) {
+                    System.out.println("Document uploaded and saved into database");
+                }
+                con.close();
+                response.sendRedirect("filexweb/UploadOtherDocument.jsp?scs=pass");
+
+            } else {
+                System.out.println("No file found");
             }
-            
-            statement.setString(4,pno);  // called by the session
-            System.out.println("set 4 is done");
-            statement.setString(5, newDocName);
-            
-           
- 
-            int row = statement.executeUpdate();
-            if (row > 0) {
-                System.out.println("Document uploaded and saved into database");
-            }
-            con.close();
-            response.sendRedirect("filexweb/UploadOtherDocument.jsp?scs=pass");
-            
-        }
-        else 
-            System.out.println("No file found");
-        
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Something went wrong in Connection "+ex);
+            System.out.println("Something went wrong in Connection " + ex);
         }
     }
 

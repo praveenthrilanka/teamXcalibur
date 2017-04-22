@@ -119,7 +119,7 @@ public class Notification {
                     + "where l.notifino=n.notifino and n.comno=c.comno and c.empid=e.empid and c.srsno=s.docno and s.pno=p.pno and l.empid='" + empid + "' and l.status is null order by c.comno desc");
 
             ResultSet rs = ps.executeQuery();
-            System.out.println("Execution done");
+
             Notification n;
 
             while (rs.next()) {
@@ -254,13 +254,12 @@ public class Notification {
             PreparedStatement ps = con.prepareStatement("select msdid,pmid from project where pno='" + pno + "'");
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                System.out.println("Sub query start");
                 ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("PMID") + "','')");
                 ps.executeQuery();
-                System.out.println("Sub query 1 done");
+
                 ps = con.prepareStatement("insert into notifiedlist values ('" + notifino + "','" + rs.getString("MSDID") + "','')");
                 ps.executeQuery();
-                System.out.println("Sub query 2 done");
+
             }
 
             con.close();
@@ -291,7 +290,7 @@ public class Notification {
                     + "  where l.notifino=n.notifino and n.srsno=s.docno and s.pno=p.pno and p.baid=e.empid and l.empid='" + empid + "' and l.status is null order by s.docno desc");
 
             ResultSet rs = ps.executeQuery();
-            System.out.println("Execution done");
+
             Notification n;
 
             while (rs.next()) {
@@ -312,11 +311,11 @@ public class Notification {
     public static ArrayList<Notification> getAllNotification(String empid) {
         ArrayList<Notification> notification = new ArrayList<Notification>();
         notification.addAll(getNotificationByEMPID(empid));
-        System.out.println("------=====--------" + notification.size() + "=======");
+
         notification.addAll(getProjectNotificationByEMPID(empid));
-        System.out.println("------=====--------" + notification.size() + "=======");
+
         notification.addAll(getSRSNotificationByEMPID(empid));
-        System.out.println("------=====--------" + notification.size() + "=======");
+
         notification = SortNotification(notification);
         Collections.reverse(notification);
         return notification;
