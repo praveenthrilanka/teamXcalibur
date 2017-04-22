@@ -74,7 +74,7 @@
                             <h4 class="cta-title"><% out.print(p.getProjectname()); %></h4>
                             <div class="cta-desc">
                                 <br/>
-                                <label>Status</label><span style="padding:2.7em;">:</span><span style="padding:0em;"><% out.print(Project.getStatusByProject(p.getProjectno(),(String) session.getAttribute("eid"))); %></span>
+                                <label>Status</label><span style="padding:2.7em;">:</span><span style="padding:0em;"><% out.print(currentStatus); %></span>
                             </div>
                         </div>
                         <div class="col-md-3 cta-button">
