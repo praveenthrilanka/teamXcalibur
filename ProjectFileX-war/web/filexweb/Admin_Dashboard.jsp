@@ -5,17 +5,16 @@
 <!-- START CONTENT -->
 
 <%
-            if (!Employee.getEmployee((String)session.getAttribute("eid")).getPosition().equals("Administrator"))
-            {
-                response.sendRedirect("Login.jsp");
-            }
+    if (!Employee.getEmployee((String) session.getAttribute("eid")).getPosition().equals("Administrator")) {
+        response.sendRedirect("Login.jsp");
+    }
 %>
 
 <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 
 <section id="main-content" class=" ">
-    <section class="wrapper" style='margin-top:18%; margin-left: 5%; display:inline-block;width:100%;padding:25px 0 0 15px;'>
+    <section class="wrapper" style='margin-top:18%; margin-left: 5%; display:inline-block;width:100%;padding:25px 0 0 15px;  width:800px; overflow-x: hidden; overflow-y: hidden;'>
 
         <footer>   
             <div class="row">
@@ -56,23 +55,23 @@
                         </div>
 
                     </div>
-                                    </div>
+                </div>
             </div>
         </footer> 
 
         <script>
-                     
-                            history.pushState(null,null,document.URL);
-                            window.addEventListener('popstate',function()
-                            {
-                            history.pushState(null,null,document.URL);
-                    
-                            });
-                
-       </script>
 
-        
-        
+            history.pushState(null, null, document.URL);
+            window.addEventListener('popstate', function ()
+            {
+                history.pushState(null, null, document.URL);
+
+            });
+
+        </script>
+
+
+
     </section>
 </section>
 <!-- END CONTENT -->

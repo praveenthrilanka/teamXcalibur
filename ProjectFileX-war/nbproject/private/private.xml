@@ -3,10 +3,30 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Reshani/Desktop/VV1/teamXcalibur/ProjectFileX-war/web/filexweb/css/stylesba.css</file>
             <file>file:/C:/Users/Reshani/Desktop/VV1/teamXcalibur/ProjectFileX-war/web/filexweb/PM_Projects.jsp</file>
             <file>file:/C:/Users/Reshani/Desktop/VV1/teamXcalibur/ProjectFileX-war/web/filexweb/ApprovedProjects_PM.jsp</file>
             <file>file:/C:/Users/Reshani/Desktop/VV1/teamXcalibur/ProjectFileX-war/web/filexweb/BA_Projects.jsp</file>
+=======
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/MSD_CreateProject.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/ESH_Dashboard.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/SubWall.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/BA_Dashboard.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Admin_edit_user.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Down.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/BA_Projects.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/MSD_Dashboard.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Wall.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Login.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/PM_Dashboard.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/MSD_Projects.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Admin_view_user.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Admin_Dashboard.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/Project_Summary.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/PM_Projects.jsp</file>
+            <file>file:/C:/Users/Praveen/Documents/teamXcalibur/ProjectFileX-war/web/filexweb/MSDnPM.jsp</file>
+>>>>>>> 471c5a362568b5de4dd6ae71a28506de8ad67f93
         </group>
     </open-files>
 </project-private>

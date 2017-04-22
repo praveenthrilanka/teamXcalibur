@@ -3,13 +3,13 @@ package org.apache.jsp.filexweb;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import java.util.ArrayList;
+import org.sampath.filex.web.actions.Project;
 import java.util.ArrayList;
 import org.sampath.filex.web.actions.Notification;
 import org.sampath.filex.web.actions.Employee;
 import org.sampath.filex.web.actions.Project;
 
-public final class MSD_005fCreateProject_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class Admin_005fDashboard_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -354,120 +354,84 @@ out.print(e.getDepartement());
       out.write("            <!--  SIDEBAR - END -->\r\n");
       out.write("\r\n");
       out.write("\r\n");
-
-    String pos = Employee.getEmployee((String) session.getAttribute("eid")).getPosition();
-    if (!(pos.equals("ManagerSD") || pos.equals("PM/MSD"))) {
-        response.sendRedirect("Login.jsp");
-    }
-
-      out.write("\r\n");
-      out.write("\r\n");
+      out.write("<!-- START CONTENT -->\r\n");
       out.write("\r\n");
 
-    ArrayList<Employee> emp = Employee.getEmployee();
-    Employee em;
+            if (!Employee.getEmployee((String)session.getAttribute("eid")).getPosition().equals("Administrator"))
+            {
+                response.sendRedirect("Login.jsp");
+            }
 
       out.write("\r\n");
       out.write("\r\n");
       out.write("<link href=\"css/stylesba.css\" rel='stylesheet' type='text/css' />\r\n");
       out.write("<link href=\"css/bootstrap.css\" rel='stylesheet' type='text/css' />\r\n");
       out.write("\r\n");
-      out.write("<!-- START CONTENT -->\r\n");
       out.write("<section id=\"main-content\" class=\" \">\r\n");
-      out.write("    <section class=\"wrapper\" style='margin-top:50px;display:inline-block;width:100%;padding:15px 0 0 15px;'>\r\n");
-      out.write("        <div class=\"login-form\" style =\"\">\r\n");
-      out.write("            <h4>Create New Project</h4>\r\n");
+      out.write("    <section class=\"wrapper\" style='margin-top:18%; margin-left: 5%; display:inline-block;width:100%;padding:25px 0 0 15px;'>\r\n");
       out.write("\r\n");
-      out.write("            <form name=\"CreateProject\" method=\"get\" action=\"../ProjectControl\" enctype=\"multipart/form-data\">\r\n");
-      out.write("                <br/>\r\n");
-      out.write("                <!--<label>Project ID :</label><input type=\"text\" name=\"pid\" placeholder=\"Enter Project ID\" required> <br/><br/>-->\r\n");
-      out.write("                <label>Project Name :</label><input type=\"text\" name=\"pname\" placeholder=\"Enter Project Name\" required onkeyup=\"if(this.value.length > 0) document.getElementById('submitForm').disabled = false; else document.getElementById('submitForm').disabled = true;\"> <br/><br/><br/>\r\n");
-      out.write("                <label>Project Manager :</label>\r\n");
-      out.write("                <select name=\"pm\" width=\"200\" height=\"80\" >\r\n");
-      out.write("                    <option selected disabled value=\"\" >Select Project Manager</option>\r\n");
-      out.write("                    ");
-
-                        for (int x = 0; x < emp.size(); x++) {
-                            em = emp.get(x);
-                            if (em.getPosition().equals("PM/MSD") || em.getPosition().equals("Project Manager")) {
-                                if (!em.getEmployeeid().equals((String) session.getAttribute("eid"))) {
-                    
+      out.write("        <footer>   \r\n");
+      out.write("            <div class=\"row\">\r\n");
       out.write("\r\n");
-      out.write("                    <option value=\"");
- out.print(em.getEmployeeid()); 
-      out.write('"');
-      out.write('>');
- out.print(em.getEmployeename()); 
-      out.write("</option>\r\n");
-      out.write("                    ");
-  }
-                            }
-                        }
-                    
+      out.write("                <div class=\"container\">\r\n");
+      out.write("                    <div class=\"col-lg-3\">\r\n");
+      out.write("                        <div class=\"cuadro_intro_hover \" style=\"background-color:#CECEE9; width:300;\">\r\n");
+      out.write("                            <p style=\"text-align:center; margin-top:20px;\">\r\n");
+      out.write("                                <img src=\"images/user_add.png\" class=\"img-responsive\" alt=\"\" style=\"padding:0em 6em\">\r\n");
+      out.write("                            </p>\r\n");
+      out.write("                            <div class=\"caption\">\r\n");
+      out.write("                                <div class=\"blur\"></div>\r\n");
+      out.write("                                <div class=\"caption-text\">\r\n");
+      out.write("                                    <h3 style=\"border-top:2px solid white; border-bottom:2px solid white; padding:10px;\">Add User</h3>\r\n");
+      out.write("                                    <br/><br/>\r\n");
+      out.write("                                    <button type=\"button\" class=\"btn btn-warning\" style=\"margin-top:8; width:140;\" onclick=\"window.location.href = 'Admin_add_user.jsp'\">Add User</button>\r\n");
+      out.write("                                    <br/>\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\r\n");
       out.write("\r\n");
+      out.write("                                </div>\r\n");
+      out.write("                            </div>\r\n");
+      out.write("                        </div>\r\n");
       out.write("\r\n");
-      out.write("                </select>\r\n");
-      out.write("                <div style=\"padding:0.8em 7em;\"><input type=\"submit\" name=\"pmassigned\" class=\"btn btn-info btn-block\" style=\"font-size:12pt;\" value=\"Assigned projects\"  alt=\"View currently assigned projects\"></div>  \r\n");
-      out.write("                <br/>\r\n");
-      out.write("                <label>Business Analyst :</label>\r\n");
-      out.write("                <select  name=\"ba\" width=\"200\" height=\"80\">\r\n");
-      out.write("                    <option selected disabled value=\"\">Select Business Analyst</option>\r\n");
+      out.write("                    </div>\r\n");
       out.write("\r\n");
-      out.write("                    ");
-
-                        for (int x = 0; x < emp.size(); x++) {
-                            em = emp.get(x);
-                            if (em.getPosition().equals("Business Analyist")) {
-                                if (!em.getEmployeeid().equals((String) session.getAttribute("eid"))) {
-                    
+      out.write("                    <div class=\"col-lg-3\">\r\n");
+      out.write("                        <div class=\"cuadro_intro_hover \" style=\"background-color:#CECEE9; width:300;\">\r\n");
+      out.write("                            <p style=\"text-align:center; margin-top:20px;\">\r\n");
+      out.write("                                <img src=\"images/view_user.png\" class=\"img-responsive\" alt=\"\" style=\"padding:0em 6em\">\r\n");
+      out.write("                            </p>\r\n");
+      out.write("                            <div class=\"caption\">\r\n");
+      out.write("                                <div class=\"blur\"></div>\r\n");
+      out.write("                                <div class=\"caption-text\">\r\n");
+      out.write("                                    <h3 style=\"border-top:2px solid white; border-bottom:2px solid white; padding:10px;\">View User</h3>\r\n");
+      out.write("                                    <br/><br/>\r\n");
+      out.write("                                    <button type=\"button\" class=\"btn btn-warning\" style=\"margin-top:8; width:140;\" onclick=\"window.location.href = 'Admin_view_user.jsp'\">View User</button><br/>\t\r\n");
+      out.write("                                </div>\r\n");
+      out.write("                            </div>\r\n");
+      out.write("                        </div>\r\n");
       out.write("\r\n");
-      out.write("                    <option value=\"");
- out.print(em.getEmployeeid()); 
-      out.write('"');
-      out.write('>');
- out.print(em.getEmployeename()); 
-      out.write("</option>\r\n");
-      out.write("                    ");
-  }
-                            }
-                        }
-                    
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("                </select>\r\n");
-      out.write("                <div style=\"padding:0.8em 7em;\"><input type=\"submit\" name=\"baassigned\" class=\"btn btn-info btn-block\" style=\"font-size:12pt;\" value=\"Assigned projects\"  alt=\"View currently assigned projects\"></div>  \r\n");
-      out.write("                <br/><br/>\r\n");
-      out.write("\r\n");
-      out.write("                <div class=\"clearfix\"></div>\r\n");
-      out.write("                <input  id=\"submitForm\" class=\"btn btn-warning btn-block\" data-toggle=\"modal\" data-target=\"#ultraModal-27\" type=\"submit\" value=\"Create Project\" disabled>\r\n");
-      out.write("                <input  class=\"btn btn-warning btn-block\" type=\"reset\" value=\"Reset\">\r\n");
-      out.write("            </form>\r\n");
-      out.write("        </div>                    \r\n");
-      out.write("        <!--modal start-->\r\n");
-      out.write("        <div class=\"modal fade\" id=\"ultraModal-27\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"ultraModal-Label\" aria-hidden=\"true\" style=\"display: none;\" data-backdrop=\"static\" data-keyboard=\"false\">\r\n");
-      out.write("            <div class=\"modal-dialog animated zoomIn\"><br/><br/><br/><br/><br/><br/><br/><br/><br/>\r\n");
-      out.write("                <div class=\"modal-content\">\r\n");
-      out.write("                    <div class=\"modal-header\">\r\n");
-      out.write("                        <center><img src=\"images/loading.gif\" width=\"80px\"></center>              \r\n");
-      out.write("                </div>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                                    </div>\r\n");
       out.write("            </div>\r\n");
-      out.write("        </div>\r\n");
-      out.write("        <!--modal end-->\r\n");
-      out.write("    </section></section>>\r\n");
+      out.write("        </footer> \r\n");
       out.write("\r\n");
-      out.write("    <script>\r\n");
+      out.write("        <script>\r\n");
+      out.write("                     \r\n");
+      out.write("                            history.pushState(null,null,document.URL);\r\n");
+      out.write("                            window.addEventListener('popstate',function()\r\n");
+      out.write("                            {\r\n");
+      out.write("                            history.pushState(null,null,document.URL);\r\n");
+      out.write("                    \r\n");
+      out.write("                            });\r\n");
+      out.write("                \r\n");
+      out.write("       </script>\r\n");
       out.write("\r\n");
-      out.write("if(document.getElementById(\"lname\").value==\"\")\r\n");
-      out.write("{\r\n");
-      out.write("$(document).ready(function(){\r\n");
-      out.write("    \r\n");
-      out.write("        $(\"#myModal\").modal();\r\n");
-      out.write("   \r\n");
-      out.write("});\r\n");
-      out.write("}\r\n");
-      out.write("</script>\r\n");
-      out.write("    \r\n");
-      out.write("    \r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("    </section>\r\n");
+      out.write("</section>\r\n");
+      out.write("<!-- END CONTENT -->\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("<!-- LOAD FILES AT PAGE END FOR FASTER LOADING -->\r\n");
       out.write("\r\n");

@@ -24,10 +24,10 @@
         <div class="login-form" style ="">
             <h4>Create New Project</h4>
 
-            <form name="CreateProject" method="get" action="../ProjectControl" enctype="multipart/form-data">
+            <form name="CreateProject" method="get" action="../ProjectControl" onsubmit="isFill()" enctype="multipart/form-data">
                 <br/>
                 <!--<label>Project ID :</label><input type="text" name="pid" placeholder="Enter Project ID" required> <br/><br/>-->
-                <label>Project Name :</label><input type="text" name="pname" placeholder="Enter Project Name" required onkeyup="if(this.value.length > 0) document.getElementById('submitForm').disabled = false; else document.getElementById('submitForm').disabled = true;"> <br/><br/><br/>
+                <label>Project Name :</label><input type="text" name="pname" id="projectName" placeholder="Enter Project Name" required > <br/><br/><br/>
                 <label>Project Manager :</label>
                 <select name="pm" width="200" height="80" >
                     <option selected disabled value="" >Select Project Manager</option>
@@ -67,7 +67,7 @@
                 <br/><br/>
 
                 <div class="clearfix"></div>
-                <input  id="submitForm" class="btn btn-warning btn-block" data-toggle="modal" data-target="#ultraModal-27" type="submit" value="Create Project" disabled>
+                <input  id="submitForm" class="btn btn-warning btn-block" type="submit" value="Create Project">
                 <input  class="btn btn-warning btn-block" type="reset" value="Reset">
             </form>
         </div>                    
@@ -76,11 +76,27 @@
             <div class="modal-dialog animated zoomIn"><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                 <div class="modal-content">
                     <div class="modal-header">
-                        <center><img src="images/loading.gif" width="100px"></center>              
+                        <center><img src="images/loading.gif" width="80px"></center>              
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--modal end-->
+            <!--modal end-->
     </section></section>>
+
+<script src="js/jquery-1.11.2.min.js"></script>
+
+<script>
+
+                function isFill() {
+                  
+                        $(document).ready(function () {
+
+                            $("#ultraModal-27").modal();
+
+                        });
+                    
+                }
+</script>
+
 
 <%@ include file="Down.jsp" %>
