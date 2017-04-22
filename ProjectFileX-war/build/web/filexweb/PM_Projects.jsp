@@ -48,10 +48,10 @@
 <%
     ArrayList<Project> pro = Project.getProjectByPMid((String) session.getAttribute("eid"));
     ArrayList<Project> Projectcount = Project.getOngoingProjectByPMid((String) session.getAttribute("eid"));
-    //ArrayList<Project> ProjectRejectedcount = Project.getRejectedProjectByPMid((String) session.getAttribute("eid"));
+    ArrayList<Project> ProjectRejectedcount = Project.getRejectedProjectByPMid((String) session.getAttribute("eid"));
     ArrayList<Project> ProjectApprovedcount = Project.getApprovedProjectByPMid((String) session.getAttribute("eid"));
-    String arr1[] = {"bs-calltoaction bs-calltoaction-warning", "bs-calltoaction bs-calltoaction-primary", "bs-calltoaction bs-calltoaction-info", "bs-calltoaction bs-calltoaction-success"};
-    String arr2[] = {"btn btn-lg btn-block btn-warning", "btn btn-lg btn-block btn-primary", "btn btn-lg btn-block btn-info", "btn btn-lg btn-block btn-success"};
+    String arr1[] = {"bs-calltoaction bs-calltoaction-red", "bs-calltoaction bs-calltoaction-yellow", "bs-calltoaction bs-calltoaction-green", "bs-calltoaction bs-calltoaction-grey","bs-calltoaction bs-calltoaction-orange"};
+    String arr2[] = {"btn btn-lg btn-block btn-red", "btn btn-lg btn-block btn-yellow", "btn btn-lg btn-block btn-green", "btn btn-lg btn-block btn-grey","btn btn-lg btn-block btn-orange"};
 %>
 
 <section id="main-content" class=" ">
@@ -62,25 +62,11 @@
         <div class="col-sm-10">
             <div class="market-updates">
                 <a href="OngoingProjects_PM.jsp">
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-1">
-                            <div class="col-md-8 market-update-left">
+                    <div class="col-md-3 market-update-gd">
+                        <div class="market-update-block clr-block-5">
+                            <div class="col-md-6 market-update-left">
                                 <h3><% out.print(Projectcount.size()); %></h3>
                                 <h4>Ongoing Projects</h4>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-file-text-o"> </i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="ApprovedProjects_PM.jsp">
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-2">
-                            <div class="col-md-8 market-update-left">
-                                <h3><%out.print(ProjectApprovedcount.size());%></h3>
-                                <h4>Approved Projects</h4>
                             </div>
                             <div class="col-md-4 market-update-right">
                                 <i class="fa fa-eye"> </i>
@@ -88,12 +74,13 @@
                             <div class="clearfix"> </div>
                         </div>
                     </div>
-                </a>  
-                <!--<a href="RejectedProjects_PM.jsp">
-                <div class="col-md-4 market-update-gd">
-                    <div class="market-update-block clr-block-3">
-                        <div class="col-md-8 market-update-left">
-                            <h3><%//out.print(ProjectRejectedcount.size());%></h3>
+                </a>
+                
+                <a href="RejectedProjects_PM.jsp">
+                <div class="col-md-3 market-update-gd">
+                    <div class="market-update-block clr-block-4">
+                        <div class="col-md-6 market-update-left">
+                            <h3><%out.print(ProjectRejectedcount.size());%></h3>
                             <h4>Rejected Projects</h4>
                         </div>
                         <div class="col-md-4 market-update-right">
@@ -102,16 +89,31 @@
                         <div class="clearfix"> </div>
                     </div>
                 </div>
-            </a>-->   
-                <a href="HeldProjects.jsp">
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-3">
-                            <div class="col-md-8 market-update-left">
-                                <h3></h3>
-                                <h4>Held Projects</h4>
+            </a>   
+                
+                <a href="ApprovedProjects_PM.jsp">
+                    <div class="col-md-3 market-update-gd">
+                        <div class="market-update-block clr-block-1">
+                            <div class="col-md-6 market-update-left">
+                                <h3><%out.print(ProjectApprovedcount.size());%></h3>
+                                <h4>Approved Projects</h4>
                             </div>
                             <div class="col-md-4 market-update-right">
-                                <i class="fa fa-eye"> </i>
+                                <i class="fa fa-file-text-o"> </i>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                </a>              
+                <a href="HeldProjects.jsp">
+                    <div class="col-md-3 market-update-gd">
+                        <div class="market-update-block clr-block-6">
+                            <div class="col-md-6 market-update-left">
+                                <h3></h3>
+                                <h4 style="position:absolute ; top:5em">Hold Projects</h4>
+                            </div>
+                            <div class="col-md-4 market-update-right">
+                                <i class="fa fa-file-text-o"> </i>
                             </div>
                             <div class="clearfix"> </div>
                         </div>

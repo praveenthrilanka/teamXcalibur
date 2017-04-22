@@ -3284,6 +3284,36 @@ fieldset[disabled] .btn-info.focus {
   color: #5bc0de;
   background-color: #fff;
 }
+.btn-red{
+  color: #fff;
+  background-color:#FF4444;
+  border-color: #fff;
+}
+.btn-green{
+  color: #fff;
+  background-color: #68ae00;
+  border-color: #fff;
+}
+.btn-yellow{
+  color: #fff;
+  background-color:#FFbb33;
+  border-color: #fff;
+}
+.btn-blue{
+  color: #fff;
+  background-color: #33B5E5;
+  border-color: #fff;
+}
+.btn-grey{
+  color: #fff;
+  background-color:#4B515D;
+  border-color: #fff;
+}
+.btn-orange{
+  color: #fff;
+  background-color:#F57C00;
+  border-color: #fff;
+}
 .btn-warning {
   color: #fff;
   background-color: #f0ad4e;

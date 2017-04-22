@@ -20,8 +20,8 @@
     ArrayList<Project> Projectcount = Project.getOngoingProjectByBAid((String) session.getAttribute("eid"));
     ArrayList<Project> ProjectRejectedcount = Project.getRejectedProjectByBAid((String) session.getAttribute("eid"));
     ArrayList<Project> ProjectApprovedcount = Project.getApprovedProjectByBAid((String) session.getAttribute("eid"));
-    String arr1[] = {"bs-calltoaction bs-calltoaction-warning", "bs-calltoaction bs-calltoaction-primary", "bs-calltoaction bs-calltoaction-info", "bs-calltoaction bs-calltoaction-success"};
-    String arr2[] = {"btn btn-lg btn-block btn-warning", "btn btn-lg btn-block btn-primary", "btn btn-lg btn-block btn-info", "btn btn-lg btn-block btn-success"};
+    String arr1[] = {"bs-calltoaction bs-calltoaction-red", "bs-calltoaction bs-calltoaction-yellow", "bs-calltoaction bs-calltoaction-green", "bs-calltoaction bs-calltoaction-grey"};
+    String arr2[] = {"btn btn-lg btn-block btn-red", "btn btn-lg btn-block btn-yellow", "btn btn-lg btn-block btn-green", "btn btn-lg btn-block btn-grey"};
 %>
 
 <section id="main-content" class=" ">
@@ -33,7 +33,7 @@
             <div class="market-updates">
                 <a href="OngoingProjects.jsp">
                     <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-1">
+                        <div class="market-update-block clr-block-5">
                             <div class="col-md-8 market-update-left">
                                 <h3><% out.print(Projectcount.size()); %></h3>
                                 <h4>Ongoing Projects</h4>
@@ -49,7 +49,7 @@
 <!--Approved Projects Count-->                                
                 <a href="ApprovedProjects.jsp">
                     <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-2">
+                        <div class="market-update-block clr-block-1" >
                             <div class="col-md-8 market-update-left">
                                 <h3><%out.print(ProjectApprovedcount.size());%></h3>
                                 <h4>Approved Projects</h4>
@@ -65,7 +65,7 @@
 <!--Rejected Project Count -->                                
                 <a href="RejectedProjects.jsp">
                     <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-3">
+                        <div class="market-update-block clr-block-4">
                             <div class="col-md-8 market-update-left">
                                 <h3><%out.print(ProjectRejectedcount.size());%></h3>
                                 <h4>Rejected Projects</h4>
@@ -83,14 +83,49 @@
 
             <%
                 Project pr;
-                int c = 0;
+                String color;
+                String borderColor;
                 for (int x = 0; x < pro.size(); x++) {
-                  c = c % 4;
-                  pr = pro.get(x);
+                pr = pro.get(x);
+                String currentStatus;
+                
+                 currentStatus = pr.getStatusByProject(pr.getProjectno(),(String) session.getAttribute("eid"));
+                 
+                  if(currentStatus == "SRS is not uploaded yet"){ 
+                    color = arr1[0];
+                    borderColor = arr2[0];
+                  }
+                  else if(currentStatus == "Stakeholders are not assigned yet"){
+                      color = arr1[3];
+                      borderColor = arr2[3];
+                  }
+                  else if(currentStatus.substring(0,8).equals("Approval")){
+                      color = arr1[1];
+                      borderColor = arr2[1];
+                  }
+                  else if(currentStatus.substring(0,11).equals("Rejected by")){
+                      color = arr1[0];
+                      borderColor = arr2[0];
+                      
+                  }else if(currentStatus == "The project is approved"){
+                      color = arr1[2];
+                      borderColor = arr2[2];
+                  }
+                  else{
+                      color = null;
+                      borderColor = null;
+                  }
+                  
             %>
+            
+                 
+                 
+                 
+            
+           
 
 <!--Display Project List-->            
-            <div class="<% out.print(arr1[c]); %>">
+            <div class="<%out.print(color);%>"> <!-- color -->
                 <div class="row">
                     <div class="col-md-9 cta-contents">
                         <h4 class="cta-title"><% out.print(pr.getProjectname()); %></h4>
@@ -101,12 +136,12 @@
                         </div>
                     </div>
                     <div class="col-md-3 cta-button">
-                        <a href="../SetUser?pno=<% out.print(pr.getProjectno()); %>&direct=ba" class="<% out.print(arr2[c]); %>">View Project</a>
+                        <a href="../SetUser?pno=<% out.print(pr.getProjectno()); %>&direct=ba" class="<%out.print(borderColor); %>">View Project</a> <!--color-->
                     </div>
                 </div>
             </div>
 
-            <% c++;
+            <%;
                 }
             %>
 

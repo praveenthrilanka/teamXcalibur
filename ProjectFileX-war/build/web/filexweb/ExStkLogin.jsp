@@ -26,8 +26,8 @@
             
             System.out.println("PRo"+ project.size());
                 
-            String arr1[]={"bs-calltoaction bs-calltoaction-warning","bs-calltoaction bs-calltoaction-primary","bs-calltoaction bs-calltoaction-info","bs-calltoaction bs-calltoaction-success"};
-            String arr2[]={"btn btn-lg btn-block btn-warning","btn btn-lg btn-block btn-primary","btn btn-lg btn-block btn-info","btn btn-lg btn-block btn-success"};
+              String arr1[] = {"bs-calltoaction bs-calltoaction-red", "bs-calltoaction bs-calltoaction-yellow", "bs-calltoaction bs-calltoaction-green", "bs-calltoaction bs-calltoaction-grey","bs-calltoaction bs-calltoaction-orange"};
+              String arr2[] = {"btn btn-lg btn-block btn-red", "btn btn-lg btn-block btn-yellow", "btn btn-lg btn-block btn-green", "btn btn-lg btn-block btn-grey","btn btn-lg btn-block btn-orange"};
             %>
             
             <section id="main-content" class=" ">
@@ -37,14 +37,38 @@
             <div class="col-sm-10">
 
                  <%
-                    Project p; 
-                    int c=0;
-                    for(int x=0;x<project.size();x++){
-                    c=c%4; 
-                    p=project.get(x);
+                    Project p;
+                    String color;
+                    String borderColor;
+                    for (int x = 0; x < project.size(); x++) {
+                    p = project.get(x);
+                    String currentStatus;
+                
+                 currentStatus = p.getStatusByProject(p.getProjectno(),(String) session.getAttribute("eid"));
+                 
+                  if(currentStatus == "Waiting for your approval"){ 
+                    color = arr1[0];
+                    borderColor = arr2[0];
+                  }
+                  else if(currentStatus.substring(0,8).equals("Approval")){
+                      color = arr1[1];
+                      borderColor = arr2[1];
+                  }
+                  else if(currentStatus.substring(0,11).equals("Rejected by")){
+                      color = arr1[4];
+                      borderColor = arr2[4];
+                      
+                  }else if(currentStatus == "The project is approved"){
+                      color = arr1[2];
+                      borderColor = arr2[2];
+                  }
+                  else{
+                      color = null;
+                      borderColor = null;
+                  }
                  %>
                 
-                <div class="<% out.print(arr1[c]); %>">
+                <div class="<% out.print(color); %>">
                     <div class="row">
                         <div class="col-md-9 cta-contents">
                             <h4 class="cta-title"><% out.print(p.getProjectname()); %></h4>
@@ -54,12 +78,12 @@
                             </div>
                         </div>
                         <div class="col-md-3 cta-button">
-                            <a href="../SetUser?pno=<% out.print(p.getProjectno()); %>&direct=esh" class="<% out.print(arr2[c]); %>">View Project</a>
+                            <a href="../SetUser?pno=<% out.print(p.getProjectno()); %>&direct=esh" class="<% out.print(borderColor); %>">View Project</a>
                         </div>
                      </div>
                 </div>
               
-             <% c++; 
+             <%  
              }
              %>
                                 
