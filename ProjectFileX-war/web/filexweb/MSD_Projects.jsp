@@ -17,8 +17,8 @@
 <%
     ArrayList<Project> project = Project.getProjectByMsdId((String) session.getAttribute("eid"));
 
-     String arr1[] = {"bs-calltoaction bs-calltoaction-red", "bs-calltoaction bs-calltoaction-yellow", "bs-calltoaction bs-calltoaction-green", "bs-calltoaction bs-calltoaction-grey","bs-calltoaction bs-calltoaction-orange"};
-    String arr2[] = {"btn btn-lg btn-block btn-red", "btn btn-lg btn-block btn-yellow", "btn btn-lg btn-block btn-green", "btn btn-lg btn-block btn-grey","btn btn-lg btn-block btn-orange"};
+     String arr1[] = {"bs-calltoaction bs-calltoaction-lightred", "bs-calltoaction bs-calltoaction-yellow", "bs-calltoaction bs-calltoaction-green", "bs-calltoaction bs-calltoaction-grey","bs-calltoaction bs-calltoaction-orange"};
+    String arr2[] = {"btn btn-lg btn-block btn-lightred", "btn btn-lg btn-block btn-yellow", "btn btn-lg btn-block btn-green", "btn btn-lg btn-block btn-grey","btn btn-lg btn-block btn-orange"};
 %>
 
 <section id="main-content" class=" ">
@@ -40,11 +40,11 @@
                 
                  currentStatus = p.getStatusByProject(p.getProjectno(),(String) session.getAttribute("eid"));
                  
-                  if(currentStatus == "SRS is not uploaded yet"){ 
+                  if(currentStatus.equals("SRS is not uploaded yet")){ 
                     color = arr1[3];
                     borderColor = arr2[3];
                   }
-                  else if(currentStatus == "Stakeholders are not assigned yet"){
+                  else if(currentStatus.equals("Stakeholders are not assigned yet")){
                       color = arr1[4];
                       borderColor = arr2[4];
                   }
@@ -56,7 +56,7 @@
                       color = arr1[0];
                       borderColor = arr2[0];
                       
-                  }else if(currentStatus == "The project is approved"){
+                  }else if(currentStatus.equals("The project is approved")){
                       color = arr1[2];
                       borderColor = arr2[2];
                   }

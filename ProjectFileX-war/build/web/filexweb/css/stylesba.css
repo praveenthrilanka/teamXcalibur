@@ -91,7 +91,7 @@
 .bs-calltoaction.bs-calltoaction-warning{
     color: #fff;
     background-color: #f0ad4e;
-    border-color: #eea236;
+    border-color:#eea236;
 }
 
 .bs-calltoaction.bs-calltoaction-danger{
@@ -114,10 +114,10 @@
     background-color:#FFbb33;
     border-color: #FFbb33;
 }
-.bs-calltoaction.bs-calltoaction-blue{
+.bs-calltoaction.bs-calltoaction-lightred{
     color: #fff;
-    background-color:#33B5E5;
-    border-color:#33B5E5;
+    background-color:#EF5350;
+    border-color:#EF5350;
 }
 .bs-calltoaction.bs-calltoaction-grey{
     color: #fff;
@@ -137,7 +137,7 @@
 .bs-calltoaction.bs-calltoaction-red .cta-button .btn,
 .bs-calltoaction.bs-calltoaction-green .cta-button .btn,
 .bs-calltoaction.bs-calltoaction-yellow .cta-button .btn,
-.bs-calltoaction.bs-calltoaction-blue .cta-button .btn,
+.bs-calltoaction.bs-calltoaction-lightred .cta-button .btn,
 .bs-calltoaction.bs-calltoaction-grey .cta-button .btn,
 .bs-calltoaction.bs-calltoaction-orange .cta-button .btn{
     border-color:#fff;

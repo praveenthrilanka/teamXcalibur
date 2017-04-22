@@ -50,8 +50,8 @@
     ArrayList<Project> Projectcount = Project.getOngoingProjectByPMid((String) session.getAttribute("eid"));
     ArrayList<Project> ProjectRejectedcount = Project.getRejectedProjectByPMid((String) session.getAttribute("eid"));
     ArrayList<Project> ProjectApprovedcount = Project.getApprovedProjectByPMid((String) session.getAttribute("eid"));
-    String arr1[] = {"bs-calltoaction bs-calltoaction-red", "bs-calltoaction bs-calltoaction-yellow", "bs-calltoaction bs-calltoaction-green", "bs-calltoaction bs-calltoaction-grey","bs-calltoaction bs-calltoaction-orange"};
-    String arr2[] = {"btn btn-lg btn-block btn-red", "btn btn-lg btn-block btn-yellow", "btn btn-lg btn-block btn-green", "btn btn-lg btn-block btn-grey","btn btn-lg btn-block btn-orange"};
+    String arr1[] = {"bs-calltoaction bs-calltoaction-lightred", "bs-calltoaction bs-calltoaction-yellow", "bs-calltoaction bs-calltoaction-green", "bs-calltoaction bs-calltoaction-grey","bs-calltoaction bs-calltoaction-orange"};
+    String arr2[] = {"btn btn-lg btn-block btn-lightred", "btn btn-lg btn-block btn-yellow", "btn btn-lg btn-block btn-green", "btn btn-lg btn-block btn-grey","btn btn-lg btn-block btn-orange"};
 %>
 
 <section id="main-content" class=" ">
@@ -125,13 +125,42 @@
 
             <%
                 Project pr;
-                int c = 0, a = 1;
+                int a = 1;
+                String color;
+                String borderColor;
                 for (int x = 0; x < pro.size(); x++) {
-                    c = c % 4;
-                    pr = pro.get(x);
+                pr = pro.get(x);
+                String currentStatus;
+                
+                 currentStatus = pr.getStatusByProject(pr.getProjectno(),(String) session.getAttribute("eid"));
+                 
+                  if(currentStatus.equals("SRS is not uploaded yet")){ 
+                    color = arr1[3];
+                    borderColor = arr2[3];
+                  }
+                  else if(currentStatus.equals("Stakeholders are not assigned yet")){
+                      color = arr1[0];
+                      borderColor = arr2[0];
+                  }
+                  else if(currentStatus.substring(0,8).equals("Approval")){
+                      color = arr1[1];
+                      borderColor = arr2[1];
+                  }
+                  else if(currentStatus.substring(0,11).equals("Rejected by")){
+                      color = arr1[4];
+                      borderColor = arr2[4];
+                      
+                  }else if(currentStatus.equals("The project is approved")){
+                      color = arr1[2];
+                      borderColor = arr2[2];
+                  }
+                  else{
+                      color = null;
+                      borderColor = null;
+                  }
             %>
 
-            <div class="<% out.print(arr1[c]); %>">
+            <div class="<% out.print(color); %>">
                 <div class="row">
                     <div class="col-md-9 cta-contents">
                         <h4 class="cta-title"><% out.print(pr.getProjectname()); %></h4>
@@ -142,9 +171,9 @@
                         </div>
                     </div>
                     <div class="col-md-3 cta-button">
-                        <a href="../SetUser?pno=<% out.print(pr.getProjectno()); %>&direct=pm" class="<% out.print(arr2[c]); %>">View Project</a>
+                        <a href="../SetUser?pno=<% out.print(pr.getProjectno()); %>&direct=pm" class="<% out.print(borderColor); %>">View Project</a>
                         <div align="right" style="margin-top:3px;">
-                            <a data-target="#holdModel<% out.print(a); %>" data-toggle="modal" href="#" class="<% out.print(arr2[c]); %>" style=" width: 65px;"><i class="fa fa-eye-slash icon-sm "></i></a>
+                            <a data-target="#holdModel<% out.print(a); %>" data-toggle="modal" href="#" class="<% out.print(borderColor); %>" style=" width: 65px;"><i class="fa fa-eye-slash icon-sm "></i></a>
                         </div></div>
                 </div>
             </div>
@@ -171,7 +200,7 @@
             <!--model End-->
 
             <%
-                    c++;
+                    
                     a++;
                 }
             %>

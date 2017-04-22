@@ -11,8 +11,8 @@
 
 <%
     ArrayList<Project> pro = Project.getApprovedProjectByPMid((String) session.getAttribute("eid"));
-    String arr1[] = {"bs-calltoaction bs-calltoaction-warning", "bs-calltoaction bs-calltoaction-primary", "bs-calltoaction bs-calltoaction-info", "bs-calltoaction bs-calltoaction-success"};
-    String arr2[] = {"btn btn-lg btn-block btn-warning", "btn btn-lg btn-block btn-primary", "btn btn-lg btn-block btn-info", "btn btn-lg btn-block btn-success"};
+    String arr1[] = {"bs-calltoaction bs-calltoaction-lightred", "bs-calltoaction bs-calltoaction-yellow", "bs-calltoaction bs-calltoaction-green", "bs-calltoaction bs-calltoaction-grey"};
+    String arr2[] = {"btn btn-lg btn-block btn-lightred", "btn btn-lg btn-block btn-yellow", "btn btn-lg btn-block btn-green", "btn btn-lg btn-block btn-grey"};
 %>
 
 <section id="main-content" class=" ">
@@ -24,13 +24,24 @@
             <b><h2>Approved Projects</h2></b><br/>
             <%
                 Project pr;
-                int c = 0;
+                String color;
+                String borderColor;
                 for (int x = 0; x < pro.size(); x++) {
-                    c = c % 4;
-                    pr = pro.get(x);
+                pr = pro.get(x);
+                String currentStatus;
+                
+                 currentStatus = pr.getStatusByProject(pr.getProjectno(),(String) session.getAttribute("eid"));
+                   if(currentStatus.equals("The project is approved")){
+                      color = arr1[2];
+                      borderColor = arr2[2];
+                  }
+                  else{
+                      color = null;
+                      borderColor = null;
+                  }
             %>
 
-            <div class="<% out.print(arr1[c]); %>">
+            <div class="<% out.print(color); %>">
                 <div class="row">
                     <div class="col-md-9 cta-contents">
                         <h4 class="cta-title"><% out.print(pr.getProjectname()); %></h4>
@@ -40,12 +51,12 @@
                         </div>
                     </div>
                     <div class="col-md-3 cta-button">
-                        <a href="../SetUser?pno=<% out.print(pr.getProjectno()); %>&direct=ba" class="<% out.print(arr2[c]); %>">View Project</a>
+                        <a href="../SetUser?pno=<% out.print(pr.getProjectno()); %>&direct=ba" class="<% out.print(borderColor); %>">View Project</a>
                     </div>
                 </div>
             </div>
 
-            <% c++;
+            <% 
                 }
             %>
 
