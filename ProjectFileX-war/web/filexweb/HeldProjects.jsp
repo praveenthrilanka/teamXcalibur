@@ -16,7 +16,7 @@
 %>
 
 <section id="main-content" class=" ">
-    <section class="wrapper" style='margin-top:6%; margin-left: 5%; display:inline-block;width:100%;padding:25px 0 0 15px;'>
+    <section class="wrapper" style='margin-top:50px; margin-left: 5%; display:inline-block;width:95%;padding:25px 0 0 15px;'>
 
 
 
@@ -42,7 +42,7 @@
                     <div class="col-md-3 cta-button">
                         <a href="../SetUser?pno=<% out.print(pr.getProjectno()); %>&direct=ba" class="<% out.print(arr2[c]); %>">View Project</a>
 
-                        <a data-target="#continueModel<% out.print(a); %>" data-toggle="modal" href="#" class="<% out.print(arr2[c]); %>" align="right" style="height: 40px; width: 20px;"><img src="images/pause.png" width="25px" height="25px"/></a>
+                        <a data-target="#continueModel<% out.print(a); %>" data-toggle="modal" href="#" class="<% out.print(arr2[c]); %>" align="right" style=" width: 65px;"><i class="fa fa-eye icon-sm "></i></a>
                     </div>
                 </div>
             </div>

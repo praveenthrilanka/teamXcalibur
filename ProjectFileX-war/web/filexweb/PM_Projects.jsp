@@ -50,14 +50,12 @@
     ArrayList<Project> Projectcount = Project.getOngoingProjectByPMid((String) session.getAttribute("eid"));
     ArrayList<Project> ProjectRejectedcount = Project.getRejectedProjectByPMid((String) session.getAttribute("eid"));
     ArrayList<Project> ProjectApprovedcount = Project.getApprovedProjectByPMid((String) session.getAttribute("eid"));
-    String arr1[] = {"bs-calltoaction bs-calltoaction-lightred", "bs-calltoaction bs-calltoaction-yellow", "bs-calltoaction bs-calltoaction-green", "bs-calltoaction bs-calltoaction-grey","bs-calltoaction bs-calltoaction-orange"};
-    String arr2[] = {"btn btn-lg btn-block btn-lightred", "btn btn-lg btn-block btn-yellow", "btn btn-lg btn-block btn-green", "btn btn-lg btn-block btn-grey","btn btn-lg btn-block btn-orange"};
+    String arr1[] = {"bs-calltoaction bs-calltoaction-lightred", "bs-calltoaction bs-calltoaction-yellow", "bs-calltoaction bs-calltoaction-green", "bs-calltoaction bs-calltoaction-grey", "bs-calltoaction bs-calltoaction-orange"};
+    String arr2[] = {"btn btn-lg btn-block btn-lightred", "btn btn-lg btn-block btn-yellow", "btn btn-lg btn-block btn-green", "btn btn-lg btn-block btn-grey", "btn btn-lg btn-block btn-orange"};
 %>
 
 <section id="main-content" class=" ">
-    <section class="wrapper" style='margin-top:6%; margin-left: 5%; display:inline-block;width:100%;padding:25px 0 0 15px;'>
-
-
+    <section class="wrapper" style='margin-top:50px; margin-left: 5%; display:inline-block;width:95%;padding:25px 0 0 15px;'>
 
         <div class="col-sm-10">
             <div class="market-updates">
@@ -75,22 +73,22 @@
                         </div>
                     </div>
                 </a>
-                
+
                 <a href="RejectedProjects_PM.jsp">
-                <div class="col-md-3 market-update-gd">
-                    <div class="market-update-block clr-block-4">
-                        <div class="col-md-6 market-update-left">
-                            <h3><%out.print(ProjectRejectedcount.size());%></h3>
-                            <h4>Rejected Projects</h4>
+                    <div class="col-md-3 market-update-gd">
+                        <div class="market-update-block clr-block-4">
+                            <div class="col-md-6 market-update-left">
+                                <h3><%out.print(ProjectRejectedcount.size());%></h3>
+                                <h4>Rejected Projects</h4>
+                            </div>
+                            <div class="col-md-4 market-update-right">
+                                <i class="fa fa-eye"> </i>
+                            </div>
+                            <div class="clearfix"> </div>
                         </div>
-                        <div class="col-md-4 market-update-right">
-                            <i class="fa fa-eye"> </i>
-                        </div>
-                        <div class="clearfix"> </div>
                     </div>
-                </div>
-            </a>   
-                
+                </a>   
+
                 <a href="ApprovedProjects_PM.jsp">
                     <div class="col-md-3 market-update-gd">
                         <div class="market-update-block clr-block-1">
@@ -129,35 +127,31 @@
                 String color;
                 String borderColor;
                 for (int x = 0; x < pro.size(); x++) {
-                pr = pro.get(x);
-                String currentStatus;
-                
-                 currentStatus = pr.getStatusByProject(pr.getProjectno(),(String) session.getAttribute("eid"));
-                 
-                  if(currentStatus.equals("SRS is not uploaded yet")){ 
-                    color = arr1[3];
-                    borderColor = arr2[3];
-                  }
-                  else if(currentStatus.equals("Stakeholders are not assigned yet")){
-                      color = arr1[0];
-                      borderColor = arr2[0];
-                  }
-                  else if(currentStatus.substring(0,8).equals("Approval")){
-                      color = arr1[1];
-                      borderColor = arr2[1];
-                  }
-                  else if(currentStatus.substring(0,11).equals("Rejected by")){
-                      color = arr1[4];
-                      borderColor = arr2[4];
-                      
-                  }else if(currentStatus.equals("The project is approved")){
-                      color = arr1[2];
-                      borderColor = arr2[2];
-                  }
-                  else{
-                      color = null;
-                      borderColor = null;
-                  }
+                    pr = pro.get(x);
+                    String currentStatus;
+
+                    currentStatus = pr.getStatusByProject(pr.getProjectno(), (String) session.getAttribute("eid"));
+
+                    if (currentStatus.equals("SRS is not uploaded yet")) {
+                        color = arr1[3];
+                        borderColor = arr2[3];
+                    } else if (currentStatus.equals("Stakeholders are not assigned yet")) {
+                        color = arr1[0];
+                        borderColor = arr2[0];
+                    } else if (currentStatus.substring(0, 8).equals("Approval")) {
+                        color = arr1[1];
+                        borderColor = arr2[1];
+                    } else if (currentStatus.substring(0, 11).equals("Rejected by")) {
+                        color = arr1[4];
+                        borderColor = arr2[4];
+
+                    } else if (currentStatus.equals("The project is approved")) {
+                        color = arr1[2];
+                        borderColor = arr2[2];
+                    } else {
+                        color = null;
+                        borderColor = null;
+                    }
             %>
 
             <div class="<% out.print(color); %>">
@@ -200,7 +194,7 @@
             <!--model End-->
 
             <%
-                    
+
                     a++;
                 }
             %>

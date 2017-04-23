@@ -22,7 +22,7 @@
 %>
 
 <section id="main-content" class=" ">
-    <section class="wrapper" style='margin-top:6%; margin-left: 5%; display:inline-block;width:100%;padding:25px 0 0 15px;'>
+    <section class="wrapper" style='margin-top:50px; margin-left: 5%; display:inline-block;width:95%;padding:25px 0 0 15px;'>
         <div class="col-sm-8"></div>  
         <div class="col-sm-4">
             <a href="Project_Summary.jsp"><button type="button" class="btn btn-purple btn-corner" ><i class="fa fa-search"></i><span> Search Projects</span></button></a>
