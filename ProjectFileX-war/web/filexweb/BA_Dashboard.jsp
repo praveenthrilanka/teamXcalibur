@@ -35,7 +35,6 @@
 
 <section id="main-content" class="sidebar_shift">
     <section class="wrapper" style='margin-top:225px; margin-left: 5%; display:inline-block;width:95%;padding:25px 0 0 15px; overflow-x: hidden; overflow-y: hidden;'>
-
         <footer>   
             <div class="row">
 

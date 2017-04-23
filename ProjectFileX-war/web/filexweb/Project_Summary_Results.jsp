@@ -44,7 +44,6 @@
 
 <section id="main-content" class=" ">
     <section class="wrapper" style='margin-top:50px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
-
         <div class="clearfix"></div>
         <div class="col-lg-12">
             

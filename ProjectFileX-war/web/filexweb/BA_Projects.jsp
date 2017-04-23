@@ -26,7 +26,6 @@
 
 <section id="main-content" class="">
     <section class="wrapper" style='margin-top:50px; margin-left: 5%; display:inline-block;width:95%;padding:25px 0 0 15px;'>
-
 <!--Ongoing Projects Count-->
         <div class="col-sm-10">
             <div class="market-updates">
