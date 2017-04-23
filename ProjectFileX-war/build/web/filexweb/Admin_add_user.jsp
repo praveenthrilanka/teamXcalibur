@@ -19,7 +19,9 @@
     <section class="wrapper" style="margin-top:50px;display:inline-block;width:100%;padding:15px 0 0 15px;">
         <div class="login-form" style="">
             <h4>Add User</h4>
-            <h5><strong></strong></h5>            
+            <h5><strong></strong></h5>
+            
+            
             <form name="adduser" method="post" action="../AddEmp" >
              <span style="float:top;"> </span>  
                 <center><img src="images/user_add.png" name="icon" id="output" width="130" height="130"></center>
@@ -63,12 +65,12 @@
                 <br/><br/><div>
                     <table align="center" width="70%">
                         <tbody><tr>
-                                <td><label><input type="checkbox" value="y" name="msd">Manager SD</label></td>
-                                <td><label><input type="checkbox" value="y" name="pm">Project Manager</label><br></td>
+                                <td><label><input type="checkbox" value="y" id="msdid" name="msd" onclick="disable()">Manager SD</label></td>
+                                <td><label><input type="checkbox" value="y" id="pmid" name="pm" onclick="disable()">Project Manager</label><br></td>
                             </tr>
                             <tr>
-                                <td><label><input type="checkbox" value="y" name="ba">Business Analyst</label></td>
-                                <td><label><input type="checkbox" value="y" name="stk">Stakeholder</label></td>
+                                <td><label><input type="checkbox" value="y" id="baid" name="ba" onclick="disable()">Business Analyst</label></td>
+                                <td><label><input type="checkbox" value="y" id="stkid" name="stk" onclick="disable()">Stakeholder</label></td>
                             </tr>
                         </tbody></table>
                 </div><br/>
@@ -77,7 +79,7 @@
                 <br>
                 <div class="clearfix"></div>
                 <input style="background-color:#FF9D26; border:none;" class="btn btn-info btn-block" type="submit" value="Add User"><br>
-                <input style="background-color:FFC682; border:none;" class="btn btn-info btn-block" type="reset" id="reset">
+                <input style="background-color:FFC682; border:none;" class="btn btn-info btn-block" type="reset" value="Reset" id="reset" onclick="enableAll()">
             </form>
                 
                                   
@@ -152,6 +154,55 @@
                 var output = document.getElementById('output');
                 output.src = URL.createObjectURL(event.target.files[0]);
             };
+            
+            
+            function disable(){
+             
+                if (document.getElementById('msdid').checked === true)
+                {
+                    document.getElementById("pmid").disabled = false;
+                    document.getElementById("msdid").disabled = false;
+                    document.getElementById("baid").disabled = true;
+                    document.getElementById("stkid").disabled = true;
+                } 
+                
+               
+                else  if (document.getElementById('pmid').checked === true)
+                {
+                    document.getElementById("pmid").disabled = false;
+                    document.getElementById("msdid").disabled = false;
+                    document.getElementById("baid").disabled = true;
+                    document.getElementById("stkid").disabled = true;
+                } 
+                
+                else if (document.getElementById('baid').checked === true)
+                {
+                    document.getElementById("pmid").disabled = true;
+                    document.getElementById("msdid").disabled = true;
+                    document.getElementById("baid").disabled = false;
+                    document.getElementById("stkid").disabled = true;
+                } 
+                
+                 else if (document.getElementById('stkid').checked === true)
+                
+                {
+                    document.getElementById("pmid").disabled = true;
+                    document.getElementById("msdid").disabled = true;
+                    document.getElementById("baid").disabled = true;
+                    document.getElementById("stkid").disabled = false;
+                } 
+            
+            }
+             
+                
+                 function enableAll(){
+                 
+                    document.getElementById("pmid").disabled = false;
+                    document.getElementById("msdid").disabled = false;
+                    document.getElementById("baid").disabled = false;
+                    document.getElementById("stkid").disabled = false;
+            }             
+        
         </script>
        
     </section></section>
