@@ -11,8 +11,6 @@
 
 <%
     ArrayList<Project> pro = Project.getHeldProjectByPMid((String) session.getAttribute("eid"));
-    String arr1[] = {"bs-calltoaction bs-calltoaction-warning", "bs-calltoaction bs-calltoaction-primary", "bs-calltoaction bs-calltoaction-info", "bs-calltoaction bs-calltoaction-success"};
-    String arr2[] = {"btn btn-lg btn-block btn-warning", "btn btn-lg btn-block btn-primary", "btn btn-lg btn-block btn-info", "btn btn-lg btn-block btn-success"};
 %>
 
 <section id="main-content" class=" ">
@@ -22,13 +20,13 @@
             <b><h2>Held Projects</h2></b><br/>
             <%
                 Project pr;
-                int c = 0, a = 1;
+                int a = 1;
                 for (int x = 0; x < pro.size(); x++) {
-                    c = c % 4;
+                    
                     pr = pro.get(x);
             %>
 
-            <div class="<% out.print(arr1[c]); %>">
+            <div class="bs-calltoaction bs-calltoaction-info">
                 <div class="row">
                     <div class="col-md-9 cta-contents">
                         <h4 class="cta-title"><% out.print(pr.getProjectname()); %></h4>
@@ -38,12 +36,14 @@
                         </div>
                     </div>
                     <div class="col-md-3 cta-button">
-                        <a href="../SetUser?pno=<% out.print(pr.getProjectno()); %>&direct=ba" class="<% out.print(arr2[c]); %>">View Project</a>
+                        <a href="../SetUser?pno=<% out.print(pr.getProjectno()); %>&direct=pm" class="btn btn-lg btn-block btn-info">View Project</a>
 
-                        <a data-target="#continueModel<% out.print(a); %>" data-toggle="modal" href="#" class="<% out.print(arr2[c]); %>" align="right" style=" width: 65px;"><i class="fa fa-eye icon-sm "></i></a>
+                        <div align="right" style="margin-top:3px;">
+                            <a data-target="#continueModel<% out.print(a); %>" data-toggle="modal" href="#" class="btn btn-lg btn-block btn-info" style=" width: 65px;"><i class="fa fa-eye-slash icon-sm "></i></a>
+                        </div></div>
                     </div>
                 </div>
-            </div>
+            
 
             <!--Model starts-->
             <div class="modal fade" id="continueModel<% out.print(a); %>" tabindex="-1" role="dialog" aria-labelledby="ultraModal-Label" aria-hidden="true" style="display: none;">
@@ -67,14 +67,14 @@
 
 
             <%
-                    c++;
+                    
                     a++;
                 }
             %>
 
 
 
-
+            </div>
         </div>
 
 

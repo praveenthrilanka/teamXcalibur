@@ -20,10 +20,6 @@
         <servlet-class>org.sampath.filex.web.actions.SetComment</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Intermediate</servlet-name>
-        <servlet-class>org.sampath.filex.web.actions.Intermediate</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ProjectControl</servlet-name>
         <servlet-class>org.sampath.filex.web.actions.ProjectControl</servlet-class>
     </servlet>
@@ -130,10 +126,6 @@
     <servlet-mapping>
         <servlet-name>SetComment</servlet-name>
         <url-pattern>/SetComment</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Intermediate</servlet-name>
-        <url-pattern>/Intermediate</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProjectControl</servlet-name>
