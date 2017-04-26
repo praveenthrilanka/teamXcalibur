@@ -65,12 +65,12 @@
                 <br/><br/><div>
                     <table align="center" width="70%">
                         <tbody><tr>
-                                <td><label><input type="checkbox" value="y" id="msdid" name="msd" onclick="disable()">Manager SD</label></td>
-                                <td><label><input type="checkbox" value="y" id="pmid" name="pm" onclick="disable()">Project Manager</label><br></td>
+                                <td><label><input type="checkbox" value="y" id="msdid" name="msd" onclick="disableBASTK()">Manager SD</label></td>
+                                <td><label><input type="checkbox" value="y" id="pmid" name="pm" onclick="disableBASTK()">Project Manager</label><br></td>
                             </tr>
                             <tr>
-                                <td><label><input type="checkbox" value="y" id="baid" name="ba" onclick="disable()">Business Analyst</label></td>
-                                <td><label><input type="checkbox" value="y" id="stkid" name="stk" onclick="disable()">Stakeholder</label></td>
+                                <td><label><input type="checkbox" value="y" id="baid" name="ba" onclick="disableMSDPMSTK()">Business Analyst</label></td>
+                                <td><label><input type="checkbox" value="y" id="stkid" name="stk" onclick="disableBAMSDPM()">Stakeholder</label></td>
                             </tr>
                         </tbody></table>
                 </div><br/>
@@ -156,41 +156,54 @@
             };
             
             
-            function disable(){
+            function disableBASTK(){
              
-                if (document.getElementById('msdid').checked === true)
+                if (document.getElementById('msdid').checked == true || document.getElementById('pmid').checked == true)
                 {
                     document.getElementById("pmid").disabled = false;
                     document.getElementById("msdid").disabled = false;
                     document.getElementById("baid").disabled = true;
                     document.getElementById("stkid").disabled = true;
                 } 
-                
-               
-                else  if (document.getElementById('pmid').checked === true)
+                else
                 {
                     document.getElementById("pmid").disabled = false;
                     document.getElementById("msdid").disabled = false;
-                    document.getElementById("baid").disabled = true;
-                    document.getElementById("stkid").disabled = true;
-                } 
-                
-                else if (document.getElementById('baid').checked === true)
+                    document.getElementById("baid").disabled = false;
+                    document.getElementById("stkid").disabled = false;
+                }
+            }
+            function disableMSDPMSTK(){
+                if (document.getElementById('baid').checked == true)
                 {
                     document.getElementById("pmid").disabled = true;
                     document.getElementById("msdid").disabled = true;
                     document.getElementById("baid").disabled = false;
                     document.getElementById("stkid").disabled = true;
                 } 
-                
-                 else if (document.getElementById('stkid').checked === true)
-                
+                else
+                {
+                    document.getElementById("pmid").disabled = false;
+                    document.getElementById("msdid").disabled = false;
+                    document.getElementById("baid").disabled = false;
+                    document.getElementById("stkid").disabled = false;
+                }
+                }
+               function disableBAMSDPM(){
+                if (document.getElementById('stkid').checked == true)
                 {
                     document.getElementById("pmid").disabled = true;
                     document.getElementById("msdid").disabled = true;
                     document.getElementById("baid").disabled = true;
                     document.getElementById("stkid").disabled = false;
-                } 
+                }
+                else
+                {
+                    document.getElementById("pmid").disabled = false;
+                    document.getElementById("msdid").disabled = false;
+                    document.getElementById("baid").disabled = false;
+                    document.getElementById("stkid").disabled = false;
+                }
             
             }
              
