@@ -12,7 +12,7 @@
             
             <!-- START CONTENT -->
             <section id="main-content" class=" ">
-                <section class="wrapper" style='margin-top:25px;display:inline-block;width:100%;height: 100%; padding:15px 0 0 15px;'>
+                <section class="wrapper" style='margin-top:25px;display:inline-block;width:100%; padding:15px 0 0 15px;'>
                    
 		<div id="pageset">
                     <div class="main-page">
@@ -22,11 +22,11 @@
                              <div class="row">
                                  <br/>
                                  <div class="col-lg-7"  >
-                                     <iframe style='margin-top:10px'  name='fra2' src='../GetFile' width="100%" height="550" ></iframe>
+                                     <iframe style='margin-top:10px'  name='fra2' src='../GetFile' width="100%" height="100%" ></iframe>
                                   
                               </div>
                               <div class="col-lg-5" >
-                                   <iframe name='fra1' src='SubWall.jsp'  width="100%" height="550" ></iframe>
+                                   <iframe name='fra1' src='SubWall.jsp'  width="100%" style="height:auto;max-height:100%;" ></iframe>
                               </div>
                             </div>
                           </div>

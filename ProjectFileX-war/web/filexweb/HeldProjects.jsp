@@ -17,7 +17,7 @@
     <section class="wrapper" style='margin-top:50px; margin-left: 5%; display:inline-block;width:95%;padding:25px 0 0 15px;'>
 
         <div class="col-sm-10">
-            <b><h2>Held Projects</h2></b><br/>
+            <b><h2>Hold Projects</h2></b><br/>
             <%
                 Project pr;
                 int a = 1;
@@ -39,7 +39,7 @@
                         <a href="../SetUser?pno=<% out.print(pr.getProjectno()); %>&direct=pm" class="btn btn-lg btn-block btn-info">View Project</a>
 
                         <div align="right" style="margin-top:3px;">
-                            <a data-target="#continueModel<% out.print(a); %>" data-toggle="modal" href="#" class="btn btn-lg btn-block btn-info" style=" width: 65px;"><i class="fa fa-eye-slash icon-sm "></i></a>
+                            <a data-target="#continueModel<% out.print(a); %>" data-toggle="modal" href="#" class="btn btn-lg btn-block btn-info" style=" width: 65px;"><i class="fa fa-eye icon-sm "></i></a>
                         </div></div>
                     </div>
                 </div>
