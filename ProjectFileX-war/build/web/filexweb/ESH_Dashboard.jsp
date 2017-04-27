@@ -12,7 +12,7 @@
 
 <link href="css/stylesba.css" rel='stylesheet' type='text/css' />
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<section id="main-content" class="sidebar_shift">
+<section id="main-content" class="">
     <section class="wrapper" style='margin-top:225px; margin-left: 5%; display:inline-block;width:100%;padding:25px 0 0 15px;  width:800px; overflow-x: hidden; overflow-y: hidden;'>
         <footer>   
             <div class="row">
